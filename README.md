@@ -1,1 +1,0 @@
-# critickerlike_frontend
