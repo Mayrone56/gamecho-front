@@ -1,0 +1,113 @@
+.main {
+  display: grid;
+  grid-template-rows: repeat(3, 1fr);
+  grid-template-columns: repeat(4, 1fr);
+  gap: 16px;
+  padding: 16px;
+  height: 100%;
+  width: 100%;
+}
+
+.mainContainer {
+  grid-row-start: 1;
+  grid-row-end: 4;
+  grid-column-start: 1;
+  grid-column-end: 5;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  height: 100%;
+  color: #FFF9E8;
+}
+
+
+.content {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  height: 100%;
+}
+
+.contentCard {
+  height: auto;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  margin: 24px 0;
+}
+
+.icon {
+  height: 24px;
+  width: 24px;
+  cursor: pointer;
+}
+
+.likeIcon {
+  color: aliceblue;
+}
+
+.iconButton {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  border-radius: 40px;
+  border: 1px solid #FFF9E8;
+  height: 40px;
+  width: 40px;
+  background-color: #9592B8;
+  cursor: pointer;
+  bottom: -20px;
+}
+
+.iconButton:hover {
+  background-color: #3F3878;
+}
+
+.card {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: end;
+  align-items: center;
+  border-radius: 20px;
+  background-color: rgb(190, 19, 233);
+  height: 200px;
+  width: 50%;
+  min-width: 150px;
+  margin: 0 8px;
+  cursor: pointer;
+}
+
+.secondaryButton {
+  color: #FFF9E8;
+  font-size: 16px;
+  line-height: 22px;
+  height: 44px;
+  width: 160px;
+  padding: 8px;
+  border-radius: 40px;
+  border: 1px solid #FFF9E8;
+  background-color: #9592B8;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: end;
+  align-items: center;
+  cursor: pointer;
+  margin: 32px 0;
+}
+
+.secondaryButton:hover {
+  background-color: #3F3878;
+}
+
+.title {
+  line-height: 40px;
+  font-size: 32px;
+  text-align: center;
+  cursor: pointer;
+}
