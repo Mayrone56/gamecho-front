@@ -1,6 +1,14 @@
-import styles from '../styles/Welcome.module.css'
+import styles from '../styles/Welcome.module.css';
+import { useRouter } from 'next/router'
 
 function Welcome() {
+
+    const router=useRouter();
+
+    const handleClick=()=>{
+        router.push("/signUp")
+    }
+    
     return (
         <>
             <div className={styles.main} >
