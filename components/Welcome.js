@@ -5,8 +5,8 @@ function Welcome() {
 
     const router=useRouter();
 
-    const handleClick=()=>{
-        router.push("/signUp")
+    const handleSignup=()=>{
+        router.push("/sign-up")
     }
     
     return (
@@ -20,11 +20,11 @@ function Welcome() {
                         <h2 className={styles.welcome}>Welcome !</h2>
                         <div className={styles.signin}>
                             Already have an account ?
-                        <button className={styles.button}>SignIn</button>
+                        <button className={styles.button} >SignIn</button>
                         </div>
                         <div className={styles.signup}>
                         New to GamEcho? Create an account
-                        <button className={styles.button}>SignUp</button>
+                        <button className={styles.button} onClick={()=>handleSignup()}>SignUp</button>
                         </div>
                         
                     </div>
