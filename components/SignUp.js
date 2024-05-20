@@ -34,8 +34,8 @@ function SignUp() {
                 <div className={styles.inputContainer}>
                     <input type="text" className={styles.input} onChange={(e) => setUsername(e.target.value)} value={username} placeholder="Username" />
                     <input type="text" className={styles.input} onChange={(e) => setEmail(e.target.value)} value={email} placeholder="Email" />
-                    <input type="text" className={styles.input} onChange={(e) => setPassword(e.target.value)} value={password} placeholder="Password" />
-                    <input type="text" className={styles.input} onChange={(e) => setConfirmPassword(e.target.value)} value={confirmPassword} placeholder="Confirm password" />
+                    <input type="password" className={styles.input} onChange={(e) => setPassword(e.target.value)} value={password} placeholder="Password" />
+                    <input type="password" className={styles.input} onChange={(e) => setConfirmPassword(e.target.value)} value={confirmPassword} placeholder="Confirm password" />
                 </div>
                 <div className={styles.buttonContainer}>
                     <button className={styles.button} onClick={() => handleSubmit()}>Create an account</button>
