@@ -1,7 +1,15 @@
-import Welcome from "../components/Welcome";
+import Head from 'next/head';
+import Home from "../components/Home";
 
 function Index() {
-  return <Welcome />;
+  return (
+    <>
+    <Head>
+      <title>Welcome / Gamecho</title>
+    </Head>
+    <Home />
+    </>
+  )
 }
 
 export default Index;

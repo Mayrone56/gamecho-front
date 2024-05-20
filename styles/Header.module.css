@@ -1,21 +1,22 @@
-  .header {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      height: auto;
-      width: 100%;
-      padding: 16px;
-  }
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 60px;
+    width: 100%;
+    padding: 16px;
+    background-color: #242424;
+}
 
-  .title {
-      line-height: 40px;
-      font-size: 32px;
-      text-align: center;
-      cursor: pointer;
-  }
+.logoTitle {
+    line-height: 40px;
+    font-size: 32px;
+    text-align: center;
+    cursor: pointer;
+}
 
-  .icon {
-      height: 24px;
-      width: 24px;
-      cursor: pointer;
-  }
+.icon {
+    height: 24px;
+    width: 24px;
+    cursor: pointer;
+}
