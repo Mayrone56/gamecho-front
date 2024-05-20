@@ -9,10 +9,17 @@
     "lint": "next lint"
   },
   "dependencies": {
+<<<<<<< HEAD
     "@fontsource/roboto": "^5.0.13",
+=======
+    "@reduxjs/toolkit": "^2.2.5",
+    "moment": "^2.30.1",
+>>>>>>> 57976d7ce282fd2f2d4faa684aac90de46031365
     "next": "12.1.6",
     "react": "18.1.0",
-    "react-dom": "18.1.0"
+    "react-dom": "18.1.0",
+    "react-redux": "^9.1.2",
+    "redux-persist": "^6.0.0"
   },
   "devDependencies": {
     "@testing-library/jest-dom": "^5.16.4",
