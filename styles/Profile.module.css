@@ -4,10 +4,10 @@
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  color: #FFF9E8;
+  color: #fff9e8;
 }
 
-.middleContainer {
+.firstContainer {
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
@@ -25,7 +25,7 @@
   position: relative;
   display: flex;
   flex-direction: column;
-  justify-content:flex-end;
+  justify-content: end;
   align-items: center;
   border-radius: 40px;
   background-color: rgb(190, 19, 233);
@@ -58,40 +58,44 @@
   align-items: center;
   position: absolute;
   border-radius: 40px;
-  border: 1px solid #FFF9E8;
+  border: 1px solid #fff9e8;
   height: 40px;
   width: 40px;
-  background-color: #9592B8;
+  background-color: #9592b8;
   cursor: pointer;
   bottom: -20px;
 }
 
 .iconButton:hover {
-  background-color: #3F3878;
+  background-color: #3f3878;
 }
 
 .secondaryButton {
   min-width: 160px;
-  color: #FFF9E8;
+  color: #fff9e8;
   font-size: 1em;
   height: 44px;
   width: 200px;
   padding: 8px;
   border-radius: 40px;
-  border: 1px solid #FFF9E8;
-  background-color: #9592B8;
+  border: 1px solid #fff9e8;
+  background-color: #9592b8;
   position: relative;
   display: flex;
   justify-content: center;
   align-items: center;
   cursor: pointer;
   margin: 40px 0 24px 0;
-  font-weight: 700;
+  font-weight: 500;
 }
 
 .secondaryButton:hover {
-  background-color: #3F3878;
+  background-color: #3f3878;
 }
+
+.defaultInput {
+  display: none;
+} /* cache le style par défaut de l'input mais aussi son accessibilité, on va le déplacer en le référencant avec le useRef dans un bouton stylisé */
 
 .title {
   font-size: 2em;
@@ -104,4 +108,14 @@
   font-weight: 300;
   text-align: center;
   cursor: pointer;
+}
+
+.avatar {
+  width: 20vw; 
+  height: 20vw; /* pour limiter la taille générale selon l'écran */
+  max-width: 200px; /* pour limiter la taille brute */
+  max-height: 200px;
+  border-radius: 50%;
+  object-fit: cover; /* empêche l'image d'être tronquée même visualée en cercle */
+  object-position: center center; /* centre l'image verticalement/horizitontalement pour garantir un affichage proche de l'original*/
 }
