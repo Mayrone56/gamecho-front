@@ -1,38 +1,35 @@
-.main {
-    display: grid;
-    border: 1px #e94653 solid;
-    grid-template-rows: repeat(3, 1fr);
-    grid-template-columns: repeat(4, 1fr);
-    gap: 16px;
-    margin: 16px;
-    line-height: 1.15;
-    color: #F2F4FE;
-    /* Adjust width to account for margins */
-    width: calc(100vw - 32px);
-    height: calc(100vh - 32px);
-}
-
 .container {
-    grid-row-start: 1;
-    grid-row-end: 4;
-    grid-column-start: 1;
-    grid-column-end: 5;
+    height: 100vh;
+    width: 100vw;
     display: flex;
     flex-direction: column;
-    border: 1px #e94653 solid;
-    line-height: 1.15;
+    justify-content: space-between;
+    color: #FFF9E8;
+}
+
+.middleContainer {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    height: 100%;
 }
 
 .header {
     display: flex;
-    flex-direction: column;
     justify-content: center;
-    align-items: flex-start;
-    border: 1px #e94653 solid;
+    align-items: center;
+    height: 60px;
+    width: 100%;
+    padding: 16px;
+    background-color: #242424;
 }
 
-.pageTitle {
-    margin-left: 20px;
+.logoTitle {
+    line-height: 40px;
+    font-size: 32px;
+    text-align: center;
+    cursor: pointer;
 }
 
 .titleContainer {
@@ -40,7 +37,12 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    border: 1px #e94653 solid;
+    width: 100%;
+    margin-top: 20px;
+}
+
+.title {
+    text-align: center;
 }
 
 .inputContainer {
@@ -48,18 +50,39 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    border: 1px #e94653 solid;
     margin-bottom: 20px;
+    width: 100%;
 }
 
 .input {
     padding: 10px 12px 10px 12px;
     border-radius: 40px;
     background-color: #F2F4FE;
-    color: #9592B8;
+    color: #3F3878;
     border: 1px #DFD8E7 solid;
-    margin: 15px;
+    margin-top: 30px;
     width: 300px;
+}
+
+.input::placeholder {
+    color: #9592B8;
+}
+
+.errorContainer {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    width: 300px;
+    margin: 0;
+}
+
+.error {
+    color: #EB5757;
+    font-size: 12px;
+    margin-left: 12px;
+    margin-top: 3px;
+    margin-bottom: 0;
 }
 
 .buttonContainer {
@@ -67,6 +90,8 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    width: 100%;
+    margin-bottom: 20px;
 }
 
 .button {
@@ -85,4 +110,9 @@
     cursor: pointer;
     margin: 15px;
     width: 300px;
+}
+
+.button:hover {
+    background-color: #3F3878;
+    color: #FFF9E8;
 }
