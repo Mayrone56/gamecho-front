@@ -11,11 +11,11 @@ function Header() {
 
   return (
     <div className={styles.header}>
-      <Link href="/">
-        <Image onClick={() => handleLike()} src="/icons/emojiIcons/happy.svg" alt="Avatar" width={24} height={24} className={styles.icon} />
+      <Link href="/profil">
+        <Image src="/icons/emojiIcons/happy.svg" alt="Avatar" width={24} height={24} className={styles.icon} />
       </Link>
-      <Link href="/">
-        <h1 onClick={() => handleLike()} className={styles.logoTitle}>GAMECHO</h1>
+      <Link href="/home">
+        <h1 className={styles.logoTitle}>GAMECHO</h1>
       </Link>
       <Link href="/">
       <Lottie onClick={() => handleLike()} animationData={menuBurger} loop={false} className={styles.icon}/>
@@ -24,7 +24,5 @@ function Header() {
     </div>
   )
 }
-
-
 
 export default Header;
