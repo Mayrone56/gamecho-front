@@ -1,0 +1,70 @@
+.main {
+    gap: 16px;
+    margin: 16px;
+    line-height: 1.15;
+    font-family: Roboto;
+    width: calc(100vw - 32px);
+    height: calc(100vh - 32px);
+    font-size: 16px;
+}
+
+.content {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.iconContainer{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 5px;
+}
+
+.textContainer{
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    height: 100%;
+    width: 40%;
+    padding-left: 10px;
+}
+
+.dropdownContainer{
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    height: 100%;
+    width: 40%;
+    padding-right: 10px;
+}
+
+
+
+.icon {
+    width: 24px;
+    height: 24px;
+    cursor: pointer;
+}
+
+.parameter{
+    width: 100%;
+    height: 10vh;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+}
+
+.parameterSimple{
+    width: 80%;
+    height: 10vh;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+}
+
+.espace{
+    margin-left: 30px;
+}
+
