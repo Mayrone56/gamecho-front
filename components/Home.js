@@ -34,7 +34,9 @@ function Home() {
             <button className={styles.iconButton} onClick={() => handleSubmit()}> <Image onClick={() => handleLike()} src="/icons/heart.svg" alt="Add to wishlist" width={24} height={24} className={styles.likeIcon} /></button>
           </div>
         </div>
-        <button className={styles.secondaryButton} onClick={() => handleSubmit()}>See all releases</button>
+        <Link href="/all-releases">
+          <button className={styles.secondaryButton} >See all releases</button>
+        </Link>
 
         {/*SECTION 2*/}
         <h2 className={styles.sectionTitle}>"Game name" like</h2>
@@ -49,7 +51,9 @@ function Home() {
             <button className={styles.iconButton} onClick={() => handleSubmit()}> <Image onClick={() => handleLike()} src="/icons/heart.svg" alt="Add to wishlist" width={24} height={24} className={styles.likeIcon} /></button>
           </div>
         </div>
-        <button className={styles.secondaryButton} onClick={() => handleSubmit()}>See all releases</button>
+        <Link href="/games-like">
+          <button className={styles.secondaryButton} >"gameName" like</button>
+        </Link>
       </div>
 
 
