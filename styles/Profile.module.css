@@ -109,3 +109,13 @@
   text-align: center;
   cursor: pointer;
 }
+
+.avatar {
+  width: 20vw; 
+  height: 20vw; /* pour limiter la taille générale selon l'écran */
+  max-width: 200px; /* pour limiter la taille brute */
+  max-height: 200px;
+  border-radius: 50%;
+  object-fit: cover; /* empêche l'image d'être tronquée même visualée en cercle */
+  object-position: center center; /* centre l'image verticalement/horizitontalement pour garantir un affichage proche de l'original*/
+}

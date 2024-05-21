@@ -13,15 +13,11 @@ function Profile() {
   const handleAvatarEdit = () => {
     const file = fileInputRef.current.files[0]; // current est une propriété de useRef pour cibler le fichier selectionné / premier index en cas d'ajouts mutliples pour encadrer l'upload
     if (file) {
-      const formData = new FormData(); // doit adapter à React, uri appartient à Native
-      formData.append("photoFromFront", {
-        uri: uri,
-        name: "photo.jpg",
-        type: "image/jpeg",
-      });
+      const formData = new FormData(); // faceup part3 adapté à React
+      formData.append("avatar", file); // premier paramètre = nom donné au fichier, second = cible du fichier
 
-      fetch("http://localhost:3000/users/edit/avatar", {
-        // création de la route !
+      fetch("http://localhost:3000/profile/avatar", {
+        // création de la route
         method: "POST",
         body: formData,
       })
@@ -31,6 +27,7 @@ function Profile() {
         });
     }
   };
+  console.log(user.avatar);
 
   // Clic sur le input emulé en bouton
   const handleButtonClick = () => {
@@ -53,6 +50,7 @@ function Profile() {
               className={styles.defaultInput}
             />
           </div>
+          <img src={user.avatar} alt="Avatar" className={styles.avatar} />
         </div>
       </div>
     </>

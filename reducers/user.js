@@ -21,10 +21,10 @@ export const userSlice = createSlice({
       state.value.avatar = null;
     },
     addAvatar: (state, action) => {
-      state.value.avatar = action.payload;
-    }
+      state.value.avatar = action.payload; // ajout d'une fonction d'ajout pour l'upload de l'avatar
+    },
   },
 });
 
-export const { login, logout } = userSlice.actions;
+export const { login, logout, addAvatar } = userSlice.actions; // ne pas oublier d'importer la nouvelle fonction
 export default userSlice.reducer;
