@@ -3,6 +3,8 @@ import { useState } from 'react';
 import Header from './Header';
 import Footer from './Footer'
 
+// Création du bouton de suppression à faire sur la carte de notre jeu : inexistant pour le moment
+
 
 function Wishlist() {
   const game = useDispatch()
@@ -33,7 +35,7 @@ function Wishlist() {
         <input type="text" className={styles.input} onChange={(e) => setSearchedGame(e.target.value)} value={searchedGame} placeholder="Search..." ></input>
         <h1>WISHLIST</h1>
         <div className={styles.card}>
-
+          {/* Intégration de nos jeux favoris via la Home */}
         </div>
         <Footer />
       </div>
