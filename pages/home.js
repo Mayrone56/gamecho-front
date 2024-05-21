@@ -5,7 +5,7 @@ function HomePage() {
   return (
     <>
       <Head>
-        <title>Home / GAMECHO</title>
+        <title>Home / Gamecho</title>
       </Head>
       <Home />
     </>
