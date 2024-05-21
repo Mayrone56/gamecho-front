@@ -4,14 +4,19 @@ import Image from 'next/image';
 
 function Footer() {
 
-return (
+  return (
     <div className={styles.footer}>
-
-  </div>
-)
-
+      <p className={styles.textFooter} >&copy; 2024 | Gamecho Tous droits réservés.</p>
+      <div className={styles.iconFooter}>
+        <Link href="/">
+          <Image onClick={() => handleLike()} src="/icons/social/Instagram.svg" alt="Logo Instagram" width={24} height={24} className={styles.icon} />
+        </Link>
+        <Link href="/">
+          <Image onClick={() => handleLike()} src="/icons/social/X.svg" alt="Logo X" width={24} height={24} className={styles.icon} />
+        </Link>
+      </div>
+    </div>
+  )
 }
-
-
 
 export default Footer;

@@ -1,37 +1,45 @@
-import styles from '../styles/Welcome.module.css';
-import { useRouter } from 'next/router'
+import styles from "../styles/Welcome.module.css";
+import { useRouter } from "next/router";
 
 function Welcome() {
+  const router = useRouter();
 
-    const router=useRouter();
+  const handleSignUpClick = () => {
+    // redirection SignUp
+    router.push("/sign-up"); // changement de la route appelée, "SignUp" ciblait le composant
+  };
 
-    const handleSignup=()=>{
-        router.push("/sign-up")
-    }
-    
-    return (
-        <>  
-            <div className={styles.main} >
-                <div className={styles.container} >
-                    <div className={styles.title} >
-                        <h1 >GamEcho</h1>
-                    </div>
-                    <div className={styles.content}>
-                        <h2 className={styles.welcome}>Welcome !</h2>
-                        <div className={styles.signin}>
-                            Already have an account ?
-                        <button className={styles.button} >SignIn</button>
-                        </div>
-                        <div className={styles.signup}>
-                        New to GamEcho? Create an account
-                        <button className={styles.button} onClick={()=>handleSignup()}>SignUp</button>
-                        </div>
-                        
-                    </div>
-                </div>
+  const handleSignInClick = () => {
+    // redirection SignIn - pour l'instant identique à SignUp
+    router.push("/sign-in");
+  };
+
+  return (
+    <>
+      <div className={styles.main}>
+        <div className={styles.container}>
+          <div className={styles.title}>
+            <h1>GamEcho</h1>
+          </div>
+          <div className={styles.content}>
+            <h2 className={styles.welcome}>Welcome !</h2>
+            <div className={styles.signin}>
+              Already have an account ?
+              <button className={styles.button} onClick={handleSignInClick}> 
+                SignIn
+              </button>
             </div>
-        </>
-    )
+            <div className={styles.signup}>
+              New to GamEcho? Create an account
+              <button className={styles.button} onClick={handleSignUpClick}>
+                SignUp
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </>
+  );
 }
 
 export default Welcome;
