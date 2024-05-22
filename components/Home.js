@@ -6,18 +6,16 @@ import Footer from './Footer';
 
 function Home() {
 
-        //   {/* SEARCH */}
-        //   <input
-        //   type="text"
-        //   className={styles.input}
-        //   // onChange={(e) => setUsername(e.target.value)}
-        //   // value={username}
-        //   placeholder="Search"
-        // />
-        // {/* BUTTON SEARCH */}
-        // <Link href="/all-releases">
-        //   <button className={styles.secondaryButton} >Search</button>
-        // </Link>
+  // const gamesCards = () => {
+  //   for (let i = 0; i = 3; i++) {
+  //     return (
+  //       <div className={styles.card}>
+  //       </div>
+  //     )
+  //   }
+  // }
+
+
 
   return (
 
@@ -26,14 +24,14 @@ function Home() {
       <div className={styles.middleContainer}>
 
         <div className={styles.searchContainer}>
-            <input
-              type="text"
-              className={styles.input}
-              // onChange={(e) => setUsername(e.target.value)}
-              // value={username}
-              placeholder="Search..."
-            />
-            <Image onClick={() => handleLike()} src="/icons/search.svg" alt="Search" width={24} height={24} className={styles.searchIcon} />
+          <input
+            type="text"
+            className={styles.input}
+            // onChange={(e) => setUsername(e.target.value)}
+            // value={username}
+            placeholder="Search..."
+          />
+          <Image onClick={() => handleLike()} src="/icons/search.svg" alt="Search" width={24} height={24} className={styles.searchIcon} />
         </div>
 
 
