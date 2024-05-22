@@ -49,6 +49,7 @@ function SignIn() {
       .then((response) => response.json())
       .then((data) => {
         if (data.result) {
+          console.log(data.result)
           //si le résultat est vrai, nous connectons l'utilisateur
           dispatch(login({ token: data.token, username, email: data.email }));
         } else if (data.error === "User not found or wrong password") {
