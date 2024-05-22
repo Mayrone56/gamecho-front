@@ -111,7 +111,7 @@
 }
 
 .avatar {
-  width: 20vw; 
+  width: 20vw;
   height: 20vw; /* pour limiter la taille générale selon l'écran */
   max-width: 200px; /* pour limiter la taille brute */
   max-height: 200px;
