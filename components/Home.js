@@ -6,20 +6,37 @@ import Footer from './Footer';
 
 function Home() {
 
-  // const gamesCards = () => {
-  //   for (let i = 0; i = 3; i++) {
-  //     return (
-  //       <div className={styles.card}>
-  //       </div>
-  //     )
-  //   }
-  // }
+        //   {/* SEARCH */}
+        //   <input
+        //   type="text"
+        //   className={styles.input}
+        //   // onChange={(e) => setUsername(e.target.value)}
+        //   // value={username}
+        //   placeholder="Search"
+        // />
+        // {/* BUTTON SEARCH */}
+        // <Link href="/all-releases">
+        //   <button className={styles.secondaryButton} >Search</button>
+        // </Link>
 
   return (
 
     <div className={styles.container}>
       <Header />
       <div className={styles.middleContainer}>
+
+        <div className={styles.searchContainer}>
+            <input
+              type="text"
+              className={styles.input}
+              // onChange={(e) => setUsername(e.target.value)}
+              // value={username}
+              placeholder="Search..."
+            />
+            <Image onClick={() => handleLike()} src="/icons/search.svg" alt="Search" width={24} height={24} className={styles.searchIcon} />
+        </div>
+
+
 
         {/*SECTION 1*/}
         <h2 className={styles.sectionTitle}>Latest releases</h2>
