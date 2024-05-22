@@ -77,7 +77,78 @@
 
 // export default Header;
 
-///////////////3
+// ///////////////3
+
+// import styles from '../styles/Header.module.css';
+// import Link from 'next/link';
+// import Image from 'next/image';
+
+// //TEST LOTTIE
+// import React from "react";
+// import Lottie from "lottie-react";
+// import menuBurger from "../public/motion/burgerMenu.json";
+
+// import { Modal } from "antd";
+// import { useState } from 'react';
+
+// function Header() {
+
+//   const [isOpenBurgerMenu, setIsOpenBurgerMenu] = useState(false);
+
+//   //Permet d'afficher le contenu du menu burger
+//   const showBurgerMenu = () => {
+//     setIsOpenBurgerMenu(!isOpenBurgerMenu);
+//     //   console.log('Click burger menu');
+//   };
+
+//   let burgerContent;
+//   // if (!user.token) {
+//   burgerContent = (
+//     <div className={styles.burgerContainer}>
+//       <div className={styles.topMenuBurger}>
+//         <a className={styles.linkBurgerMenu} href="/home">Profile</a>
+//         <a className={styles.linkBurgerMenu} href="/home">Ratings</a>
+//         <a className={styles.linkBurgerMenu} href="/home">Wishlist</a>
+//         <a className={styles.linkBurgerMenu} href="/home">Settings</a>
+//       </div>
+//       <div className={styles.bottomMenuBurger}>
+//         <a className={styles.linkBurgerMenu} href="/home">Logout</a>
+//       </div>
+//     </div>
+//   );
+//   // }
+
+//   return (
+ 
+//     <div className={styles.header}>
+//       <Link href="/profile">
+//         <Image src="/icons/emojiIcons/happy.svg" alt="Avatar" width={24} height={24} className={styles.icon} />
+//       </Link>
+//       <Link href="/home">
+//         <h1 className={styles.logoTitle}>GAMECHO</h1>
+//       </Link>
+
+//       <Lottie onClick={() => showBurgerMenu()} animationData={menuBurger} loop={false} className={styles.icon} />
+//       {/* <Image onClick={() => showBurgerMenu()} src="/icons/burger.svg" alt="Avatar" width={24} height={24} className={styles.icon} /> */}
+
+
+//       <Modal getContainer="#react-modals" className={styles.modal} visible={isOpenBurgerMenu} closable={false} footer={null}>
+//         {burgerContent}
+//       </Modal>
+
+//     </div>
+ 
+//   )
+// }
+
+// export default Header;
+
+
+
+
+//////////4
+
+
 
 import styles from '../styles/Header.module.css';
 import Link from 'next/link';
@@ -88,21 +159,22 @@ import React from "react";
 import Lottie from "lottie-react";
 import menuBurger from "../public/motion/burgerMenu.json";
 
-import { Modal } from 'antd';
+import { Modal } from "antd";
 import { useState } from 'react';
 
 function Header() {
 
   const [isOpenBurgerMenu, setIsOpenBurgerMenu] = useState(false);
+  console.log(isOpenBurgerMenu);
 
-  //Clic burgerMenu
-  // const handleClickBurgerMenu = () => {    
-  //   console.log('Click burger menu');
-  // };
-
-  const showBurgerMenu = () => {
+  //Permet d'afficher le contenu du menu burger
+  const toggleBurgerMenu = () => {
     setIsOpenBurgerMenu(!isOpenBurgerMenu);
-    //   console.log('Click burger menu');
+  };
+
+  const toggleClose = () => {
+    isOpenBurgerMenu = false;
+    console.log(isOpenBurgerMenu);
   };
 
   let burgerContent;
@@ -111,8 +183,10 @@ function Header() {
     <div className={styles.burgerContainer}>
       <div className={styles.topMenuBurger}>
         <a className={styles.linkBurgerMenu} href="/home">Profile</a>
+        <a className={styles.linkBurgerMenu} href="/home">Ratings</a>
         <a className={styles.linkBurgerMenu} href="/home">Wishlist</a>
         <a className={styles.linkBurgerMenu} href="/home">Settings</a>
+        <a onClick={() => toggleClose()} className={styles.linkBurgerMenu}>CLOSE</a>
       </div>
       <div className={styles.bottomMenuBurger}>
         <a className={styles.linkBurgerMenu} href="/home">Logout</a>
@@ -122,6 +196,7 @@ function Header() {
   // }
 
   return (
+ 
     <div className={styles.header}>
       <Link href="/profile">
         <Image src="/icons/emojiIcons/happy.svg" alt="Avatar" width={24} height={24} className={styles.icon} />
@@ -130,16 +205,18 @@ function Header() {
         <h1 className={styles.logoTitle}>GAMECHO</h1>
       </Link>
 
-      <Lottie onClick={() => showBurgerMenu()} animationData={menuBurger} loop={false} className={styles.icon} />
-      {/* <Image onClick={() => showBurgerMenu()} src="/icons/burger.svg" alt="Avatar" width={24} height={24} className={styles.icon} /> */}
+      {/* <Lottie onClick={toggleBurgerMenu} animationData={menuBurger} loop={false} className={styles.icon} /> */}
+      <Image onClick={() => toggleBurgerMenu()} src="/icons/burger.svg" alt="Avatar" width={24} height={24} className={styles.icon} />
 
-      <Modal getContainer="#react-modals" className={styles.modal} visible={isOpenBurgerMenu} closable={false} footer={null}>
+
+      <Modal getContainer="#react-modals" className={styles.modal} open={isOpenBurgerMenu} closable={false} footer={null}>
         {burgerContent}
       </Modal>
+   
+
     </div>
+ 
   )
 }
 
 export default Header;
-
-
