@@ -1,14 +1,22 @@
 import React, { useRef } from "react"; // useRef s'applique aussi aux fichiers selectionnés localement, permet de les cibler et poster
 import styles from "../styles/Profile.module.css";
 import Header from "./Header";
+import Footer from "./Footer";
+import Image from "next/image";
 import { useDispatch, useSelector } from "react-redux";
+import { useRouter } from "next/router";
 import { addAvatar } from "../reducers/user";
+import Link from "next/link";
 
 function Profile() {
   const dispatch = useDispatch(); // Pour mettre à jour l'avatar dans tous les composants
   const user = useSelector((state) => state.user.value); // Cible les informations de l'utilisateur
   const fileInputRef = useRef(null); // Création de la référence pour exploiter le fichier selectionné
-
+  const router = useRouter();
+  const handleSignUpClick = () => {
+    // redirection SignUp
+    router.push("/sign-up"); // changement de la route appelée, "SignUp" ciblait le composant
+  };
   // L'input est un évènement mais on ne recupère pas la valeur directement, sa référence doit être exploitée dans le backend et dispatch dans le front
   const handleAvatarEdit = () => {
     const file = fileInputRef.current.files[0]; // current est une propriété de useRef pour cibler le fichier selectionné / premier index en cas d'ajouts mutliples pour encadrer l'upload
@@ -38,20 +46,59 @@ function Profile() {
     <>
       <div className={styles.container}>
         <Header />
-        <div className={styles.firstContainer}>
-          <h1 className={styles.sectionTitle}>PROFILE</h1>
-          <div className={styles.secondaryButton} onClick={handleButtonClick}>
-            Upload avatar
-            <input
-              ref={fileInputRef} // on prête une référence à l'image selectionnée à la manière d'un ID temporaire
-              type="file"
-              accept="image/*"
-              onChange={handleAvatarEdit}
-              className={styles.defaultInput}
-            />
+        {!user.token && (
+          <div className={styles.firstContainer}>
+            <div className={styles.header}>
+            </div>
+            <div>
+              <div className={styles.titleContainer}>
+              </div>
+              <div className={styles.buttonContainer}>
+                <div className={styles.signup}>
+                  <h4>Discover an exciting new approach to gaming! Rate your favorite titles according to your own criteria and unlock tailored recommendations just for you. Join now and unleash the full potential of your gaming experience!</h4>
+                  <button className={styles.button} onClick={handleSignUpClick}>
+                    Sign Up
+                  </button>
+                </div>
+              </div>
+            </div>
+          
           </div>
-          <img src={user.avatar} alt="Avatar" className={styles.avatar} />
-        </div>
+        )}
+        {user.token && (
+          <div className={styles.firstContainer}>
+            <h1 className={styles.sectionTitle}>PROFILE</h1>
+            {!user.avatar && (
+              <Image
+                src="/icons/emojiIcons/happy.svg"
+                alt="Avatar"
+                width={75}
+                height={75}
+                className={styles.avatar}
+              />
+            )}{" "}
+            {user.avatar && (
+              <Image
+                src={user.avatar}
+                alt="Avatar"
+                className={styles.avatar}
+                width={75}
+                height={75}
+              />
+            )}
+            <div className={styles.button} onClick={handleButtonClick}>
+              Upload avatar
+              <input
+                ref={fileInputRef} // on prête une référence à l'image selectionnée à la manière d'un ID temporaire
+                type="file"
+                accept="image/*"
+                onChange={handleAvatarEdit}
+                className={styles.defaultInput}
+              />
+            </div>
+          </div>
+        )}
+        <Footer />
       </div>
     </>
   );
