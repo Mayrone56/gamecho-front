@@ -6,18 +6,18 @@ import Footer from './Footer';
 
 function Home() {
 
-        //   {/* SEARCH */}
-        //   <input
-        //   type="text"
-        //   className={styles.input}
-        //   // onChange={(e) => setUsername(e.target.value)}
-        //   // value={username}
-        //   placeholder="Search"
-        // />
-        // {/* BUTTON SEARCH */}
-        // <Link href="/all-releases">
-        //   <button className={styles.secondaryButton} >Search</button>
-        // </Link>
+  //   {/* SEARCH */}
+  //   <input
+  //   type="text"
+  //   className={styles.input}
+  //   // onChange={(e) => setUsername(e.target.value)}
+  //   // value={username}
+  //   placeholder="Search"
+  // />
+  // {/* BUTTON SEARCH */}
+  // <Link href="/all-releases">
+  //   <button className={styles.secondaryButton} >Search</button>
+  // </Link>
 
   return (
 
@@ -26,17 +26,32 @@ function Home() {
       <div className={styles.middleContainer}>
 
         <div className={styles.searchContainer}>
-            <input
-              type="text"
-              className={styles.input}
-              // onChange={(e) => setUsername(e.target.value)}
-              // value={username}
-              placeholder="Search..."
-            />
-            <Image onClick={() => handleLike()} src="/icons/search.svg" alt="Search" width={24} height={24} className={styles.searchIcon} />
+          <input
+            type="text"
+            className={styles.input}
+            // onChange={(e) => setUsername(e.target.value)}
+            // value={username}
+            placeholder="Search..."
+          />
+          <Image onClick={() => handleSubmit()} src="/icons/search.svg" alt="Search" width={24} height={24} className={styles.searchIcon} />
         </div>
 
-
+        {/*SECTION SEARCH RESULTS*/}
+        <h2 className={styles.sectionTitle}>Your search results</h2>
+        <div className={styles.contentCard}>
+          <div className={styles.card}>
+            <button className={styles.iconButton} onClick={() => handleSubmit()}> <Image onClick={() => handleLike()} src="/icons/heart.svg" alt="Add to wishlist" width={24} height={24} className={styles.likeIcon} /></button>
+          </div>
+          <div className={styles.card}>
+            <button className={styles.iconButton} onClick={() => handleSubmit()}> <Image onClick={() => handleLike()} src="/icons/heart.svg" alt="Add to wishlist" width={24} height={24} className={styles.likeIcon} /></button>
+          </div>
+          <div className={styles.card}>
+            <button className={styles.iconButton} onClick={() => handleSubmit()}> <Image onClick={() => handleLike()} src="/icons/heart.svg" alt="Add to wishlist" width={24} height={24} className={styles.likeIcon} /></button>
+          </div>
+        </div>
+        <Link href="/all-search-results">
+          <button className={styles.secondaryButton} >See all search results</button>
+        </Link>
 
         {/*SECTION 1*/}
         <h2 className={styles.sectionTitle}>Latest releases</h2>
