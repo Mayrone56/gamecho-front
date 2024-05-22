@@ -105,3 +105,24 @@
   text-align: center;
   cursor: pointer;
 }
+
+/* SEARCH */
+.input {
+  padding: 10px 12px 10px 12px;
+  border-radius: 40px;
+  background-color: #F2F4FE;
+  color: #3F3878;
+  border: 1px #DFD8E7 solid;
+  margin-top: 30px;
+  width: 300px;
+  font-size: 1em;
+  font-weight: 500;
+}
+
+.input::placeholder {
+  color: #9592B8;
+}
+
+.input:focus {
+  background-color: #DFD8E7;
+}
