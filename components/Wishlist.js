@@ -1,32 +1,32 @@
 import styles from '../styles/Home.module.css';
 import { useState } from 'react';
 import Header from './Header';
-import Footer from './Footer'
+import Footer from './Footer';
 
 // Création du bouton de suppression à faire sur la carte de notre jeu : inexistant pour le moment
 
 
 function Wishlist() {
-  const game = useDispatch()
+  // const game = useDispatch()
 
-  const [searchedGame, setSearchedGame] = useState('')
+  // const [searchedGame, setSearchedGame] = useState('')
 
 
   // const handleGame = () => {
   //   fetch('')
   // }
 
-  const handleTrash = () => {
-    fetch('http://localhost:3000/wishlist', {
-      method: 'DELETE',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ game: game.name }),
-      //pas besoin de body?
-    }).then(response => response.json())
-      .then(data => {
-        data.result && dispatch(deleteGame(game.name));
-      });
-  }
+  // const handleTrash = () => {
+  //   fetch('http://localhost:3000/wishlist', {
+  //     method: 'DELETE',
+  //     headers: { 'Content-Type': 'application/json' },
+  //     body: JSON.stringify({ game: game.name }),
+  //     //pas besoin de body?
+  //   }).then(response => response.json())
+  //     .then(data => {
+  //       data.result && dispatch(deleteGame(game.name));
+  //     });
+  // }
 
   return (
     <div className={styles.container}>
