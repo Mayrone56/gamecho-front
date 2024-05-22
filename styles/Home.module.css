@@ -113,10 +113,11 @@
   background-color: #F2F4FE;
   color: #3F3878;
   border: 1px #DFD8E7 solid;
-  margin-top: 30px;
-  width: 300px;
+  width: 400px;
   font-size: 1em;
   font-weight: 500;
+  /* position: absolute;  */
+  margin-right: 16px;
 }
 
 .input::placeholder {
@@ -125,4 +126,18 @@
 
 .input:focus {
   background-color: #DFD8E7;
+}
+
+
+.searchContainer {
+  position: relative;
+ display: flex;
+ justify-content: center;
+ align-items: center;
+ margin-top: 30px;
+}
+
+.searchIcon {
+  cursor: pointer;
+  background-color: #3F3878;
 }

@@ -1,5 +1,7 @@
 import styles from "../styles/Welcome.module.css";
 import { useRouter } from "next/router";
+import Link from 'next/link';
+import Footer from './Footer';
 
 function Welcome() {
   const router = useRouter();
@@ -15,30 +17,33 @@ function Welcome() {
   };
 
   return (
-    <>
-      <div className={styles.main}>
-        <div className={styles.container}>
-          <div className={styles.title}>
-            <h1>GamEcho</h1>
+    <div className={styles.container}>
+      <div className={styles.header}>
+        <Link href="/">
+          <h1 className={styles.logoTitle}>GAMECHO</h1>
+        </Link>
+      </div>
+      <div className={styles.middleContainer}>
+        <div className={styles.titleContainer}>
+          <h2 className={styles.title}>Welcome!</h2>
+        </div>
+        <div className={styles.buttonContainer}>
+          <div className={styles.signin}>
+            <h4>Already have an account?</h4>
+            <button className={styles.button} onClick={handleSignInClick}>
+              Sign In
+            </button>
           </div>
-          <div className={styles.content}>
-            <h2 className={styles.welcome}>Welcome !</h2>
-            <div className={styles.signin}>
-              Already have an account ?
-              <button className={styles.button} onClick={handleSignInClick}> 
-                SignIn
-              </button>
-            </div>
-            <div className={styles.signup}>
-              New to GamEcho? Create an account
-              <button className={styles.button} onClick={handleSignUpClick}>
-                SignUp
-              </button>
-            </div>
+          <div className={styles.signup}>
+            <h4>New to GamEcho? Create an account</h4>
+            <button className={styles.button} onClick={handleSignUpClick}>
+              Sign Up
+            </button>
           </div>
         </div>
       </div>
-    </>
+      <Footer />
+    </div>
   );
 }
 

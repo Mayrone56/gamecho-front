@@ -1,5 +1,5 @@
-import styles from '../styles/Home.module.css';
-import { useState } from 'react';
+import styles from '../styles/Wishlist.module.css';
+import { useState, useDispatch } from 'react';
 import Header from './Header';
 import Footer from './Footer';
 

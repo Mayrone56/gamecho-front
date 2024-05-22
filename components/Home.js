@@ -27,18 +27,18 @@ function Home() {
       <Header />
       <div className={styles.middleContainer}>
 
-        {/* SEARCH */}
-        <input
-          type="text"
-          className={styles.input}
-          // onChange={(e) => setUsername(e.target.value)}
-          // value={username}
-          placeholder="Search"
-        />
-        {/* BUTTON SEARCH */}
-        <Link href="/all-releases">
-          <button className={styles.secondaryButton} >Search</button>
-        </Link>
+        <div className={styles.searchContainer}>
+          <input
+            type="text"
+            className={styles.input}
+            // onChange={(e) => setUsername(e.target.value)}
+            // value={username}
+            placeholder="Search..."
+          />
+          <Image onClick={() => handleLike()} src="/icons/search.svg" alt="Search" width={24} height={24} className={styles.searchIcon} />
+        </div>
+
+
 
         {/*SECTION 1*/}
         <h2 className={styles.sectionTitle}>Latest releases</h2>

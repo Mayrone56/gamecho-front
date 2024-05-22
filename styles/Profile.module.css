@@ -70,27 +70,27 @@
   background-color: #3f3878;
 }
 
-.secondaryButton {
-  min-width: 160px;
-  color: #fff9e8;
-  font-size: 1em;
-  height: 44px;
-  width: 200px;
-  padding: 8px;
-  border-radius: 40px;
-  border: 1px solid #fff9e8;
-  background-color: #9592b8;
-  position: relative;
+.button {
   display: flex;
   justify-content: center;
   align-items: center;
+  height: 44px;
+  width: 160px;
+  padding: 10px 24px 10px 24px;
+  background-color: #f0efff;
+  color: #3f3878;
+  border-radius: 40px;
+  border: 1px #f0efff solid;
+  font-size: 16px;
+  font-weight: 600;
   cursor: pointer;
-  margin: 40px 0 24px 0;
-  font-weight: 500;
+  margin: 15px;
+  width: 300px;
 }
 
-.secondaryButton:hover {
+.button:hover {
   background-color: #3f3878;
+  color: #fff9e8;
 }
 
 .defaultInput {
@@ -118,4 +118,34 @@
   border-radius: 50%;
   object-fit: cover; /* empêche l'image d'être tronquée même visualée en cercle */
   object-position: center center; /* centre l'image verticalement/horizitontalement pour garantir un affichage proche de l'original*/
+}
+.inputContainer {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 20px;
+  width: 100%;
+}
+
+.input {
+  padding: 10px 12px 10px 12px;
+  border-radius: 40px;
+  background-color: #f2f4fe;
+  color: #3f3878;
+  border: 1px #dfd8e7 solid;
+  margin-top: 30px;
+  width: 300px;
+}
+
+.input::placeholder {
+  color: #9592b8;
+}
+
+.signup {
+  margin: 32px 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
