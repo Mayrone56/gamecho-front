@@ -3,12 +3,8 @@ import Link from 'next/link';
 import Image from 'next/image';
 import Header from './Header';
 import Footer from './Footer';
-import { useEffect, useState } from 'react';
-import { addGame } from '../reducers/game';
-
 
 function Home() {
-
 
   // const gamesCards = () => {
   //   for (let i = 0; i = 3; i++) {
