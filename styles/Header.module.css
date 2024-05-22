@@ -6,6 +6,7 @@
     width: 100%;
     padding: 16px;
     background-color: #242424;
+    z-index: 1;
 }
 
 .logoTitle {
@@ -56,12 +57,23 @@
     text-decoration: none;
     color: #FFF9E8;
     font-size: 1.25em;
+    padding: 32px 0;
+    border-top: 1px solid #fff9e880;
+    text-align: center;
+    width: 80%;
+}
+
+.modalBurger {
+    text-align: center;
+    width: 90%;
+    text-decoration: none;
+    color: #FFF9E8;
+    font-size: 1.25em;
     padding: 16px 0;
     border-top: 1px solid #FFF9E8;
     text-align: center;
     width: 90%;
 }
-
 
 .linkBurgerMenu:hover {
     text-decoration: none;
@@ -71,3 +83,4 @@
     width: 100%;
     text-align: center;
 }
+ 

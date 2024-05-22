@@ -21,6 +21,19 @@ function Home() {
       <Header />
       <div className={styles.middleContainer}>
 
+        {/* SEARCH */}
+        <input
+          type="text"
+          className={styles.input}
+          // onChange={(e) => setUsername(e.target.value)}
+          // value={username}
+          placeholder="Search"
+        />
+        {/* BUTTON SEARCH */}
+        <Link href="/all-releases">
+          <button className={styles.secondaryButton} >Search</button>
+        </Link>
+
         {/*SECTION 1*/}
         <h2 className={styles.sectionTitle}>Latest releases</h2>
         <div className={styles.contentCard}>
