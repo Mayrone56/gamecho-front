@@ -182,11 +182,21 @@ function Header() {
   burgerContent = (
     <div className={styles.burgerContainer}>
       <div className={styles.topMenuBurger}>
-        <a className={styles.linkBurgerMenu} href="/home">Profile</a>
-        <a className={styles.linkBurgerMenu} href="/home">Ratings</a>
-        <a className={styles.linkBurgerMenu} href="/home">Wishlist</a>
-        <a className={styles.linkBurgerMenu} href="/home">Settings</a>
-        <a onClick={() => toggleClose()} className={styles.linkBurgerMenu}>CLOSE</a>
+        <Link href="/profile">
+          <a className={styles.linkBurgerMenu} href="/home">Profile</a>
+        </Link>
+        <Link href="/ratings">
+          <a className={styles.linkBurgerMenu} href="/home">Ratings</a>
+        </Link>
+        <Link href="/wishlist">
+          <a className={styles.linkBurgerMenu} href="/home">Wishlist</a>
+        </Link>
+        <Link href="/setting">
+          <a className={styles.linkBurgerMenu} href="/home">Settings</a>
+        </Link>
+        <Link href="/home">
+          <a onClick={() => toggleClose()} className={styles.linkBurgerMenu}>CLOSE</a>
+        </Link>
       </div>
       <div className={styles.bottomMenuBurger}>
         <a className={styles.linkBurgerMenu} href="/home">Logout</a>
