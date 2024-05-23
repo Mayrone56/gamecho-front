@@ -34,3 +34,18 @@ p {
 a {
   text-decoration: none;
 }
+
+button {
+  background-color: inherit;
+  border: none;
+  color: inherit;
+}
+
+svg {
+  fill: inherit;
+  color: inherit;
+}
+image {
+  fill: inherit;
+  color: inherit;
+}

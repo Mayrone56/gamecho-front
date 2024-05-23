@@ -1,19 +1,26 @@
 import styles from '../styles/Header.module.css';
 import Link from 'next/link';
 import Image from 'next/image';
+import { logout } from '../reducers/user';
+import { useRouter } from 'next/router';
+import { useDispatch } from 'react-redux';
+import { useState } from 'react';
 
 //TEST LOTTIE
-import React from "react";
 import Lottie from "lottie-react";
-import menuBurger from "../public/motion/burgerMenu.json";
 
-import { Modal } from "antd";
-import { useState } from 'react';
 
 function Header() {
 
+  //Menu burger
   const [openBurgerMenu, setOpenBurgerMenu] = useState(false);
   console.log(openBurgerMenu);
+
+//Logout
+const dispatch = useDispatch();
+
+  // Redirect to / if not logged in
+  const router = useRouter();
 
   //Permet d'afficher le contenu du menu burger
   const toggleMenuBurger = () => {
@@ -33,7 +40,7 @@ function Header() {
 
         {/* <Lottie onClick={toggleBurgerMenu} animationData={menuBurger} loop={false} className={styles.icon} /> */}
 
-        <Image onClick={toggleMenuBurger} src="/icons/burger.svg" alt="Avatar" width={24} height={24} className={styles.hamburger} />
+        <Image onClick={toggleMenuBurger} src="/icons/burger.svg" alt="Avatar" width={24} height={24} className={styles.burgerIcon} />
       </div>
 
       {openBurgerMenu && (
@@ -56,9 +63,8 @@ function Header() {
                 <a className={styles.linkBurgerMenu} href="/home">Settings</a>
               </Link>
             </div>
-              <Link href="/setting">
-                <a className={styles.linkBurgerMenu} href="/home">Logout</a>
-              </Link>
+            {/* Logout */}
+            <button onClick={() => { router.push('/'); dispatch(logout()); }} className={styles.logout}>Logout</button>
           </div>
         </div>
       )}
