@@ -17,6 +17,8 @@ function Home() {
   const wishlist = useSelector(state => state.wishlist.value); // pour recuperer le valeur de notre tableau wishlist
   console.log(wishlist);
 
+  const isLightmode = useSelector((state) => state.config.value.mode)// affiche la valeur du mode dark ou light
+
   //useEffect pour que les résultats de la recherche disparaissent lorsque l'input est vidée. Il s'exécute chaque fois que la valeur de la recherche change.
   useEffect(() => {
     if (searchValue === "") {
@@ -37,6 +39,7 @@ function Home() {
     } // VL
 
     const data = await response.json(); // VL
+    console.log("DATA ", data)
     setSearchResults(data.games.slice(0, 3)); // VL pour 3 cartes seulement
     setShowSearchResults(true); // VL
   };
@@ -148,10 +151,14 @@ function Home() {
           </>
         )}
 
+
         {/*SECTION 1*/}
         <h2 className={styles.sectionTitle}>Latest releases</h2>
         <div className={styles.contentCard}>
           <div className={styles.card}>
+            {/* Remplacer par la ligne commenter quand latest result sera fonctionnel*/}
+            {/* <p className={styles.gameNameCard}>{game.name}</p> */}
+            <p className={styles.gameName}>"GameName"</p>
             <button
               className={styles.iconButton}
               onClick={() => handleSubmit()}
@@ -168,6 +175,9 @@ function Home() {
             </button>
           </div>
           <div className={styles.card}>
+            {/* Remplacer par la ligne commenter quand latest result sera fonctionnel*/}
+            {/* <p className={styles.gameNameCard}>{game.name}</p> */}
+            <p className={styles.gameName}>"GameName"</p>
             <button
               className={styles.iconButton}
               onClick={() => handleSubmit()}
@@ -184,6 +194,9 @@ function Home() {
             </button>
           </div>
           <div className={styles.card}>
+            {/* Remplacer par la ligne commenter quand latest result sera fonctionnel*/}
+            {/* <p className={styles.gameNameCard}>{game.name}</p> */}
+            <p className={styles.gameName}>"GameName"</p>
             <button
               className={styles.iconButton}
               onClick={() => handleSubmit()}
@@ -205,9 +218,22 @@ function Home() {
         </Link>
 
         {/*SECTION 2*/}
+        <div className={styles.searchContainer}>
+          <input
+            type="text"
+            className={styles.input}
+            // onChange={(e) => setUsername(e.target.value)}
+            // value={username}
+            placeholder="Search..."
+          />
+          <Image onClick={() => handleLike()} src="/icons/search.svg" alt="Search" width={24} height={24} className={styles.searchIcon} />
+        </div>
         <h2 className={styles.sectionTitle}>"Game name" like</h2>
         <div className={styles.contentCard}>
           <div className={styles.card}>
+            {/* Remplacer par la ligne commenter quand latest result sera fonctionnel*/}
+            {/* <p className={styles.gameNameCard}>{game.name}</p> */}
+            <p className={styles.gameName}>"GameName"</p>
             <button
               className={styles.iconButton}
               onClick={() => handleSubmit()}
@@ -224,6 +250,9 @@ function Home() {
             </button>
           </div>
           <div className={styles.card}>
+            {/* Remplacer par la ligne commenter quand latest result sera fonctionnel*/}
+            {/* <p className={styles.gameNameCard}>{game.name}</p> */}
+            <p className={styles.gameName}>"GameName"</p>
             <button
               className={styles.iconButton}
               onClick={() => handleSubmit()}
@@ -240,6 +269,9 @@ function Home() {
             </button>
           </div>
           <div className={styles.card}>
+            {/* Remplacer par la ligne commenter quand latest result sera fonctionnel*/}
+            {/* <p className={styles.gameNameCard}>{game.name}</p> */}
+            <p className={styles.gameName}>"GameName"</p>
             <button
               className={styles.iconButton}
               onClick={() => handleSubmit()}
@@ -264,44 +296,7 @@ function Home() {
       <Footer />
     </div>
   );
-  // return (
-
-  //     <div className={styles.container}>
-  //       <Header />
-  //         <h1 className={styles.title}>Latest releases</h1>
-  //         <div className={styles.contentCard}>
-  //           {/* CARDS */}
-  //           <div className={styles.card}>
-  //             <button className={styles.iconButton} onClick={() => handleSubmit()}> <Image onClick={() => handleLike()} src="/icons/heart.svg" alt="Add to wishlist" width={24} height={24} className={styles.likeIcon} /></button>
-  //           </div>
-  //           <div className={styles.card}>
-  //             <button className={styles.iconButton} onClick={() => handleSubmit()}> <Image onClick={() => handleLike()} src="/icons/heart.svg" alt="Add to wishlist" width={24} height={24} className={styles.likeIcon} /></button>
-  //           </div>
-  //           <div className={styles.card}>
-  //             <button className={styles.iconButton} onClick={() => handleSubmit()}> <Image onClick={() => handleLike()} src="/icons/heart.svg" alt="Add to wishlist" width={24} height={24} className={styles.likeIcon} /></button>
-  //           </div>
-  //         </div>
-  //         {/* BUTTON*/}
-  //         <button className={styles.secondaryButton} onClick={() => handleSubmit()}>See all releases</button>
-  //         <h1 className={styles.title}>Zelda like</h1>
-  //         <div className={styles.contentCard}>
-  //           {/* CARDS */}
-  //           <div className={styles.card}>
-  //             <button className={styles.iconButton} onClick={() => handleSubmit()}> <Image onClick={() => handleLike()} src="/icons/heart.svg" alt="Add to wishlist" width={24} height={24} className={styles.likeIcon} /></button>
-  //           </div>
-  //           <div className={styles.card}>
-  //             <button className={styles.iconButton} onClick={() => handleSubmit()}> <Image onClick={() => handleLike()} src="/icons/heart.svg" alt="Add to wishlist" width={24} height={24} className={styles.likeIcon} /></button>
-  //           </div>
-  //           <div className={styles.card}>
-  //             <button className={styles.iconButton} onClick={() => handleSubmit()}> <Image onClick={() => handleLike()} src="/icons/heart.svg" alt="Add to wishlist" width={24} height={24} className={styles.likeIcon} /></button>
-  //           </div>
-  //         </div>
-  //         {/* BUTTON*/}
-  //         <button className={styles.secondaryButton} onClick={() => handleSubmit()}>See all Zelda like</button>
-  //        <Footer />
-  //     </div>
-
-  // );
 }
 
 export default Home;
+
