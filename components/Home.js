@@ -17,7 +17,7 @@ function Home() {
   const wishlist = useSelector(state => state.wishlist.value); // pour recuperer le valeur de notre tableau wishlist
   console.log(wishlist);
 
-  const isLightmode = useSelector((state) => state.config.value.mode)// affiche la valeur du mode dark ou light
+  // const isLightmode = useSelector((state) => state.config.value.mode)// affiche la valeur du mode dark ou light
 
   //useEffect pour que les résultats de la recherche disparaissent lorsque l'input est vidée. Il s'exécute chaque fois que la valeur de la recherche change.
   useEffect(() => {
