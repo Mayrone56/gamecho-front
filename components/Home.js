@@ -82,8 +82,8 @@ function Home() {
                     backgroundPosition: "center",
                     backgroundRepeat: "no-repeat",
                     borderRadius: "40px",
-                    height: "160px", // Hauteur de la carte INVERSEMENT = les images de l'API sont toutes au format paysage
-                    width: "110px", // Largeur de la carte ELARGISSEMENT ???
+                    height: "140px", // Hauteur de la carte INVERSEMENT = les images de l'API sont toutes au format paysage
+                    width: "200px", // Largeur de la carte ELARGISSEMENT ???
                     minWidth: "80px",
                     minHeight: "120px",
                     margin: "0 8px",
