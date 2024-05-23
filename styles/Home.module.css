@@ -27,6 +27,9 @@
   overflow-y: scroll;
 }
 
+
+/* CARDS */
+
 .contentCard {
   display: flex;
   justify-content: center;
@@ -80,6 +83,13 @@
 
 .iconButton:hover {
   background-color: #3F3878;
+}
+
+.gameNameCard {
+  font-size: 1em;
+  font-weight: 500;
+  color: red ;
+  padding: 8px;
 }
 
 .secondaryButton {
@@ -139,7 +149,6 @@
 .input:focus {
   background-color: #DFD8E7;
 }
-
 
 .searchContainer {
   position: relative;
