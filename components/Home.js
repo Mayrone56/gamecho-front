@@ -4,12 +4,18 @@ import Image from "next/image";
 import Header from "./Header";
 import Footer from "./Footer";
 
-import { useState } from "react"; // VL
+import { useState, useEffect } from "react"; // VL
 
 function Home() {
   const [searchValue, setSearchValue] = useState(""); // VL
   const [searchResults, setSearchResults] = useState([]); // VL
   const [showSearchResults, setShowSearchResults] = useState(false); // VL
+
+  useEffect(() => {
+    if (searchValue === "") {
+      setShowSearchResults(false);
+    }
+  }, [searchValue]);
 
   const handleSearch = async () => {
     // VL

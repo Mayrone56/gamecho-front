@@ -137,6 +137,9 @@
   justify-content: center;
   align-items: center;
   margin-top: 30px;
+  padding-left: 20px;
+  padding-right: 20px;
+  width: 100%;
 }
 
 .searchIcon {
