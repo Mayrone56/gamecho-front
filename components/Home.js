@@ -5,11 +5,13 @@ import Header from "./Header";
 import Footer from "./Footer";
 
 import { useState, useEffect } from "react"; // VL
-
+import { useSelector } from "react-redux";
 function Home() {
   const [searchValue, setSearchValue] = useState(""); // VL
   const [searchResults, setSearchResults] = useState([]); // VL
   const [showSearchResults, setShowSearchResults] = useState(false); // VL
+
+  const isLightmode = useSelector((state) => state.config.value.mode)// affiche la valeur du mode dark ou light
 
   useEffect(() => {
     if (searchValue === "") {
@@ -111,6 +113,7 @@ function Home() {
           </>
         )}
 
+
         {/*SECTION 1*/}
         <h2 className={styles.sectionTitle}>Latest releases</h2>
         <div className={styles.contentCard}>
@@ -168,6 +171,16 @@ function Home() {
         </Link>
 
         {/*SECTION 2*/}
+        <div className={styles.searchContainer}>
+          <input
+            type="text"
+            className={styles.input}
+            // onChange={(e) => setUsername(e.target.value)}
+            // value={username}
+            placeholder="Search..."
+          />
+          <Image onClick={() => handleLike()} src="/icons/search.svg" alt="Search" width={24} height={24} className={styles.searchIcon} />
+        </div>
         <h2 className={styles.sectionTitle}>"Game name" like</h2>
         <div className={styles.contentCard}>
           <div className={styles.card}>
@@ -227,44 +240,7 @@ function Home() {
       <Footer />
     </div>
   );
-  // return (
-
-  //     <div className={styles.container}>
-  //       <Header />
-  //         <h1 className={styles.title}>Latest releases</h1>
-  //         <div className={styles.contentCard}>
-  //           {/* CARDS */}
-  //           <div className={styles.card}>
-  //             <button className={styles.iconButton} onClick={() => handleSubmit()}> <Image onClick={() => handleLike()} src="/icons/heart.svg" alt="Add to wishlist" width={24} height={24} className={styles.likeIcon} /></button>
-  //           </div>
-  //           <div className={styles.card}>
-  //             <button className={styles.iconButton} onClick={() => handleSubmit()}> <Image onClick={() => handleLike()} src="/icons/heart.svg" alt="Add to wishlist" width={24} height={24} className={styles.likeIcon} /></button>
-  //           </div>
-  //           <div className={styles.card}>
-  //             <button className={styles.iconButton} onClick={() => handleSubmit()}> <Image onClick={() => handleLike()} src="/icons/heart.svg" alt="Add to wishlist" width={24} height={24} className={styles.likeIcon} /></button>
-  //           </div>
-  //         </div>
-  //         {/* BUTTON*/}
-  //         <button className={styles.secondaryButton} onClick={() => handleSubmit()}>See all releases</button>
-  //         <h1 className={styles.title}>Zelda like</h1>
-  //         <div className={styles.contentCard}>
-  //           {/* CARDS */}
-  //           <div className={styles.card}>
-  //             <button className={styles.iconButton} onClick={() => handleSubmit()}> <Image onClick={() => handleLike()} src="/icons/heart.svg" alt="Add to wishlist" width={24} height={24} className={styles.likeIcon} /></button>
-  //           </div>
-  //           <div className={styles.card}>
-  //             <button className={styles.iconButton} onClick={() => handleSubmit()}> <Image onClick={() => handleLike()} src="/icons/heart.svg" alt="Add to wishlist" width={24} height={24} className={styles.likeIcon} /></button>
-  //           </div>
-  //           <div className={styles.card}>
-  //             <button className={styles.iconButton} onClick={() => handleSubmit()}> <Image onClick={() => handleLike()} src="/icons/heart.svg" alt="Add to wishlist" width={24} height={24} className={styles.likeIcon} /></button>
-  //           </div>
-  //         </div>
-  //         {/* BUTTON*/}
-  //         <button className={styles.secondaryButton} onClick={() => handleSubmit()}>See all Zelda like</button>
-  //        <Footer />
-  //     </div>
-
-  // );
 }
 
 export default Home;
+
