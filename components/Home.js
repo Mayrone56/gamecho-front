@@ -115,7 +115,7 @@ function Home() {
   // </Link>
 
   return (
-    <div className={isLightmode==="light"?styles.containerlight:styles.containerdark}>
+    <div className={isLightmode?styles.containerlight:styles.containerdark}>
       <Header />
       <div className={styles.middleContainer}>
         <div className={styles.searchContainer}>

@@ -1,10 +1,20 @@
-.container {
+.containerdark {
   height: 100vh;
   width: 100vw;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
   color: #FFF9E8;
+}
+
+.containerlight {
+  height: 100vh;
+  width: 100vw;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  color: #242424;
+  background-color: #F0EFFF;
 }
 
 .middleContainer {
