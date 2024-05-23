@@ -5,11 +5,13 @@ import Header from "./Header";
 import Footer from "./Footer";
 
 import { useState, useEffect } from "react"; // VL
-
+import { useSelector } from "react-redux";
 function Home() {
   const [searchValue, setSearchValue] = useState(""); // VL
   const [searchResults, setSearchResults] = useState([]); // VL
   const [showSearchResults, setShowSearchResults] = useState(false); // VL
+
+  const isLightmode = useSelector((state) => state.config.value.mode)// affiche la valeur du mode dark ou light
 
   useEffect(() => {
     if (searchValue === "") {
