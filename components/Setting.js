@@ -8,7 +8,7 @@ import { useDispatch,useSelector } from 'react-redux';
 import { switchMode } from '../reducers/config'; // import de la fonction switchmode du reducer config 
 
 function Setting() {
-const isLightmode=useSelector((state)=>state.config.value.mode)
+    const isLightmode=useSelector((state)=>state.config.value.mode);//Cible le mode dans le reducer setting
 
 
 const dispatch=useDispatch();
@@ -85,7 +85,7 @@ const dispatch=useDispatch();
                             <p>Reset all your ratings</p>
                         </div>
                         <div className={styles.dropdownContainer}>
-                        <button className={styles.button}>Reset</button>
+                        <button className={isLightmode==="light"?styles.buttonlight:styles.buttondark}>Reset</button>
                         </div>
                     </div>
                     <div className={styles.parameter}>
@@ -96,7 +96,7 @@ const dispatch=useDispatch();
                             <p>Delete account </p>
                         </div>
                         <div className={styles.dropdownContainer}>
-                        <button className={styles.button}>Delete</button>
+                        <button className={isLightmode==="light"?styles.buttonlight:styles.buttondark}>Delete</button>
                         </div>
                     </div>
                 </div>

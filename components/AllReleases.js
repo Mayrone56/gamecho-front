@@ -3,8 +3,6 @@ import Header from './Header';
 import Footer from './Footer';
 import { useEffect, useState } from 'react';
 
-
-
 function AllReleases() {
 
     const [games, setGames] = useState([])

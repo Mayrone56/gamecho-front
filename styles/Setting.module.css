@@ -73,7 +73,7 @@
     align-items: center;
 }
 
-.button {
+.buttondark {
     padding: 10px 24px 10px 24px;
     min-width: 160px;
     max-height: 44px;
@@ -88,11 +88,30 @@
     cursor: pointer;
   }
   
-  .button:hover {
+  .buttondark:hover {
     background-color: #3F3878;
     color: #FFF9E8;
   }
 
+  .buttonlight {
+    padding: 10px 24px 10px 24px;
+    min-width: 160px;
+    max-height: 44px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    background-color: #9592B8;
+    color: #fff9e8;
+    border-radius: 40px;
+    border: 1px #F0EFFF solid;
+    font-size: 16px;
+    font-weight: 600;
+    cursor: pointer;
+  }
+
+  .buttonlight:hover{
+    background-color: transparent;
+  }
+  
 .iconlight{
     filter: invert(53%) sepia(80%) saturate(1880%) hue-rotate(324deg) brightness(94%) contrast(95%);
 }

@@ -11,6 +11,7 @@ import Link from "next/link";
 function Profile() {
   const dispatch = useDispatch(); // Pour mettre à jour l'avatar dans tous les composants
   const user = useSelector((state) => state.user.value); // Cible les informations de l'utilisateur
+  const isLightmode=useSelector((state)=>state.config.value.mode);//Cible le mode dans le reducer setting
   const fileInputRef = useRef(null); // Création de la référence pour exploiter le fichier selectionné
   const router = useRouter();
   const handleSignUpClick = () => {
@@ -44,7 +45,7 @@ function Profile() {
 
   return (
     <>
-      <div className={styles.container}>
+      <div className={isLightmode==="light"?styles.containerlight:styles.containerdark}>
         <Header />
         {!user.token && (
           <div className={styles.firstContainer}>
@@ -56,7 +57,7 @@ function Profile() {
               <div className={styles.buttonContainer}>
                 <div className={styles.signup}>
                   <h4>Discover an exciting new approach to gaming! Rate your favorite titles according to your own criteria and unlock tailored recommendations just for you. Join now and unleash the full potential of your gaming experience!</h4>
-                  <button className={styles.button} onClick={handleSignUpClick}>
+                  <button className={isLightmode==="light"?styles.buttonlight:styles.buttondark} onClick={handleSignUpClick}>
                     Sign Up
                   </button>
                 </div>
@@ -86,7 +87,7 @@ function Profile() {
                 height={75}
               />
             )}
-            <div className={styles.button} onClick={handleButtonClick}>
+            <div className={isLightmode==="light"?styles.buttondark:styles.buttonlight} onClick={handleButtonClick}>
               Upload avatar
               <input
                 ref={fileInputRef} // on prête une référence à l'image selectionnée à la manière d'un ID temporaire
