@@ -29,9 +29,11 @@ function Home() {
     } // VL
 
     const data = await response.json(); // VL
+    console.log("DATA ", data)
     setSearchResults(data.games.slice(0, 3)); // VL pour 3 cartes seulement
     setShowSearchResults(true); // VL
   };
+
   //   {/* SEARCH */}
   //   <input
   //   type="text"
@@ -91,6 +93,7 @@ function Home() {
                     transition: "box-shadow 0.3s ease",
                   }} // Utilisez l'image de game comme fond
                 >
+                  <p className={styles.gameNameCard}>{game.name}</p>
                   <button className={styles.iconButton}>
                     <Image
                       src="/icons/heart.svg"
@@ -116,6 +119,9 @@ function Home() {
         <h2 className={styles.sectionTitle}>Latest releases</h2>
         <div className={styles.contentCard}>
           <div className={styles.card}>
+            {/* Remplacer par la ligne commenter quand latest result sera fonctionnel*/}
+            {/* <p className={styles.gameNameCard}>{game.name}</p> */}
+            <p className={styles.gameName}>"GameName"</p>
             <button
               className={styles.iconButton}
               onClick={() => handleSubmit()}
@@ -132,6 +138,9 @@ function Home() {
             </button>
           </div>
           <div className={styles.card}>
+            {/* Remplacer par la ligne commenter quand latest result sera fonctionnel*/}
+            {/* <p className={styles.gameNameCard}>{game.name}</p> */}
+            <p className={styles.gameName}>"GameName"</p>
             <button
               className={styles.iconButton}
               onClick={() => handleSubmit()}
@@ -148,6 +157,9 @@ function Home() {
             </button>
           </div>
           <div className={styles.card}>
+            {/* Remplacer par la ligne commenter quand latest result sera fonctionnel*/}
+            {/* <p className={styles.gameNameCard}>{game.name}</p> */}
+            <p className={styles.gameName}>"GameName"</p>
             <button
               className={styles.iconButton}
               onClick={() => handleSubmit()}
@@ -182,6 +194,9 @@ function Home() {
         <h2 className={styles.sectionTitle}>"Game name" like</h2>
         <div className={styles.contentCard}>
           <div className={styles.card}>
+            {/* Remplacer par la ligne commenter quand latest result sera fonctionnel*/}
+            {/* <p className={styles.gameNameCard}>{game.name}</p> */}
+            <p className={styles.gameName}>"GameName"</p>
             <button
               className={styles.iconButton}
               onClick={() => handleSubmit()}
@@ -198,6 +213,9 @@ function Home() {
             </button>
           </div>
           <div className={styles.card}>
+            {/* Remplacer par la ligne commenter quand latest result sera fonctionnel*/}
+            {/* <p className={styles.gameNameCard}>{game.name}</p> */}
+            <p className={styles.gameName}>"GameName"</p>
             <button
               className={styles.iconButton}
               onClick={() => handleSubmit()}
@@ -214,6 +232,9 @@ function Home() {
             </button>
           </div>
           <div className={styles.card}>
+            {/* Remplacer par la ligne commenter quand latest result sera fonctionnel*/}
+            {/* <p className={styles.gameNameCard}>{game.name}</p> */}
+            <p className={styles.gameName}>"GameName"</p>
             <button
               className={styles.iconButton}
               onClick={() => handleSubmit()}
