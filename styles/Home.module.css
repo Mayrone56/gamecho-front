@@ -13,6 +13,8 @@
   justify-content: flex-start;
   align-items: center;
   height: 100%;
+  overflow-x: hidden;
+  overflow-y: scroll;
 }
 
 .contentCard {
@@ -131,48 +133,16 @@
 
 .searchContainer {
   position: relative;
- display: flex;
- justify-content: center;
- align-items: center;
- margin-top: 30px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 30px;
+  padding-left: 20px;
+  padding-right: 20px;
+  width: 100%;
 }
 
 .searchIcon {
   cursor: pointer;
   background-color: #3F3878;
-}
-
-/* CARDS */
-.caption {
-  font-size: 1em;
-  padding-bottom: 16px;
-  font-weight: 500;
-}
-
-
-.image {
-	width: 220px;
-	border-radius: 10px 10px 0px 0px;
-}
-
-
-/* TEST AFFICHAGE GAMES */
-.gameGrid {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  gap: 20px;
-}
-
-.game {
-  border: 1px solid #ccc;
-  padding: 10px;
-  border-radius: 5px;
-  width: 200px;
-}
-
-.game img {
-  max-width: 100%;
-  height: auto;
-  border-radius: 5px;
 }
