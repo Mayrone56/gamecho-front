@@ -1,4 +1,4 @@
-.container {
+.containerdark {
   height: 100vh;
   width: 100vw;
   display: flex;
@@ -7,7 +7,17 @@
   color: #fff9e8;
 }
 
-.firstContainer {
+.containerlight {
+  height: 100vh;
+  width: 100vw;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  color: #242424;
+  background-color: #F0EFFF;
+}
+
+.middleContainer {
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
@@ -15,70 +25,34 @@
   height: 100%;
 }
 
-.contentCard {
-  display: flex;
-  justify-content: center;
-  flex-wrap: wrap;
-}
-
-.card {
-  position: relative;
+/*IF NO USER TOKEN*/
+.titleContainer {
   display: flex;
   flex-direction: column;
-  justify-content: flex-end;
-  align-items: center;
-  border-radius: 40px;
-  background-color: rgb(190, 19, 233);
-  height: 160px;
-  width: 110px;
-  min-width: 80px;
-  min-height: 120px;
-  margin: 0 8px;
-  cursor: pointer;
-  transition: box-shadow 0.3s ease;
-}
-
-.card:hover {
-  box-shadow: 0 0 15px rgba(255, 255, 255, 0.75);
-}
-
-.icon {
-  height: 24px;
-  width: 24px;
-  cursor: pointer;
-}
-
-.likeIcon {
-  color: aliceblue;
-}
-
-.iconButton {
-  display: flex;
   justify-content: center;
   align-items: center;
-  position: absolute;
-  border-radius: 40px;
-  border: 1px solid #fff9e8;
-  height: 40px;
-  width: 40px;
-  background-color: #9592b8;
-  cursor: pointer;
-  bottom: -20px;
+  width: 100%;
+  margin-top: 20px;
 }
 
-.iconButton:hover {
-  background-color: #3f3878;
+.buttonContainer {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  margin-bottom: 20px;
 }
 
-.button {
+.buttondark {
   display: flex;
   justify-content: center;
   align-items: center;
   height: 44px;
   width: 160px;
   padding: 10px 24px 10px 24px;
-  background-color: #f0efff;
-  color: #3f3878;
+  background-color: #9592B8;
+  color: #fff9e8;
   border-radius: 40px;
   border: 1px #f0efff solid;
   font-size: 16px;
@@ -88,64 +62,153 @@
   width: 300px;
 }
 
-.button:hover {
+.buttondark:hover {
   background-color: #3f3878;
   color: #fff9e8;
 }
 
-.defaultInput {
-  display: none;
-} /* cache le style par défaut de l'input mais aussi son accessibilité, on va le déplacer en le référencant avec le useRef dans un bouton stylisé */
-
-.title {
-  font-size: 2em;
-  text-align: center;
+.buttonlight {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 44px;
+  width: 160px;
+  padding: 10px 24px 10px 24px;
+  background-color: #9592B8;
+  color: #fff9e8;
+  border-radius: 40px;
+  border: 1px #f0efff solid;
+  font-size: 16px;
+  font-weight: 600;
   cursor: pointer;
+  margin: 15px;
+  width: 300px;
 }
 
-.sectionTitle {
+.buttonlight:hover {
+  background-color: #3F3878;
+  color: #fff9e8;
+}
+
+/*IF USER TOKEN*/
+.title {
   font-size: 1.75em;
   font-weight: 300;
   text-align: center;
   cursor: pointer;
 }
 
-.avatar {
+.defaultAvatar {
   width: 20vw;
-  height: 20vw; /* pour limiter la taille générale selon l'écran */
-  max-width: 200px; /* pour limiter la taille brute */
+  height: 20vw;
+  /* pour limiter la taille générale selon l'écran */
+  max-width: 200px;
+  /* pour limiter la taille brute */
   max-height: 200px;
   border-radius: 50%;
-  object-fit: cover; /* empêche l'image d'être tronquée même visualée en cercle */
-  object-position: center center; /* centre l'image verticalement/horizitontalement pour garantir un affichage proche de l'original*/
+  object-fit: cover;
+  /* empêche l'image d'être tronquée même visualée en cercle */
+  object-position: center center;
+  /* centre l'image verticalement/horizitontalement pour garantir un affichage proche de l'original*/
 }
-.inputContainer {
+
+.userAvatar {
+  width: 20vw;
+  height: 20vw;
+  /* pour limiter la taille générale selon l'écran */
+  max-width: 200px;
+  /* pour limiter la taille brute */
+  max-height: 200px;
+  border-radius: 50%;
+  border: 5px solid #FFF9E8 !important;
+  /* empêche l'image d'être tronquée même visualée en cercle */
+  object-position: center center;
+  /* centre l'image verticalement/horizitontalement pour garantir un affichage proche de l'original*/
+}
+
+.defaultInput {
+  display: none;
+}
+
+.usernameTitle {
+  margin-top: 5px;
+}
+
+/*USER INFO*/
+.userInfoContainer {
   display: flex;
   flex-direction: column;
   justify-content: center;
+  align-items: flex-start;
+  width: 350px;
+  margin-top: 5px;
+}
+
+.userInfo {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
   align-items: center;
-  margin-bottom: 20px;
   width: 100%;
 }
 
 .input {
   padding: 10px 12px 10px 12px;
   border-radius: 40px;
-  background-color: #f2f4fe;
-  color: #3f3878;
-  border: 1px #dfd8e7 solid;
-  margin-top: 30px;
-  width: 300px;
+  background-color: #F2F4FE;
+  color: #3F3878;
+  border: 1px #DFD8E7 solid;
+  width: 200px;
 }
 
 .input::placeholder {
-  color: #9592b8;
+  color: #9592B8;
 }
 
-.signup {
-  margin: 32px 0;
+.editContainer {
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
+  justify-content: center;
+  align-items: space-between;
+  width: 100%;
+}
+
+.iconContainer {
+  margin-left: 10px;
+  display: flex;
   justify-content: center;
   align-items: center;
+}
+
+.infoDisplay {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  margin-left: 10px;
+}
+
+/*LOGOUT BUTTON*/
+
+.logout {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 44px;
+  min-width: 160px;
+  padding: 10px 24px 10px 24px;
+  background-color: #F0EFFF;
+  color: #3F3878;
+  border-radius: 40px;
+  border: 1px #F0EFFF solid;
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+  margin: 15px;
+  width: 300px;
+}
+
+.logout:hover {
+  background-color: #3F3878;
+  color: #FFF9E8;
 }

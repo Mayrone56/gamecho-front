@@ -1,4 +1,4 @@
-.container {
+.containerdark{
   height: 100vh;
   width: 100vw;
   display: flex;
@@ -7,12 +7,22 @@
   color: #FFF9E8;
 }
 
+.containerlight{
+  height: 100vh;
+  width: 100vw;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  color: #242424;
+  background-color: #F0EFFF;
+}
+
 .middleContainer {
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
   align-items: center;
-  height: 100%;
+  /* height: 100%; */
   overflow-x: hidden;
   overflow-y: scroll;
 }
@@ -24,21 +34,26 @@
   display: flex;
   justify-content: center;
   flex-wrap: wrap;
+  gap: 32px;
 }
 
 .card {
   position: relative;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size:cover;
   display: flex;
   flex-direction: column;
   justify-content: flex-end;
   align-items: center;
   border-radius: 40px;
   background-color: rgb(190, 19, 233);
-  height: 160px;
-  width: 110px;
-  min-width: 80px;
+  height: 400px;
+  width: 90vw;
   min-height: 120px;
-  margin: 0 8px;
+  min-width: 80px;
+  max-height: 400px;
+  max-width: 390px;
   cursor: pointer;
   transition: box-shadow 0.3s ease;
 }
@@ -76,10 +91,11 @@
 }
 
 .gameNameCard {
-  font-size: 1em;
+  font-size: 1.25em;
+  line-height: 24px;
   font-weight: 500;
-  color: red ;
-  padding: 8px;
+  color: rgb(255, 255, 255) ;
+  padding: 8px 16px;
 }
 
 .secondaryButton {
@@ -151,7 +167,13 @@
   width: 100%;
 }
 
-.searchIcon {
+.searchIcondark {
   cursor: pointer;
   background-color: #3F3878;
+}
+
+.searchIconlight{
+  filter: invert(53%) sepia(80%) saturate(1880%) hue-rotate(324deg) brightness(94%) contrast(95%);
+  cursor: pointer;
+
 }

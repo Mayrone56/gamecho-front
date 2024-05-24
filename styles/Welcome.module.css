@@ -1,10 +1,28 @@
-.container {
+.containerdark {
   height: 100vh;
   width: 100vw;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
   color: #FFF9E8;
+}
+
+.containerlight {
+  height: 100vh;
+  width: 100vw;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  color: #242424;
+  background-color: #F0EFFF;
+}
+
+.middleContainer {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  height: 100%;
 }
 
 .header {
@@ -24,14 +42,6 @@
   cursor: pointer;
 }
 
-.middleContainer {
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-start;
-  align-items: center;
-  height: 100%;
-}
-
 .titleContainer {
   display: flex;
   flex-direction: column;
@@ -42,8 +52,47 @@
 }
 
 .title {
-  line-height: 36px;
   text-align: center;
+}
+
+.inputContainer {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 20px;
+  width: 100%;
+}
+
+.input {
+  padding: 10px 12px 10px 12px;
+  border-radius: 40px;
+  background-color: #F2F4FE;
+  color: #3F3878;
+  border: 1px #DFD8E7 solid;
+  margin-top: 30px;
+  width: 300px;
+}
+
+.input::placeholder {
+  color: #9592B8;
+}
+
+.errorContainer {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  width: 300px;
+  margin: 0;
+}
+
+.error {
+  color: #EB5757;
+  font-size: 12px;
+  margin-left: 12px;
+  margin-top: 3px;
+  margin-bottom: 0;
 }
 
 .buttonContainer {
@@ -55,29 +104,13 @@
   margin-bottom: 20px;
 }
 
-.signin {
-  margin: 32px 0;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-}
-
-.signup {
-  margin: 32px 0;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-}
-
 .button {
-  margin: 15px;
-  padding: 10px 24px 10px 24px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 44px;
   min-width: 160px;
-  max-height: 44px;
-  padding-top: 10px;
-  padding-bottom: 10px;
+  padding: 10px 24px 10px 24px;
   background-color: #F0EFFF;
   color: #3F3878;
   border-radius: 40px;
@@ -85,6 +118,8 @@
   font-size: 16px;
   font-weight: 600;
   cursor: pointer;
+  margin: 15px;
+  width: 300px;
 }
 
 .button:hover {

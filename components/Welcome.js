@@ -2,6 +2,7 @@ import styles from "../styles/Welcome.module.css";
 import { useRouter } from "next/router";
 import Link from 'next/link';
 import Footer from './Footer';
+import { useSelector } from "react-redux";
 
 function Welcome() {
   const router = useRouter();
@@ -15,9 +16,10 @@ function Welcome() {
     // redirection SignIn - pour l'instant identique à SignUp
     router.push("/sign-in");
   };
+  const isLightmode = useSelector((state) => state.config.value.mode);//Cible le mode dans le reducer setting
 
   return (
-    <div className={styles.container}>
+    <div className={isLightmode?styles.containerlight:styles.containerdark}>
       <div className={styles.header}>
         <Link href="/">
           <h1 className={styles.logoTitle}>GAMECHO</h1>
