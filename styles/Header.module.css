@@ -95,7 +95,7 @@
     padding: 0 25px;
     cursor: pointer;
     /* Permet de changer la couleur d'un icon svg */
-    filter: invert(47%) sepia(89%) saturate(7473%) hue-rotate(1deg) brightness(102%) contrast(105%);
+    /* filter: invert(47%) sepia(89%) saturate(7473%) hue-rotate(1deg) brightness(102%) contrast(105%); */
 
 }
 

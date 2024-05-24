@@ -94,42 +94,32 @@ function Home() {
     }
 
     return (
-      <div
-        key={game.name}
-        isAddedToWishlist={isAddedToWishlist}
-        className={styles.card} // si changement de dimension type portrait, on affiche deux carts scrollables ?
-        style={{
-          backgroundImage: `url(${game.imageGame})`,
-          backgroundSize: "cover",
-          backgroundPosition: "center",
-          backgroundRepeat: "no-repeat",
-          borderRadius: "40px",
-          height: "160px", // Hauteur de la carte INVERSEMENT = les images de l'API sont toutes au format paysage
-          width: "110px", // Largeur de la carte ELARGISSEMENT ???
-          minWidth: "80px",
-          minHeight: "120px",
-          margin: "0 8px",
-          cursor: "pointer",
-          transition: "box-shadow 0.3s ease",
-        }} // Utilisez l'image de game comme fond
-      >
-        {" "}
-        <p className={styles.gameName}>{game.name}</p>
-        <button
-          className={styles.iconButton}
-          onClick={() => handleWishlistClick(game)}
-        >
-          <Image
-            src="/icons/heart.svg"
-            alt="Add to wishlist"
-            width={24}
-            height={24}
-            className={styles.likeIcon}
-            style={iconStyle}
-          />
-        </button>
-      </div>
-    );
+      <>
+        <Link href="/game">
+          <div
+            key={game.name}
+            isAddedToWishlist={isAddedToWishlist}
+            className={styles.card} // si changement de dimension type portrait, on affiche deux carts scrollables ?
+            style={{
+              backgroundImage: `url(${game.imageGame})`,
+            }} // Utilisez l'image de game comme fond
+          >
+
+            <p className={styles.gameNameCard}>{game.name}</p>
+            <button className={styles.iconButton} onClick={() => handleWishlistClick(game)}>
+              <Image
+                src="/icons/heart.svg"
+                alt="Add to wishlist"
+                width={24}
+                height={24}
+                className={styles.likeIcon}
+                style={iconStyle}
+              />
+            </button>
+          </div>
+        </Link>
+      </>
+    )
   });
 
   const searchSuggResultsData = searchSuggResults.map((game, index) => {
