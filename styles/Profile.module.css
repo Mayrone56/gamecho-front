@@ -1,4 +1,4 @@
-.containerdark {
+.container {
   height: 100vh;
   width: 100vw;
   display: flex;
@@ -72,15 +72,15 @@
   background-color: #3f3878;
 }
 
-.buttondark {
+.button {
   display: flex;
   justify-content: center;
   align-items: center;
   height: 44px;
   width: 160px;
   padding: 10px 24px 10px 24px;
-  background-color: #9592B8;
-  color: #fff9e8;
+  background-color: #f0efff;
+  color: #3f3878;
   border-radius: 40px;
   border: 1px #f0efff solid;
   font-size: 16px;
@@ -90,31 +90,8 @@
   width: 300px;
 }
 
-.buttondark:hover {
+.button:hover {
   background-color: #3f3878;
-  color: #fff9e8;
-}
-
-.buttonlight {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 44px;
-  width: 160px;
-  padding: 10px 24px 10px 24px;
-  background-color: #9592B8;
-  color: #fff9e8;
-  border-radius: 40px;
-  border: 1px #f0efff solid;
-  font-size: 16px;
-  font-weight: 600;
-  cursor: pointer;
-  margin: 15px;
-  width: 300px;
-}
-
-.buttonlight:hover {
-  background-color: #3F3878;
   color: #fff9e8;
 }
 
