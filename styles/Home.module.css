@@ -91,10 +91,11 @@
 }
 
 .gameNameCard {
-  font-size: 1em;
+  font-size: 1.25em;
+  line-height: 24px;
   font-weight: 500;
   color: rgb(255, 255, 255) ;
-  padding: 16px;
+  padding: 8px 16px;
 }
 
 .secondaryButton {

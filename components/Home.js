@@ -9,6 +9,12 @@ import { useSelector, useDispatch } from "react-redux"; // useSelector: pour rec
 import { addToWishlist, removeFromWishlist } from "../reducers/wishlist";
 
 function Home() {
+  //SANDRINE
+  //Parce que quand on va recevoir le fetch ça doit maj en temps réel, ça re-render, c'est pour ça que c'est mis dans cet état
+  //const [latestGames, setLatestGames] = useState([]);
+  //SANDRINE
+  
+
   const dispatch = useDispatch();
 
   const [searchValue, setSearchValue] = useState(""); // VL
@@ -21,6 +27,21 @@ function Home() {
   console.log(wishlist);
 
   const isLightmode = useSelector((state) => state.config.value.mode); // affiche la valeur du mode dark ou light
+
+//TEST LATEST RELEASES SANDRINE
+// useEffect(() => {
+//   fetch('http://localhost:3000/games/latestreleased')
+//     .then(response => response.json())
+//     .then(data => {
+//       console.log("LATESTRELEASED FRONTEND ", data)
+//       // setTopArticle(data.articles[0]);
+//       // setArticlesData(data.articles.filter((data, i) => i > 0));
+//     setLatestGames(data)
+//     console.log("LATEST GAMES ", data)
+//     });
+// }, []);
+
+/////FIN TEST LASTEST RELEASES SANDRINE
 
   //useEffect pour que les résultats de la recherche disparaissent lorsque l'input est vidée. Il s'exécute chaque fois que la valeur de la recherche change.
   useEffect(() => {
@@ -78,11 +99,11 @@ function Home() {
     }
   };
 
-  const isAddedToWishlist = wishlist.some(
-    (wishlistItem) => wishlistItem.name === game.name
-  ); // constante sortie du Search Map pour s'appliquer à toutes les carts // VL //
-
+  
   const searchResultsData = searchResults.map((game, index) => {
+    const isAddedToWishlist = wishlist.some(
+      (wishlistItem) => wishlistItem.name === game.name
+    ); // constante sortie du Search Map pour s'appliquer à toutes les carts // VL //
     let iconStyle = {}; //on declare un objet vide qui contiendra les propriétés de style CSS pour l'icône
     //on vérifie si la variable isAddedToWishlist est vraie (si le jeu en cours est dans la liste de souhaits ou non)
     if (isAddedToWishlist) {
@@ -220,7 +241,7 @@ function Home() {
           </>
         )}
 
-        {/*SECTION 1*/}
+        {/*SECTION LATEST RELEASES*/}
         <h2 className={styles.sectionTitle}>Latest releases</h2>
         <div className={styles.contentCard}>
           <div className={styles.card}>
@@ -285,7 +306,7 @@ function Home() {
           <button className={styles.secondaryButton}>See all releases</button>
         </Link>
 
-        {/*SECTION 2*/}
+        {/*SECTION GAME LIKE*/}
         <div className={styles.searchContainer}>
           <input
             type="text"
