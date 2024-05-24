@@ -47,33 +47,30 @@ function Profile() {
       <div className={styles.container}>
         <Header />
         {!user.token && (
-          <div className={styles.firstContainer}>
-            <div className={styles.header}>
+          <div className={styles.middleContainer}>
+            <div className={styles.titleContainer}>
+              <h1 className={styles.title}>Discover an exciting new approach to gaming!</h1>
+              <h3>Rate your favourite titles according to your own criteria and explore recommendations tailored specifically to you.</h3>
+              <h3>Join now and unleash the full potential of your gaming experience!</h3>
             </div>
-            <div>
-              <div className={styles.titleContainer}>
-              </div>
-              <div className={styles.buttonContainer}>
-                <div className={styles.signup}>
-                  <h4>Discover an exciting new approach to gaming! Rate your favorite titles according to your own criteria and unlock tailored recommendations just for you. Join now and unleash the full potential of your gaming experience!</h4>
-                  <button className={styles.button} onClick={handleSignUpClick}>
-                    Sign Up
-                  </button>
-                </div>
+            <div className={styles.buttonContainer}>
+              <div className={styles.signup}>
+                <button className={styles.button} onClick={handleSignUpClick}>
+                  Sign Up
+                </button>
               </div>
             </div>
-          
           </div>
         )}
         {user.token && (
-          <div className={styles.firstContainer}>
-            <h1 className={styles.sectionTitle}>PROFILE</h1>
+          <div className={styles.middleContainer}>
+            <h1 className={styles.sectionTitle}>MY PROFILE</h1>
             {!user.avatar && (
               <Image
                 src="/icons/emojiIcons/happy.svg"
                 alt="Avatar"
-                width={75}
-                height={75}
+                width={150}
+                height={150}
                 className={styles.avatar}
               />
             )}{" "}
@@ -82,8 +79,8 @@ function Profile() {
                 src={user.avatar}
                 alt="Avatar"
                 className={styles.avatar}
-                width={75}
-                height={75}
+                width={150}
+                height={150}
               />
             )}
             <div className={styles.button} onClick={handleButtonClick}>

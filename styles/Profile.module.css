@@ -7,12 +7,14 @@
   color: #fff9e8;
 }
 
-.firstContainer {
+.middleContainer {
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
   align-items: center;
   height: 100%;
+  overflow-x: hidden;
+  overflow-y: scroll;
 }
 
 .contentCard {
@@ -95,12 +97,21 @@
 
 .defaultInput {
   display: none;
-} /* cache le style par défaut de l'input mais aussi son accessibilité, on va le déplacer en le référencant avec le useRef dans un bouton stylisé */
+}
+
+/* cache le style par défaut de l'input mais aussi son accessibilité, on va le déplacer en le référencant avec le useRef dans un bouton stylisé */
+
+.titleContainer {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  margin-top: 20px;
+}
 
 .title {
-  font-size: 2em;
   text-align: center;
-  cursor: pointer;
 }
 
 .sectionTitle {
@@ -111,14 +122,17 @@
 }
 
 .avatar {
-  width: 20vw;
-  height: 20vw; /* pour limiter la taille générale selon l'écran */
-  max-width: 200px; /* pour limiter la taille brute */
+  /* pour limiter la taille générale selon l'écran */
+  max-width: 200px;
+  /* pour limiter la taille brute */
   max-height: 200px;
   border-radius: 50%;
-  object-fit: cover; /* empêche l'image d'être tronquée même visualée en cercle */
-  object-position: center center; /* centre l'image verticalement/horizitontalement pour garantir un affichage proche de l'original*/
+  border: 10px solid #FFF9E8 !important;
+  /* empêche l'image d'être tronquée même visualée en cercle */
+  object-position: center center;
+  /* centre l'image verticalement/horizitontalement pour garantir un affichage proche de l'original*/
 }
+
 .inputContainer {
   display: flex;
   flex-direction: column;
