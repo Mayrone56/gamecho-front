@@ -12,13 +12,15 @@ import { switchMode } from '../reducers/config'; // import de la fonction switch
 function Setting() {
 
     const isLightmode = useSelector((state) => state.config.value.mode);//Cible le mode dans le reducer setting
-    const [isToggled, setIsToggled] = useState(false);
 
+    const handleRemove=()=> {
+
+    }
 
     const handleToggle = () => {
-        setIsToggled(!isToggled);
-        dispatch(switchMode(isToggled))
+        dispatch(switchMode(!isLightmode))
     };
+    //function qui change l'état de isToggled de faux a vrai puis qui dispatche sont etat dans le reducer
 
     const dispatch = useDispatch();
 
@@ -72,9 +74,9 @@ function Setting() {
                             <p>Mode</p>
                         </div>
                         <div className={styles.dropdownContainer}>
-                        <Image src="/icons/sun.svg" alt="sun" width={24} height={24} className={isLightmode? styles.iconlight : styles.icondark} />
-                        <Toggle isToggled={isToggled} onToggle={handleToggle} />
                         <Image src="/icons/moon.svg" alt="moon" width={24} height={24} className={isLightmode? styles.iconlight : styles.icondark} />
+                        <Toggle isToggled={isLightmode} onToggle={handleToggle} />
+                        <Image src="/icons/sun.svg" alt="sun" width={24} height={24} className={isLightmode? styles.iconlight : styles.icondark} />
                         </div>
                     </div>
                     <div className={styles.parameter}>

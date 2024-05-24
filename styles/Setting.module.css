@@ -32,6 +32,17 @@
     margin: 5px;
 }
 
+.icondark {
+    width: 24px;
+    height: 24px;
+    cursor: pointer;
+}
+
+.iconlight{
+    filter: invert(53%) sepia(80%) saturate(1880%) hue-rotate(324deg) brightness(94%) contrast(95%);
+}
+
+
 .textContainer{
     display: flex;
     justify-content: flex-start;
@@ -48,21 +59,6 @@
     height: 100%;
     width: 20%;
     padding-right: 10px;
-}
-
-
-
-.icondark {
-    width: 24px;
-    height: 24px;
-    cursor: pointer;
-}
-
-.iconlight{
-    width: 24px;
-    height: 24px;
-    cursor: pointer;
-    fill: red;
 }
 
 .parameter{
@@ -109,9 +105,6 @@
   }
 
   .buttonlight:hover{
-    background-color: transparent;
+    background-color: #3F3878;
   }
   
-.iconlight{
-    filter: invert(53%) sepia(80%) saturate(1880%) hue-rotate(324deg) brightness(94%) contrast(95%);
-}

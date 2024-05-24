@@ -213,7 +213,7 @@ function Home() {
             alt="Search"
             width={24}
             height={24}
-            className={styles.searchIcon}
+            className={isLightmode?styles.searchIconlight:styles.searchIcondark}
           />
         </div>
 
@@ -310,7 +310,7 @@ function Home() {
             alt="Search"
             width={24}
             height={24}
-            className={styles.searchIcon}
+            className={isLightmode?styles.searchIconlight:styles.searchIcondark}
           />
         </div>
         {showSearchSuggResults && (

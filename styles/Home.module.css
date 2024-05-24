@@ -161,7 +161,13 @@
   width: 100%;
 }
 
-.searchIcon {
+.searchIcondark {
   cursor: pointer;
   background-color: #3F3878;
+}
+
+.searchIconlight{
+  filter: invert(53%) sepia(80%) saturate(1880%) hue-rotate(324deg) brightness(94%) contrast(95%);
+  cursor: pointer;
+
 }

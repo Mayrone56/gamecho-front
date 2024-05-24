@@ -21,7 +21,7 @@
     right: 0;
     bottom: 0;
     border-radius: 40px;
-    background-color: #ccc;
+    background-color: #828282;
     transition: 0.4s;
 }
 
@@ -38,7 +38,7 @@
 }
 
 input:checked + .slider {
-    background-color: #2196f3;
+    background-color: #CF55ED;
 }
 
 input:checked + .slider::before {
