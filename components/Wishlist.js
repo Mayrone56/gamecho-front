@@ -11,6 +11,7 @@ import { removeFromWishlist } from "../reducers/wishlist";
 function Wishlist() {
   const dispatch = useDispatch();
   const wishlist = useSelector((state) => state.wishlist.value);
+  const isLightmode = useSelector((state) => state.config.value.mode);//Cible le mode dans le reducer setting
 
   const handleDelete = (game) => {
     dispatch(removeFromWishlist(game))
@@ -77,7 +78,7 @@ function Wishlist() {
   // }
 
   return (
-    <div className={styles.container}>
+    <div className={isLightmode?styles.containerlight:styles.containerdark}>
       <Header />
       <div className={styles.middleContainer}>
         <div className={styles.searchContainer}>
@@ -92,7 +93,7 @@ function Wishlist() {
             alt="Search"
             width={24}
             height={24}
-            className={styles.searchIcon}
+            className={isLightmode?styles.searchIconlight:styles.searchIcondark}
           />
         </div>
         <h2>WISHLIST</h2>

@@ -186,11 +186,7 @@ function Home() {
   // </Link>
 
   return (
-    <div
-      className={
-        isLightmode === "light" ? styles.containerlight : styles.containerdark
-      }
-    >
+    <div className={isLightmode?styles.containerlight:styles.containerdark}>
       <Header />
       <div className={styles.middleContainer}>
         <div className={styles.searchContainer}>
@@ -207,7 +203,7 @@ function Home() {
             alt="Search"
             width={24}
             height={24}
-            className={styles.searchIcon}
+            className={isLightmode?styles.searchIconlight:styles.searchIcondark}
           />
         </div>
 
@@ -304,7 +300,7 @@ function Home() {
             alt="Search"
             width={24}
             height={24}
-            className={styles.searchIcon}
+            className={isLightmode?styles.searchIconlight:styles.searchIcondark}
           />
         </div>
         {showSearchSuggResults && (

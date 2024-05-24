@@ -45,7 +45,7 @@ function Profile() {
 
   return (
     <>
-      <div className={isLightmode==="light"?styles.containerlight:styles.containerdark}>
+      <div className={isLightmode?styles.containerlight:styles.containerdark}>
         <Header />
         {!user.token && (
           <div className={styles.firstContainer}>
@@ -87,7 +87,7 @@ function Profile() {
                 height={75}
               />
             )}
-            <div className={isLightmode==="light"?styles.buttondark:styles.buttonlight} onClick={handleButtonClick}>
+            <div className={isLightmode?styles.buttondark:styles.buttonlight} onClick={handleButtonClick}>
               Upload avatar
               <input
                 ref={fileInputRef} // on prête une référence à l'image selectionnée à la manière d'un ID temporaire
