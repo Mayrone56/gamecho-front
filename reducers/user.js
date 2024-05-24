@@ -20,6 +20,11 @@ export const userSlice = createSlice({
       state.value.email = null;
       state.value.avatar = null;
     },
+
+    removeUser:(state)=>{
+      state.value=[];
+    },
+
     addAvatar: (state, action) => {
       state.value.avatar = action.payload; // ajout d'une fonction d'ajout pour l'upload de l'avatar
     },
@@ -32,5 +37,5 @@ export const userSlice = createSlice({
   },
 });
 
-export const { login, logout, addAvatar, editUsername, editEmail } = userSlice.actions; // ne pas oublier d'importer la nouvelle fonction
+export const { login, logout, addAvatar, editUsername, editEmail, removeUser} = userSlice.actions; // ne pas oublier d'importer la nouvelle fonction
 export default userSlice.reducer;
