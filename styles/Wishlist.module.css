@@ -1,10 +1,20 @@
-.container {
+.containerdark {
     height: 100vh;
     width: 100vw;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
     color: #FFF9E8;
+}
+
+.containerlight{
+    height: 100vh;
+    width: 100vw;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    color: #242424;
+    background-color: #F0EFFF;
 }
 
 .middleContainer {
@@ -139,7 +149,13 @@
     width: 100%;
 }
 
-.searchIcon {
+.searchIcondark {
     cursor: pointer;
     background-color: #3F3878;
+}
+
+.searchIconlight{
+        filter: invert(53%) sepia(80%) saturate(1880%) hue-rotate(324deg) brightness(94%) contrast(95%);
+        cursor: pointer;
+    
 }
