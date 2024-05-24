@@ -1,0 +1,69 @@
+.middleContainer {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  height: 400px;
+  overflow-x: hidden;
+  overflow-y: scroll;
+  background-color: aqua;
+}
+
+/* BANNER */
+.bannerContainer {
+  display: flex;
+  flex-direction: column;
+  background-color: brown;
+  width: 100%;
+}
+
+.topBannerContainer {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items:flex-end;
+  padding: 16px;
+  background-color: rgb(230, 15, 130);
+  width: 100%;
+  gap: 16px;
+}
+
+/* LIKE ICON & RATE IT*/
+.iconButton {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 40px;
+  border: 1px solid #FFF9E8;
+  height: 40px;
+  width: 40px;
+  background-color: #9592B8;
+  cursor: pointer;
+}
+
+.iconButton:hover {
+  background-color: #3F3878;
+}
+
+.textButton {
+  font-size: 1em;
+}
+
+.caption {
+  font-size: 0.625em;
+}
+
+.captionGameName {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+.iconRating {
+  margin-right: 8px;
+}
+
+.likeIcon {
+  color: aliceblue;
+}
+
