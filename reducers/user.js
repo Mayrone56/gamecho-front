@@ -37,5 +37,5 @@ export const userSlice = createSlice({
   },
 });
 
-export const { login, logout, addAvatar, editUsername, editEmail , removeUser} = userSlice.actions; // ne pas oublier d'importer la nouvelle fonction
+export const { login, logout, addAvatar, removeUser, editUsername, editEmail } = userSlice.actions; // ne pas oublier d'importer la nouvelle fonction
 export default userSlice.reducer;
