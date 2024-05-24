@@ -78,11 +78,12 @@ function Home() {
     }
   };
 
-  const isAddedToWishlist = wishlist.some(
+
+  const searchResultsData = searchResults.map((game, index) => {
+      const isAddedToWishlist = wishlist.some(
     (wishlistItem) => wishlistItem.name === game.name
   ); // constante sortie du Search Map pour s'appliquer à toutes les carts // VL //
 
-  const searchResultsData = searchResults.map((game, index) => {
     let iconStyle = {}; //on declare un objet vide qui contiendra les propriétés de style CSS pour l'icône
     //on vérifie si la variable isAddedToWishlist est vraie (si le jeu en cours est dans la liste de souhaits ou non)
     if (isAddedToWishlist) {
@@ -94,32 +95,42 @@ function Home() {
     }
 
     return (
-      <>
-        <Link href="/game">
-          <div
-            key={game.name}
-            isAddedToWishlist={isAddedToWishlist}
-            className={styles.card} // si changement de dimension type portrait, on affiche deux carts scrollables ?
-            style={{
-              backgroundImage: `url(${game.imageGame})`,
-            }} // Utilisez l'image de game comme fond
-          >
-
-            <p className={styles.gameNameCard}>{game.name}</p>
-            <button className={styles.iconButton} onClick={() => handleWishlistClick(game)}>
-              <Image
-                src="/icons/heart.svg"
-                alt="Add to wishlist"
-                width={24}
-                height={24}
-                className={styles.likeIcon}
-                style={iconStyle}
-              />
-            </button>
-          </div>
-        </Link>
-      </>
-    )
+      <div
+        key={game.name}
+        isAddedToWishlist={isAddedToWishlist}
+        className={styles.card} // si changement de dimension type portrait, on affiche deux carts scrollables ?
+        style={{
+          backgroundImage: `url(${game.imageGame})`,
+          backgroundSize: "cover",
+          backgroundPosition: "center",
+          backgroundRepeat: "no-repeat",
+          borderRadius: "40px",
+          height: "160px", // Hauteur de la carte INVERSEMENT = les images de l'API sont toutes au format paysage
+          width: "110px", // Largeur de la carte ELARGISSEMENT ???
+          minWidth: "80px",
+          minHeight: "120px",
+          margin: "0 8px",
+          cursor: "pointer",
+          transition: "box-shadow 0.3s ease",
+        }} // Utilisez l'image de game comme fond
+      >
+        {" "}
+        <p className={styles.gameName}>{game.name}</p>
+        <button
+          className={styles.iconButton}
+          onClick={() => handleWishlistClick(game)}
+        >
+          <Image
+            src="/icons/heart.svg"
+            alt="Add to wishlist"
+            width={24}
+            height={24}
+            className={styles.likeIcon}
+            style={iconStyle}
+          />
+        </button>
+      </div>
+    );
   });
 
   const searchSuggResultsData = searchSuggResults.map((game, index) => {
@@ -186,7 +197,11 @@ function Home() {
   // </Link>
 
   return (
-    <div className={isLightmode?styles.containerlight:styles.containerdark}>
+    <div
+      className={
+        isLightmode === "light" ? styles.containerlight : styles.containerdark
+      }
+    >
       <Header />
       <div className={styles.middleContainer}>
         <div className={styles.searchContainer}>
@@ -203,7 +218,7 @@ function Home() {
             alt="Search"
             width={24}
             height={24}
-            className={isLightmode?styles.searchIconlight:styles.searchIcondark}
+            className={styles.searchIcon}
           />
         </div>
 
@@ -300,7 +315,7 @@ function Home() {
             alt="Search"
             width={24}
             height={24}
-            className={isLightmode?styles.searchIconlight:styles.searchIcondark}
+            className={styles.searchIcon}
           />
         </div>
         {showSearchSuggResults && (
