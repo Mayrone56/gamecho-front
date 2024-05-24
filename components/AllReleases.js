@@ -3,11 +3,9 @@ import Header from './Header';
 import Footer from './Footer';
 import { useEffect, useState } from 'react';
 
-
-
 function AllReleases() {
 
-    const [games, setGames] = useState([])
+    const [games, setGames] = useState([]);
 
     // useEffect pour éviter un infinite re-render (préconisation React)
     // exploitation des données reçues de l'API: data.results >>name & background_image

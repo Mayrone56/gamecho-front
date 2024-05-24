@@ -11,6 +11,7 @@ import Link from "next/link";
 function Profile() {
   const dispatch = useDispatch(); // Pour mettre à jour l'avatar dans tous les composants
   const user = useSelector((state) => state.user.value); // Cible les informations de l'utilisateur
+  const isLightmode = useSelector((state) => state.config.value.mode);//Cible le mode dans le reducer setting
   const fileInputRef = useRef(null); // Création de la référence pour exploiter le fichier selectionné
   const router = useRouter();
   const handleSignUpClick = () => {
@@ -44,7 +45,7 @@ function Profile() {
 
   return (
     <>
-      <div className={styles.container}>
+      <div className={isLightmode === "light" ? styles.containerlight : styles.containerdark}>
         <Header />
         {!user.token && (
           <div className={styles.middleContainer}>
@@ -83,7 +84,7 @@ function Profile() {
                 height={150}
               />
             )}
-            <div className={styles.button} onClick={handleButtonClick}>
+            <div className={isLightmode === "light" ? styles.buttondark : styles.buttonlight} onClick={handleButtonClick}>
               Upload avatar
               <input
                 ref={fileInputRef} // on prête une référence à l'image selectionnée à la manière d'un ID temporaire
