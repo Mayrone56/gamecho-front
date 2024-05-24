@@ -143,11 +143,11 @@ function Profile() {
                   </div>
                 </div>
               ) : (
-                <div className={styles.usernameDisplay}>
+                <div className={styles.infoDisplay}>
                   <p>{currentUsername}</p>
                   <div className={styles.iconContainer}>
                     <Image
-                      src="/icons/add.svg"
+                      src="/icons/edit.svg"
                       alt="add"
                       width={24}
                       height={24}
@@ -178,11 +178,11 @@ function Profile() {
                     onClick={handleEmailChange} />
                 </div>
               ) : (
-                <div className={styles.usernameDisplay}>
+                <div className={styles.infoDisplay}>
                   <p>{currentEmail}</p>
                   <div className={styles.iconContainer}>
                     <Image
-                      src="/icons/add.svg"
+                      src="/icons/edit.svg"
                       alt="add"
                       width={24}
                       height={24}
@@ -197,7 +197,7 @@ function Profile() {
               <p>Bio: </p>
               <div className={styles.iconContainer}>
                 <Image
-                  src="/icons/add.svg"
+                  src="/icons/edit.svg"
                   alt="add"
                   width={24}
                   height={24} />

@@ -180,7 +180,7 @@
   align-items: center;
 }
 
-.usernameDisplay {
+.infoDisplay {
   display: flex;
   flex-direction: row;
   justify-content: center;
