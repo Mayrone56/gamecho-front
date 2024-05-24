@@ -13,14 +13,13 @@ function AllReleases() {
     // On map sur le tableau results pour retourner les données souhaitées.
 
     useEffect(() => {
-        fetch('http://localhost:3000/games/search?name=${searchValue}')
+        fetch('http://localhost:3000/latestreleased/')
             .then(response => response.json())
             .then(data => {
                 console.log(data)
-                const formatedData = data.games.map(games => {
-                    const card = `https://media.rawg.io/media/games/${games.background_image}`;
-                    let gameName = games.name;
-                    return { title: gameName, card };
+                const formatedData = data.results.map(releasedDate => {
+                    // const card = `https://media.rawg.io/media/games/${games.background_image}`;
+                    return { title: data.results.name, releasedDate: data.releasedDate, image: data.imageGame };
                 });
                 setGames(formatedData);
             });
