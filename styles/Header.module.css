@@ -1,3 +1,4 @@
+/* PAGE */
 .header {
     display: flex;
     justify-content: space-between;
@@ -6,6 +7,7 @@
     width: 100%;
     padding: 16px;
     background-color: #242424;
+    color: #FFF9E8;
     /* z-index: 1; */
 }
 
@@ -22,7 +24,7 @@
     cursor: pointer;
 }
 
-/**TEST NAVBAR**/
+/**MENU BURGER**/
 .burgerContainer {
     position: absolute;
     display: flex;
@@ -64,18 +66,6 @@
     width: 80%;
 }
 
-.modalBurger {
-    text-align: center;
-    width: 90%;
-    text-decoration: none;
-    color: #FFF9E8;
-    font-size: 1.25em;
-    padding: 16px 0;
-    border-top: 1px solid #FFF9E8;
-    text-align: center;
-    width: 90%;
-}
-
 .linkBurgerMenu:hover {
     text-decoration: none;
     color: #3F3878;
@@ -85,10 +75,6 @@
     text-align: center;
 }
 
-
-
-/* TEST 2 */
- 
 .navigation {
     width: 100%;
     height:auto;
@@ -101,13 +87,34 @@
     padding: 0 25px;
 }
 
-.hamburger {
+.burgerIcon {
     position: fixed;
     z-index: 3;
     display: flex;
     margin: 20px 0;
     padding: 0 25px;
     cursor: pointer;
+    /* Permet de changer la couleur d'un icon svg */
+    filter: invert(47%) sepia(89%) saturate(7473%) hue-rotate(1deg) brightness(102%) contrast(105%);
+
 }
+
+.logout {
+    text-align: center;
+    width: 90%;
+    text-decoration: none;
+    color: #FFF9E8;
+    font-size: 1.25em;
+    padding: 32px 0;
+    text-align: center;
+    width: 80%;
+    cursor: pointer;
+}
+
+.logout:hover {
+    color: #EB5757;
+}
+
+ 
 
 

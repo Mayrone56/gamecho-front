@@ -1,10 +1,20 @@
-.container {
+.containerdark{
   height: 100vh;
   width: 100vw;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
   color: #FFF9E8;
+}
+
+.containerlight{
+  height: 100vh;
+  width: 100vw;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  color: #242424;
+  background-color: #F0EFFF;
 }
 
 .middleContainer {
@@ -16,6 +26,9 @@
   overflow-x: hidden;
   overflow-y: scroll;
 }
+
+
+/* CARDS */
 
 .contentCard {
   display: flex;
@@ -70,6 +83,13 @@
 
 .iconButton:hover {
   background-color: #3F3878;
+}
+
+.gameNameCard {
+  font-size: 1em;
+  font-weight: 500;
+  color: red ;
+  padding: 8px;
 }
 
 .secondaryButton {
@@ -129,7 +149,6 @@
 .input:focus {
   background-color: #DFD8E7;
 }
-
 
 .searchContainer {
   position: relative;
