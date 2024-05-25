@@ -104,6 +104,20 @@
   margin-bottom: 20px;
 }
 
+.signin {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.signup {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
 .button {
   display: flex;
   justify-content: center;
