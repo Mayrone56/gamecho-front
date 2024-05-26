@@ -66,11 +66,11 @@ function Setting() {
     const modale = modalVisible && (
         <div className={styles.modal}>
             <div>
-                <div>Votre compte sera definitivement supprimé.Voulez vous continuer?</div>
+                <div>Your account will be delete definitively. Do you want to continue ?</div>
                 <div className={styles.buttoncontainer}>
                     <br></br>
-                    <button className={isLightmode ? styles.buttonlight : styles.buttondark} onClick={() => handleRemove()}>Confirmer</button>
-                    <button className={isLightmode ? styles.buttonlight : styles.buttondark} onClick={() => setModalVisible(false)}>Annuler</button>
+                    <button className={isLightmode ? styles.buttonlight : styles.buttondark} onClick={() => handleRemove()}>Confirm</button>
+                    <button className={isLightmode ? styles.buttonlight : styles.buttondark} onClick={() => setModalVisible(false)}>Cancel</button>
                 </div>
             </div>
         </div>
@@ -142,7 +142,7 @@ function Setting() {
                             <Image src="/icons/trash.svg" alt="trash" width={24} height={24} className={isLightmode ? styles.iconlight : styles.icondark} />
                         </div>
                         <div className={styles.textContainer}>
-                            <p>Delete account {user}</p>
+                            <p>Delete account</p>
                         </div>
                         <div className={styles.dropdownContainer}>
                             <button className={isLightmode ? styles.buttonlight : styles.buttondark} onClick={() => handleModal()}>Delete</button>
