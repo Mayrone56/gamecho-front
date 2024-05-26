@@ -8,6 +8,7 @@ import { useState, useEffect, useLayoutEffect } from "react";
 import { useRouter } from "next/router";
 import { useSelector, useDispatch } from "react-redux"; // useSelector: pour recuperer le valeur de notre tableau wishlist; useDispatch pour utiliser nos fonctions de notre reducer wishlist
 import { addToWishlist, removeFromWishlist } from "../reducers/wishlist";
+import { getGameDetails } from "../reducers/game";
 import GameCard from "../components/GameCard";
 
 function Home() {
@@ -137,6 +138,7 @@ function Home() {
   };
 
   const handleGameCardClick = (game) => {
+    dispatch(getGameDetails(game));
     router.push("game/");
   };
 
