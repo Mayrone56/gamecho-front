@@ -5,6 +5,8 @@ import Header from "./Header";
 import Footer from "./Footer";
 
 import { useState, useEffect, useLayoutEffect } from "react"; // VL
+import { useRouter } from 'next/router';
+import { useState, useEffect } from "react"; // VL
 import { useSelector, useDispatch } from "react-redux"; // useSelector: pour recuperer le valeur de notre tableau wishlist; useDispatch pour utiliser nos fonctions de notre reducer wishlist
 import { addToWishlist, removeFromWishlist } from "../reducers/wishlist";
 
@@ -16,6 +18,7 @@ function Home() {
 
 
   const dispatch = useDispatch();
+  const router = useRouter();
 
   const [searchValue, setSearchValue] = useState(""); // VL
   const [searchSuggValue, setSearchSuggValue] = useState(""); // VL
@@ -170,7 +173,10 @@ function Home() {
     }
   }, [searchValue, searchSuggValue]);
 
-  //Fetch lors du clic sur le main search
+  const handleGameCardClick = () => {
+    router.push('/game');
+  };
+
   const handleSearch = async () => {
     // VL
     const response = await fetch(
@@ -215,14 +221,22 @@ function Home() {
     if (wishlist.some((wishlistItem) => wishlistItem.name === game.name)) {
       //Si le jeu est déjà dans la wishlist, cette ligne envoie l'action removeFromWishlist avec l'objet jeu comme payload. Cette action sera traitée par le reducer pour supprimer le jeu de la wishlist.
       dispatch(removeFromWishlist(game));
+      console.log(`${game.name} removed from wishlist`);
     } else {
       //Si le jeu n'est pas dans la wishlist, cette ligne envoie l'action addToWishlist avec l'objet jeu comme payload. Cette action sera traitée par le reducer pour ajouter le jeu à la wishlist.
       dispatch(addToWishlist(game));
+      console.log(`${game.name} added to wishlist`);
     }
   };
 
+  const handleHeartIconClick = (event, game) => {
+    event.stopPropagation(); // cela empêche l'événement de clic de "handleWishlistClick" de se propager à l'événement de clic "handleGameCardClick" de la div parente. Cela signifie que l'on peut cliquer sur le cœur et que cela ne déclenchera pas la navigation vers la page du jeu. Cela ajoutera simplement le jeu à la liste de souhaits. 
+    handleWishlistClick(game);
+  };
 
   const searchResultsData = searchResults.map((game, index) => {
+    const isAddedToWishlist = wishlist.some((wishlistItem) => wishlistItem.name === game.name); // constante sortie du Search Map pour s'appliquer à toutes les carts // VL //
+
     let iconStyle = {}; //on declare un objet vide qui contiendra les propriétés de style CSS pour l'icône
     //on vérifie si la variable isAddedToWishlist est vraie (si le jeu en cours est dans la liste de souhaits ou non)
     if (isAddedToWishlist) {
@@ -235,29 +249,27 @@ function Home() {
 
     return (
       <>
-        <Link href="/game">
-          <div
-            key={game.name}
-            isAddedToWishlist={isAddedToWishlist}
-            className={styles.card} // si changement de dimension type portrait, on affiche deux carts scrollables ?
-            style={{
-              backgroundImage: `url(${game.imageGame})`,
-            }} // Utilisez l'image de game comme fond
-          >
-
-            <p className={styles.gameNameCard}>{game.name}</p>
-            <button className={styles.iconButton} onClick={() => handleWishlistClick(game)}>
-              <Image
-                src="/icons/heart.svg"
-                alt="Add to wishlist"
-                width={24}
-                height={24}
-                className={styles.likeIcon}
-                style={iconStyle}
-              />
-            </button>
-          </div>
-        </Link>
+        <div
+          onClick={handleGameCardClick}
+          key={game.name}
+          isAddedToWishlist={isAddedToWishlist}
+          className={styles.card} // si changement de dimension type portrait, on affiche deux carts scrollables ?
+          style={{
+            backgroundImage: `url(${game.imageGame})`,
+          }} // Utilisez l'image de game comme fond
+        >
+          <p className={styles.gameNameCard}>{game.name}</p>
+          <button className={styles.iconButton} onClick={(event) => handleHeartIconClick(event, game)}>
+            <Image
+              src="/icons/heart.svg"
+              alt="Add to wishlist"
+              width={24}
+              height={24}
+              className={styles.likeIcon}
+              style={iconStyle}
+            />
+          </button>
+        </div>
       </>
     )
   });
@@ -382,7 +394,7 @@ function Home() {
             width={24}
             height={24}
             className={isLightmode ? styles.searchIconlight : styles.searchIcondark}
-          />
+           />
         </div>
         {showSearchSuggResults && (
           <>
