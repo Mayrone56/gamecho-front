@@ -5,6 +5,7 @@ import Footer from './Footer';
 import { useSelector } from "react-redux";
 import Image from "next/image";
 
+
 function Welcome() {
   const router = useRouter();
 
@@ -18,6 +19,7 @@ function Welcome() {
     router.push("/sign-in");
   };
   const isLightmode = useSelector((state) => state.config.value.mode);//Cible le mode dans le reducer setting
+  
 
   return (
     <div className={isLightmode ? styles.containerlight : styles.containerdark}>
