@@ -152,6 +152,7 @@ function Home() {
   });
 
   const searchSuggResultsData = searchSuggResults.map((game, index) => {
+    const isAddedToWishlist = wishlist.some((wishlistItem) => wishlistItem.name === game.name); // constante sortie du Search Map pour s'appliquer à toutes les carts // VL //
     let iconStyle = {}; //on declare un objet vide qui contiendra les propriétés de style CSS pour l'icône
     //on vérifie si la variable isAddedToWishlist est vraie (si le jeu en cours est dans la liste de souhaits ou non)
     if (isAddedToWishlist) {
