@@ -4,17 +4,18 @@ import Image from "next/image";
 import Header from "./Header";
 import Footer from "./Footer";
 
-import { useState, useEffect, useLayoutEffect } from "react"; // VL
-import { useRouter } from 'next/router';
+import { useState, useEffect, useLayoutEffect } from "react";
+import { useRouter } from "next/router";
 import { useSelector, useDispatch } from "react-redux"; // useSelector: pour recuperer le valeur de notre tableau wishlist; useDispatch pour utiliser nos fonctions de notre reducer wishlist
 import { addToWishlist, removeFromWishlist } from "../reducers/wishlist";
+import { getGameDetails } from "../reducers/game";
+import GameCard from "../components/GameCard";
 
 function Home() {
-  //SANDRINE
-  //Parce que quand on va recevoir le fetch ça doit maj en temps réel, ça re-render, c'est pour ça que c'est mis dans cet état
+  // SANDRINE
+  // Parce que quand on va recevoir le fetch ça doit maj en temps réel, ça re-render, c'est pour ça que c'est mis dans cet état
   const [latestGamesData, setLatestGamesData] = useState([]);
-  //SANDRINE
-
+  // SANDRINE
 
   const dispatch = useDispatch();
   const router = useRouter();
@@ -23,15 +24,35 @@ function Home() {
   const [searchSuggValue, setSearchSuggValue] = useState(""); // VL
   const [searchResults, setSearchResults] = useState([]); // VL
   const [searchSuggResults, setSearchSuggResults] = useState([]); // VL
-  const [showSearchResults, setShowSearchResults] = useState(false);
+  const [showSearchResults, setShowSearchResults] = useState(false); // VL
   const [showSearchSuggResults, setShowSearchSuggResults] = useState(false); // VL
   const wishlist = useSelector((state) => state.wishlist.value); // pour recuperer le valeur de notre tableau wishlist
   //console.log("WISHLIST ", wishlist);
 
-  const isLightmode = useSelector((state) => state.config.value.mode); // affiche la valeur du mode dark ou light
+  const isLightmode = useSelector((state) => state.config.value.mode);
 
-  // //LATEST RELEASES
-  // //TEST LATEST RELEASES SANDRINE METHODE THEN
+  // LATEST RELEASES
+  useEffect(() => {
+    const fetchLatestGames = async () => {
+      const response = await fetch(
+        "http://localhost:3000/games/latestreleased"
+      );
+      if (!response.ok) {
+        console.log("Response latestreleased was not ok");
+        return;
+      }
+      const data = await response.json();
+      if (!data.latestgames) {
+        console.log("Invalid data latestgames", data);
+        return;
+      }
+      console.log("DATA LATESTGAMES ", data.latestgames);
+      setLatestGamesData(data.latestgames.slice(0, 3)); // VL pour 3 cartes seulement
+    };
+    fetchLatestGames();
+  }, []);
+
+  // LATEST RELEASES. TEST SANDRINE METHODE THEN
   // useEffect(() => {
   //   fetch('http://localhost:3000/games/latestreleased')
   //     .then(response => response.json())
@@ -90,127 +111,9 @@ function Home() {
   // });
   // /////FIN TEST LASTEST RELEASES SANDRINE
 
-
-  //LATEST RELEASES
-
-  useEffect(() => {
-    const fetchLatestGames = async () => {
-      const response = await fetch('http://localhost:3000/games/latestreleased')
-      if (!response.ok) {
-        console.log("Response latestreleased was not ok");
-        return;
-      }
-      const data = await response.json();
-      if (!data.latestgames) {
-        console.log("Invalid ddata latestgames", data);
-        return;
-      }
-      console.log("DATA LASTESTGAMES ", data.latestgames)
-      setLatestGamesData(data.latestgames.slice(0, 3));
-    }
-    fetchLatestGames();
-  }, []);
-
-
-
-  //FONCTION LIKE EXTERNE POUR L'APPELER AILLEUR SANDRINE
-  const isAddedToWishlist = (game, wishlist) => {
+  // FONCTION LIKE EXTERNE POUR L'APPELER AILLEUR SANDRINE
+  const isAddedToWishlist = (game) => {
     return wishlist.some((wishlistItem) => wishlistItem.name === game.name);
-  }
-
-
-  const latestReleases = latestGamesData.map((game, index) => {
-    // const isAddedToWishlist = wishlist.some(
-    //   (wishlistItem) => wishlistItem.name === game.name
-    // );
-    let iconStyle = {};
-    if (isAddedToWishlist) {
-      iconStyle = {
-        backgroundColor: "#CF55ED",
-      };
-    }
-    return (
-      <>
-        <Link href="/game">
-          <div
-            key={game.name}
-            isAddedToWishlist={isAddedToWishlist}
-            className={styles.card}
-            style={{ backgroundImage: `url(${game.imageGame})`, }}
-          >
-            <p className={styles.gameNameCard}>{game.name}</p>
-
-            <button className={styles.iconButton} style={iconStyle} onClick={() => handleWishlistClick(game)}>
-              <Image
-                src="/icons/heart.svg"
-                alt="Add to wishlist"
-                width={24}
-                height={24}
-                className={styles.likeIcon}
-              />
-            </button>
-
-          </div>
-        </Link>
-      </>
-    )
-  });
-  /////FIN TEST LASTEST RELEASES SANDRINE
-
-
-
-  //MAIN SEARCH RESULTS
-  //DISPLAY ONLY ON THE CLICK ON SEARCH
-
-  //useEffect pour que les résultats de la recherche disparaissent lorsque l'input est vidée. Il s'exécute chaque fois que la valeur de la recherche change.
-  useEffect(() => {
-    if (searchValue === "") {
-      setShowSearchResults(false);
-    }
-    if (searchSuggValue === "") {
-      setShowSearchSuggResults(false);
-    }
-  }, [searchValue, searchSuggValue]);
-
-  const handleGameCardClick = () => {
-    router.push('/game');
-  };
-
-  const handleSearch = async () => {
-    // VL
-    const response = await fetch(
-      `http://localhost:3000/games/search?name=${searchValue}`
-    ); // VL
-
-    if (!response.ok) {
-      // VL
-      return; // VL
-    } // VL
-
-    const data = await response.json(); // VL
-    console.log("HANDLESEARCH ", data);
-    setSearchResults(data.games.slice(0, 3)); // VL pour 3 cartes seulement
-    setShowSearchResults(true); // VL
-  };
-
-  //GAME LIKE RESULTATS
-  //Display only on the search icon
-
-  const handleSearchSuggestions = async () => {
-    // VL
-    const response = await fetch(
-      `http://localhost:3000/games/suggestions?name=${searchSuggValue}`
-    ); // VL
-
-    if (!response.ok) {
-      // VL
-      return; // VL
-    } // VL
-
-    const data = await response.json(); // VL
-    console.log("DATA ", data);
-    setSearchSuggResults(data.games.slice(0, 3)); // VL pour 3 cartes seulement
-    setShowSearchSuggResults(true); // VL
   };
 
   //WISHLIST HEART ICON CLICK
@@ -229,105 +132,96 @@ function Home() {
   };
 
   const handleHeartIconClick = (event, game) => {
-    event.stopPropagation(); // cela empêche l'événement de clic de "handleWishlistClick" de se propager à l'événement de clic "handleGameCardClick" de la div parente. Cela signifie que l'on peut cliquer sur le cœur et que cela ne déclenchera pas la navigation vers la page du jeu. Cela ajoutera simplement le jeu à la liste de souhaits. 
+    event.stopPropagation();
+    // cela empêche l'événement de clic de "handleWishlistClick" de se propager à l'événement de clic "handleGameCardClick" de la div parente. Cela signifie que l'on peut cliquer sur le cœur et que cela ne déclenchera pas la navigation vers la page du jeu. Cela ajoutera simplement le jeu à la liste de souhaits.
     handleWishlistClick(game);
   };
 
-  const searchResultsData = searchResults.map((game, index) => {
-    const isAddedToWishlist = wishlist.some((wishlistItem) => wishlistItem.name === game.name); // constante sortie du Search Map pour s'appliquer à toutes les carts // VL //
+  const handleGameCardClick = (game) => {
+    dispatch(getGameDetails(game));
+    router.push("game/");
+  };
 
-    let iconStyle = {}; //on declare un objet vide qui contiendra les propriétés de style CSS pour l'icône
-    //on vérifie si la variable isAddedToWishlist est vraie (si le jeu en cours est dans la liste de souhaits ou non)
-    if (isAddedToWishlist) {
-      //si c'est vrai, on change la couleur de l'icône( on utilise le filtre css car l'icône n'est pas remplie, elle a un centre transparent et on ne change que la couleur de ses bordures - pour expliquer le filtre en détail, demandez à chatGPT de vous donner un exemple), vous pouvez utiliser https://isotropic.co/tool/hex-color-to-css-filter/ pour faire une conversion de couleur depuis un #hexadecimal
-      iconStyle = {
-        filter:
-          "invert(47%) sepia(89%) saturate(7473%) hue-rotate(1deg) brightness(102%) contrast(105%)",
-      };
-    }
+  const latestReleases = latestGamesData.map((game) => (
+    <Link href="/game" key={game.name}>
+      <GameCard
+        game={game}
+        isAddedToWishlist={isAddedToWishlist(game)}
+        onHeartClick={(event) => handleHeartIconClick(event, game)}
+        onClick={() => handleGameCardClick(game)}
+      />
+    </Link>
+  ));
 
-    return (
-      <>
-        <div
-          onClick={handleGameCardClick}
-          key={game.name}
-          isAddedToWishlist={isAddedToWishlist}
-          className={styles.card} // si changement de dimension type portrait, on affiche deux carts scrollables ?
-          style={{
-            backgroundImage: `url(${game.imageGame})`,
-          }} // Utilisez l'image de game comme fond
-        >
-          <p className={styles.gameNameCard}>{game.name}</p>
-          <button className={styles.iconButton} onClick={(event) => handleHeartIconClick(event, game)}>
-            <Image
-              src="/icons/heart.svg"
-              alt="Add to wishlist"
-              width={24}
-              height={24}
-              className={styles.likeIcon}
-              style={iconStyle}
-            />
-          </button>
-        </div>
-      </>
-    )
-  });
-
-  const searchSuggResultsData = searchSuggResults.map((game, index) => {
-    let iconStyle = {}; //on declare un objet vide qui contiendra les propriétés de style CSS pour l'icône
-    //on vérifie si la variable isAddedToWishlist est vraie (si le jeu en cours est dans la liste de souhaits ou non)
-    if (isAddedToWishlist) {
-      //si c'est vrai, on change la couleur de l'icône( on utilise le filtre css car l'icône n'est pas remplie, elle a un centre transparent et on ne change que la couleur de ses bordures - pour expliquer le filtre en détail, demandez à chatGPT de vous donner un exemple)
-      iconStyle = {
-        filter:
-          "invert(47%) sepia(89%) saturate(7473%) hue-rotate(1deg) brightness(102%) contrast(105%)",
-      };
-    }
-
-    return (
-      <div
+  // constante sortie du Search Map pour s'appliquer à toutes les carts // VL //
+  const searchResultsData = searchResults.map((game) => (
+    <Link href="/game" key={game.name}>
+      <GameCard
         key={game.name}
-        isAddedToWishlist={isAddedToWishlist}
-        className={styles.card} // si changement de dimension type portrait, on affiche deux carts scrollables ?
-        style={{
-          backgroundImage: `url(${game.imageGame})`,
+        game={game}
+        isAddedToWishlist={isAddedToWishlist(game)}
+        onHeartClick={(event) => handleHeartIconClick(event, game)}
+        onClick={() => handleGameCardClick(game)}
+      />
+    </Link>
+  ));
 
-        }} // Utilisez l'image de game comme fond
-      >
-        {" "}
-        <p className={styles.gameName}>{game.name}</p>
-        <button
-          className={styles.iconButton}
-          onClick={() => handleWishlistClick(game)}
-        >
-          <Image
-            src="/icons/heart.svg"
-            alt="Add to wishlist"
-            width={24}
-            height={24}
-            className={styles.likeIcon}
-            style={iconStyle}
-          />
-        </button>
-      </div>
+  const searchSuggResultsData = searchSuggResults.map((game) => (
+    <Link href="/game" key={game.name}>
+      <GameCard
+        key={game.name}
+        game={game}
+        isAddedToWishlist={isAddedToWishlist(game)}
+        onHeartClick={(event) => handleHeartIconClick(event, game)}
+        onClick={() => handleGameCardClick(game)}
+      />
+    </Link>
+  ));
+
+  // MAIN SEARCH RESULTS
+  // DISPLAY ONLY ON THE CLICK ON SEARCH
+  useEffect(() => {
+    if (searchValue === "") {
+      setShowSearchResults(false);
+    }
+    if (searchSuggValue === "") {
+      setShowSearchSuggResults(false);
+    }
+  }, [searchValue, searchSuggValue]);
+
+  const handleSearch = async () => {
+    const response = await fetch(
+      `http://localhost:3000/games/search?name=${searchValue}`
     );
-  });
 
-  //   {/* SEARCH TEST FOR ICON INSIDE THE INPUT*/} 
-  //   <input
-  //   type="text"
-  //   className={styles.input}
-  //   // onChange={(e) => setUsername(e.target.value)}
-  //   // value={username}
-  //   placeholder="Search"
-  // />
-  // {/* BUTTON SEARCH */}
-  // <Link href="/all-releases">
-  //   <button className={styles.secondaryButton} >Search</button>
-  // </Link>
+    if (!response.ok) {
+      return;
+    }
 
-  //MAIN RETURN OF HOME COMPONENT
+    const data = await response.json();
+    console.log("HANDLESEARCH ", data);
+    setSearchResults(data.games.slice(0, 3)); // VL pour 3 cartes seulement
+    setShowSearchResults(true);
+  };
 
+  // GAME LIKE RESULTATS
+  // Display only on the search icon
+  const handleSearchSuggestions = async () => {
+    const response = await fetch(
+      `http://localhost:3000/games/suggestions?name=${searchSuggValue}`
+    );
+
+    if (!response.ok) {
+      return;
+    }
+
+    const data = await response.json();
+    console.log("DATA ", data);
+    setSearchSuggResults(data.games.slice(0, 3)); // VL pour 3 cartes seulement
+    setShowSearchSuggResults(true);
+  };
+
+  // MAIN RETURN OF HOME COMPONENT
   return (
     <div className={isLightmode ? styles.containerlight : styles.containerdark}>
       <Header />
@@ -336,21 +230,23 @@ function Home() {
           <input
             type="text"
             className={styles.input}
-            onChange={(e) => setSearchValue(e.target.value)} // VL
-            value={searchValue} // VL
+            onChange={(e) => setSearchValue(e.target.value)}
+            value={searchValue}
             placeholder="Search..."
           />
           <Image
-            onClick={() => handleSearch() /*VL*/}
+            onClick={() => handleSearch()}
             src="/icons/search.svg"
             alt="Search"
             width={24}
             height={24}
-            className={isLightmode ? styles.searchIconlight : styles.searchIcondark}
+            className={
+              isLightmode ? styles.searchIconlight : styles.searchIcondark
+            }
           />
         </div>
 
-        {/*SECTION SEARCH RESULTS*/}
+        {/* SECTION SEARCH RESULTS */}
         {showSearchResults && (
           <>
             <h2 className={styles.sectionTitle}>Your search results</h2>
@@ -363,28 +259,27 @@ function Home() {
           </>
         )}
 
-        {/*SECTION LATEST RELEASES*/}
+        {/* SECTION LATEST RELEASES */}
         {latestGamesData && (
           <>
             <h2 className={styles.sectionTitle}>Latest releases</h2>
             <div className={styles.contentCard}>{latestReleases}</div>
-            <Link href="/all-releases">
+            <Link href="/all-latest-releases">
               <button className={styles.secondaryButton}>
-                See all releases
+                See all latest releases
               </button>
             </Link>
           </>
         )}
 
-
-        {/*SECTION GAME LIKE*/}
+        {/* SECTION SUGGESTIONS */}
         <div className={styles.searchContainer}>
           <input
             type="text"
             className={styles.input}
-            onChange={(e) => setSearchSuggValue(e.target.value)} // VL
-            value={searchSuggValue} // VL
-            placeholder="Suggestions based on a game"
+            onChange={(e) => setSearchSuggValue(e.target.value)}
+            value={searchSuggValue}
+            placeholder="You might also like..."
           />
           <Image
             onClick={() => handleSearchSuggestions()}
@@ -392,24 +287,23 @@ function Home() {
             alt="Search"
             width={24}
             height={24}
-            className={isLightmode ? styles.searchIconlight : styles.searchIcondark}
-           />
+            className={
+              isLightmode ? styles.searchIconlight : styles.searchIcondark
+            }
+          />
         </div>
         {showSearchSuggResults && (
           <>
-            <h2 className={styles.sectionTitle}>
-              You loved {searchSuggValue}? Discover these games
-            </h2>
+            <h2 className={styles.sectionTitle}>You might also like...</h2>
             <div className={styles.contentCard}>{searchSuggResultsData}</div>
-            <Link href="/games-like">
+            <Link href="/all-suggestions">
               <button className={styles.secondaryButton}>
-                "gameName" like
+                See all suggestions
               </button>
             </Link>
           </>
         )}
       </div>
-
       <Footer />
     </div>
   );

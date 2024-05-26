@@ -49,12 +49,12 @@
   align-items: center;
   border-radius: 40px;
   background-color: rgb(190, 19, 233);
-  height: 400px;
+  height: 250px; /* avant : 400 */
   width: 90vw;
   min-height: 120px;
   min-width: 80px;
   max-height: 400px;
-  max-width: 390px;
+  max-width: 400px; /* avant : 390 */
   cursor: pointer;
   transition: box-shadow 0.3s ease;
   margin: 24px 16px;
