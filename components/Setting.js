@@ -18,7 +18,6 @@ function Setting() {
 
 
     const user = useSelector((state) => state.user.value.username) //cible la valeur du nom de l'etat user
-const avatar=useSelector((state)=>state.user.value.avatar)
     const isLightmode = useSelector((state) => state.config.value.mode);//Cible le mode dans le reducer setting qui est par defaut à False
 
     const handleModal = () => {
@@ -142,7 +141,7 @@ const avatar=useSelector((state)=>state.user.value.avatar)
                             <Image src="/icons/trash.svg" alt="trash" width={24} height={24} className={isLightmode ? styles.iconlight : styles.icondark} />
                         </div>
                         <div className={styles.textContainer}>
-                            <p>Delete account {avatar}</p>
+                            <p>Delete account </p>
                         </div>
                         <div className={styles.dropdownContainer}>
                             <button className={isLightmode ? styles.buttonlight : styles.buttondark} onClick={() => handleModal()}>Delete</button>
