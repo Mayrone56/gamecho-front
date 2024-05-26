@@ -171,7 +171,7 @@ function Home() {
         game={game}
         isAddedToWishlist={isAddedToWishlist(game)}
         onHeartClick={(event) => handleHeartIconClick(event, game)}
-        onClick={() => {}}
+        onClick={() => handleGameCardClick(game)}
       />
     </Link>
   ));
