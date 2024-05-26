@@ -6,7 +6,6 @@ import Footer from "./Footer";
 
 import { useState, useEffect, useLayoutEffect } from "react"; // VL
 import { useRouter } from 'next/router';
-import { useState, useEffect } from "react"; // VL
 import { useSelector, useDispatch } from "react-redux"; // useSelector: pour recuperer le valeur de notre tableau wishlist; useDispatch pour utiliser nos fonctions de notre reducer wishlist
 import { addToWishlist, removeFromWishlist } from "../reducers/wishlist";
 
