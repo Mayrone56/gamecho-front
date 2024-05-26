@@ -8,7 +8,7 @@ import 'react-dropdown/style.css'; // import du css du composant Drodown
 import { useDispatch, useSelector } from 'react-redux';
 import { useState } from 'react';
 import { switchMode } from '../reducers/config'; // import de la fonction switchmode du reducer config
-import { logout, removeUser } from '../reducers/user';
+import { logout } from '../reducers/user';
 
 function Setting() {
     const rooter = useRouter()
@@ -29,11 +29,16 @@ function Setting() {
         fetch(`http://localhost:3000/users/${user}`, { method: 'DELETE' })
             .then(data => {
                 if (data) {
-                    dispatch(removeUser);
-                    dispatch(logout)
-                    rooter.push('/')
+                    dispatch(logout())
+                }
+                else {
+                    console.log('erreur')
                 }
             })
+            .then(
+                rooter.push('/')
+            )
+           
     }
     // fonction qui fetch le backend via la route delete ( si resultat on supprime l'utilisateur de la bdd puis redirection sur Welcome(index.js), si non erreur)
 
@@ -57,15 +62,20 @@ function Setting() {
     const defaultPrivacy = privacy[0];
     //variable contenant la premiere valeur du dropdown
 
-   const modale = modalVisible && (
-    <div className="modal">
-      <div className="modal-content">
-        <div>Votre compte sera definitivement supprimé.Voulez vous continuer?</div>
-        <button className={isLightmode ? styles.buttonlight : styles.buttondark} onClick={()=>handleRemove()}>Confirmer</button>
-        <button className={isLightmode ? styles.buttonlight : styles.buttondark} onClick={()=>setModalVisible(false)}>Annuler</button>
-      </div>
-    </div>
-   )
+    //Modale de confirmation de supression de compte
+    const modale = modalVisible && (
+        <div className={styles.modal}>
+            <div>
+                <div>Votre compte sera definitivement supprimé.Voulez vous continuer?</div>
+                <div className={styles.buttoncontainer}>
+                    <br></br>
+                    <button className={isLightmode ? styles.buttonlight : styles.buttondark} onClick={() => handleRemove()}>Confirmer</button>
+                    <button className={isLightmode ? styles.buttonlight : styles.buttondark} onClick={() => setModalVisible(false)}>Annuler</button>
+                </div>
+            </div>
+        </div>
+    )
+    //
 
 
     return (
@@ -132,13 +142,13 @@ function Setting() {
                             <Image src="/icons/trash.svg" alt="trash" width={24} height={24} className={isLightmode ? styles.iconlight : styles.icondark} />
                         </div>
                         <div className={styles.textContainer}>
-                            <p>Delete account</p>
+                            <p>Delete account {user}</p>
                         </div>
                         <div className={styles.dropdownContainer}>
-                            <button className={isLightmode ? styles.buttonlight : styles.buttondark} onClick={()=>handleModal()}>Delete</button>
+                            <button className={isLightmode ? styles.buttonlight : styles.buttondark} onClick={() => handleModal()}>Delete</button>
                         </div>
                         <div>
-                        {modale}
+                            {modale}
                         </div>
                     </div>
                 </div>

@@ -3,7 +3,7 @@ import { useRouter } from "next/router";
 import Link from 'next/link';
 import Footer from './Footer';
 import { useSelector } from "react-redux";
-import user from "../reducers/user";
+
 
 function Welcome() {
   const router = useRouter();
@@ -18,7 +18,7 @@ function Welcome() {
     router.push("/sign-in");
   };
   const isLightmode = useSelector((state) => state.config.value.mode);//Cible le mode dans le reducer setting
-  const userName= useSelector((state)=>state.user.value.username)
+  
 
   return (
     <div className={isLightmode?styles.containerlight:styles.containerdark}>
