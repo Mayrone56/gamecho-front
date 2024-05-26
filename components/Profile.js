@@ -64,7 +64,11 @@ function Profile() {
     if (newUsername === user.username) {
       setUsernameError("That's your current username");
       return;
-    };
+    } else if (newUsername === '') {
+      //si l'input reste vide, un clic sur l'icône "check" fermera le mode d'édition et affichera l'username sans le modifier
+      setIsEditingUsername(false);
+      return;
+    }
 
     fetch("http://localhost:3000/users/update-username", {
       method: "PUT",
@@ -92,6 +96,11 @@ function Profile() {
       setEmailError("Invalid email address");
       return;
     };
+    //si l'input reste vide, un clic sur l'icône "check" fermera le mode d'édition et affichera l'email' sans le modifier
+    if (newEmail === '') {
+      setIsEditingEmail(false);
+      return;
+    }
 
     fetch("http://localhost:3000/users/update-email", {
       method: "PUT",
@@ -177,7 +186,7 @@ function Profile() {
           <h3 className={styles.usernameTitle}>{currentUsername}</h3>
           <div className={styles.userInfoContainer}>
             <div className={styles.userInfo}>
-              <p>Username:</p>
+              <span>Username:</span>
               {isEditingUsername ? (
                 <div className={styles.editContainer}>
                   <div className={styles.inputContainer}>
@@ -217,7 +226,7 @@ function Profile() {
             </div>
             {usernameError && <div className={styles.errorContainer}><p className={styles.error}>{usernameError}</p></div>}
             <div className={styles.userInfo}>
-              <p>Email:</p>
+              <span>Email:</span>
               {isEditingEmail ? (
                 <div className={styles.editContainer}>
                   <input
@@ -254,16 +263,6 @@ function Profile() {
               )}
             </div>
             {emailError && <div className={styles.errorContainer}><p className={styles.error}>{emailError}</p></div>}
-            <div className={styles.userInfo}>
-              <p>Bio: </p>
-              <div className={styles.iconContainer}>
-                <Image
-                  src="/icons/edit.svg"
-                  alt="add"
-                  width={24}
-                  height={24} />
-              </div>
-            </div>
           </div>
           <button onClick={() => { router.push('/'); dispatch(logout()); }} className={styles.logout}>Logout</button>
         </div>
