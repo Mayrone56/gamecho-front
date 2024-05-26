@@ -125,9 +125,9 @@ function Profile() {
       {!user.token && (
         <div className={styles.middleContainer}>
           <div className={styles.titleContainer}>
-            <h1>Discover an exciting new approach to gaming!</h1>
-            <h3>Rate your favourite titles according to your own criteria and explore recommendations tailored specifically to you.</h3>
-            <h3>Join now and unleash the full potential of your gaming experience!</h3>
+            <h2>Discover an exciting new approach to gaming !</h2>
+            <h3>Join now and unleash the full potential of your gaming experience !</h3>
+            <p>Rate your favourite titles according to your own criteria and explore recommendations tailored specifically to you.</p>
           </div>
           <div className={styles.buttonContainer}>
             <div className={styles.signin}>

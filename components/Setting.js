@@ -1,30 +1,32 @@
 import React from 'react';
 import Image from 'next/image';
+import Header from "./Header";
+import Footer from "./Footer";
 import Toggle from './toggle';
 import styles from '../styles/Setting.module.css';
 import { useRouter } from "next/router";
 import Dropdown from 'react-dropdown'; //import du composant Dropdown déja tout fait
-import 'react-dropdown/style.css'; // import du css du composant Drodown
+import 'react-dropdown/style.css'; // import du css du composant Dropdown
 import { useDispatch, useSelector } from 'react-redux';
 import { useState } from 'react';
 import { switchMode } from '../reducers/config'; // import de la fonction switchmode du reducer config
-import { logout,removeUser } from '../reducers/user';
+import { logout, removeUser } from '../reducers/user';
 
 function Setting() {
-    const rooter=useRouter()
+    const rooter = useRouter()
     const user = useSelector((state) => state.user.value.username) //cible la valeur du nom de l'etat user
 
     const isLightmode = useSelector((state) => state.config.value.mode);//Cible le mode dans le reducer setting qui est par defaut à False
 
     const handleRemove = () => {
         fetch(`http://localhost:3000/users/${user}`, { method: 'DELETE' })
-        .then(data=>{
-            if(data){
-                dispatch(removeUser);
-                dispatch(logout)
-                rooter.push('/')
+            .then(data => {
+                if (data) {
+                    dispatch(removeUser);
+                    dispatch(logout)
+                    rooter.push('/')
                 }
-        })
+            })
     }
     // fonction qui fetch le backend via la route delete ( si resultat on supprime l'utilisateur de la bdd puis redirection sur Welcome(index.js), si non erreur)
 
@@ -36,11 +38,11 @@ function Setting() {
     const dispatch = useDispatch();
 
     const note = [
-        'Emojis', 'Out of 10', 'Out of 100', 'tag'
+        'Emojis', 'Out of 10', 'Out of 100', 'Tag'
     ]; // liste des options disponible pour le Dropdown contenant la façon de noter.
 
     const privacy = [
-        'public', 'private'
+        'Public', 'Private'
     ]; // liste des options disponible pour le Dropdown contenant la privacy
 
 
@@ -52,6 +54,7 @@ function Setting() {
 
     return (
         <>
+        
             <div className={isLightmode ? styles.mainlight : styles.maindark}>
                 <div className={styles.content}>
                     <h2>Settings</h2>
@@ -63,7 +66,10 @@ function Setting() {
                             <p>Rating method</p>
                         </div>
                         <div className={styles.dropdownContainer}>
-                            <Dropdown options={note} value={defaultNote} placeholder="Select an option" />
+                            <Dropdown options={note} value={defaultNote} placeholder="Select an option"
+                                className={styles.customDropdown} // Classe personnalisée pour le conteneur principal
+                                controlClassName={styles.customDropdownControl} // Classe personnalisée pour le control
+                            />
                         </div>
                     </div>
                     <div className={styles.parameter}>
@@ -74,7 +80,10 @@ function Setting() {
                             <p>Account privacy</p>
                         </div>
                         <div className={styles.dropdownContainer}>
-                            <Dropdown options={privacy} value={defaultPrivacy} placeholder="Select an option" />
+                            <Dropdown options={privacy} value={defaultPrivacy} placeholder="Select an option" 
+                            className={styles.customDropdown} // Classe personnalisée pour le conteneur principal
+                            controlClassName={styles.customDropdownControl} // Classe personnalisée pour le control
+                            />
                         </div>
                     </div>
                     <div className={styles.parameter}>
@@ -117,12 +126,13 @@ function Setting() {
                             <p>Delete account </p>
                         </div>
                         <div className={styles.dropdownContainer}>
-                            <button className={isLightmode ? styles.buttonlight : styles.buttondark} onClick={()=>handleRemove()}>Delete</button>
+                            <button className={isLightmode ? styles.buttonlight : styles.buttondark} onClick={() => handleRemove()}>Delete</button>
                         </div>
                     </div>
                 </div>
+                <Footer />
             </div>
-        </>
+            </>
     )
 }
 

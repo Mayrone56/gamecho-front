@@ -3,6 +3,7 @@ import { useRouter } from "next/router";
 import Link from 'next/link';
 import Footer from './Footer';
 import { useSelector } from "react-redux";
+import Image from "next/image";
 
 function Welcome() {
   const router = useRouter();
@@ -26,21 +27,56 @@ function Welcome() {
         </Link>
       </div>
       <div className={styles.middleContainer}>
-        <div className={styles.titleContainer}>
-          <h2 className={styles.title}>Welcome!</h2>
-        </div>
-        <div className={styles.buttonContainer}>
-          <div className={styles.signin}>
-            <h3 className={styles.title}>Already have an account?</h3>
-            <button className={styles.button} onClick={handleSignInClick}>
-              Sign In
-            </button>
+        {/* BANNER MOBILE */}
+        <div className={styles.bannerWelcomeMobile} alt="banner">
+          <Image
+            src="/Banner_welcome_without_text.jpg"
+            alt="Banner Gamecho"
+            width={1920}
+            height={1000}
+            className={styles.bannerImageMobile}
+          />
+          <div className={styles.bannerText}>
+            <p className={styles.bannerTextTop}>Discover an exciting new approach to gaming !</p>
+            <p className={styles.bannerTextBottom}>Join now and unleash the full potential of your gaming experience !</p>
           </div>
-          <div className={styles.signup}>
-            <h3 className={styles.title}>New to GamEcho? Create an account!</h3>
-            <button className={styles.button} onClick={handleSignUpClick}>
-              Sign Up
-            </button>
+        </div>
+
+        {/* BANNER DEKSTOP */}
+        <div className={styles.bannerWelcomeDesktop} alt="banner">
+          <Image
+            src="/Banner_welcome_without_text_portrait.jpg"
+            alt="Banner Gamecho"
+            width={637}
+            height={1024}
+            className={styles.bannerImageDesktop}
+          />
+          <div className={styles.bannerText}>
+            <p className={styles.bannerTextTop}>Discover an exciting new approach to gaming !</p>
+            <p className={styles.bannerTextBottom}>Join now and unleash the full potential of your gaming experience !</p>
+            {/* <div className={styles.backgroundText}></div> */}
+          </div>
+        </div>
+
+
+        <div className={styles.bottomContainer}>
+          <div className={styles.section}>
+            <h2 className={styles.title}>Welcome to GamEcho !</h2>
+            <p className={styles.restMargin}>Rate your favourite titles according to your own criteria and explore recommendations tailored specifically to you.</p>
+          </div>
+          <div className={styles.section}>
+            <div className={styles.signContainer}>
+              <h3 className={styles.titleButton}>Already have an account ?</h3>
+              <button className={styles.seoncadryButton} onClick={handleSignInClick}>
+                Sign In
+              </button>
+            </div>
+            <div className={styles.signContainer}>
+              <h3 className={styles.titleButton}>New to GamEcho ?</h3>
+              <button className={styles.primaryButton} onClick={handleSignUpClick}>
+                Create an account !
+              </button>
+            </div>
           </div>
         </div>
       </div>

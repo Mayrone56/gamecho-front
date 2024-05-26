@@ -125,6 +125,7 @@
   /* empêche l'image d'être tronquée même visualée en cercle */
   object-position: center center;
   /* centre l'image verticalement/horizitontalement pour garantir un affichage proche de l'original*/
+  cursor: pointer;
 }
 
 .userAvatar {

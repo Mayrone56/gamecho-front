@@ -2,20 +2,24 @@
     gap: 16px;
     line-height: 1.15;
     font-family: Roboto;
-    width: calc(100vw - 32px);
-    height: calc(100vh - 32px);
+    height: calc(100vh - 60px);
     font-size: 16px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
 }
 
 .mainlight {
     gap: 16px;
     line-height: 1.15;
     font-family: Roboto;
-    width:100%;
-    height: calc(100vh - 32px);
+    height: calc(100vh - 60px);
     font-size: 16px;
-    color: #242424;
+    color: #3F3878;
     background-color: #F0EFFF;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
 }
 
 .content {
@@ -23,13 +27,14 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    padding: 0 24px;
+    gap: 24px
 }
 
-.iconContainer{
+.iconContainer {
     display: flex;
     justify-content: center;
     align-items: center;
-    margin: 5px;
 }
 
 .icondark {
@@ -38,73 +43,91 @@
     cursor: pointer;
 }
 
-.iconlight{
-    filter: invert(53%) sepia(80%) saturate(1880%) hue-rotate(324deg) brightness(94%) contrast(95%);
+.iconlight {
+    filter: invert(80%) sepia(220%) saturate(400%) hue-rotate(957deg) brightness(98%) contrast(96%);
 }
 
 
-.textContainer{
+.textContainer {
     display: flex;
     justify-content: flex-start;
     align-items: center;
     height: 100%;
     width: 40%;
-    padding-left: 10px;
+    margin-left: 16px;
 }
 
-.dropdownContainer{
+.dropdownContainer {
     display: flex;
     justify-content: flex-start;
     align-items: center;
     height: 100%;
-    width: 20%;
-    padding-right: 10px;
+    width: 40%;
 }
 
-.parameter{
+/* Dropdown custom */
+.customDropdown {
+    border-radius: 40px !important;
+    /* Pour changer le border-radius du conteneur principal */
+}
+
+.customDropdownControl {
+    border-radius: 40px !important;
+    /* Pour changer le border-radius du control */
+}
+
+.parameter {
     width: 100%;
-    height: 10vh;
+    /* height: 10vh; */
     display: flex;
     justify-content: flex-start;
     align-items: center;
+    /* gap: 16px;*/
 }
 
+/* BUTTONS */
 .buttondark {
-    padding: 10px 24px 10px 24px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 44px;
     min-width: 160px;
-    max-height: 44px;
-    padding-top: 10px;
-    padding-bottom: 10px;
-    background-color: #F0EFFF;
-     color: #3F3878;
+    padding: 10px 24px 10px 24px;
+    background-color: #3F3878;
+    color: #efffef;
     border-radius: 40px;
     border: 1px #F0EFFF solid;
     font-size: 16px;
     font-weight: 600;
     cursor: pointer;
-  }
-  
-  .buttondark:hover {
-    background-color: #3F3878;
-    color: #FFF9E8;
-  }
+    /* margin: 16px 0 32px 0; */
+    width: 250px;
+}
 
-  .buttonlight {
-    padding: 10px 24px 10px 24px;
+.buttondark:hover {
+    background-color: #241c63;
+    color: #F0EFFF;
+}
+
+.buttonlight {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 44px;
     min-width: 160px;
-    max-height: 44px;
-    padding-top: 10px;
-    padding-bottom: 10px;
+    padding: 10px 24px 10px 24px;
     background-color: #9592B8;
-    color: #fff9e8;
+    color: #F0EFFF;
     border-radius: 40px;
-    border: 1px #F0EFFF solid;
+    border: 1px #FFF9E8 solid;
     font-size: 16px;
     font-weight: 600;
     cursor: pointer;
-  }
+    /* margin: 16px 0 32px 0; */
+    width: 250px;
+}
 
-  .buttonlight:hover{
+.buttonlight:hover {
     background-color: #3F3878;
-  }
-  
+    color: #F0EFFF;
+}
