@@ -33,6 +33,7 @@
   align-items: center;
   width: 100%;
   margin-top: 20px;
+  margin-bottom: 20px;
 }
 
 .buttonContainer {
@@ -42,6 +43,20 @@
   align-items: center;
   width: 100%;
   margin-bottom: 20px;
+}
+
+.signin {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.signup {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
 
 .buttondark {
@@ -186,6 +201,23 @@
   justify-content: center;
   align-items: center;
   margin-left: 10px;
+}
+
+.errorContainer {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  width: 300px;
+  margin: 0;
+}
+
+.error {
+  color: #EB5757;
+  font-size: 12px;
+  margin-left: 90px;
+  margin-top: 0;
+  margin-bottom: 0;
 }
 
 /*LOGOUT BUTTON*/
