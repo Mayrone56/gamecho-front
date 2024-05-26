@@ -19,7 +19,7 @@ function Welcome() {
   const isLightmode = useSelector((state) => state.config.value.mode);//Cible le mode dans le reducer setting
 
   return (
-    <div className={isLightmode?styles.containerlight:styles.containerdark}>
+    <div className={isLightmode ? styles.containerlight : styles.containerdark}>
       <div className={styles.header}>
         <Link href="/">
           <h1 className={styles.logoTitle}>GAMECHO</h1>
@@ -31,13 +31,13 @@ function Welcome() {
         </div>
         <div className={styles.buttonContainer}>
           <div className={styles.signin}>
-            <h4>Already have an account?</h4>
+            <h3 className={styles.title}>Already have an account?</h3>
             <button className={styles.button} onClick={handleSignInClick}>
               Sign In
             </button>
           </div>
           <div className={styles.signup}>
-            <h4>New to GamEcho? Create an account</h4>
+            <h3 className={styles.title}>New to GamEcho? Create an account!</h3>
             <button className={styles.button} onClick={handleSignUpClick}>
               Sign Up
             </button>

@@ -9,14 +9,17 @@ export const gameSlice = createSlice({
   name: 'game',
   initialState,
   reducers: {
-    addGame: (state, action) => {
+    addGame: (state, action) => { // les deux premiers reducers sont-ils utilisés ??
       state.value.push(action.payload);
     },
     deleteGame: (state, action) => {
       state.value = state.value.filter(game => game.name !== action.payload);
     },
+    getGameDetails: (state, action) => {
+      state.details = action.payload;
+    },
   },
 });
 
-export const { addGame, deleteGame } = userSlice.actions;
-export default userSlice.reducer;
+export const { addGame, deleteGame, getGameDetails } = gameSlice.actions;
+export default gameSlice.reducer;

@@ -5,6 +5,7 @@
   flex-direction: column;
   justify-content: space-between;
   color: #FFF9E8;
+  /* background: linear-gradient(to bottom, #3F3878, #242424); */
 }
 
 .containerlight{
@@ -24,7 +25,8 @@
   align-items: center;
   /* height: 100%; */
   overflow-x: hidden;
-  overflow-y: scroll;
+  /* overflow-y: scroll; */
+  padding-bottom: 32px;
 }
 
 
@@ -34,7 +36,6 @@
   display: flex;
   justify-content: center;
   flex-wrap: wrap;
-  gap: 32px;
 }
 
 .card {
@@ -48,18 +49,36 @@
   align-items: center;
   border-radius: 40px;
   background-color: rgb(190, 19, 233);
-  height: 400px;
+  height: 250px; /* avant : 400 */
   width: 90vw;
   min-height: 120px;
   min-width: 80px;
   max-height: 400px;
-  max-width: 390px;
+  max-width: 400px; /* avant : 390 */
   cursor: pointer;
   transition: box-shadow 0.3s ease;
+  margin: 24px 16px;
 }
 
+/* TEST ANIMATION */
+/* @keyframes gradient {
+  0% { background-position: 50% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+} */
+
 .card:hover {
-  box-shadow: 0 0 15px rgba(255, 255, 255, 0.75);
+  box-shadow: 0 0 50px #cf55edab;
+
+  /* animation: gradient 10s ease infinite; */
+  transition: filter 0.2s ease;
+  filter: brightness(1.1);
+
+  /* transition: transform 0.3s ease;
+  transform: translateY(5px); */
+
+  transition: transform 0.5s ease-in-out;
+  transform: scale(1.03);
 }
 
 .icon {
@@ -169,7 +188,6 @@
 
 .searchIcondark {
   cursor: pointer;
-  background-color: #3F3878;
 }
 
 .searchIconlight{

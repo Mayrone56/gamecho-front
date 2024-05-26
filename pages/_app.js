@@ -5,9 +5,10 @@ import { configureStore } from '@reduxjs/toolkit';
 import user from '../reducers/user'
 import config from '../reducers/config';
 import wishlist from '../reducers/wishlist';
+import game from '../reducers/game';
 
 const store = configureStore({
-  reducer: { user, config, wishlist},
+  reducer: { user, config, wishlist, game},
  });
 
 
