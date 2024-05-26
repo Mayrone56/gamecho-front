@@ -9,10 +9,14 @@ function Footer() {
       <p className={styles.textFooter} >&copy; 2024 | Gamecho Tous droits réservés.</p>
       <div className={styles.iconFooter}>
         <Link href="/">
-          <Image src="/icons/social/Instagram.svg" alt="Logo Instagram" width={24} height={24} className={styles.icon} />
+          <span className={styles.marginSideSmall}>
+            <Image src="/icons/social/Instagram.svg" alt="Logo Instagram" width={24} height={24} className={styles.icon} />
+            </span>
         </Link>
         <Link href="/">
+<span className={styles.marginSideSmall}>
           <Image src="/icons/social/X.svg" alt="Logo X" width={24} height={24} className={styles.icon} />
+          </span>
         </Link>
       </div>
     </div>
