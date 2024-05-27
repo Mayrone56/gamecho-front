@@ -87,7 +87,7 @@ function Game() {
           </div>
 
           <div className={styles.descriptionContainer}>
-            <h3>Synopsis</h3>
+            <h3>Summary</h3>
             <div
               dangerouslySetInnerHTML={{ __html: gameDetails.description }}
             ></div>{" "}
