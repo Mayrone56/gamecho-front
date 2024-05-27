@@ -53,7 +53,7 @@ function Home() {
   }, []);
 
 
-  // FONCTION LIKE EXTERNE POUR L'APPELER AILLEUR SANDRINE
+  // FONCTION LIKE EXTERNE POUR L'APPELER AILLEUR SANDRINE 
   const isAddedToWishlist = (game) => {
     return wishlist.some((wishlistItem) => wishlistItem.name === game.name);
   };
@@ -80,8 +80,25 @@ function Home() {
   };
 
   const handleGameCardClick = (game) => {
+  
+    // Step 1: Dispatch the action to store the game details in Redux
     dispatch(getGameDetails(game));
-    router.push("game/");
+  
+    // Step 2: Save the game details to the database
+    fetch('http://localhost:3000/games/saveGame', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(game), // Assuming `game` already has the necessary structure
+    })
+      .then(response => response.json())
+      .then(data => {
+        console.log('Save response:', data);
+  
+        // Step 3: Navigate to the game page
+        router.push('game/');
+      });
   };
 
   const latestReleases = latestGamesData.map((game) => (
