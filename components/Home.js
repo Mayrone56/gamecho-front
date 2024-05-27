@@ -209,7 +209,7 @@ function Home() {
             </Link>
           </>
         )}
-
+ 
          {/* SECTION SUGGESTIONS */}
          {showSearchSuggResults && (
           <>
