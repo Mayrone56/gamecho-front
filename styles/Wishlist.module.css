@@ -7,7 +7,7 @@
     color: #FFF9E8;
 }
 
-.containerlight{
+.containerlight {
     height: 100vh;
     width: 100vw;
     display: flex;
@@ -23,8 +23,10 @@
     justify-content: flex-start;
     align-items: center;
     height: 100%;
+    overflow-x: hidden;
 }
 
+/* CARDS */
 .contentCard {
     display: flex;
     justify-content: center;
@@ -33,23 +35,46 @@
 
 .card {
     position: relative;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
     display: flex;
     flex-direction: column;
     justify-content: flex-end;
     align-items: center;
     border-radius: 40px;
-    background-color: rgb(190, 19, 233);
-    height: 160px;
-    width: 110px;
-    min-width: 80px;
+    background-color: #644ACE;
+    height: 400px;
+    width: 90vw;
     min-height: 120px;
-    margin: 0 8px;
+    min-width: 80px;
+    max-height: 400px;
+    max-width: 390px;
     cursor: pointer;
     transition: box-shadow 0.3s ease;
+    margin: 24px 16px;
 }
 
 .card:hover {
-    box-shadow: 0 0 15px rgba(255, 255, 255, 0.75);
+    box-shadow: 0 0 50px #cf55edab;
+
+    /* animation: gradient 10s ease infinite; */
+    transition: filter 0.2s ease;
+    filter: brightness(1.1);
+
+    /* transition: transform 0.3s ease;
+    transform: translateY(5px); */
+
+    transition: transform 0.5s ease-in-out;
+    transform: scale(1.03);
+}
+
+.gameNameCard {
+    font-size: 1.25em;
+    line-height: 24px;
+    font-weight: 500;
+    color: rgb(255, 255, 255);
+    padding: 8px 16px;
 }
 
 .icon {
@@ -154,8 +179,8 @@
     background-color: #3F3878;
 }
 
-.searchIconlight{
-        filter: invert(53%) sepia(80%) saturate(1880%) hue-rotate(324deg) brightness(94%) contrast(95%);
-        cursor: pointer;
-    
+.searchIconlight {
+    filter: invert(53%) sepia(80%) saturate(1880%) hue-rotate(324deg) brightness(94%) contrast(95%);
+    cursor: pointer;
+
 }

@@ -32,9 +32,80 @@ function Game() {
 
   console.log("DETAILS", gameDetails); // pour connaître la structure de la réponse (normalement identifique à la BDD)
 
+//AJOUT TEST SANDRINE POUR AJOUTER RATING
+  const handleSearchSuggestions = async () => {
+    const response = await fetch(
+      `http://localhost:3000/games`
+    );
+
+    if (!response.ok) {
+      return;
+    }
+    }
+
+//RATED GAME TEST 2
+
+// const handleGameCardClick = () => {
+//   fetch('http://localhost:3000/games/saveGameDetails', {
+//     method: 'POST',
+//     headers: { 'Content-Type': 'application/json' },
+//     body: JSON.stringify({
+//           description: game.description,
+//           name: game.name,
+//           developer: game.developer,
+//           publisher: game.publisher,
+//           releasedDate: game.releasedDate,
+//           platforms: game.platforms,
+//           genre,
+//           isMultiplayer,
+//           isOnline,
+//           isExpandedContent,
+//           expandedContentList,
+//           ratingsID,
+//           imageGame,
+//           ratingSummary, }),
+//   }).then(response => response.json())
+//     .then(data => {
+//       if (data.savedGame) {
+//         dispatch(getGameDetails(game))
+//       }
+//     });
+// };
+
+//     // router.push("game/");
+// }; 
+
+
+// //RATED GAME DEEBUT AVEC VALENTIN
+
+// const handleGameCardClick = (game) => {
+//   dispatch(getGameDetails(game));
+//   fetch("http://localhost:3000/users/signup", {
+//     method: "POST",
+//     headers: { "Content-Type": "application/json" },
+//     body: JSON.stringify({
+//       description: game.description,
+//       name: game.name,
+//       developer: game.developer,
+//       publisher: game.publisher,
+//       releasedDate: game.releasedDate,
+//       platforms: game.platforms,
+//       genre,
+//       isMultiplayer,
+//       isOnline,
+//       isExpandedContent,
+//       expandedContentList,
+//       ratingsID,
+//       imageGame,
+//       ratingSummary,
+//     }),
+//   }),
+//     router.push("game/");
+// }; 
+
+
   return (
     <div className={styles.container}>
-      <Header />
       <div className={styles.middleContainer}>
         <div
           className={styles.bannerContainer}
@@ -75,7 +146,7 @@ function Game() {
                 className={styles.likeIcon}
               />
             </button>
-            <p className={styles.textButton}>Rate it!</p>
+            <p className={styles.textButton}>Rate it !</p>
           </div>
           <div className={styles.bottomBannerContainer}>
             <h2 className={styles.sectionTitle}>{gameDetails.name}</h2>
@@ -98,11 +169,11 @@ function Game() {
         </div>
         <div className={styles.bottomContainer}>
           <div className={styles.tagContainer}>
-            <div className={styles.tag}>{gameDetails.developer}</div>
-            <div className={styles.tag}>{gameDetails.platforms}</div>
-            <div className={styles.tag}>{gameDetails.publisher}</div>
-            <div className={styles.tag}>{gameDetails.releasedDate}</div>
-            <div className={styles.tag}>{gameDetails.genre}</div>
+            <div className={styles.tag01}>{gameDetails.developer}</div>
+            <div className={styles.tag02}>{gameDetails.platforms}</div>
+            <div className={styles.tag03}>{gameDetails.publisher}</div>
+            <div className={styles.tag04}>{gameDetails.releasedDate}</div>
+            <div className={styles.tag05}>{gameDetails.genre}</div>
           </div>
 
           <div className={styles.descriptionContainer}>
@@ -119,7 +190,7 @@ function Game() {
         </div>
       </div>
       <Footer />
-      <Modal onCancel={() => handleCancelRateModal()} open={rateModalVisible} footer={null}>
+      <Modal className={styles.frame} onCancel={() => handleCancelRateModal()} open={rateModalVisible} footer={null}>
         <RateModal />
       </Modal>
 
