@@ -52,64 +52,6 @@ function Home() {
     fetchLatestGames();
   }, []);
 
-  // LATEST RELEASES. TEST SANDRINE METHODE THEN
-  // useEffect(() => {
-  //   fetch('http://localhost:3000/games/latestreleased')
-  //     .then(response => response.json())
-  //     .then(data => {
-  //       //console.log("LATESTRELEASED FRONTEND ", data)
-  //       console.log("LATEST GAMES ", data.latestgames[1]);
-  //       const formattedData = data.latestgames.map((game) => {
-  //         return {
-  //           name: game.name,
-  //           description: game.description,
-  //           developer: game.developer,
-  //           publisher: game.publisher,
-  //           releasedDate: game.releasedDate,
-  //           platforms: game.platforms,
-  //           genre: game.genre,
-  //           isMultiplayer: game.isMultiplayer,
-  //           isOnline: game.isOnline,
-  //           isExpandedContent: game.isExpandedContent,
-  //           imageGame: game.imageGame,
-  //         }
-  //       })
-  //       //setLatestGamesData(latestGames)
-  //       setLatestGamesData(formattedData);
-  //       //console.log("setLatestGamesData ", setLatestGamesData)
-  //     });
-  // }, []);
-
-  // const latestReleases = latestGamesData.map((game, index) => {
-  //   return (
-  //     <>
-  //       <Link href="/game">
-  //         <div
-  //           key={game.name}
-  //           //isAddedToWishlist={isAddedToWishlist}
-  //           className={styles.card} // si changement de dimension type portrait, on affiche deux carts scrollables ?
-  //           style={{
-  //             backgroundImage: `url(${game.imageGame})`,
-  //           }} // Utilisez l'image de game comme fond
-  //         >
-
-  //           <p className={styles.gameNameCard}>{game.name}</p>
-  //           {/* <button className={styles.iconButton} onClick={() => handleWishlistClick(game)}>
-  //           <Image
-  //             src="/icons/heart.svg"
-  //             alt="Add to wishlist"
-  //             width={24}
-  //             height={24}
-  //             className={styles.likeIcon}
-  //             style={iconStyle}
-  //           />
-  //         </button> */}
-  //         </div>
-  //       </Link>
-  //     </>
-  //   )
-  // });
-  // /////FIN TEST LASTEST RELEASES SANDRINE
 
   // FONCTION LIKE EXTERNE POUR L'APPELER AILLEUR SANDRINE
   const isAddedToWishlist = (game) => {
