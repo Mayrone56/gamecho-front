@@ -24,10 +24,12 @@ function Home() {
   const [searchSuggResults, setSearchSuggResults] = useState([]); // VL
   const [showSearchResults, setShowSearchResults] = useState(false); // VL
   const [showSearchSuggResults, setShowSearchSuggResults] = useState(false); // VL
-  const wishlist = useSelector((state) => state.wishlist.value); // pour recuperer le valeur de notre tableau wishlist
+  const wishlist = useSelector((state) => state.wishlist.value); // pour recuperer la valeur de notre tableau wishlist
   //console.log("WISHLIST ", wishlist);
 
   const isLightmode = useSelector((state) => state.config.value.mode);
+
+
 
   // LATEST RELEASES
   useEffect(() => {
@@ -78,8 +80,25 @@ function Home() {
   };
 
   const handleGameCardClick = (game) => {
+  
+    // Step 1: Dispatch the action to store the game details in Redux
     dispatch(getGameDetails(game));
-    router.push("game/");
+  
+    // Step 2: Save the game details to the database
+    fetch('http://localhost:3000/games/saveGame', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(game), // Assuming `game` already has the necessary structure
+    })
+      .then(response => response.json())
+      .then(data => {
+        console.log('Save response:', data);
+  
+        // Step 3: Navigate to the game page
+        router.push('game/');
+      });
   };
 
   const latestReleases = latestGamesData.map((game) => (

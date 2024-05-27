@@ -172,7 +172,7 @@
   flex-direction: column;
   justify-content: center;
   align-items: flex-start;
-  width: 350px;
+  width: 320px;
   margin-top: 5px;
 }
 
@@ -200,9 +200,11 @@
 .editContainer {
   display: flex;
   flex-direction: row;
-  justify-content: center;
-  align-items: space-between;
+  justify-content: flex-start;
+  align-items: center;
   width: 100%;
+  margin-top: 20px;
+  margin-left: 10px;
 }
 
 .iconContainer {
