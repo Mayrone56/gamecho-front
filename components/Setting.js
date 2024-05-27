@@ -68,8 +68,8 @@ function Setting() {
         <div className={styles.modal}>
             <div>
                 <div>Your account will be delete definitively. Do you want to continue ?</div>
+                <br></br>
                 <div className={styles.buttoncontainer}>
-                    <br></br>
                     <button className={isLightmode ? styles.buttonlight : styles.buttondark} onClick={() => handleRemove()}>Confirm</button>
                     <button className={isLightmode ? styles.buttonlight : styles.buttondark} onClick={() => setModalVisible(false)}>Cancel</button>
                 </div>
@@ -82,7 +82,7 @@ function Setting() {
     return (
         <>
         
-            <div className={isLightmode ? styles.mainlight : styles.maindark}>
+            <div className={isLightmode ? styles.g : styles.maindark}>
                 <div className={styles.content}>
                     <h2>Settings</h2>
                     <div className={styles.parameter}>
