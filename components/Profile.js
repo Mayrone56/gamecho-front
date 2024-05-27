@@ -120,8 +120,7 @@ function Profile() {
   };
 
   return (
-    <div className={isLightmode === "light" ? styles.containerlight : styles.containerdark}>
-      <Header />
+    <div className={isLightmode? styles.containerlight : styles.containerdark}>
       {!user.token && (
         <div className={styles.middleContainer}>
           <div className={styles.titleContainer}>
@@ -132,13 +131,13 @@ function Profile() {
           <div className={styles.buttonContainer}>
             <div className={styles.signin}>
               <h3>Already have an account?</h3>
-              <button className={isLightmode === "light" ? styles.buttondark : styles.buttonlight} onClick={handleSignInClick}>
+              <button className={isLightmode? styles.buttondark : styles.buttonlight} onClick={handleSignInClick}>
                 Sign In
               </button>
             </div>
             <div className={styles.signup}>
               <h3>New to GamEcho? Create an account!</h3>
-              <button className={isLightmode === "light" ? styles.buttondark : styles.buttonlight} onClick={handleSignUpClick}>
+              <button className={isLightmode? styles.buttondark : styles.buttonlight} onClick={handleSignUpClick}>
                 Sign Up
               </button>
             </div>
@@ -155,7 +154,7 @@ function Profile() {
                 alt="Avatar"
                 width={150}
                 height={150}
-                className={styles.defaultAvatar} />
+                className={isLightmode?styles.defaultAvatarLight:styles.defaultAvatar} />
               <input
                 ref={fileInputRef}
                 type="file"
@@ -264,11 +263,10 @@ function Profile() {
             </div>
             {emailError && <div className={styles.errorContainer}><p className={styles.error}>{emailError}</p></div>}
           </div>
-          <button onClick={() => { router.push('/'); dispatch(logout()); }} className={styles.logout}>Logout</button>
+          <button onClick={() => { router.push('/'); dispatch(logout()); }} className={isLightmode?styles.buttonlight:styles.buttondark}>Logout</button>
         </div>
       )
       }
-      <Footer />
     </div >
   );
 }

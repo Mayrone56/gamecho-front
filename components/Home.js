@@ -163,21 +163,32 @@ function Home() {
     setShowSearchSuggResults(true);
   };
 
+
+  //Paul
+
+  const handleAllGames = () => {
+    handleSearch();
+    handleSearchSuggestions();
+  }
+//Fonction qui prend les deux fonctions handleSearch et handleSearchSuggestions pour fetcher les jeux+les suggestions en meme temps
+
   // MAIN RETURN OF HOME COMPONENT
   return (
     <div className={isLightmode ? styles.containerlight : styles.containerdark}>
-      <Header />
       <div className={styles.middleContainer}>
         <div className={styles.searchContainer}>
           <input
             type="text"
             className={styles.input}
-            onChange={(e) => setSearchValue(e.target.value)}
+            onChange={(e) => {
+              setSearchValue(e.target.value);
+              setSearchSuggValue(e.target.value)
+            }}
             value={searchValue}
             placeholder="Search..."
           />
           <Image
-            onClick={() => handleSearch()}
+            onClick={() => handleAllGames()}
             src="/icons/search.svg"
             alt="Search"
             width={24}
@@ -201,6 +212,19 @@ function Home() {
           </>
         )}
 
+         {/* SECTION SUGGESTIONS */}
+         {showSearchSuggResults && (
+          <>
+            <h2 className={styles.sectionTitle}>You might also like...</h2>
+            <div className={styles.contentCard}>{searchSuggResultsData}</div>
+            <Link href="/all-suggestions">
+              <button className={styles.secondaryButton}>
+                See all suggestions
+              </button>
+            </Link>
+          </>
+        )}
+
         {/* SECTION LATEST RELEASES */}
         {latestGamesData && (
           <>
@@ -213,40 +237,7 @@ function Home() {
             </Link>
           </>
         )}
-
-        {/* SECTION SUGGESTIONS */}
-        <div className={styles.searchContainer}>
-          <input
-            type="text"
-            className={styles.input}
-            onChange={(e) => setSearchSuggValue(e.target.value)}
-            value={searchSuggValue}
-            placeholder="You might also like..."
-          />
-          <Image
-            onClick={() => handleSearchSuggestions()}
-            src="/icons/search.svg"
-            alt="Search"
-            width={24}
-            height={24}
-            className={
-              isLightmode ? styles.searchIconlight : styles.searchIcondark
-            }
-          />
-        </div>
-        {showSearchSuggResults && (
-          <>
-            <h2 className={styles.sectionTitle}>You might also like...</h2>
-            <div className={styles.contentCard}>{searchSuggResultsData}</div>
-            <Link href="/all-suggestions">
-              <button className={styles.secondaryButton}>
-                See all suggestions
-              </button>
-            </Link>
-          </>
-        )}
       </div>
-      <Footer />
     </div>
   );
 }

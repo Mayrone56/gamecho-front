@@ -35,12 +35,12 @@ const dispatch = useDispatch();
   if(urlAvatar)
     {
       avatar=(
-        <Image src={urlAvatar} alt="Avatar" width={32} height={32} className={styles.icon} />
+        <Image src={urlAvatar} alt="Avatar" width={48} height={48} className={styles.icon} />
       )
     }
     else{
       avatar=(
-        <Image src="/icons/emojiIcons/happy.svg" alt="Avatar" width={32} height={32} className={styles.icon} />
+        <Image src="/icons/emojiIcons/happy.svg" alt="Avatar" width={48} height={48} className={styles.icon} />
       )
     }
 
