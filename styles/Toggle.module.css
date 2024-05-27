@@ -3,7 +3,7 @@
     display: inline-block;
     width: 60px;
     height: 34px;
-
+    border-radius: 40px;
 }
 
 .switch input{
@@ -15,13 +15,12 @@
 .slider{
     position: absolute;
     cursor: pointer;
-
     top: 0;
     left: 0;
     right: 0;
     bottom: 0;
     border-radius: 40px;
-    background-color: #828282;
+    background-color: hsl(247, 36%, 25%);
     transition: 0.4s;
 }
 
@@ -38,7 +37,7 @@
 }
 
 input:checked + .slider {
-    background-color: #CF55ED;
+    background-color: #da933d;
 }
 
 input:checked + .slider::before {

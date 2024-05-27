@@ -3,7 +3,7 @@ import Link from 'next/link';
 import Image from 'next/image';
 import { logout } from '../reducers/user';
 import { useRouter } from 'next/router';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { useState } from 'react';
 
 //TEST LOTTIE
@@ -11,6 +11,9 @@ import Lottie from "lottie-react";
 
 
 function Header() {
+//etat de l'avatar
+const urlAvatar=useSelector((state)=>state.user.value.avatar);
+const userName=useSelector((state)=>state.user.value.username)
 
   //Menu burger
   const [openBurgerMenu, setOpenBurgerMenu] = useState(false);
@@ -27,13 +30,31 @@ const dispatch = useDispatch();
     setOpenBurgerMenu(!openBurgerMenu);
   };
 
+  //image de l'avatar qui change en fonction de si on en a uploadé un ou pas (par default smiley)
+  let avatar;
+  if(urlAvatar)
+    {
+      avatar=(
+        <Image src={urlAvatar} alt="Avatar" width={48} height={48} className={styles.icon} />
+      )
+    }
+    else{
+      avatar=(
+        <Image src="/icons/emojiIcons/happy.svg" alt="Avatar" width={48} height={48} className={styles.icon} />
+      )
+    }
+
   return (
 
     <div>
       <div className={styles.header}>
+        <div className={styles.profilcontainer}>
         <Link href="/profile">
-          <Image src="/icons/emojiIcons/happy.svg" alt="Avatar" width={24} height={24} className={styles.icon} />
+          {avatar}
         </Link>
+        <h2 className={styles.username}>{userName}</h2>
+        </div>
+
         <Link href="/home">
           <h1 className={styles.logoTitle}>GAMECHO</h1>
         </Link>
