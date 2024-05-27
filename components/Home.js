@@ -26,10 +26,12 @@ function Home() {
   const [searchSuggResults, setSearchSuggResults] = useState([]); // VL
   const [showSearchResults, setShowSearchResults] = useState(false); // VL
   const [showSearchSuggResults, setShowSearchSuggResults] = useState(false); // VL
-  const wishlist = useSelector((state) => state.wishlist.value); // pour recuperer le valeur de notre tableau wishlist
+  const wishlist = useSelector((state) => state.wishlist.value); // pour recuperer la valeur de notre tableau wishlist
   //console.log("WISHLIST ", wishlist);
 
   const isLightmode = useSelector((state) => state.config.value.mode);
+
+
 
   // LATEST RELEASES
   useEffect(() => {

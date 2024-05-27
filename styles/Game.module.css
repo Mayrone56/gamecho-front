@@ -38,6 +38,7 @@
   width: 100%;
   gap: 16px;
 }
+
 .bottomBannerContainer {
   display: flex;
   flex-direction: column;
@@ -130,18 +131,82 @@
   align-items: center;
   flex-wrap: wrap;
   padding-left: 8px;
+  gap: 16px;
 }
 
-.tag {
+.tag01 {
   margin: 0 8px;
   display: flex;
   justify-content: center;
   align-items: center;
   border-radius: 40px;
   background-color: #CF55ED;
-  height: 24px;
-  width: 100px;
-  font-size: 0.0.75em;  
+  height: 32px;
+  width: auto;
+  min-width: 80px;
+  font-size: 0.75em;
+  text-align: center;
+  padding: 8px;
+}
+
+.tag02 {
+  margin: 0 8px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 40px;
+  background-color: #CF55ED;
+  height: 32px;
+  width: auto;
+  min-width: 80px;
+  font-size: 0.75em;
+  text-align: center;
+  padding: 8px;
+}
+
+.tag03 {
+  margin: 0 8px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 40px;
+  background-color: #CF55ED;
+  height: 32px;
+  width: auto;
+  min-width: 80px;
+  font-size: 0.75em;
+  text-align: center;
+  padding: 8px;
+}
+
+.tag04 {
+  margin: 0 8px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 40px;
+  background-color: #CF55ED;
+  height: 32px;
+  width: auto;
+  min-width: 80px;
+  font-size: 0.75em;
+  text-align: center;
+  padding: 8px;
+}
+
+.tag05 {
+  margin: 0 8px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 40px;
+  background-color: #CF55ED;
+  height: 32px;
+  width: auto;
+  min-width: 80px;
+  font-size: 0.75em;
+  text-align: center;
+  padding: 8px;
 }
 
 .sectionTitle {
