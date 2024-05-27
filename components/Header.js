@@ -11,16 +11,16 @@ import Lottie from "lottie-react";
 
 
 function Header() {
-//etat de l'avatar
-const urlAvatar=useSelector((state)=>state.user.value.avatar);
-const userName=useSelector((state)=>state.user.value.username)
+  //etat de l'avatar
+  const urlAvatar = useSelector((state) => state.user.value.avatar);
+  const userName = useSelector((state) => state.user.value.username)
 
   //Menu burger
   const [openBurgerMenu, setOpenBurgerMenu] = useState(false);
   console.log(openBurgerMenu);
 
-//Logout
-const dispatch = useDispatch();
+  //Logout
+  const dispatch = useDispatch();
 
   // Redirect to / if not logged in
   const router = useRouter();
@@ -32,27 +32,25 @@ const dispatch = useDispatch();
 
   //image de l'avatar qui change en fonction de si on en a uploadé un ou pas (par default smiley)
   let avatar;
-  if(urlAvatar)
-    {
-      avatar=(
-        <Image src={urlAvatar} alt="Avatar" width={48} height={48} className={styles.icon} />
-      )
-    }
-    else{
-      avatar=(
-        <Image src="/icons/emojiIcons/happy.svg" alt="Avatar" width={48} height={48} className={styles.icon} />
-      )
-    }
+  if (urlAvatar) {
+    avatar = (
+      <Image src={urlAvatar} alt="Avatar" width={32} height={32} className={styles.icon} />
+    )
+  }
+  else {
+    avatar = (
+      <Image src="/icons/emojiIcons/happy.svg" alt="Avatar" width={32} height={32} className={styles.icon} />
+    )
+  }
 
   return (
 
     <div>
       <div className={styles.header}>
         <div className={styles.profilcontainer}>
-        <Link href="/profile">
-          {avatar}
-        </Link>
-        <h2 className={styles.username}>{userName}</h2>
+          <Link href="/profile">
+            {avatar}
+          </Link>
         </div>
 
         <Link href="/home">

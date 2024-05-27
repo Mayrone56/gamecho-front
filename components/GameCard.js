@@ -1,5 +1,7 @@
 import Image from "next/image";
 import styles from "../styles/Home.module.css"; // on applique le style défini précédemment dans Home, avant la création d'un composant Cart / quand il faisait partie intégrante du code de Home
+import { useState } from "react";
+
 
 function GameCard({ game, isAddedToWishlist, onHeartClick, onClick }) { // les deux dernière props exploitent l'inverse data flow ! la fonction est initiée dans Home, recupérée dans la cart qui renvoie les informations dans home selon la prop classique game !!!
   let iconStyle = {};
@@ -12,6 +14,7 @@ function GameCard({ game, isAddedToWishlist, onHeartClick, onClick }) { // les d
         "invert(47%) sepia(89%) saturate(7473%) hue-rotate(1deg) brightness(102%) contrast(105%)",
     };
   }
+
 
   return (
     <div
