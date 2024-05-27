@@ -122,7 +122,7 @@ function Profile() {
   return (
     <div className={isLightmode === "light" ? styles.containerlight : styles.containerdark}>
       <Header />
-      {!user.token && (
+      {!user.token && ( // = if (user.token) {return <div> blablabla} Clean Code
         <div className={styles.middleContainer}>
           <div className={styles.titleContainer}>
             <h2>Discover an exciting new approach to gaming !</h2>
