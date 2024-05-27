@@ -4,17 +4,29 @@ import Header from './Header';
 import Footer from './Footer';
 import Image from "next/image";
 import { removeFromWishlist } from "../reducers/wishlist";
+import { useRouter } from "next/router";
+
+
+import { getGameDetails } from "../reducers/game";
+import GameCard from "../components/GameCard";
 
 // Création du bouton de suppression à faire sur la carte de notre jeu : inexistant pour le moment
 
 
 function Wishlist() {
+  const router = useRouter();
   const dispatch = useDispatch();
   const wishlist = useSelector((state) => state.wishlist.value);
   const isLightmode = useSelector((state) => state.config.value.mode);//Cible le mode dans le reducer setting
 
-  const handleDelete = (game) => {
-    dispatch(removeFromWishlist(game))
+  const handleDelete = (event, game) => {
+    event.stopPropagation();
+    dispatch(removeFromWishlist(game));
+  };
+
+  const handleGameCardClick = (game) => {
+    dispatch(getGameDetails(game));
+    router.push("game/");
   };
 
   let games = <p>No games in the wishlist</p>;
@@ -25,23 +37,14 @@ function Wishlist() {
           key={game.name}
           className={styles.card} // si changement de dimension type portrait, on affiche deux carts scrollables ?
           style={{
-            backgroundImage: `url(${game.imageGame})`,
-            backgroundSize: "cover",
-            backgroundPosition: "center",
-            backgroundRepeat: "no-repeat",
-            borderRadius: "40px",
-            height: "160px", // Hauteur de la carte INVERSEMENT = les images de l'API sont toutes au format paysage
-            width: "110px", // Largeur de la carte ELARGISSEMENT ???
-            minWidth: "80px",
-            minHeight: "120px",
-            margin: "0 8px",
-            cursor: "pointer",
-            transition: "box-shadow 0.3s ease",
+            backgroundImage: `url(${game.imageGame})`
           }} // Utilisez l'image de game comme fond
+          onClick={() => handleGameCardClick(game)}
         >
+          <p className={styles.gameNameCard}>{game.name}</p>
           <button
             className={styles.iconButton}
-            onClick={() => handleDelete(game)}
+            onClick={(event) => handleDelete(event, game)}
           >
             {" "}
             <Image
@@ -78,14 +81,14 @@ function Wishlist() {
   // }
 
   return (
-    <div className={isLightmode?styles.containerlight:styles.containerdark}>
+    <div className={isLightmode ? styles.containerlight : styles.containerdark}>
       <Header />
       <div className={styles.middleContainer}>
         <div className={styles.searchContainer}>
           <input
             type="text"
             className={styles.input}
-            placeholder="Search..."
+            placeholder="Search in your wishlist..."
           />
           <Image
             onClick={() => handleSearch() /*VL*/}
@@ -93,7 +96,7 @@ function Wishlist() {
             alt="Search"
             width={24}
             height={24}
-            className={isLightmode?styles.searchIconlight:styles.searchIcondark}
+            className={isLightmode ? styles.searchIconlight : styles.searchIcondark}
           />
         </div>
         <h2>WISHLIST</h2>
