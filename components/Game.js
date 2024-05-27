@@ -2,10 +2,29 @@ import styles from "../styles/Game.module.css";
 import Header from "./Header";
 import Footer from "./Footer";
 import Image from "next/image";
+import { useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { addToWishlist, removeFromWishlist } from "../reducers/wishlist";
+import { Modal } from 'antd'
+import RateModal from "./RateModal";
+
 
 function Game() {
+
+  const [rateModalVisible, setRateModalVisible] = useState(false);
+
+  const showRateModal = () => {
+    setRateModalVisible(true);
+  };
+
+  const handleCancelRateModal = () => {
+    setRateModalVisible(false)
+  }
+
+
+
+
+
   const gameDetails = useSelector((state) => state.game.details); // redistribuer les données importées dans le reducer via Home lors du clic
   const wishlist = useSelector((state) => state.wishlist.value);
   const isLightmode = useSelector((state) => state.config.value.mode); // pour Paul
@@ -43,13 +62,13 @@ function Game() {
             </button>
             <button
               className={styles.iconButton}
-              onClick={() => handleSubmit()}
+              onClick={() => showRateModal()}
             >
               {" "}
               <Image
-                onClick={() => handleLike()}
-                src="/icons/heart.svg"
-                alt="Add to wishlist"
+                // onClick={() => showRateModal()}
+                src="/icons/star.svg"
+                alt="Rate the game"
                 width={24}
                 height={24}
                 className={styles.likeIcon}
@@ -98,6 +117,11 @@ function Game() {
           </div>
         </div>
       </div>
+      <Footer />
+      <Modal onCancel={() => handleCancelRateModal()} open={rateModalVisible} footer={null}>
+        <RateModal />
+      </Modal>
+
     </div>
   );
 }

@@ -11,16 +11,16 @@ import Lottie from "lottie-react";
 
 
 function Header() {
-//etat de l'avatar
-const urlAvatar=useSelector((state)=>state.user.value.avatar);
-const userName=useSelector((state)=>state.user.value.username)
+  //etat de l'avatar
+  const urlAvatar = useSelector((state) => state.user.value.avatar);
+  const userName = useSelector((state) => state.user.value.username)
 
   //Menu burger
   const [openBurgerMenu, setOpenBurgerMenu] = useState(false);
   console.log(openBurgerMenu);
 
-//Logout
-const dispatch = useDispatch();
+  //Logout
+  const dispatch = useDispatch();
 
   // Redirect to / if not logged in
   const router = useRouter();
@@ -49,9 +49,9 @@ const dispatch = useDispatch();
     <div>
       <div className={styles.header}>
         <div className={styles.profilcontainer}>
-        <Link href="/profile">
-          {avatar}
-        </Link>
+          <Link href="/profile">
+            {avatar}
+          </Link>
         </div>
 
         <Link href="/home">
