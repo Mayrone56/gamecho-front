@@ -10,23 +10,36 @@ import 'react-dropdown/style.css'; // import du css du composant Dropdown
 import { useDispatch, useSelector } from 'react-redux';
 import { useState } from 'react';
 import { switchMode } from '../reducers/config'; // import de la fonction switchmode du reducer config
-import { logout, removeUser } from '../reducers/user';
+import { logout } from '../reducers/user';
 
 function Setting() {
     const rooter = useRouter()
-    const user = useSelector((state) => state.user.value.username) //cible la valeur du nom de l'etat user
+    const dispatch = useDispatch();
 
+    const [modalVisible, setModalVisible] = useState(false);
+
+
+    const user = useSelector((state) => state.user.value.username) //cible la valeur du nom de l'etat user
     const isLightmode = useSelector((state) => state.config.value.mode);//Cible le mode dans le reducer setting qui est par defaut à False
+
+    const handleModal = () => {
+        setModalVisible(true)
+    }
 
     const handleRemove = () => {
         fetch(`http://localhost:3000/users/${user}`, { method: 'DELETE' })
             .then(data => {
                 if (data) {
-                    dispatch(removeUser);
-                    dispatch(logout)
-                    rooter.push('/')
+                    dispatch(logout())
+                }
+                else {
+                    console.log('erreur')
                 }
             })
+            .then(
+                rooter.push('/')
+            )
+           
     }
     // fonction qui fetch le backend via la route delete ( si resultat on supprime l'utilisateur de la bdd puis redirection sur Welcome(index.js), si non erreur)
 
@@ -35,7 +48,6 @@ function Setting() {
     };
     //function qui change l'état de isToggled de faux a vrai puis qui dispatche sont etat dans le reducer
 
-    const dispatch = useDispatch();
 
     const note = [
         'Emojis', 'Out of 10', 'Out of 100', 'Tag'
@@ -50,6 +62,21 @@ function Setting() {
     const defaultNote = note[0];
     const defaultPrivacy = privacy[0];
     //variable contenant la premiere valeur du dropdown
+
+    //Modale de confirmation de supression de compte
+    const modale = modalVisible && (
+        <div className={styles.modal}>
+            <div>
+                <div>Your account will be delete definitively. Do you want to continue ?</div>
+                <div className={styles.buttoncontainer}>
+                    <br></br>
+                    <button className={isLightmode ? styles.buttonlight : styles.buttondark} onClick={() => handleRemove()}>Confirm</button>
+                    <button className={isLightmode ? styles.buttonlight : styles.buttondark} onClick={() => setModalVisible(false)}>Cancel</button>
+                </div>
+            </div>
+        </div>
+    )
+    //
 
 
     return (
@@ -126,11 +153,14 @@ function Setting() {
                             <p>Delete account </p>
                         </div>
                         <div className={styles.dropdownContainer}>
-                            <button className={isLightmode ? styles.buttonlight : styles.buttondark} onClick={() => handleRemove()}>Delete</button>
+                            <button className={isLightmode ? styles.buttonlight : styles.buttondark} onClick={() => handleModal()}>Delete</button>
+                        </div>
+                        <div>
+                            {modale}
                         </div>
                     </div>
                 </div>
-                <Footer />
+
             </div>
             </>
     )

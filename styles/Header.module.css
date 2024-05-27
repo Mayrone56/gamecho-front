@@ -11,6 +11,7 @@
 }
 
 .logoTitle {
+    margin-right: 220px;
     line-height: 40px;
     font-size: 32px;
     text-align: center;
@@ -114,6 +115,17 @@
     color: #EB5757;
 }
 
- 
+.profilcontainer {
+    display: flex;
+    flex-direction: row;
+    justify-content:flex-start;
+    align-items: center;
+    width: 15%;
+}
+
+
+.username {
+    margin-left: 30px;   
+}
 
 
