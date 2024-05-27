@@ -15,7 +15,6 @@ function Game() {
 
   return (
     <div className={styles.container}>
-      <Header />
       <div className={styles.middleContainer}>
         <div
           className={styles.bannerContainer}
@@ -99,7 +98,6 @@ function Game() {
           </div>
         </div>
       </div>
-      <Footer />
     </div>
   );
 }

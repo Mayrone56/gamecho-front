@@ -82,7 +82,6 @@ function Setting() {
 
     return (
         <>
-            <Header />
             <div className={isLightmode ? styles.mainlight : styles.maindark}>
                 <div className={styles.content}>
                     <h2>Settings</h2>
@@ -161,7 +160,6 @@ function Setting() {
                         </div>
                     </div>
                 </div>
-                <Footer/>
             </div>
         </>
     )

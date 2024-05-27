@@ -1,8 +1,6 @@
 import styles from "../styles/Home.module.css";
 import Link from "next/link";
 import Image from "next/image";
-import Header from "./Header";
-import Footer from "./Footer";
 
 import { useState, useEffect, useLayoutEffect } from "react";
 import { useRouter } from "next/router";

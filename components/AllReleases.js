@@ -1,6 +1,4 @@
 import styles from '../styles/AllReleases.module.css';
-import Header from './Header';
-import Footer from './Footer';
 import Link from "next/link";
 import Image from "next/image";
 import { useEffect, useState } from 'react';
@@ -77,7 +75,6 @@ function AllReleases() {
 
       return (
         <div className={isLightmode ? styles.containerlight : styles.containerdark}>
-          <Header />
           <div className={styles.middleContainer}>
 
 
@@ -97,8 +94,6 @@ function AllReleases() {
             )}
     
           </div>
-    
-          <Footer />
         </div>
       );
     }
