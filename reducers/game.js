@@ -16,7 +16,7 @@ export const gameSlice = createSlice({
       state.value = state.value.filter(game => game.name !== action.payload);
     },
     getGameDetails: (state, action) => {
-      state.details = action.payload;
+      state.details = action.payload; // création dynamique d'une clé de reducer
     },
   },
 });
