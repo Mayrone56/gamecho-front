@@ -141,12 +141,14 @@
   display: flex;
   justify-content: center;
   align-items: center;
+  color: black;
+  font-size: 20px;
 }
 
 .buttoncontainer {
+    width: 100%;
     margin-top: 20px;
-    border: 1x solid red;
     display: flex;
-    justify-content: space-evenly;
+    justify-content: space-between;
     margin-right: 20px;
 }
