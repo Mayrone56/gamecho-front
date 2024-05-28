@@ -120,21 +120,25 @@ function Profile() {
   };
 
   return (
-    <div className={isLightmode === "light" ? styles.containerlight : styles.containerdark}>
-      <Header />
-      {!user.token && ( // = if (user.token) {return <div> blablabla} Clean Code
+    <div className={isLightmode? styles.containerlight : styles.containerdark}>
+      {!user.token && (
         <div className={styles.middleContainer}>
-          <div className={styles.section}>
-            <div className={styles.signContainer}>
-              <h3 className={styles.titleButton}>Already have an account ?</h3>
-              <button className={styles.seoncadryButton} onClick={handleSignInClick}>
+          <div className={styles.titleContainer}>
+            <h2>Discover an exciting new approach to gaming !</h2>
+            <h3>Join now and unleash the full potential of your gaming experience !</h3>
+            <p>Rate your favourite titles according to your own criteria and explore recommendations tailored specifically to you.</p>
+          </div>
+          <div className={styles.buttonContainer}>
+            <div className={styles.signin}>
+              <h3>Already have an account?</h3>
+              <button className={isLightmode? styles.buttondark : styles.buttonlight} onClick={handleSignInClick}>
                 Sign In
               </button>
             </div>
-            <div className={styles.signContainer}>
-              <h3 className={styles.titleButton}>New to GamEcho ?</h3>
-              <button className={styles.primaryButton} onClick={handleSignUpClick}>
-                Create an account !
+            <div className={styles.signup}>
+              <h3>New to GamEcho? Create an account!</h3>
+              <button className={isLightmode? styles.buttondark : styles.buttonlight} onClick={handleSignUpClick}>
+                Sign Up
               </button>
             </div>
           </div>
@@ -150,7 +154,7 @@ function Profile() {
                 alt="Avatar"
                 width={150}
                 height={150}
-                className={styles.defaultAvatar} />
+                className={isLightmode?styles.defaultAvatarLight:styles.defaultAvatar} />
               <input
                 ref={fileInputRef}
                 type="file"
@@ -259,11 +263,10 @@ function Profile() {
             </div>
             {emailError && <div className={styles.errorContainer}><p className={styles.error}>{emailError}</p></div>}
           </div>
-          <button onClick={() => { router.push('/'); dispatch(logout()); }} className={styles.logout}>Logout</button>
+          <button onClick={() => { router.push('/'); dispatch(logout()); }} className={isLightmode?styles.buttonlight:styles.buttondark}>Logout</button>
         </div>
       )
       }
-      <Footer />
     </div >
   );
 }

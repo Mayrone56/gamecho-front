@@ -56,3 +56,10 @@ image {
   fill: inherit;
   color: inherit;
 }
+
+ .ant-modal-content { /* on vise le style natif du composant Modal, uniquement visible via l'inspecteur et on efface les paramètres gênants notre style */
+  background-color: transparent !important; /* toujours prioritaire sur n'importe quel autre style */
+  border: none !important;
+  box-shadow: none !important;
+  padding: 0 !important;
+}

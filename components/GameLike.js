@@ -4,13 +4,15 @@ import Footer from './Footer';
 
 function GameLike() {
     return (
+        <>
+        <Header/>
         <div className={styles.container}>
-            <Header />
             <div className={styles.middleContainer}>
                 <h2 className={styles.sectionTitle}>"gameName" like</h2>
             </div>
-            <Footer />
         </div>
+        <Footer/>
+        </>
     )
 }
 export default GameLike;

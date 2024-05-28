@@ -32,16 +32,17 @@ function Header() {
 
   //image de l'avatar qui change en fonction de si on en a uploadé un ou pas (par default smiley)
   let avatar;
-  if (urlAvatar) {
-    avatar = (
-      <Image src={urlAvatar} alt="Avatar" width={32} height={32} className={styles.icon} />
-    )
-  }
-  else {
-    avatar = (
-      <Image src="/icons/emojiIcons/happy.svg" alt="Avatar" width={32} height={32} className={styles.icon} />
-    )
-  }
+  if(urlAvatar)
+    {
+      avatar=(
+        <Image src={urlAvatar} alt="Avatar" width={48} height={48} className={styles.icon} />
+      )
+    }
+    else{
+      avatar=(
+        <Image src="/icons/emojiIcons/happy.svg" alt="Avatar" width={48} height={48} className={styles.icon} />
+      )
+    }
 
   return (
 

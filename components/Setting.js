@@ -19,12 +19,14 @@ function Setting() {
     const [modalVisible, setModalVisible] = useState(false);
 
     const user = useSelector((state) => state.user.value.username) //cible la valeur du nom de l'etat user
-    const isLightmode = useSelector((state) => state.config.value.mode);//Cible le mode dans le reducer setting
- 
+    const isLightmode = useSelector((state) => state.config.value.mode);//Cible le mode dans le reducer setting qui est par defaut à False
+
+    // fonction qui passe l'état de la modale a vrai
     const handleModal = () => {
         setModalVisible(true)
     }
 
+    //fonction qui vas fetch la route delete user du backend(si réponse du back on dispatch la fonction logout qui remet les valeur de user a null, si non erreur. Ensuite on redirige vers la welcome)
     const handleRemove = () => {
         fetch(`http://localhost:3000/users/${user}`, { method: 'DELETE' })
             .then(data => {
@@ -45,7 +47,7 @@ function Setting() {
     const handleToggle = () => {
         dispatch(switchMode(!isLightmode))
     };
-    //function qui change l'état de isToggled de faux a vrai puis qui dispatche sont etat dans le reducer
+    //fonction qui change l'état de isToggled de faux a vrai puis qui dispatche sont etat dans le reducer
 
 
     const note = [
@@ -67,7 +69,6 @@ function Setting() {
         <div className={styles.modal}>
             <div>
                 <div>Your account will be delete definitively. Do you want to continue ?</div>
-                <br></br>
                 <div className={styles.buttoncontainer}>
                     <button className={isLightmode ? styles.buttonlight : styles.buttondark} onClick={() => handleRemove()}>Confirm</button>
                     <button className={isLightmode ? styles.buttonlight : styles.buttondark} onClick={() => setModalVisible(false)}>Cancel</button>
@@ -79,9 +80,14 @@ function Setting() {
 
     return (
         <>
+<<<<<<< HEAD
             <div className={isLightmode === "light" ? styles.containerlight : styles.containerdark}>
                 <Header />
                 <div className={styles.middleContainer}>
+=======
+            <div className={isLightmode ? styles.mainlight : styles.maindark}>
+                <div className={styles.content}>
+>>>>>>> ae3448f2987b1a3c0df78e0d7d4bf3b582bf3e91
                     <h2>Settings</h2>
                     <div className={styles.parameter}>
                         <div className={styles.iconContainer}>
@@ -158,7 +164,10 @@ function Setting() {
                         </div>
                     </div>
                 </div>
+<<<<<<< HEAD
                 <Footer />
+=======
+>>>>>>> ae3448f2987b1a3c0df78e0d7d4bf3b582bf3e91
             </div>
         </>
     )

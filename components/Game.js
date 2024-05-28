@@ -133,7 +133,6 @@ const handleGameCardClick = (game) => {
 
   return (
     <div className={styles.container}>
-      <Header />
       <div className={styles.middleContainer}>
         <div
           className={styles.bannerContainer}
@@ -148,7 +147,7 @@ const handleGameCardClick = (game) => {
           <div className={styles.topBannerContainer}>
             <button
               className={styles.iconButton}
-              onClick={() => handleSubmit()}
+            //   onClick={() => handleSubmit()}
             >
               {" "}
               <Image
@@ -157,7 +156,7 @@ const handleGameCardClick = (game) => {
                 alt="Add to wishlist"
                 width={24}
                 height={24}
-                className={styles.likeIcon}
+                // className={styles.likeIcon}
               />
             </button>
             <button
@@ -206,7 +205,7 @@ const handleGameCardClick = (game) => {
           </div>
 
           <div className={styles.descriptionContainer}>
-            <h3>Synopsis</h3>
+            <h3>Summary</h3>
             <div
               dangerouslySetInnerHTML={{ __html: gameDetails.description }}
             ></div>{" "}
