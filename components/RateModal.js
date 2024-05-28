@@ -51,7 +51,7 @@ function RateModal() {
       setNewReview(""); // on vide l'input via un setter
     } else {
       console.log("Error submitting rating");
-      // Handle error if needed
+      // si erreur quelconque, message
     }
   };
   return (
@@ -94,16 +94,19 @@ function RateModal() {
           height={50}
         />
       </div>
-      <div>
-        <p>Your review</p>
+      <div className={styles.inputContainer}>
+        <p className={styles.input}>Your review</p><br></br>
         <textarea
           type="text"
-          placeholder="Add a review (optional)"
+          placeholder="Add a review"
           className={styles.input}
           onChange={(e) => handleInputChange(e)}
           value={newReview}
-        ></textarea>
-        <p>{newReview.length}/300 </p>
+        ></textarea><br></br>
+        <p className={styles.input}>{newReview.length}/300 </p> <br></br>
+        <button className={styles.button} onClick={handleVote}>
+            SUBMIT
+          </button>
       </div>
       <div className={styles.bottomContainer}>
         <Image
@@ -113,14 +116,13 @@ function RateModal() {
           height={32}
           className={styles.avatar}
         />
+        
         <p>
           RATED BY {user.username} ON {date}
         </p>
         {/* Au click sur le bouton, nous enregistrons le   */}
         <div>
-          <button className={styles.submitbutton} onClick={handleVote}>
-            SUBMIT
-          </button>
+        
         </div>
       </div>
     </div>

@@ -189,7 +189,7 @@ function Game() {
           </div>
         </div>
       </div>
-      <Footer />
+   
       <Modal className={styles.frame} onCancel={() => handleCancelRateModal()} open={rateModalVisible} footer={null}>
         <RateModal />
       </Modal>

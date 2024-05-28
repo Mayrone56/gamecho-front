@@ -1,9 +1,26 @@
-.ant-modal-content {
-  background-color: transparent !important; /* Override white background */
-  border: none !important; /* Override any border styles */
-  box-shadow: none !important; /* Override any box shadow */
-  padding: 0 !important; /* Remove padding */
+.inputContainer {
+  width: 90%; /* on définit la largeur de l'espace dédié à l'input, il devra suivre à 100% ses proportions */
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 }
+
+.input {
+  width: 100%; 
+  max-width: 100%;
+  box-sizing: border-box; 
+  font-family: 'Roboto', sans-serif; /* On doit redéfinir la police de l'input c'est à dire du placeholder, le style global ne s'applique pas à la Modal / tout style est ajouté manuellement */
+  padding: 10px; 
+  border: 1px #DFD8E7 solid;
+  border-radius: 20px; 
+  background-color: #F2F4FE;
+  color: #3F3878;
+}
+
+.input::placeholder {
+    color: #9592B8;
+}
+
 
 .container {
   display: flex;
@@ -12,14 +29,15 @@
   align-items: center;
   padding: 0px;
   margin: 0px;
-  background-color: #644ace;
+  background-color: #3F3878;
   border: none;
+  border-radius: 40px;
 }
 
 .iconContainer {
   display: flex;
   flex-direction: row;
-  justify-content: space-around;
+  justify-content: space-between;
   align-items: space-around;
 }
 
@@ -44,4 +62,50 @@
   display: flex;
   flex-direction: column;
   justify-content: center;
+}
+
+/* BUTTONS */
+.button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 44px;
+  min-width: 160px;
+  padding: 10px 24px 10px 24px;
+  background-color: #fff9e8;
+  color:FFF9E8;
+  border-radius: 40px;
+  border: 1px solid #fff9e8;
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+  margin: 16px 0 32px 0;
+  width: 250px;
+}
+
+.primaryButton:hover {
+  background-color: #3f3878;
+}
+
+.secondaryButton {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 44px;
+  min-width: 160px;
+  padding: 10px 24px 10px 24px;
+  background-color: #3F3878;
+  color: #F0EFFF;
+  border-radius: 40px;
+  border: 1px #F0EFFF solid;
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+  margin: 16px 0 32px 0;
+  width: 250px;
+}
+
+.secondaryButton:hover {
+  background-color: hsl(247, 56%, 25%);
+  color: #F0EFFF;
 }
