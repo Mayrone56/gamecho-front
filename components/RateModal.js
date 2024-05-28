@@ -8,7 +8,7 @@ const moment = require("moment");
 moment.locale("fr");
 
 function RateModal(props) {
-  
+
   const gameDetails = useSelector((state) => state.game.details);
 
   const dispatch = useDispatch();
@@ -16,6 +16,9 @@ function RateModal(props) {
   const user = useSelector((state) => state.user.value);
 
   const [newReview, setNewReview] = useState("");
+  const [rateEmoji, setRateEmoji] = useState([])
+
+  const emojiIcons = ["/icons/emojiIcons/angry.svg", "/icons/emojiIcons/sad.svg", "/icons/emojiIcons/neutral.svg", "/icons/emojiIcons/happy.svg", "/icons/emojiIcons/happy.svg"]
 
   const date = moment().format("L");
 
@@ -68,22 +71,35 @@ function RateModal(props) {
     if (response.ok) {
       console.log("Rating submitted successfully");
       setNewReview(""); // on vide la valeur de la review qui est dans input de la modal du rating via un setter
-      
+
       //Rated
       dispatch(addRate(ratingData));//Ajoute au tableau qui permettra d'afficher comme pour wishlist sur home, mais sur la page ratings
       console.log(ratingData, "added to rating");
 
     } else {
       console.log("Error submitting rating");
-      // Handle error if needed
+      // si erreur quelconque, message
     }
   };
 
+
+
+  const personalEmoji = [];
+  for (let i = 0; i < 5; i++) {
+    // let style = { 'cursor': 'pointer' };
+    if (i < rateEmoji) {
+      // style = { 'color': '#2196f3', 'cursor': 'pointer' };
+    }
+    personalEmoji.push(<Image src={emojiIcons[i]} key={i} width={50}
+      height={50} onClick={() => setRateEmoji(i + 1)} />);
+  }
+
+  console.log(rateEmoji)
   return (
     <div className={styles.container}>
       <h2> How much did you like it?</h2>
       <div className={styles.iconContainer}>
-        <Image
+        {/* <Image
           className={styles.emoji}
           src="/icons/emojiIcons/angry.svg"
           alt="Love emoji"
@@ -117,18 +133,22 @@ function RateModal(props) {
           alt="Love emoji"
           width={50}
           height={50}
-        />
+        /> */}
+        {personalEmoji}
       </div>
-      <div>
-        <p>Your review</p>
+      <div className={styles.inputContainer}>
+        <p className={styles.resetMargin}>Your review</p><br></br>
         <textarea
           type="text"
-          placeholder="Add a review (optional)"
+          placeholder="Add a review"
           className={styles.input}
           onChange={(e) => handleInputChange(e)}
           value={newReview}
         ></textarea>
-        <p>{newReview.length}/300 </p>
+        <p className={styles.resetMargin}>{newReview.length}/300</p>
+        <button className={styles.button} onClick={handleVote}>
+          SUBMIT
+        </button>
       </div>
       <div className={styles.bottomContainer}>
         <Image
@@ -138,14 +158,13 @@ function RateModal(props) {
           height={32}
           className={styles.avatar}
         />
+
         <p>
           RATED BY {user.username} ON {date}
         </p>
         {/* Au click sur le bouton, nous enregistrons le   */}
         <div>
-          <button className={styles.submitbutton} onClick={handleVote}>
-            SUBMIT
-          </button>
+
         </div>
       </div>
     </div>

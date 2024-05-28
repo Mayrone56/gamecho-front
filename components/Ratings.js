@@ -5,7 +5,9 @@ import { useState } from "react";
 import { useSelector, useDispatch } from 'react-redux';
 import { addRate, deleteRate } from "../reducers/rating";
 import Image from 'next/image';
-import { getGameDetails } from "../reducers/game";
+import game, { getGameDetails } from "../reducers/game";
+import Header from '../components/Header';
+import Footer from '../components/Footer';
 
 function Ratings() {
     const dispatch = useDispatch();
@@ -27,28 +29,37 @@ function Ratings() {
     if (ratings.length > 0) {
         games = ratings.map((game, i) => {
             return (
-                <div
-                    key={game.gameDetails.name}
-                    className={styles.card} // si changement de dimension type portrait, on affiche deux carts scrollables ?
-                    style={{
-                        backgroundImage: `url(${game.gameDetails.imageGame})`
-                    }} // Utilisez l'image de game comme fond
-                    onClick={() => handleGameCardClick(game)}
-                >
-                    <p className={styles.gameNameCard}>{game.gameDetails.name}</p>
-                    <button
-                        className={styles.iconButton}
-                        onClick={(event) => handleDelete(event, game)}
+                <div className={styles.rateContainer}>
+                    <div
+                        key={game.gameDetails.name}
+                        className={styles.card} // si changement de dimension type portrait, on affiche deux carts scrollables ?
+                        style={{
+                            backgroundImage: `url(${game.gameDetails.imageGame})`
+                        }} // Utilisez l'image de game comme fond
+                        onClick={() => handleGameCardClick(game)}
                     >
-                        {" "}
-                        <Image
-                            src="/icons/trash.svg"
-                            alt="Remove from wishlist"
-                            width={24}
-                            height={24}
-                            className={styles.likeIcon}
-                        />
-                    </button>
+                        <p className={styles.gameNameCard}>{game.gameDetails.name}</p>
+                    </div>
+                    <div className={styles.ratingInfo}>
+                        <span className={styles.info}>Rating: {game.rating}</span>
+                        <span className={styles.info}>Comment: {game.comment}</span>
+                        <span className={styles.info}>Rating added on: {game.ratingDate}</span>
+                    </div>
+                    <div className={styles.buttonContainer}>
+                        <button
+                            className={styles.iconButton}
+                            onClick={(event) => handleDelete(event, game)}
+                        >
+                            {" "}
+                            <Image
+                                src="/icons/trash.svg"
+                                alt="Remove from wishlist"
+                                width={24}
+                                height={24}
+                                className={styles.likeIcon}
+                            />
+                        </button>
+                    </div>
                 </div>
             );
         });
@@ -59,7 +70,7 @@ function Ratings() {
             <Header />
             <div className={styles.middleContainer}>
                 {/* l'input n'est pas affichée tant qu'il n'y a pas au moins 5 jeux ajoutés à la wishlist */}
-                <h2>Ratings</h2>
+                <h2 className={styles.title}>My Ratings</h2>
                 <div className={styles.contentCard}>
                     {games}
                 </div>
