@@ -4,6 +4,7 @@ import Image from "next/image";
 import { useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { addToWishlist, removeFromWishlist } from "../reducers/wishlist";
+import { addRate, deleteRate } from "../reducers/rating";
 import { Modal } from 'antd'
 import RateModal from "./RateModal";
 
@@ -12,17 +13,33 @@ function Game() {
 
   const [rateModalVisible, setRateModalVisible] = useState(false);
 
+  const ratings = useSelector((state) => state.rating.value); // pour recuperer la valeur de notre 
+
+  // FONCTION RATE EXTERNE POUR L'APPELER AILLEUR 
+  const isRated = (game) => {
+    //On compare le nom de jeu que l'on vient de vote si il est présent dans notre tableau rating
+    //Si c'est vrai alors c'est rated
+    return ratings.some((ratingItem) => ratingItem.name === game.name);
+  };
+
+  //Click sur l'etoile rate
+  const handleRatedClick = (game) => {
+    //la fonction vérifie s'il existe dans la wishlist un jeu portant le même nom que le jeu sur lequel on clique.
+    if (!isRated) {
+      dispatch(addRate(game));
+      console.log(`${game.name} added to rating`);
+    }
+  };
+
+
   const showRateModal = () => {
-    setRateModalVisible(true);
+    setRateModalVisible(true);   
+    console.log("CLICK HANDLE RATED")
   };
 
   const handleCancelRateModal = () => {
     setRateModalVisible(false)
   }
-
-
-
-
 
   const gameDetails = useSelector((state) => state.game.details); // redistribuer les données importées dans le reducer via Home lors du clic
   const wishlist = useSelector((state) => state.wishlist.value);
@@ -119,11 +136,10 @@ function Game() {
           <div className={styles.topBannerContainer}>
             <button
               className={styles.iconButton}
-            //   onClick={() => handleSubmit()}
+             onClick={() => handleLike()}
             >
               {" "}
               <Image
-                onClick={() => handleLike()}
                 src="/icons/heart.svg"
                 alt="Add to wishlist"
                 width={24}
@@ -137,7 +153,6 @@ function Game() {
             >
               {" "}
               <Image
-                // onClick={() => showRateModal()}
                 src="/icons/star.svg"
                 alt="Rate the game"
                 width={24}
@@ -188,7 +203,6 @@ function Game() {
           </div>
         </div>
       </div>
-
       <Modal className={styles.frame} onCancel={() => handleCancelRateModal()} open={rateModalVisible} footer={null}>
         <RateModal />
       </Modal>

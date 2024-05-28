@@ -5,12 +5,12 @@ import Footer from '../components/Footer';
 function ratingsPage() {
   return (
     <>
-    <Header/>
       <Head>
         <title>Ratings / Gamecho</title>
       </Head>
+      <Header />
       <Ratings />
-      <Footer/>
+      <Footer />
     </>
   );
 }

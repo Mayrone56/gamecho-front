@@ -57,9 +57,28 @@ image {
   color: inherit;
 }
 
+/* MODAL */
+
+  /* (importée de antd) */
+
  .ant-modal-content { /* on vise le style natif du composant Modal, uniquement visible via l'inspecteur et on efface les paramètres gênants notre style */
-  background-color: transparent !important; /* toujours prioritaire sur n'importe quel autre style */
+  background-color: transparent !important; /* toujours prioritaire sur n'importe quel autre style  https://stackoverflow.com/questions/68469089/how-to-change-styles-in-modal-of-antd */
   border: none !important;
   box-shadow: none !important;
   padding: 0 !important;
+  font-family: 'Roboto', sans-serif !important; /* On remplace le font natif d'antd */
+  color: white;
+}
+
+  /* - Desktop */
+.ant-modal {
+  width: 50% !important; /* par défaut, cible l'affichage Desktop */
+  max-width: 50% !important;
+}
+  /* - Mobile */
+@media (max-width: 768px) {
+  .ant-modal {
+    width: 90% !important; /* On vise désormais l'affichage mobile et on veut changer les proportions de la modal */
+    max-width: 90% !important;
+  }
 }
