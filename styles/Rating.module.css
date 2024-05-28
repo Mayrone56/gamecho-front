@@ -1,53 +1,54 @@
-.container {
-    height: 100vh;
-    width: 100vw;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    color: #fff9e8;
-  }
+.containerdark {
+  width: 100vw;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  color: #FFF9E8;
+  /* background: linear-gradient(to bottom, #3F3878, #242424); */
+}
+
+.containerlight {
+  width: 100vw;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  color: #242424;
+  background-color: #F0EFFF;
+}
 
 .middleContainer {
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-start;
-    align-items: center;
-    height: 100%;
-    padding: 
-    
-    0 24px;
-  }
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  height: 100%;
+  padding: 0 24px;
+  margin-bottom: 50px;
+}
 
-  /* CARDS */
+.title {
+  margin-bottom: 30px;
+}
+
+/* CARDS */
+
 .contentCard {
   display: flex;
   justify-content: center;
   flex-wrap: wrap;
+  gap: 24px;
 }
 
-.card {
-  position: relative;
-  background-position: center;
-  background-repeat: no-repeat;
-  background-size: cover;
+.rateContainer {
   display: flex;
   flex-direction: column;
-  justify-content: flex-end;
-  align-items: center;
+  justify-content: center;
+  margin: 0 !important;
+  padding: 0 !important;
   border-radius: 40px;
-  background-color: #644ACE;
-  height: 400px;
-  width: 90vw;
-  min-height: 120px;
-  min-width: 80px;
-  max-height: 400px;
-  max-width: 390px;
-  cursor: pointer;
-  transition: box-shadow 0.3s ease;
-  margin: 24px 16px;
 }
 
-.card:hover {
+.rateContainer:hover {
   box-shadow: 0 0 50px #cf55edab;
 
   /* animation: gradient 10s ease infinite; */
@@ -61,6 +62,29 @@
   transform: scale(1.03);
 }
 
+.card {
+  position: relative;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  align-items: center;
+  border-top-right-radius: 40px;
+  border-top-left-radius: 40px;
+  background-color: #644ACE;
+  height: 400px;
+  width: 90vw;
+  min-height: 120px;
+  min-width: 80px;
+  max-height: 400px;
+  max-width: 390px;
+  cursor: pointer;
+  transition: box-shadow 0.3s ease;
+  margin-bottom: 0;
+}
+
 .gameNameCard {
   font-size: 1.25em;
   line-height: 24px;
@@ -69,14 +93,26 @@
   padding: 8px 16px;
 }
 
-.icon {
-  height: 24px;
-  width: 24px;
-  cursor: pointer;
+.ratingInfo {
+  background-color: #2424242d;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  border-bottom-left-radius: 40px;
+  border-bottom-right-radius: 40px;
+  margin-top: 0;
+  padding: 20px;
 }
 
-.likeIcon {
-  color: aliceblue;
+.info {
+  margin-bottom: 5px;
+}
+
+.buttonContainer {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
 }
 
 .iconButton {
@@ -90,9 +126,18 @@
   width: 40px;
   background-color: #9592B8;
   cursor: pointer;
-  bottom: -20px;
 }
 
 .iconButton:hover {
   background-color: #3F3878;
+}
+
+.icon {
+  height: 24px;
+  width: 24px;
+  cursor: pointer;
+}
+
+.likeIcon {
+  color: aliceblue;
 }
