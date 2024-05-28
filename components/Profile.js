@@ -124,22 +124,17 @@ function Profile() {
       <Header />
       {!user.token && ( // = if (user.token) {return <div> blablabla} Clean Code
         <div className={styles.middleContainer}>
-          <div className={styles.titleContainer}>
-            <h2>Discover an exciting new approach to gaming !</h2>
-            <h3>Join now and unleash the full potential of your gaming experience !</h3>
-            <p>Rate your favourite titles according to your own criteria and explore recommendations tailored specifically to you.</p>
-          </div>
-          <div className={styles.buttonContainer}>
-            <div className={styles.signin}>
-              <h3>Already have an account?</h3>
-              <button className={isLightmode === "light" ? styles.buttondark : styles.buttonlight} onClick={handleSignInClick}>
+          <div className={styles.section}>
+            <div className={styles.signContainer}>
+              <h3 className={styles.titleButton}>Already have an account ?</h3>
+              <button className={styles.seoncadryButton} onClick={handleSignInClick}>
                 Sign In
               </button>
             </div>
-            <div className={styles.signup}>
-              <h3>New to GamEcho? Create an account!</h3>
-              <button className={isLightmode === "light" ? styles.buttondark : styles.buttonlight} onClick={handleSignUpClick}>
-                Sign Up
+            <div className={styles.signContainer}>
+              <h3 className={styles.titleButton}>New to GamEcho ?</h3>
+              <button className={styles.primaryButton} onClick={handleSignUpClick}>
+                Create an account !
               </button>
             </div>
           </div>

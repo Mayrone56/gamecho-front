@@ -7,21 +7,48 @@ import { useSelector, useDispatch } from "react-redux";
 import { addToWishlist, removeFromWishlist } from "../reducers/wishlist";
 import { Modal } from 'antd'
 import RateModal from "./RateModal";
+import { useRouter } from "next/router";
 
+import {getGameDetails}  from "../reducers/game";
 
 function Game() {
 
+  const router = useRouter();
   const [rateModalVisible, setRateModalVisible] = useState(false);
 
   const showRateModal = () => {
     setRateModalVisible(true);
   };
-
+ 
   const handleCancelRateModal = () => {
     setRateModalVisible(false)
   }
 
 
+  //TEST SANDRINE
+const handleGameCardClick = (game) => {
+
+  // Step 1: Dispatch the action to store the game details in Redux
+  dispatch(getGameDetails(game));
+
+  // Step 2: Save the game details to the database
+  fetch('http://localhost:3000/games/saveGame', {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify(game), // Assuming `game` already has the necessary structure
+  })
+    .then(response => response.json())
+    .then(data => {
+      console.log('Save response:', data);
+
+      // Step 3: Navigate to the game page
+      router.push('game/');
+    });
+};
+
+  //
 
 
 
@@ -140,6 +167,7 @@ function Game() {
               {" "}
               <Image
                 // onClick={() => showRateModal()}
+                onClick={() => handleGameCardClick()}
                 src="/icons/star.svg"
                 alt="Rate the game"
                 width={24}

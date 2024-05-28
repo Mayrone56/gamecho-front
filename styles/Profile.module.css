@@ -23,6 +23,16 @@
   justify-content: flex-start;
   align-items: center;
   height: 100%;
+  padding: 0 24px;
+}
+
+.section {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin: 32px 0 32px 0;
+  text-align: center;
 }
 
 /*IF NO USER TOKEN*/
@@ -45,7 +55,7 @@
   margin-bottom: 20px;
 }
 
-.signin {
+.signContainer {
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -58,6 +68,53 @@
   justify-content: center;
   align-items: center;
 }
+
+/* BUTTONS */
+.primaryButton {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 44px;
+  min-width: 160px;
+  padding: 10px 24px 10px 24px;
+  background-color: #efffef;
+  color: #3F3878;
+  border-radius: 40px;
+  border: 1px #F0EFFF solid;
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+  margin: 16px 0 32px 0;
+  width: 250px;
+}
+
+.primaryButton:hover {
+  background-color: hsl(245, 21%, 90%);
+}
+
+.seoncadryButton {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 44px;
+  min-width: 160px;
+  padding: 10px 24px 10px 24px;
+  background-color: #3F3878;
+  color: #F0EFFF;
+  border-radius: 40px;
+  border: 1px #F0EFFF solid;
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+  margin: 16px 0 32px 0;
+  width: 250px;
+}
+
+.seoncadryButton:hover {
+  background-color: hsl(247, 56%, 25%);
+  color: #F0EFFF;
+}
+
 
 .buttondark {
   display: flex;

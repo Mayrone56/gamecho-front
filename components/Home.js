@@ -82,10 +82,10 @@ function Home() {
   };
 
   const handleGameCardClick = (game) => {
-  
+
     // Step 1: Dispatch the action to store the game details in Redux
     dispatch(getGameDetails(game));
-  
+
     // Step 2: Save the game details to the database
     fetch('http://localhost:3000/games/saveGame', {
       method: 'POST',
@@ -97,7 +97,7 @@ function Home() {
       .then(response => response.json())
       .then(data => {
         console.log('Save response:', data);
-  
+
         // Step 3: Navigate to the game page
         router.push('game/');
       });
@@ -187,6 +187,18 @@ function Home() {
     <div className={isLightmode ? styles.containerlight : styles.containerdark}>
       <Header />
       <div className={styles.middleContainer}>
+        {/* <div className={styles.cropedBanner}> */}
+
+        <div className={styles.bannerWelcomeMobile} alt="banner">
+          {/* <Image
+            src="/Banner_welcome_without_text.jpg"
+            alt="Banner Gamecho"
+            width={1920}
+            height={1000}
+            className={styles.bannerImageMobile}
+            /> */}
+        </div>
+            {/* </div> */}
         <div className={styles.searchContainer}>
           <input
             type="text"

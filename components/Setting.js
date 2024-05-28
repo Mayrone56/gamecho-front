@@ -18,10 +18,9 @@ function Setting() {
 
     const [modalVisible, setModalVisible] = useState(false);
 
-
     const user = useSelector((state) => state.user.value.username) //cible la valeur du nom de l'etat user
-    const isLightmode = useSelector((state) => state.config.value.mode);//Cible le mode dans le reducer setting qui est par defaut à False
-
+    const isLightmode = useSelector((state) => state.config.value.mode);//Cible le mode dans le reducer setting
+ 
     const handleModal = () => {
         setModalVisible(true)
     }
@@ -39,7 +38,7 @@ function Setting() {
             .then(
                 rooter.push('/')
             )
-           
+
     }
     // fonction qui fetch le backend via la route delete ( si resultat on supprime l'utilisateur de la bdd puis redirection sur Welcome(index.js), si non erreur)
 
@@ -78,12 +77,11 @@ function Setting() {
     )
     //
 
-
     return (
         <>
-        
-            <div className={isLightmode ? styles.g : styles.maindark}>
-                <div className={styles.content}>
+            <div className={isLightmode === "light" ? styles.containerlight : styles.containerdark}>
+                <Header />
+                <div className={styles.middleContainer}>
                     <h2>Settings</h2>
                     <div className={styles.parameter}>
                         <div className={styles.iconContainer}>
@@ -107,9 +105,9 @@ function Setting() {
                             <p>Account privacy</p>
                         </div>
                         <div className={styles.dropdownContainer}>
-                            <Dropdown options={privacy} value={defaultPrivacy} placeholder="Select an option" 
-                            className={styles.customDropdown} // Classe personnalisée pour le conteneur principal
-                            controlClassName={styles.customDropdownControl} // Classe personnalisée pour le control
+                            <Dropdown options={privacy} value={defaultPrivacy} placeholder="Select an option"
+                                className={styles.customDropdown} // Classe personnalisée pour le conteneur principal
+                                controlClassName={styles.customDropdownControl} // Classe personnalisée pour le control
                             />
                         </div>
                     </div>
@@ -160,9 +158,9 @@ function Setting() {
                         </div>
                     </div>
                 </div>
-
+                <Footer />
             </div>
-            </>
+        </>
     )
 }
 
