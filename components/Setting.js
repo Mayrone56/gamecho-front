@@ -9,7 +9,7 @@ import Dropdown from 'react-dropdown'; //import du composant Dropdown déja tout
 import 'react-dropdown/style.css'; // import du css du composant Dropdown
 import { useDispatch, useSelector } from 'react-redux';
 import { useState } from 'react';
-import { switchMode } from '../reducers/config'; // import de la fonction switchmode du reducer config
+import { switchMode, changeRatingMode} from '../reducers/config'; // import de la fonction switchmode du reducer config
 import { logout } from '../reducers/user';
 
 function Setting() {
@@ -21,6 +21,7 @@ function Setting() {
 
     const user = useSelector((state) => state.user.value.username) //cible la valeur du nom de l'etat user
     const isLightmode = useSelector((state) => state.config.value.mode);//Cible le mode dans le reducer setting qui est par defaut à False
+    const ratingMethode=useSelector((state)=>state.config.value.ratingMode)
 
     // fonction qui passe l'état de la modale a vrai
     const handleModal = () => {
@@ -94,6 +95,7 @@ function Setting() {
                         </div>
                         <div className={styles.dropdownContainer}>
                             <Dropdown options={note} value={defaultNote} placeholder="Select an option"
+                            onChange={(e)=>(dispatch(changeRatingMode(e.value)))}
                                 className={styles.customDropdown} // Classe personnalisée pour le conteneur principal
                                 controlClassName={styles.customDropdownControl} // Classe personnalisée pour le control
                             />
@@ -150,7 +152,7 @@ function Setting() {
                             <Image src="/icons/trash.svg" alt="trash" width={24} height={24} className={isLightmode ? styles.iconlight : styles.icondark} />
                         </div>
                         <div className={styles.textContainer}>
-                            <p>Delete account </p>
+                            <p>Delete account {ratingMethode}</p>
                         </div>
                         <div className={styles.dropdownContainer}>
                             <button className={isLightmode ? styles.buttonlight : styles.buttondark} onClick={() => handleModal()}>Delete</button>

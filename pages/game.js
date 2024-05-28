@@ -5,7 +5,7 @@ import Footer from '../components/Footer';
 function gamePage() {
   return (
     <>
-    <Headers/>
+    <Header/>
       <Head>
         <title>"gameName" / Gamecho</title>
       </Head>
