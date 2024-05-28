@@ -95,7 +95,7 @@ function RateModal() {
         />
       </div>
       <div className={styles.inputContainer}>
-        <p className={styles.input}>Your review</p><br></br>
+        <p>Your review</p><br></br>
         <textarea
           type="text"
           placeholder="Add a review"
@@ -103,7 +103,7 @@ function RateModal() {
           onChange={(e) => handleInputChange(e)}
           value={newReview}
         ></textarea><br></br>
-        <p className={styles.input}>{newReview.length}/300 </p> <br></br>
+        <p>{newReview.length}/300 </p> <br></br>
         <button className={styles.button} onClick={handleVote}>
             SUBMIT
           </button>
