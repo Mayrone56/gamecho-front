@@ -75,7 +75,7 @@ function RateModal(props) {
 
     } else {
       console.log("Error submitting rating");
-      // Handle error if needed
+      // si erreur quelconque, message
     }
   };
 
@@ -119,16 +119,19 @@ function RateModal(props) {
           height={50}
         />
       </div>
-      <div>
-        <p>Your review</p>
+      <div className={styles.inputContainer}>
+        <p className={styles.resetMargin}>Your review</p><br></br>
         <textarea
           type="text"
-          placeholder="Add a review (optional)"
+          placeholder="Add a review"
           className={styles.input}
           onChange={(e) => handleInputChange(e)}
           value={newReview}
         ></textarea>
-        <p>{newReview.length}/300 </p>
+        <p className={styles.resetMargin}>{newReview.length}/300</p>
+        <button className={styles.button} onClick={handleVote}>
+            SUBMIT
+          </button>
       </div>
       <div className={styles.bottomContainer}>
         <Image
@@ -138,14 +141,13 @@ function RateModal(props) {
           height={32}
           className={styles.avatar}
         />
+        
         <p>
           RATED BY {user.username} ON {date}
         </p>
         {/* Au click sur le bouton, nous enregistrons le   */}
         <div>
-          <button className={styles.submitbutton} onClick={handleVote}>
-            SUBMIT
-          </button>
+        
         </div>
       </div>
     </div>
