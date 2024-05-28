@@ -14,6 +14,9 @@ function RateModal() {
   const user = useSelector((state) => state.user.value);
 
   const [newReview, setNewReview] = useState("");
+  const [rateEmoji, setRateEmoji] = useState([])
+
+  const emojiIcons = ["/icons/emojiIcons/angry.svg", "/icons/emojiIcons/sad.svg", "/icons/emojiIcons/neutral.svg", "/icons/emojiIcons/happy.svg", "/icons/emojiIcons/happy.svg"]
 
   const date = moment().format("L");
 
@@ -54,11 +57,25 @@ function RateModal() {
       // Handle error if needed
     }
   };
+
+
+
+  const personalEmoji = [];
+  for (let i = 0; i < 5; i++) {
+    // let style = { 'cursor': 'pointer' };
+    if (i < rateEmoji) {
+      // style = { 'color': '#2196f3', 'cursor': 'pointer' };
+    }
+    personalEmoji.push(<Image src={emojiIcons[i]} key={i} width={50}
+      height={50} onClick={() => setRateEmoji(i + 1)} />);
+  }
+
+  console.log(rateEmoji)
   return (
     <div className={styles.container}>
       <h2> How much did you like it?</h2>
       <div className={styles.iconContainer}>
-        <Image
+        {/* <Image
           className={styles.emoji}
           src="/icons/emojiIcons/angry.svg"
           alt="Love emoji"
@@ -92,7 +109,8 @@ function RateModal() {
           alt="Love emoji"
           width={50}
           height={50}
-        />
+        /> */}
+        {personalEmoji}
       </div>
       <div>
         <p>Your review</p>
