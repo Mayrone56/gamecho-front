@@ -3,24 +3,29 @@
   display: flex;
   flex-direction: column;
   justify-content: center;
+  align-items: center;
+}
+
+.resetMargin {
+  margin: 0 !important; /* écrase le style global */
 }
 
 .input {
-  width: 100%; 
+  width: 100%;
+  min-height: 150px;
   max-width: 100%;
-  box-sizing: border-box; 
-  font-family: 'Roboto', sans-serif; /* On doit redéfinir la police de l'input c'est à dire du placeholder, le style global ne s'applique pas à la Modal / tout style est ajouté manuellement */
-  padding: 10px; 
-  border: 1px #DFD8E7 solid;
-  border-radius: 20px; 
-  background-color: #F2F4FE;
-  color: #3F3878;
+  box-sizing: border-box;
+  font-family: "Roboto", sans-serif; /* On doit redéfinir la police de l'input c'est à dire du placeholder, le style global ne s'applique pas à la Modal / tout style est ajouté manuellement */
+  padding: 12px;
+  border: 1px #dfd8e7 solid;
+  border-radius: 20px;
+  background-color: #f2f4fe;
+  color: #3f3878;
 }
 
 .input::placeholder {
-    color: #9592B8;
+  color: #9592b8;
 }
-
 
 .container {
   display: flex;
@@ -29,7 +34,7 @@
   align-items: center;
   padding: 0px;
   margin: 0px;
-  background-color: #3F3878;
+  background-color: #3f3878;
   border: none;
   border-radius: 40px;
 }
@@ -39,6 +44,8 @@
   flex-direction: row;
   justify-content: space-between;
   align-items: space-around;
+  gap: 16px;
+  margin-bottom: 16px;
 }
 
 .emoji {
@@ -48,7 +55,7 @@
 .bottomContainer {
   display: flex;
   flex-direction: row;
-  justify-content: space-between;
+  align-items: center;
 }
 
 .categorybutton {
@@ -73,7 +80,7 @@
   min-width: 160px;
   padding: 10px 24px 10px 24px;
   background-color: #fff9e8;
-  color: #3F3878;
+  color: #3f3878;
   border-radius: 40px;
   border: 1px solid #fff9e8;
   font-size: 16px;
@@ -83,8 +90,9 @@
   width: 250px;
 }
 
-.primaryButton:hover {
+.button:hover {
   background-color: #3f3878;
+  color: #fff9e8;
 }
 
 .secondaryButton {
@@ -94,10 +102,10 @@
   height: 44px;
   min-width: 160px;
   padding: 10px 24px 10px 24px;
-  background-color: #3F3878;
-  color: #F0EFFF;
+  background-color: #3f3878;
+  color: #f0efff;
   border-radius: 40px;
-  border: 1px #F0EFFF solid;
+  border: 1px #f0efff solid;
   font-size: 16px;
   font-weight: 600;
   cursor: pointer;
@@ -106,6 +114,6 @@
 }
 
 .secondaryButton:hover {
-  background-color: hsl(247, 56%, 25%);
-  color: #F0EFFF;
+  background-color: #3f3878;
+  color: #f0efff;
 }

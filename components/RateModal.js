@@ -120,15 +120,15 @@ function RateModal(props) {
         />
       </div>
       <div className={styles.inputContainer}>
-        <p>Your review</p><br></br>
+        <p className={styles.resetMargin}>Your review</p><br></br>
         <textarea
           type="text"
           placeholder="Add a review"
           className={styles.input}
           onChange={(e) => handleInputChange(e)}
           value={newReview}
-        ></textarea><br></br>
-        <p>{newReview.length}/300 </p> <br></br>
+        ></textarea>
+        <p className={styles.resetMargin}>{newReview.length}/300</p>
         <button className={styles.button} onClick={handleVote}>
             SUBMIT
           </button>

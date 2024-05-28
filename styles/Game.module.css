@@ -1,8 +1,3 @@
-.ant-modal {
-  width: 90% !important; /* Set modal width to 90% of parent */
-  max-width: 90% !important; /* Ensure modal does not exceed 90% width */
-}
-
 .container {
   height: 100vh;
   width: 100vw;

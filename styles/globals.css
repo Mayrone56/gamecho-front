@@ -74,6 +74,7 @@ image {
 .ant-modal {
   width: 50% !important; /* par défaut, cible l'affichage Desktop */
   max-width: 50% !important;
+  margin: none !important;
 }
   /* - Mobile */
 @media (max-width: 768px) {
