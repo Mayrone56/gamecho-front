@@ -6,8 +6,6 @@ import { useSelector, useDispatch } from 'react-redux';
 import { addRate, deleteRate } from "../reducers/rating";
 import Image from 'next/image';
 import game, { getGameDetails } from "../reducers/game";
-import Header from '../components/Header';
-import Footer from '../components/Footer';
 
 function Ratings() {
     const dispatch = useDispatch();

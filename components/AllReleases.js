@@ -15,7 +15,9 @@ function AllReleases() {
 
   useEffect(() => {
     const fetchLatestGames = async () => {
-      const response = await fetch('http://localhost:3000/games/latestreleased')
+      const response = await fetch('http://localhost:3000/games/latestreleased', {
+        cache: "force-cache",
+      })
       if (!response.ok) {
         console.log("Response latestreleased was not ok");
         return;

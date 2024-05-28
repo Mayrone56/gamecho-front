@@ -36,7 +36,9 @@ function Home() {
   useEffect(() => {
     const fetchLatestGames = async () => {
       const response = await fetch(
-        "http://localhost:3000/games/latestreleased"
+        "http://localhost:3000/games/latestreleased", {          
+        cache: "force-cache",
+        }
       );
       if (!response.ok) {
         console.log("Response latestreleased was not ok");
@@ -151,7 +153,9 @@ function Home() {
 
   const handleSearch = async () => {
     const response = await fetch(
-      `http://localhost:3000/games/search?name=${searchValue}`
+      `http://localhost:3000/games/search?name=${searchValue}`, {
+        cache: "force-cache",
+      }
     );
 
     if (!response.ok) {
@@ -168,7 +172,9 @@ function Home() {
   // Display only on the search icon
   const handleSearchSuggestions = async () => {
     const response = await fetch(
-      `http://localhost:3000/games/suggestions?name=${searchSuggValue}`
+      `http://localhost:3000/games/suggestions?name=${searchSuggValue}`, {
+        cache: "force-cache",
+      }
     );
 
     if (!response.ok) {
