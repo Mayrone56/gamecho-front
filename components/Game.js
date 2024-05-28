@@ -120,7 +120,7 @@ function Game() {
           <div className={styles.topBannerContainer}>
             <button
               className={styles.iconButton}
-              onClick={() => handleSubmit()}
+            //   onClick={() => handleSubmit()}
             >
               {" "}
               <Image
@@ -129,7 +129,7 @@ function Game() {
                 alt="Add to wishlist"
                 width={24}
                 height={24}
-                className={styles.likeIcon}
+                // className={styles.likeIcon}
               />
             </button>
             <button
