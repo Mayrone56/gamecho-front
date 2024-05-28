@@ -1,7 +1,5 @@
 import React from 'react';
 import Image from 'next/image';
-import Header from "./Header";
-import Footer from "./Footer";
 import Toggle from './toggle';
 import styles from '../styles/Setting.module.css';
 import { useRouter } from "next/router";
@@ -81,7 +79,7 @@ function Setting() {
 
     return (
         <>
-            <div className={isLightmode ? styles.mainlight : styles.maindark}>
+            <div className={isLightmode ? styles.containerlight : styles.containerdark}>
                 <div className={styles.content}>
                     <h2>Settings</h2>
                     <div className={styles.parameter}>
@@ -166,4 +164,3 @@ function Setting() {
 }
 
 export default Setting;
-

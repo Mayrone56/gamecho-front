@@ -1,8 +1,30 @@
-.ant-modal-content {
-  background-color: transparent !important; /* Override white background */
-  border: none !important; /* Override any border styles */
-  box-shadow: none !important; /* Override any box shadow */
-  padding: 0 !important; /* Remove padding */
+.inputContainer {
+  width: 90%; /* on définit la largeur de l'espace dédié à l'input, il devra suivre à 100% ses proportions */
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.resetMargin {
+  margin: 0 !important; /* écrase le style global */
+}
+
+.input {
+  width: 100%;
+  min-height: 150px;
+  max-width: 100%;
+  box-sizing: border-box;
+  font-family: "Roboto", sans-serif; /* On doit redéfinir la police de l'input c'est à dire du placeholder, le style global ne s'applique pas à la Modal / tout style est ajouté manuellement */
+  padding: 12px;
+  border: 1px #dfd8e7 solid;
+  border-radius: 20px;
+  background-color: #f2f4fe;
+  color: #3f3878;
+}
+
+.input::placeholder {
+  color: #9592b8;
 }
 
 .container {
@@ -12,15 +34,18 @@
   align-items: center;
   padding: 0px;
   margin: 0px;
-  background-color: #644ace;
+  background-color: #3f3878;
   border: none;
+  border-radius: 40px;
 }
 
 .iconContainer {
   display: flex;
   flex-direction: row;
-  justify-content: space-around;
+  justify-content: space-between;
   align-items: space-around;
+  gap: 16px;
+  margin-bottom: 16px;
 }
 
 .emoji {
@@ -30,7 +55,7 @@
 .bottomContainer {
   display: flex;
   flex-direction: row;
-  justify-content: space-between;
+  align-items: center;
 }
 
 .categorybutton {
@@ -44,4 +69,51 @@
   display: flex;
   flex-direction: column;
   justify-content: center;
+}
+
+/* BUTTONS */
+.button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 44px;
+  min-width: 160px;
+  padding: 10px 24px 10px 24px;
+  background-color: #fff9e8;
+  color: #3f3878;
+  border-radius: 40px;
+  border: 1px solid #fff9e8;
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+  margin: 16px 0 32px 0;
+  width: 250px;
+}
+
+.button:hover {
+  background-color: #3f3878;
+  color: #fff9e8;
+}
+
+.secondaryButton {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 44px;
+  min-width: 160px;
+  padding: 10px 24px 10px 24px;
+  background-color: #3f3878;
+  color: #f0efff;
+  border-radius: 40px;
+  border: 1px #f0efff solid;
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+  margin: 16px 0 32px 0;
+  width: 250px;
+}
+
+.secondaryButton:hover {
+  background-color: #3f3878;
+  color: #f0efff;
 }
