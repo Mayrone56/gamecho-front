@@ -1,7 +1,5 @@
 //test commit
 import styles from "../styles/Game.module.css";
-import Header from "./Header";
-import Footer from "./Footer";
 import Image from "next/image";
 import { useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
