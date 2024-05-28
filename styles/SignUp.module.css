@@ -13,6 +13,7 @@
     justify-content: flex-start;
     align-items: center;
     height: 100%;
+    padding: 0 24px;
 }
 
 .header {
@@ -43,6 +44,7 @@
 
 .title {
     text-align: center;
+    margin: 16px;
 }
 
 .inputContainer {
@@ -60,7 +62,7 @@
     background-color: #F2F4FE;
     color: #3F3878;
     border: 1px #DFD8E7 solid;
-    margin-top: 30px;
+    margin-top: 16px;
     width: 300px;
 }
 

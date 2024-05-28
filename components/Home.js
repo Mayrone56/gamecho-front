@@ -80,7 +80,7 @@ function Home() {
   };
 
   const handleGameCardClick = (game) => {
-  
+
     // Step 1: Dispatch the action to store the game details in Redux
     dispatch(getGameDetails(game));
   
@@ -193,6 +193,18 @@ function Home() {
   return (
     <div className={isLightmode ? styles.containerlight : styles.containerdark}>
       <div className={styles.middleContainer}>
+        {/* <div className={styles.cropedBanner}> */}
+
+        <div className={styles.bannerWelcomeMobile} alt="banner">
+          {/* <Image
+            src="/Banner_welcome_without_text.jpg"
+            alt="Banner Gamecho"
+            width={1920}
+            height={1000}
+            className={styles.bannerImageMobile}
+            /> */}
+        </div>
+            {/* </div> */}
         <div className={styles.searchContainer}>
           <input
             type="text"

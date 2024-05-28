@@ -18,7 +18,6 @@ function Setting() {
 
     const [modalVisible, setModalVisible] = useState(false);
 
-
     const user = useSelector((state) => state.user.value.username) //cible la valeur du nom de l'etat user
     const isLightmode = useSelector((state) => state.config.value.mode);//Cible le mode dans le reducer setting qui est par defaut à False
 
@@ -79,11 +78,16 @@ function Setting() {
     )
     //
 
-
     return (
         <>
+<<<<<<< HEAD
+            <div className={isLightmode === "light" ? styles.containerlight : styles.containerdark}>
+                <Header />
+                <div className={styles.middleContainer}>
+=======
             <div className={isLightmode ? styles.mainlight : styles.maindark}>
                 <div className={styles.content}>
+>>>>>>> ae3448f2987b1a3c0df78e0d7d4bf3b582bf3e91
                     <h2>Settings</h2>
                     <div className={styles.parameter}>
                         <div className={styles.iconContainer}>
@@ -160,6 +164,10 @@ function Setting() {
                         </div>
                     </div>
                 </div>
+<<<<<<< HEAD
+                <Footer />
+=======
+>>>>>>> ae3448f2987b1a3c0df78e0d7d4bf3b582bf3e91
             </div>
         </>
     )

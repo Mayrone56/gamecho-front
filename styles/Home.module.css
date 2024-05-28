@@ -29,6 +29,25 @@
   padding-bottom: 32px;
 }
 
+/*BANNER*/
+.bannerWelcomeMobile {
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  display: flex;
+  background-image: url('../public/Banner_welcome_without_text.jpg');
+  /* flex-direction: column; */
+  /* justify-content: flex-end; */
+  /* align-items: center; */
+  /* overflow: hidden; */
+  box-shadow: 0 0 50px #cf55edab;
+  height:100px
+} 
+
+.cropedBanner {
+  height: 120px;
+}
+
 
 /* CARDS */
 
