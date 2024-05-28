@@ -1,3 +1,4 @@
+//test commit
 import styles from "../styles/Game.module.css";
 import Header from "./Header";
 import Footer from "./Footer";
@@ -7,48 +8,21 @@ import { useSelector, useDispatch } from "react-redux";
 import { addToWishlist, removeFromWishlist } from "../reducers/wishlist";
 import { Modal } from 'antd'
 import RateModal from "./RateModal";
-import { useRouter } from "next/router";
 
-import {getGameDetails}  from "../reducers/game";
 
 function Game() {
 
-  const router = useRouter();
   const [rateModalVisible, setRateModalVisible] = useState(false);
 
   const showRateModal = () => {
     setRateModalVisible(true);
   };
- 
+
   const handleCancelRateModal = () => {
     setRateModalVisible(false)
   }
 
 
-  //TEST SANDRINE
-const handleGameCardClick = (game) => {
-
-  // Step 1: Dispatch the action to store the game details in Redux
-  dispatch(getGameDetails(game));
-
-  // Step 2: Save the game details to the database
-  fetch('http://localhost:3000/games/saveGame', {
-    method: 'POST',
-    headers: {
-      'Content-Type': 'application/json',
-    },
-    body: JSON.stringify(game), // Assuming `game` already has the necessary structure
-  })
-    .then(response => response.json())
-    .then(data => {
-      console.log('Save response:', data);
-
-      // Step 3: Navigate to the game page
-      router.push('game/');
-    });
-};
-
-  //
 
 
 
@@ -59,7 +33,7 @@ const handleGameCardClick = (game) => {
 
   console.log("DETAILS", gameDetails); // pour connaître la structure de la réponse (normalement identifique à la BDD)
 
-//AJOUT TEST SANDRINE POUR AJOUTER RATING
+  //AJOUT TEST SANDRINE POUR AJOUTER RATING
   const handleSearchSuggestions = async () => {
     const response = await fetch(
       `http://localhost:3000/games`
@@ -68,67 +42,67 @@ const handleGameCardClick = (game) => {
     if (!response.ok) {
       return;
     }
-    }
+  }
 
-//RATED GAME TEST 2
+  //RATED GAME TEST 2
 
-// const handleGameCardClick = () => {
-//   fetch('http://localhost:3000/games/saveGameDetails', {
-//     method: 'POST',
-//     headers: { 'Content-Type': 'application/json' },
-//     body: JSON.stringify({
-//           description: game.description,
-//           name: game.name,
-//           developer: game.developer,
-//           publisher: game.publisher,
-//           releasedDate: game.releasedDate,
-//           platforms: game.platforms,
-//           genre,
-//           isMultiplayer,
-//           isOnline,
-//           isExpandedContent,
-//           expandedContentList,
-//           ratingsID,
-//           imageGame,
-//           ratingSummary, }),
-//   }).then(response => response.json())
-//     .then(data => {
-//       if (data.savedGame) {
-//         dispatch(getGameDetails(game))
-//       }
-//     });
-// };
+  // const handleGameCardClick = () => {
+  //   fetch('http://localhost:3000/games/saveGameDetails', {
+  //     method: 'POST',
+  //     headers: { 'Content-Type': 'application/json' },
+  //     body: JSON.stringify({
+  //           description: game.description,
+  //           name: game.name,
+  //           developer: game.developer,
+  //           publisher: game.publisher,
+  //           releasedDate: game.releasedDate,
+  //           platforms: game.platforms,
+  //           genre,
+  //           isMultiplayer,
+  //           isOnline,
+  //           isExpandedContent,
+  //           expandedContentList,
+  //           ratingsID,
+  //           imageGame,
+  //           ratingSummary, }),
+  //   }).then(response => response.json())
+  //     .then(data => {
+  //       if (data.savedGame) {
+  //         dispatch(getGameDetails(game))
+  //       }
+  //     });
+  // };
 
-//     // router.push("game/");
-// }; 
+  //     // router.push("game/");
+  // }; 
 
 
-// //RATED GAME DEEBUT AVEC VALENTIN
+  // //RATED GAME DEEBUT AVEC VALENTIN
 
-// const handleGameCardClick = (game) => {
-//   dispatch(getGameDetails(game));
-//   fetch("http://localhost:3000/users/signup", {
-//     method: "POST",
-//     headers: { "Content-Type": "application/json" },
-//     body: JSON.stringify({
-//       description: game.description,
-//       name: game.name,
-//       developer: game.developer,
-//       publisher: game.publisher,
-//       releasedDate: game.releasedDate,
-//       platforms: game.platforms,
-//       genre,
-//       isMultiplayer,
-//       isOnline,
-//       isExpandedContent,
-//       expandedContentList,
-//       ratingsID,
-//       imageGame,
-//       ratingSummary,
-//     }),
-//   }),
-//     router.push("game/");
-// }; 
+  // const handleGameCardClick = (game) => {
+  //   dispatch(getGameDetails(game));
+  //   fetch("http://localhost:3000/users/signup", {
+  //     method: "POST",
+  //     headers: { "Content-Type": "application/json" },
+  //     body: JSON.stringify({
+  //       description: game.description,
+  //       name: game.name,
+  //       developer: game.developer,
+  //       publisher: game.publisher,
+  //       releasedDate: game.releasedDate,
+  //       platforms: game.platforms,
+  //       genre,
+  //       isMultiplayer,
+  //       isOnline,
+  //       isExpandedContent,
+  //       expandedContentList,
+  //       ratingsID,
+  //       imageGame,
+  //       ratingSummary,
+  //     }),
+  //   }),
+  //     router.push("game/");
+  // }; 
 
 
   return (
@@ -156,7 +130,7 @@ const handleGameCardClick = (game) => {
                 alt="Add to wishlist"
                 width={24}
                 height={24}
-                // className={styles.likeIcon}
+              // className={styles.likeIcon}
               />
             </button>
             <button
@@ -166,7 +140,6 @@ const handleGameCardClick = (game) => {
               {" "}
               <Image
                 // onClick={() => showRateModal()}
-                onClick={() => handleGameCardClick()}
                 src="/icons/star.svg"
                 alt="Rate the game"
                 width={24}
@@ -217,7 +190,7 @@ const handleGameCardClick = (game) => {
           </div>
         </div>
       </div>
-      <Footer />
+
       <Modal className={styles.frame} onCancel={() => handleCancelRateModal()} open={rateModalVisible} footer={null}>
         <RateModal />
       </Modal>

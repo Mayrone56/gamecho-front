@@ -1,3 +1,4 @@
+//test commit
 import styles from "../styles/Home.module.css";
 import Link from "next/link";
 import Image from "next/image";
@@ -83,7 +84,7 @@ function Home() {
 
     // Step 1: Dispatch the action to store the game details in Redux
     dispatch(getGameDetails(game));
-  
+
     // // Step 2: Save the game details to the database
     // fetch('http://localhost:3000/games/saveGame', {
     //   method: 'POST',
@@ -95,10 +96,10 @@ function Home() {
     //   .then(response => response.json())
     //   .then(data => {
     //     console.log('Save response:', data);
-  
+
     //     // Step 3: Navigate to the game page
-        router.push('game/');
-      // });
+    router.push('game/');
+    // });
   };
 
   const latestReleases = latestGamesData.map((game) => (
@@ -187,7 +188,7 @@ function Home() {
     handleSearch();
     handleSearchSuggestions();
   }
-//Fonction qui prend les deux fonctions handleSearch et handleSearchSuggestions pour fetcher les jeux+les suggestions en meme temps
+  //Fonction qui prend les deux fonctions handleSearch et handleSearchSuggestions pour fetcher les jeux+les suggestions en meme temps
 
   // MAIN RETURN OF HOME COMPONENT
   return (
@@ -204,7 +205,7 @@ function Home() {
             className={styles.bannerImageMobile}
             /> */}
         </div>
-            {/* </div> */}
+        {/* </div> */}
         <div className={styles.searchContainer}>
           <input
             type="text"
@@ -240,9 +241,9 @@ function Home() {
             </Link>
           </>
         )}
- 
-         {/* SECTION SUGGESTIONS */}
-         {showSearchSuggResults && (
+
+        {/* SECTION SUGGESTIONS */}
+        {showSearchSuggResults && (
           <>
             <h2 className={styles.sectionTitle}>You might also like...</h2>
             <div className={styles.contentCard}>{searchSuggResultsData}</div>
