@@ -22,10 +22,6 @@ function Game() {
     setRateModalVisible(false)
   }
 
-
-
-
-
   const gameDetails = useSelector((state) => state.game.details); // redistribuer les données importées dans le reducer via Home lors du clic
   const wishlist = useSelector((state) => state.wishlist.value);
   const isLightmode = useSelector((state) => state.config.value.mode); // pour Paul
