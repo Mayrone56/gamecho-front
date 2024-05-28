@@ -6,9 +6,10 @@ import user from '../reducers/user'
 import config from '../reducers/config';
 import wishlist from '../reducers/wishlist';
 import game from '../reducers/game';
+import rating from '../reducers/rating';
 
 const store = configureStore({
-  reducer: { user, config, wishlist, game},
+  reducer: { user, config, wishlist, game, rating},
  });
 
 
