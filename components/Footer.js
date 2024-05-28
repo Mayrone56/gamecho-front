@@ -11,11 +11,11 @@ function Footer() {
         <Link href="/">
           <span className={styles.marginSideSmall}>
             <Image src="/icons/social/Instagram.svg" alt="Logo Instagram" width={24} height={24} className={styles.icon} />
-            </span>
+          </span>
         </Link>
         <Link href="/">
-<span className={styles.marginSideSmall}>
-          <Image src="/icons/social/X.svg" alt="Logo X" width={24} height={24} className={styles.icon} />
+          <span className={styles.marginSideSmall}>
+            <Image src="/icons/social/X.svg" alt="Logo X" width={24} height={24} className={styles.icon} />
           </span>
         </Link>
       </div>

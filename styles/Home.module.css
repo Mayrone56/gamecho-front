@@ -29,6 +29,25 @@
   padding-bottom: 32px;
 }
 
+/*BANNER*/
+.bannerWelcomeMobile {
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  display: flex;
+  background-image: url('../public/Banner_welcome_without_text.jpg');
+  /* flex-direction: column; */
+  /* justify-content: flex-end; */
+  /* align-items: center; */
+  /* overflow: hidden; */
+  box-shadow: 0 0 50px #cf55edab;
+  height:100px
+} 
+
+.cropedBanner {
+  height: 120px;
+}
+
 
 /* CARDS */
 
@@ -91,6 +110,8 @@
   color: aliceblue;
 }
 
+
+
 .iconButton {
   display: flex;
   justify-content: center;
@@ -105,9 +126,24 @@
   bottom: -20px;
 }
 
+.iconButtonPink {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  border-radius: 40px;
+  border: 1px solid #FFF9E8;
+  height: 40px;
+  width: 40px;
+  background-color: #CF55ED;
+  cursor: pointer;
+  bottom: -20px;
+}
+
 .iconButton:hover {
   background-color: #3F3878;
 }
+
 
 .gameNameCard {
   font-size: 1.25em;

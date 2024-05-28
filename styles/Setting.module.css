@@ -1,9 +1,16 @@
-.maindark {
-    gap: 16px;
-    line-height: 1.15;
-    font-family: Roboto;
-    height: calc(100vh - 60px);
-    font-size: 16px;
+.containerdark {
+    height: 100vh;
+    width: 100vw;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    color: #FFF9E8;
+    background-color: #3F3878;
+  }
+  
+  .containerlight {
+    height: 100vh;
+    width: 100vw;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
@@ -22,13 +29,14 @@
     justify-content: space-between;
 }
 
-.content {
+.middleContainer {
     display: flex;
     flex-direction: column;
-    justify-content: center;
+    justify-content: flex-start;
     align-items: center;
+    height: 100%;
     padding: 0 24px;
-    gap: 24px
+    gap: 24px;
 }
 
 .iconContainer {
@@ -129,9 +137,22 @@
 
 .buttonlight:hover {
     background-color: #3F3878;
-  }
-  
+}
+
 .modal {
+<<<<<<< HEAD
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: #3F3878;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: black;
+    font-size: 20px;
+=======
   position: fixed;
   top: 0;
   left: 0;
@@ -143,6 +164,7 @@
   align-items: center;
   color: #242424;
   font-size: 20px;
+>>>>>>> ae3448f2987b1a3c0df78e0d7d4bf3b582bf3e91
 }
 
 .buttoncontainer {

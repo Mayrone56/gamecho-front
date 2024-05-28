@@ -67,21 +67,28 @@ function Header() {
         <div className={styles.navigation}>
           <div className={styles.burgerContainer}>
             <div className={styles.topMenuBurger}>
-              <Link href="/home">
-                <a className={styles.linkBurgerMenu} href="/home">Home</a>
-              </Link>
               <Link href="/profile">
-                <a className={styles.linkBurgerMenu} href="/home">Profile</a>
+              <button className={styles.seoncadryButton} >
+                  Profile
+                </button>
+      
               </Link>
               <Link href="/ratings">
-                <a className={styles.linkBurgerMenu} href="/home">Ratings</a>
+              <button className={styles.seoncadryButton}>
+                  Ratings
+                </button>
               </Link>
               <Link href="/wishlist">
-                <a className={styles.linkBurgerMenu} href="/home">Wishlist</a>
+              <button className={styles.seoncadryButton} >
+                  Wishlist
+                </button>
               </Link>
               <Link href="/setting">
-                <a className={styles.linkBurgerMenu} href="/home">Settings</a>
+              <button className={styles.seoncadryButton}>
+                  Settings
+                </button>
               </Link>
+
             </div>
             {/* Logout */}
             <button onClick={() => { router.push('/'); dispatch(logout()); }} className={styles.logout}>Logout</button>

@@ -31,7 +31,7 @@
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
-  height: 40%;
+  height: 40vh;
 }
 
 .topBannerContainer {
@@ -220,4 +220,8 @@
 
 /* .frame {
   default: none;
+<<<<<<< HEAD
 } */
+=======
+}
+>>>>>>> main
