@@ -1,6 +1,4 @@
 import styles from '../styles/AllReleases.module.css';
-import Header from './Header';
-import Footer from './Footer';
 import Link from "next/link";
 import Image from "next/image";
 import { useEffect, useState } from 'react';
@@ -75,32 +73,29 @@ function AllReleases() {
   /////FIN TEST LASTEST RELEASES SANDRINE
 
 
-  return (
-    <div className={isLightmode ? styles.containerlight : styles.containerdark}>
-      <Header />
-      <div className={styles.middleContainer}>
+      return (
+        <div className={isLightmode ? styles.containerlight : styles.containerdark}>
+          <div className={styles.middleContainer}>
 
 
 
-
-        {/*SECTION LATEST RELEASES*/}
-        {latestGamesData && (
-          <>
-            <h2 className={styles.sectionTitle}>Latest releases</h2>
-            <div className={styles.contentCard}>{latestReleases}</div>
-            <Link href="/all-releases">
-              <button className={styles.secondaryButton}>
-                See all search releases
-              </button>
-            </Link>
-          </>
-        )}
-
-      </div>
-
-      <Footer />
-    </div>
-  );
-}
+    
+            {/*SECTION LATEST RELEASES*/}
+            {latestGamesData && (
+              <>
+                <h2 className={styles.sectionTitle}>Latest releases</h2>
+                <div className={styles.contentCard}>{latestReleases}</div>
+                <Link href="/all-releases">
+                  <button className={styles.secondaryButton}>
+                    See all search releases
+                  </button>
+                </Link>
+              </>
+            )}
+    
+          </div>
+        </div>
+      );
+    }
 
 export default AllReleases;
