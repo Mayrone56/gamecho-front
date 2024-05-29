@@ -6,77 +6,122 @@ import { useSelector, useDispatch } from "react-redux";
 import { addToWishlist, removeFromWishlist } from "../reducers/wishlist";
 import { addRate, deleteRate } from "../reducers/rating";
 import { openCloseModal } from "../reducers/config";
-import { Modal } from 'antd'
+import { Modal } from "antd";
 import RateModal from "./RateModal";
 
 const ratingToEmoji = {
-  1: '/icons/emojiIcons/angry.svg',
-  2: '/icons/emojiIcons/sad.svg',
-  3: '/icons/emojiIcons/neutral.svg',
-  4: '/icons/emojiIcons/happy.svg',
-  5: '/icons/emojiIcons/love.svg',
+  1: "/icons/emojiIcons/angry.svg",
+  2: "/icons/emojiIcons/sad.svg",
+  3: "/icons/emojiIcons/neutral.svg",
+  4: "/icons/emojiIcons/happy.svg",
+  5: "/icons/emojiIcons/love.svg",
 };
 
-
 function Game() {
-  const modalVisible = useSelector((state) => state.config.value.modalOpen)
+  const modalVisible = useSelector((state) => state.config.value.modalOpen);
   const gameDetails = useSelector((state) => state.game.details); // redistribuer les données importées dans le reducer via Home lors du clic
   const wishlist = useSelector((state) => state.wishlist.value);
   const isLightmode = useSelector((state) => state.config.value.mode); // pour Paul
   const dispatch = useDispatch();
 
+  const [ratingScale, setRatingScale] = useState(5); // échelle du vote, avec les émojis, par défaut sauvegardé dans un état qu'on mettra à jour selon le ratingMode
+
   console.log("DETAILS", gameDetails); // pour connaître la structure de la réponse (normalement identifique à la BDD)
   const [ratingsList, setRatingsList] = useState([]);
-  const ratings = useSelector((state) => state.rating.value); // pour recuperer la valeur de notre 
+  const ratings = useSelector((state) => state.rating.value); // pour recuperer la valeur de notre
 
   useEffect(() => {
     //on construit une chaîne de requête en utilisant le nom du jeu à partir de gameDetails
-    const query = `name=${gameDetails.name}`
+    const query = `name=${gameDetails.name}`;
     fetch(`http://localhost:3000/games/ratings?${query}`)
-      .then(response => response.json())
-      .then(data => {
+      .then((response) => response.json())
+      .then((data) => {
         console.log("useEffect data", data);
-        setRatingsList(data.data)
+        setRatingsList(data.data);
+
+        // on vérifie la présence d'une clé "ratingMode", qui détermine l'échelle du vote, dans le premier tableau du document
+
+        let ratingMode;
+        if (data && data.data && data.data[0]) {
+          // IMPORTANT on doit vérifier étape par étape la présence du tableau
+
+          // Pourquoi ne pas juste faire juste if (data.data[0]) ? Parce qu'essayer d'accéder à un tableau à partir de données qui n'existent peut-etre pas car ON ACCEDE PAS A UNE CLE D'UNDEFINED
+
+          // avec les conditions chainées, "data && data.data && data.data[0]", si dès le data c'est undefined, le code n'execute pas la condition et continue !
+
+          // si on trouve le premier tableau retourné par la route
+          ratingMode = data.data[0].ratingMode; // on cible la clé "ratingMode" pour s'assurer d'avoir les bonnes valeurs et les convertir en aval et on sauvegarde la valeur de la clé dans une constante
+        }
+
+        // pour que la valeur du vote soit correctement traitée, on doit définir son échelle
+        // soit s'assurer que le nom d'une clé corresponde à l'échelle associée
+
+        if (ratingMode === "Out of 100") {
+          setRatingScale(100);
+        } else if (ratingMode === "Out of 10") {
+          // si le ratingMode du vote est sur 10, on modifie l'échelle
+          setRatingScale(10);
+        }
       });
   }, []);
 
   //Le tableau « ratingsList » est utilisé pour le rendu de chaque note individuelle.
-  const allRatings = ratingsList.map((vote, i) => {
-    //La date de notation est formatée à l'aide de la fonction toLocaleDateString() afin de l'afficher dans un format dd/mm/yyyy
-    const ratingDate = new Date(vote.ratingDate).toLocaleDateString();
-    return (
-      <div className={styles.rating}>
-        <div className={styles.userInfoContainer}>
-          {/*Les données peuplées de l'utilisateur sont un objet avec les clés suivantes: id, username, email, password, token, ratings, wishlist, __v.
+  const allRatings = ratingsList
+    ? ratingsList.map((vote, i) => {
+        //La date de notation est formatée à l'aide de la fonction toLocaleDateString() afin de l'afficher dans un format dd/mm/yyyy
+        const ratingDate = new Date(vote.ratingDate).toLocaleDateString();
+        return (
+          <div className={styles.rating}>
+            <div className={styles.userInfoContainer}>
+              {/*Les données peuplées de l'utilisateur sont un objet avec les clés suivantes: id, username, email, password, token, ratings, wishlist, __v.
           A cause de cela, React a eu un problème et n'a pas pu rendre une collection d'enfants qui sont un objet. Pour résoudre ce problème, on utilise Object.key() pour itérer à travers les clés de notre objet « user ». */}
-          {Object.keys(vote.user).map((key, index) => {
-            if (key === 'username') { // nous vérifions si la clé courante qui est itérée est 'username'
-              return (
-                <div key={index} className={styles.userDetail}>
-                  {/* <Image
+              {Object.keys(vote.user).map((key, index) => {
+                if (key === "username") {
+                  // nous vérifions si la clé courante qui est itérée est 'username'
+                  return (
+                    <div key={index} className={styles.userDetail}>
+                      {/* <Image
                     src="/icons/heart.svg"
                     alt="User's avatar"
                     width={24}
                     height={24}
                     className={styles.info}
                   /> */}
-                  <span className={styles.info}>Username: {vote.user[key]}</span> {/*nous rendons la valeur de notre cle "username"*/}
-                </div>
-              );
-            }
-          })}
-          <span className={styles.info}>Rating's date: {ratingDate}</span>
-        </div>
-        <div className={styles.ratingDetails}>
-          {/*La valeur de l'évaluation est convertie en emoji à l'aide d'une table de correspondance ratingToEmoji, et elle est affichée à l'aide du composant Image.*/}
-          <span className={styles.ratingInfo}>Rating: <Image src={ratingToEmoji[vote.rating]} alt={`Rating: ${vote.rating}`} width={24} height={24} /></span>
-          <span>Commentary: {vote.comment}</span>
-        </div>
-      </div>
-    )
-  });
+                      <span className={styles.info}>
+                        Username: {vote.user[key]}
+                      </span>{" "}
+                      {/*nous rendons la valeur de notre cle "username"*/}
+                    </div>
+                  );
+                }
+              })}
+              <span className={styles.info}>Rating's date: {ratingDate}</span>
+            </div>
+            <div className={styles.ratingDetails}>
+              {/*La valeur de l'évaluation est convertie en emoji à l'aide d'une table de correspondance ratingToEmoji, et elle est affichée à l'aide du composant Image.*/}
+              <span className={styles.ratingInfo}>
+                Rating:{" "}
+                <Image
+                  // ICI on dynamise la source de l'icône utilisée pour illustrer le vote
+                  // Il est nécessaire de se servir de l'échelle, enregistrée dans l'état, et de la diviser par 5 pour qu'elle puisse être associée à un chiffre de 1 à 5 et ce peu importe le ratingMode
+                  // Le Math.floor est essentiel pour arrondir le resultat et obtenir un nombre entier et exploitable
 
-  // FONCTION RATE EXTERNE POUR L'APPELER AILLEUR 
+                  src={
+                    ratingToEmoji[Math.floor(vote.rating / (ratingScale / 5))]
+                  }
+                  alt={`Rating: ${vote.rating}`}
+                  width={24}
+                  height={24}
+                />
+              </span>
+              <span>Commentary: {vote.comment}</span>
+            </div>
+          </div>
+        );
+      })
+    : null;
+
+  // FONCTION RATE EXTERNE POUR L'APPELER AILLEUR
   const isRated = (game) => {
     //On compare le nom de jeu que l'on vient de vote si il est présent dans notre tableau rating
     //Si c'est vrai alors c'est rated
@@ -92,16 +137,14 @@ function Game() {
     }
   };
 
-
   const showRateModal = () => {
     dispatch(openCloseModal(true));
-    console.log("CLICK HANDLE RATED")
+    console.log("CLICK HANDLE RATED");
   };
 
   const handleCancelRateModal = () => {
-    dispatch(openCloseModal(false))
-  }
-
+    dispatch(openCloseModal(false));
+  };
 
   //AJOUT TEST SANDRINE POUR AJOUTER RATING
   // const handleSearchSuggestions = async () => {
@@ -144,8 +187,7 @@ function Game() {
   // };
 
   //     // router.push("game/");
-  // }; 
-
+  // };
 
   // //RATED GAME DEEBUT AVEC VALENTIN
 
@@ -172,8 +214,7 @@ function Game() {
   //     }),
   //   }),
   //     router.push("game/");
-  // }; 
-
+  // };
 
   return (
     <div className={styles.container}>
@@ -189,17 +230,14 @@ function Game() {
           }}
         >
           <div className={styles.topBannerContainer}>
-            <button
-              className={styles.iconButton}
-              onClick={() => handleLike()}
-            >
+            <button className={styles.iconButton} onClick={() => handleLike()}>
               {" "}
               <Image
                 src="/icons/heart.svg"
                 alt="Add to wishlist"
                 width={24}
                 height={24}
-              // className={styles.likeIcon}
+                // className={styles.likeIcon}
               />
             </button>
             <button
@@ -253,8 +291,13 @@ function Game() {
             {/* attribut propre à React qui permet de convertir du code HTML (ce qu'on recoit de l'API) en texte sur React / voir doc : https://react.dev/reference/react-dom/components/common#dangerously-setting-the-inner-html */}
           </div>
           <div className={styles.ratingsContainer}>
-            <h3>Game's ratings</h3>
-            {allRatings}
+            {ratingsList && ratingsList.length > 0 && (
+              <>
+                {" "}
+                <h3>Game's ratings</h3>
+                {allRatings}{" "}
+              </>
+            )}
           </div>
           <div className={styles.trailerContainer}>
             <h3>Trailer</h3>
@@ -262,10 +305,14 @@ function Game() {
           </div>
         </div>
       </div>
-      <Modal className={styles.frame} onCancel={() => handleCancelRateModal()} open={modalVisible} footer={null}>
+      <Modal
+        className={styles.frame}
+        onCancel={() => handleCancelRateModal()}
+        open={modalVisible}
+        footer={null}
+      >
         <RateModal />
       </Modal>
-
     </div>
   );
 }
