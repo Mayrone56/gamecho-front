@@ -8,7 +8,6 @@ const moment = require("moment");
 moment.locale("fr");
 
 function RateModal(props) {
-
   const gameDetails = useSelector((state) => state.game.details);
 
   const dispatch = useDispatch();
@@ -16,9 +15,15 @@ function RateModal(props) {
   const user = useSelector((state) => state.user.value);
 
   const [newReview, setNewReview] = useState("");
-  const [rateEmoji, setRateEmoji] = useState([])
+  const [rateEmoji, setRateEmoji] = useState(0); // vote sans valeur indiquée
 
-  const emojiIcons = ["/icons/emojiIcons/angry.svg", "/icons/emojiIcons/sad.svg", "/icons/emojiIcons/neutral.svg", "/icons/emojiIcons/happy.svg", "/icons/emojiIcons/happy.svg"]
+  const emojiIcons = [
+    "/icons/emojiIcons/angry.svg",
+    "/icons/emojiIcons/sad.svg",
+    "/icons/emojiIcons/neutral.svg",
+    "/icons/emojiIcons/happy.svg",
+    "/icons/emojiIcons/happy.svg",
+  ];
 
   const date = moment().format("L");
 
@@ -30,7 +35,6 @@ function RateModal(props) {
       setNewReview(e.target.value);
     }
   };
-
 
   const handleWishlistClick = (game) => {
     //la fonction vérifie s'il existe dans la wishlist un jeu portant le même nom que le jeu sur lequel on clique.
@@ -52,10 +56,10 @@ function RateModal(props) {
     const ratingData = {
       username: user.username, // on exploite Redux et l'username sauvegardé
       gameName: gameDetails.name, // le nom du jeu qui servira à le trouver côté BACKEND
-      rating: 5, // valeur d'exemple (de 1 à 5 selon l'emoji)
+      rating: rateEmoji, // valeur d'exemple (de 1 à 5 selon l'emoji)
       ratingMode: "emoji", // pour la conversion, inexploité
       comment: newReview, // on récupère la valeur de la review (useState sur un input)
-      ratingDate: new Date().getDate(),// conversion en Date pour que Mongoose accepte les données... pas de paramètre = new Date / Comme d'habitude les dates c'est L'ENFER, //
+      ratingDate: new Date().getDate(), // conversion en Date pour que Mongoose accepte les données... pas de paramètre = new Date / Comme d'habitude les dates c'est L'ENFER, //
       //Pour le moment Date est le composant javascript de base, il faudra utiliser si on a le temps moment
       gameDetails: gameDetails, // reducer game qui contient TOUTES les données du jeu
     };
@@ -73,31 +77,37 @@ function RateModal(props) {
       setNewReview(""); // on vide la valeur de la review qui est dans input de la modal du rating via un setter
 
       //Rated
-      dispatch(addRate(ratingData));//Ajoute au tableau qui permettra d'afficher comme pour wishlist sur home, mais sur la page ratings
+      dispatch(addRate(ratingData)); //Ajoute au tableau qui permettra d'afficher comme pour wishlist sur home, mais sur la page ratings
       console.log(ratingData, "added to rating");
-
     } else {
       console.log("Error submitting rating");
       // si erreur quelconque, message
     }
   };
 
-
-
   const personalEmoji = [];
   for (let i = 0; i < 5; i++) {
-    // let style = { 'cursor': 'pointer' };
+    let style = { cursor: "pointer" };
     if (i < rateEmoji) {
-      // style = { 'color': '#2196f3', 'cursor': 'pointer' };
+      // style = { cursor: "pointer", filter: "grayscale(0%)", color: "#2196f3" };
+    } else {
+      // style = { cursor: "pointer", filter: "grayscale(100%)" };
     }
-    personalEmoji.push(<Image src={emojiIcons[i]} key={i} width={50}
-      height={50} onClick={() => setRateEmoji(i + 1)} />);
+    personalEmoji.push(
+      <Image
+        src={emojiIcons[i]}
+        key={i}
+        width={50}
+        height={50}
+        onClick={() => setRateEmoji(i + 1)}
+      />
+    );
   }
 
-  console.log(rateEmoji)
+  console.log(rateEmoji);
   return (
     <div className={styles.container}>
-      <h2> How much did you like it?</h2>
+      <h3 className={styles.title}> How much did you like it?</h3>
       <div className={styles.iconContainer}>
         {/* <Image
           className={styles.emoji}
@@ -137,7 +147,8 @@ function RateModal(props) {
         {personalEmoji}
       </div>
       <div className={styles.inputContainer}>
-        <p className={styles.resetMargin}>Your review</p><br></br>
+        <p className={styles.resetMarginTitle}>Your review</p>
+        <br></br>
         <textarea
           type="text"
           placeholder="Add a review"
@@ -145,7 +156,7 @@ function RateModal(props) {
           onChange={(e) => handleInputChange(e)}
           value={newReview}
         ></textarea>
-        <p className={styles.resetMargin}>{newReview.length}/300</p>
+        <p className={styles.resetMarginLength}>{newReview.length}/300</p>
         <button className={styles.button} onClick={handleVote}>
           SUBMIT
         </button>
@@ -160,12 +171,11 @@ function RateModal(props) {
         />
 
         <p>
-          RATED BY {user.username} ON {date}
+          RATED BY {user.username.toUpperCase()} ON {date}{" "}
+          {/* Username affiché en majuscule si vote   */}
         </p>
         {/* Au click sur le bouton, nous enregistrons le   */}
-        <div>
-
-        </div>
+        <div></div>
       </div>
     </div>
   );

@@ -70,6 +70,10 @@ image {
   color: white;
 }
 
+.anticon.anticon-close svg {
+  fill: white !important; /* vise la classe native de antd de la X */
+}
+
   /* - Desktop */
 .ant-modal {
   width: 50% !important; /* par défaut, cible l'affichage Desktop */
