@@ -106,10 +106,37 @@
   padding: 16px;
 }
 
-.descriptionContainer {
-  background-color: #644ace;
-  margin-top: 24px;
+.ratingsContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
   padding: 16px;
+  width: 100%;
+}
+
+.rating {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
+.userInfoContainer {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+.info {
+  margin-right: 10px;
+  margin-left: 10px;
+}
+
+.ratingDetails {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
 }
 
 .videoContainer {

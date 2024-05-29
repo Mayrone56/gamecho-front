@@ -1,7 +1,7 @@
 //test commit
 import styles from "../styles/Game.module.css";
 import Image from "next/image";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { addToWishlist, removeFromWishlist } from "../reducers/wishlist";
 import { addRate, deleteRate } from "../reducers/rating";
@@ -11,8 +11,38 @@ import RateModal from "./RateModal";
 
 
 function Game() {
-
+  const [ratingsList, setRatingsList] = useState([]);
   const ratings = useSelector((state) => state.rating.value); // pour recuperer la valeur de notre 
+
+  useEffect(() => {
+    const query = "name=Senua's Saga: Hellblade II"
+    fetch(`http://localhost:3000/games/ratings?${query}`)
+      .then(response => response.json())
+      .then(data => {
+        console.log("useEffect data", data);
+        setRatingsList(data.data)
+      });
+  }, []);
+
+  const allRatings = ratingsList.map((vote, i) => (
+    <div className={styles.rating}>
+      <div className={styles.userInfoContainer}>
+        <Image
+          src="/icons/heart.svg"
+          alt="User's avatar"
+          width={24}
+          height={24}
+          className={styles.info}
+        />
+        <span className={styles.info}>Username: {vote.user}</span>
+        <span className={styles.info}>Rating's date: {vote.ratingDate}</span>
+      </div>
+      <div className={styles.ratingDetails}>
+        <span>Rating: {vote.rating}</span>
+        <span>Commentary: {vote.comment}</span>
+      </div>
+    </div>
+  ));
 
   // FONCTION RATE EXTERNE POUR L'APPELER AILLEUR 
   const isRated = (game) => {
@@ -32,14 +62,14 @@ function Game() {
 
 
   const showRateModal = () => {
-    dispatch(openCloseModal(true));   
+    dispatch(openCloseModal(true));
     console.log("CLICK HANDLE RATED")
   };
 
   const handleCancelRateModal = () => {
     dispatch(openCloseModal(false))
   }
-  const modalVisible=useSelector((state)=>state.config.value.modalOpen)
+  const modalVisible = useSelector((state) => state.config.value.modalOpen)
   const gameDetails = useSelector((state) => state.game.details); // redistribuer les données importées dans le reducer via Home lors du clic
   const wishlist = useSelector((state) => state.wishlist.value);
   const isLightmode = useSelector((state) => state.config.value.mode); // pour Paul
@@ -48,15 +78,15 @@ function Game() {
   console.log("DETAILS", gameDetails); // pour connaître la structure de la réponse (normalement identifique à la BDD)
 
   //AJOUT TEST SANDRINE POUR AJOUTER RATING
-  const handleSearchSuggestions = async () => {
-    const response = await fetch(
-      `http://localhost:3000/games`
-    );
+  // const handleSearchSuggestions = async () => {
+  //   const response = await fetch(
+  //     `http://localhost:3000/games`
+  //   );
 
-    if (!response.ok) {
-      return;
-    }
-  }
+  //   if (!response.ok) {
+  //     return;
+  //   }
+  // }
 
   //RATED GAME TEST 2
 
@@ -135,7 +165,7 @@ function Game() {
           <div className={styles.topBannerContainer}>
             <button
               className={styles.iconButton}
-             onClick={() => handleLike()}
+              onClick={() => handleLike()}
             >
               {" "}
               <Image
@@ -195,6 +225,10 @@ function Game() {
               dangerouslySetInnerHTML={{ __html: gameDetails.description }}
             ></div>{" "}
             {/* attribut propre à React qui permet de convertir du code HTML (ce qu'on recoit de l'API) en texte sur React / voir doc : https://react.dev/reference/react-dom/components/common#dangerously-setting-the-inner-html */}
+          </div>
+          <div className={styles.ratingsContainer}>
+            <h3>Game's ratings</h3>
+            {allRatings}
           </div>
           <div className={styles.trailerContainer}>
             <h3>Trailer</h3>
