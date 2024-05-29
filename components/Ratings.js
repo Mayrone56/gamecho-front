@@ -1,13 +1,16 @@
 import styles from '../styles/Rating.module.css';
 import Header from '../components/Header';
 import Footer from '../components/Footer';
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useSelector, useDispatch } from 'react-redux';
 import { addRate, deleteRate } from "../reducers/rating";
 import Image from 'next/image';
+import { useRouter } from "next/router";
 import game, { getGameDetails } from "../reducers/game";
 
+
 function Ratings() {
+    const rooter = useRouter()
     const dispatch = useDispatch();
     const isLightmode = useSelector((state) => state.config.value.mode);//Cible le mode dans le reducer setting
 
@@ -17,11 +20,22 @@ function Ratings() {
     //Affiche la liste des ratings
     const ratings = useSelector((state) => state.rating.value);
 
-    //Delete rating
+    // //Delete rating qui marche mais sans back
     const handleDelete = (event, game) => {
         event.stopPropagation();
         dispatch(deleteRate(game));
     };
+
+    //DEBUT DELETE RATING SANDRINE appel back
+    useEffect(() => {
+
+        fetch('http://localhost:3000/ratings',
+        { method: 'DELETE' })
+          .then(response => response.json())
+          .then(data => setArrayRating(data.arrayRating))
+
+      }, []);
+
 
     let games = <p>No game is rated</p>;
     if (ratings.length > 0) {

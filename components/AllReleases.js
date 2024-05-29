@@ -26,6 +26,7 @@ function AllReleases() {
       const response = await fetch('http://localhost:3000/games/latestreleased', {
         cache: "force-cache",
       })
+      // Convention pour vérifier la réception du fetch
       if (!response.ok) {
         console.log("Response latestreleased was not ok");
         return;
