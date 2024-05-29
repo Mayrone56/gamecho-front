@@ -1,0 +1,106 @@
+.card {
+    position: relative;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size:cover;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    align-items: center;
+    border-radius: 40px;
+    background-color: #644ACE;
+    height: 400px;
+    width: 70vw;
+    min-height: 120px;
+    min-width: 80px;
+    max-height: 400px;
+    max-width: 390px;
+    cursor: pointer;
+    transition: box-shadow 0.3s ease;
+    margin: 24px 16px;
+  }
+
+  .containerdark {
+    height: 100vh;
+    width: 100vw;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    color: #FFF9E8;
+  }
+  
+  .containerlight{
+    height: 100vh;
+    width: 100vw;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    color: #242424;
+    background-color: #F0EFFF;
+  }
+
+  .middleContainer {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    height: 100%;
+  }
+
+  /* CARDS */
+
+.contentCard {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.card:hover {
+    box-shadow: 0 0 50px #cf55edab;
+  
+    /* animation: gradient 10s ease infinite; */
+    transition: filter 0.2s ease;
+    filter: brightness(1.1);
+  
+    /* transition: transform 0.3s ease;
+    transform: translateY(5px); */
+  
+    transition: transform 0.5s ease-in-out;
+    transform: scale(1.03);
+  }
+  
+  .icon {
+    height: 24px;
+    width: 24px;
+    cursor: pointer;
+  }
+  
+  .likeIcon {
+    color: aliceblue;
+  }
+  
+  .iconButton {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    border-radius: 40px;
+    border: 1px solid #FFF9E8;
+    height: 40px;
+    width: 40px;
+    background-color: #9592B8;
+    cursor: pointer;
+    bottom: -20px;
+  }
+  
+  .iconButton:hover {
+    background-color: #3F3878;
+  }
+  
+  .gameNameCard {
+    font-size: 1.25em;
+    line-height: 24px;
+    font-weight: 500;
+    color: rgb(255, 255, 255) ;
+    padding: 8px 16px;
+  }
