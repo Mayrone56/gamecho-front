@@ -6,10 +6,11 @@ import { useSelector, useDispatch } from 'react-redux';
 import { addRate, deleteRate } from "../reducers/rating";
 import Image from 'next/image';
 import { useRouter } from "next/router";
-import game, { getGameDetails } from "../reducers/game";
+import { getGameDetails } from "../reducers/game";
 
 
 function Ratings() {
+
     const rooter = useRouter()
     const dispatch = useDispatch();
     const isLightmode = useSelector((state) => state.config.value.mode);//Cible le mode dans le reducer setting
@@ -19,23 +20,33 @@ function Ratings() {
 
     //Affiche la liste des ratings
     const ratings = useSelector((state) => state.rating.value);
+    //Necessaire piyr trouver le rating par user
+    const user = useSelector((state) => state.user.value);
+    console.log("USER ", user);
+
+    const game = useSelector((state) => state.game.details)
+    console.log("GAME ", game)
+    console.log("GAME NAME", game.name)
 
     // //Delete rating qui marche mais sans back
-    const handleDelete = (event, game) => {
-        event.stopPropagation();
-        dispatch(deleteRate(game));
+    // const deleteRating = (event, game) => {
+    //     event.stopPropagation();
+    //     dispatch(deleteRate(game));
+    // };
+
+    const ratingId = useSelector((state) => state.rating.value) //
+
+    const handleDelete = (rating, event) => {
+        fetch(`http://localhost:3000/ratings/${user.token}/${game.name}`, {
+            method: 'DELETE',
+            headers: { 'Content-Type': 'application/json' },
+        })
+        .then(response => response.json())
+        .then(data => {
+            //event.stopPropagation();
+            data.result && dispatch(deleteRate(rating));
+        })
     };
-
-    //DEBUT DELETE RATING SANDRINE appel back
-    useEffect(() => {
-
-        fetch('http://localhost:3000/ratings',
-        { method: 'DELETE' })
-          .then(response => response.json())
-          .then(data => setArrayRating(data.arrayRating))
-
-      }, []);
-
 
     let games = <p>No game is rated</p>;
     if (ratings.length > 0) {
