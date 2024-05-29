@@ -10,7 +10,6 @@
   margin: 0 !important; /* écrase le style global */
   align-self: flex-start;
   margin-left: 12px !important;
-  
 }
 
 .resetMarginLength {
@@ -36,9 +35,9 @@
 .inputnote {
   padding: 10px 12px 10px 12px;
   border-radius: 40px;
-  background-color: #F2F4FE;
-  color: #3F3878;
-  border: 1px #DFD8E7 solid;
+  background-color: #f2f4fe;
+  color: #3f3878;
+  border: 1px #dfd8e7 solid;
   width: 200px;
   font-size: 2em;
   text-align: center;
@@ -76,7 +75,6 @@
 
 .emoji {
   margin: 10px;
-  /* cursor: pointer; */
 }
 
 .bottomContainer {
