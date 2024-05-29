@@ -12,14 +12,12 @@ moment.locale("fr");
 function RateModal(props) {
 const dispatch = useDispatch();
   const gameDetails = useSelector((state) => state.game.details);
-const ismodalOpen=useSelector((state)=>state.config.value.modalOpen)
   
   const urlAvatar = useSelector((state) => state.user.value.avatar);
   const user = useSelector((state) => state.user.value);
-  const userRatingMode=useSelector((state)=>state.config.value.ratingMode);
-  const closeModal=dispatch
+  const userRatingMode=useSelector((state)=>state.config.value.ratingMode); // selectione la valeur de l'état mode dans le reducer config
   const [newReview, setNewReview] = useState("");
-  const [rateEmoji, setRateEmoji] = useState(0); // vote sans valeur indiquée
+  const [rate, setRate] = useState(0); // vote sans valeur indiquée
 
   const emojiIcons = [
     "/icons/emojiIcons/angry.svg",
@@ -60,8 +58,8 @@ const ismodalOpen=useSelector((state)=>state.config.value.modalOpen)
     const ratingData = {
       username: user.username, // on exploite Redux et l'username sauvegardé
       gameName: gameDetails.name, // le nom du jeu qui servira à le trouver côté BACKEND
-      rating: rateEmoji, // valeur d'exemple (de 1 à 5 selon l'emoji)
-      ratingMode: "emoji", // pour la conversion, inexploité
+      rating: rate, // valeur d'exemple (de 1 à 5 selon l'emoji)
+      ratingMode: userRatingMode, // pour la conversion, inexploité
       comment: newReview, // on récupère la valeur de la review (useState sur un input)
       ratingDate: new Date().getDate(), // conversion en Date pour que Mongoose accepte les données... pas de paramètre = new Date / Comme d'habitude les dates c'est L'ENFER, //
       //Pour le moment Date est le composant javascript de base, il faudra utiliser si on a le temps moment
@@ -75,7 +73,7 @@ const ismodalOpen=useSelector((state)=>state.config.value.modalOpen)
       },
       body: JSON.stringify(ratingData),
     });
-
+    console.log(response)
     if (response.ok) {
       console.log("Rating submitted successfully");
       setNewReview(""); // on vide la valeur de la review qui est dans input de la modal du rating via un setter
@@ -83,7 +81,7 @@ const ismodalOpen=useSelector((state)=>state.config.value.modalOpen)
       //Rated
       dispatch(addRate(ratingData)); //Ajoute au tableau qui permettra d'afficher comme pour wishlist sur home, mais sur la page ratings
       console.log(ratingData, "added to rating");
-      dispatch(openCloseModal(false))
+      dispatch(openCloseModal(false));
 
     } else {
       console.log("Error submitting rating");
@@ -94,13 +92,13 @@ const ismodalOpen=useSelector((state)=>state.config.value.modalOpen)
   const personalEmoji = [];
   for (let i = 0; i < 5; i++) {
     let style = { cursor: "pointer" };
-    if (i < rateEmoji) {
-      // style = { cursor: "pointer", filter: "grayscale(0%)", color: "#2196f3" };
+    if (i < rate) {
+       style = { cursor: "pointer", filter: "grayscale(0%)", color: "#2196f3" };
     } else {
-      // style = { cursor: "pointer", filter: "grayscale(100%)" };
+       style = { cursor: "pointer", filter: "grayscale(100%)" };
     }
     personalEmoji.push(<Image src={emojiIcons[i]} key={i} width={50}
-      height={50} onClick={() => setRateEmoji(i + 1)} />);
+      height={50} onClick={() => setRate(i + 1)} />);
   };
 
   let ratingMethod; //affichage conditionnelle en fonction de l'état du reducer setting soit emoji
@@ -113,7 +111,7 @@ const ismodalOpen=useSelector((state)=>state.config.value.modalOpen)
       {
         ratingMethod=(
           <div>
-              <input className={styles.inputnote} type="number" min="0" max="10" placeholder="Out of 10"/>
+              <input className={styles.inputnote} type="number" min="0" max="10" placeholder="Out of 10" onChange={(e)=>setRate(e.target.value)}/>
           </div>
         )
       }
@@ -121,7 +119,7 @@ const ismodalOpen=useSelector((state)=>state.config.value.modalOpen)
         {
           ratingMethod=(
             <div>
-              <input className={styles.inputnote} type="number"  min="0" max="100" placeholder="Out of 100"/>
+              <input className={styles.inputnote} type="number"  min="0" max="100" placeholder="Out of 100" onChange={(e)=>setRate(e.target.value)}/>
             </div>
           )
         }
@@ -130,7 +128,6 @@ const ismodalOpen=useSelector((state)=>state.config.value.modalOpen)
 
   
 
-  console.log(ratingMethod)
   return (
     <div className={styles.container}>
       <h3 className={styles.title}> How much did you like it?</h3>

@@ -12,9 +12,6 @@ import RateModal from "./RateModal";
 
 function Game() {
 
-
-  const [rateModalVisible, setRateModalVisible] = useState(false);
-
   const ratings = useSelector((state) => state.rating.value); // pour recuperer la valeur de notre 
 
   // FONCTION RATE EXTERNE POUR L'APPELER AILLEUR 
@@ -40,7 +37,7 @@ function Game() {
   };
 
   const handleCancelRateModal = () => {
-    setRateModalVisible(false)
+    dispatch(openCloseModal(false))
   }
   const modalVisible=useSelector((state)=>state.config.value.modalOpen)
   const gameDetails = useSelector((state) => state.game.details); // redistribuer les données importées dans le reducer via Home lors du clic
