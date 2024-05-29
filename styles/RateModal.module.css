@@ -111,7 +111,7 @@
   font-size: 16px;
   font-weight: 600;
   cursor: pointer;
-  margin: 16px 0 32px 0;
+  margin: 16px 0 16px 0;/* changed the bottom from 32 to 16 */
   width: 250px;
 }
 
@@ -127,7 +127,7 @@
   height: 44px;
   min-width: 160px;
   padding: 10px 24px 10px 24px;
-  background-color: #3f3878;
+  background-color: #9592B8;
   color: #f0efff;
   border-radius: 40px;
   border: 1px #f0efff solid;
@@ -145,4 +145,32 @@
 
 .bottomContainer {
   gap: 8px;
+  margin-bottom: 10px;
+}
+
+.logoTitle {
+  margin-right: 20%;
+  margin-left: 20;
+  display: flex;
+  line-height: 40px;
+  font-size: 32px;
+  text-align: center;
+}
+
+.hook {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin-top: 20px;
+}
+
+@media (max-width: 768px) {
+  .yourRating {
+    font-size: 12px !important;
+  }
+  .bottomContainer {
+    gap: 10px;
+    margin-bottom: 10px;
+  }
 }
