@@ -23,6 +23,20 @@
   color: #3f3878;
 }
 
+.inputnote {
+  padding: 10px 12px 10px 12px;
+  border-radius: 40px;
+  background-color: #F2F4FE;
+  color: #3F3878;
+  border: 1px #DFD8E7 solid;
+  width: 200px;
+  font-size: 2em;
+  text-align: center;
+  font-weight: 500;
+  /* position: absolute;  */
+  margin-right: 16px;
+}
+
 .input::placeholder {
   color: #9592b8;
 }

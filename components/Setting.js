@@ -50,7 +50,7 @@ function Setting() {
 
 
     const note = [
-        'Emojis', 'Out of 10', 'Out of 100', 'Tag'
+        'Emojis', 'Out of 10', 'Out of 100', 
     ]; // liste des options disponible pour le Dropdown contenant la façon de noter.
 
     const privacy = [
@@ -148,7 +148,7 @@ function Setting() {
                             <Image src="/icons/trash.svg" alt="trash" width={24} height={24} className={isLightmode ? styles.iconlight : styles.icondark} />
                         </div>
                         <div className={styles.textContainer}>
-                            <p>Delete account {ratingMethode}</p>
+                            <p>Delete account</p>
                         </div>
                         <div className={styles.dropdownContainer}>
                             <button className={isLightmode ? styles.buttonlight : styles.buttondark} onClick={() => handleModal()}>Delete</button>

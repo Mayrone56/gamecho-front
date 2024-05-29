@@ -4,6 +4,7 @@ import { useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import "moment/locale/fr";
 import { addRate } from "../reducers/rating";
+
 const moment = require("moment");
 moment.locale("fr");
 
@@ -14,7 +15,7 @@ function RateModal(props) {
   const dispatch = useDispatch();
   const urlAvatar = useSelector((state) => state.user.value.avatar);
   const user = useSelector((state) => state.user.value);
-
+  const userRatingMode=useSelector((state)=>state.config.value.ratingMode);
   const [newReview, setNewReview] = useState("");
   const [rateEmoji, setRateEmoji] = useState([])
 
@@ -92,9 +93,36 @@ function RateModal(props) {
     }
     personalEmoji.push(<Image src={emojiIcons[i]} key={i} width={50}
       height={50} onClick={() => setRateEmoji(i + 1)} />);
-  }
+  };
 
-  console.log(rateEmoji)
+  let ratingMethod; //affichage conditionnelle en fonction de l'état du reducer setting soit emoji
+  if(userRatingMode==="Emojis")
+    {
+      ratingMethod=personalEmoji;
+    }
+
+    else if(userRatingMode==="Out of 10")
+      {
+        ratingMethod=(
+          <div>
+              <input className={styles.inputnote} type="number" min="0" max="10" placeholder="Out of 10"/>
+          </div>
+        )
+      }
+    else if (userRatingMode==="Out of 100")
+        {
+          ratingMethod=(
+            <div>
+              <input className={styles.inputnote} type="number" min="0" max="100" placeholder="Out of 100"/>
+            </div>
+          )
+        }
+
+   
+
+  
+
+  console.log(ratingMethod)
   return (
     <div className={styles.container}>
       <h2> How much did you like it?</h2>
@@ -134,7 +162,7 @@ function RateModal(props) {
           width={50}
           height={50}
         /> */}
-        {personalEmoji}
+        {ratingMethod}
       </div>
       <div className={styles.inputContainer}>
         <p className={styles.resetMargin}>Your review</p><br></br>
@@ -164,7 +192,6 @@ function RateModal(props) {
         </p>
         {/* Au click sur le bouton, nous enregistrons le   */}
         <div>
-
         </div>
       </div>
     </div>
