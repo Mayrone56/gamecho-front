@@ -14,11 +14,11 @@ function Setting() {
     const rooter = useRouter()
     const dispatch = useDispatch();
 
-    const [modalVisible, setModalVisible] = useState(false);
+    const [modalVisible, setModalVisible] = useState(false); // hook d'état pour la modale de confirmation du bouton delete account
 
     const user = useSelector((state) => state.user.value.username) //cible la valeur du nom de l'etat user
     const isLightmode = useSelector((state) => state.config.value.mode);//Cible le mode dans le reducer setting qui est par defaut à False
-    const ratingMethode = useSelector((state) => state.config.value.ratingMode)
+    
 
     // fonction qui passe l'état de la modale a vrai
     const handleModal = () => {
@@ -49,7 +49,7 @@ function Setting() {
 
 
     const note = [
-        'Emojis', 'Out of 10', 'Out of 100', 'Tag'
+        'Emojis', 'Out of 10', 'Out of 100', 
     ]; // liste des options disponible pour le Dropdown contenant la façon de noter.
 
     const privacy = [
@@ -147,7 +147,7 @@ function Setting() {
                             <Image src="/icons/trash.svg" alt="trash" width={24} height={24} className={isLightmode ? styles.iconlight : styles.icondark} />
                         </div>
                         <div className={styles.textContainer}>
-                            <p>Delete account {ratingMethode}</p>
+                            <p>Delete account</p>
                         </div>
                         <div className={styles.dropdownContainer}>
                             <button className={isLightmode ? styles.buttonlight : styles.buttondark} onClick={() => handleModal()}>Delete</button>

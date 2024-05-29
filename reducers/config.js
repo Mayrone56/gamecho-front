@@ -4,6 +4,7 @@ const initialState={
     value:{
         mode:false,
         ratingMode:'Emojis',
+        modalOpen:false,
     }
 }
 
@@ -17,9 +18,13 @@ export const configSlice=createSlice({
 
         changeRatingMode:(state,action)=>{
             state.value.ratingMode=action.payload
-        }
+        },
+        openCloseModal:(state,action)=>{
+            state.value.modalOpen=action.payload
+          }
+
     },
 });
 
-export const {switchMode,changeRatingMode} = configSlice.actions;
+export const {switchMode, changeRatingMode, openCloseModal} = configSlice.actions;
 export default configSlice.reducer;
