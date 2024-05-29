@@ -14,11 +14,11 @@ function Setting() {
     const rooter = useRouter()
     const dispatch = useDispatch();
 
-    const [modalVisible, setModalVisible] = useState(false);
+    const [modalVisible, setModalVisible] = useState(false); // hook d'état pour la modale de confirmation du bouton delete account
 
     const user = useSelector((state) => state.user.value.username) //cible la valeur du nom de l'etat user
     const isLightmode = useSelector((state) => state.config.value.mode);//Cible le mode dans le reducer setting qui est par defaut à False
-    const ratingMethode = useSelector((state) => state.config.value.ratingMode)
+    
 
     // fonction qui passe l'état de la modale a vrai
     const handleModal = () => {
