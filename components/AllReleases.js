@@ -41,7 +41,6 @@ function AllReleases() {
     }
     fetchLatestGames();
   }, []);
-
   //FONCTION LIKE EXTERNE POUR L'APPELER AILLEUR SANDRINE
   const isAddedToWishlist = (game) => {
     return wishlist.some((wishlistItem) => wishlistItem.name === game.name);
