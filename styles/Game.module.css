@@ -119,6 +119,7 @@
   display: flex;
   flex-direction: column;
   width: 100%;
+  margin-bottom: 20px;
 }
 
 .userInfoContainer {
@@ -131,6 +132,18 @@
 .info {
   margin-right: 10px;
   margin-left: 10px;
+}
+
+.ratingInfo {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+  width: 100%;
+}
+
+.emoji {
+  margin-left: 10px !important;
 }
 
 .ratingDetails {

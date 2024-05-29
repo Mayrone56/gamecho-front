@@ -10,12 +10,12 @@ const moment = require("moment");
 moment.locale("fr");
 
 function RateModal(props) {
-const dispatch = useDispatch();
+  const dispatch = useDispatch();
   const gameDetails = useSelector((state) => state.game.details);
-  
+
   const urlAvatar = useSelector((state) => state.user.value.avatar);
   const user = useSelector((state) => state.user.value);
-  const userRatingMode=useSelector((state)=>state.config.value.ratingMode); // selectione la valeur de l'état mode dans le reducer config
+  const userRatingMode = useSelector((state) => state.config.value.ratingMode); // selectione la valeur de l'état mode dans le reducer config
   const [newReview, setNewReview] = useState("");
   const [rate, setRate] = useState(0); // vote sans valeur indiquée
 
@@ -61,7 +61,7 @@ const dispatch = useDispatch();
       rating: rate, // valeur d'exemple (de 1 à 5 selon l'emoji)
       ratingMode: userRatingMode, // pour la conversion, inexploité
       comment: newReview, // on récupère la valeur de la review (useState sur un input)
-      ratingDate: new Date().getDate(), // conversion en Date pour que Mongoose accepte les données... pas de paramètre = new Date / Comme d'habitude les dates c'est L'ENFER, //
+      ratingDate: new Date(), // conversion en Date pour que Mongoose accepte les données... pas de paramètre = new Date / Comme d'habitude les dates c'est L'ENFER, //
       //Pour le moment Date est le composant javascript de base, il faudra utiliser si on a le temps moment
       gameDetails: gameDetails, // reducer game qui contient TOUTES les données du jeu
     };
@@ -93,40 +93,37 @@ const dispatch = useDispatch();
   for (let i = 0; i < 5; i++) {
     let style = { cursor: "pointer" };
     if (i < rate) {
-       style = { cursor: "pointer", filter: "grayscale(0%)", color: "#2196f3" };
+      style = { cursor: "pointer", filter: "grayscale(0%)", color: "#2196f3" };
     } else {
-       style = { cursor: "pointer", filter: "grayscale(100%)" };
+      style = { cursor: "pointer", filter: "grayscale(100%)" };
     }
     personalEmoji.push(<Image src={emojiIcons[i]} key={i} width={50}
       height={50} onClick={() => setRate(i + 1)} />);
   };
 
   let ratingMethod; //affichage conditionnelle en fonction de l'état du reducer setting soit emoji
-  if(userRatingMode==="Emojis")
-    {
-      ratingMethod=personalEmoji;
-    }
+  if (userRatingMode === "Emojis") {
+    ratingMethod = personalEmoji;
+  }
 
-    else if(userRatingMode==="Out of 10")
-      {
-        ratingMethod=(
-          <div>
-              <input className={styles.inputnote} type="number" min="0" max="10" placeholder="Out of 10" onChange={(e)=>setRate(e.target.value)}/>
-          </div>
-        )
-      }
-    else if (userRatingMode==="Out of 100")
-        {
-          ratingMethod=(
-            <div>
-              <input className={styles.inputnote} type="number"  min="0" max="100" placeholder="Out of 100" onChange={(e)=>setRate(e.target.value)}/>
-            </div>
-          )
-        }
+  else if (userRatingMode === "Out of 10") {
+    ratingMethod = (
+      <div>
+        <input className={styles.inputnote} type="number" min="0" max="10" placeholder="Out of 10" onChange={(e) => setRate(e.target.value)} />
+      </div>
+    )
+  }
+  else if (userRatingMode === "Out of 100") {
+    ratingMethod = (
+      <div>
+        <input className={styles.inputnote} type="number" min="0" max="100" placeholder="Out of 100" onChange={(e) => setRate(e.target.value)} />
+      </div>
+    )
+  }
 
-   
 
-  
+
+
 
   return (
     <div className={styles.container}>

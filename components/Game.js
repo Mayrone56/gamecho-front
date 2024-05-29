@@ -9,13 +9,29 @@ import { openCloseModal } from "../reducers/config";
 import { Modal } from 'antd'
 import RateModal from "./RateModal";
 
+const ratingToEmoji = {
+  1: '/icons/emojiIcons/angry.svg',
+  2: '/icons/emojiIcons/sad.svg',
+  3: '/icons/emojiIcons/neutral.svg',
+  4: '/icons/emojiIcons/happy.svg',
+  5: '/icons/emojiIcons/love.svg',
+};
+
 
 function Game() {
+  const modalVisible = useSelector((state) => state.config.value.modalOpen)
+  const gameDetails = useSelector((state) => state.game.details); // redistribuer les données importées dans le reducer via Home lors du clic
+  const wishlist = useSelector((state) => state.wishlist.value);
+  const isLightmode = useSelector((state) => state.config.value.mode); // pour Paul
+  const dispatch = useDispatch();
+
+  console.log("DETAILS", gameDetails); // pour connaître la structure de la réponse (normalement identifique à la BDD)
   const [ratingsList, setRatingsList] = useState([]);
   const ratings = useSelector((state) => state.rating.value); // pour recuperer la valeur de notre 
 
   useEffect(() => {
-    const query = "name=Senua's Saga: Hellblade II"
+    //on construit une chaîne de requête en utilisant le nom du jeu à partir de gameDetails
+    const query = `name=${gameDetails.name}`
     fetch(`http://localhost:3000/games/ratings?${query}`)
       .then(response => response.json())
       .then(data => {
@@ -24,25 +40,41 @@ function Game() {
       });
   }, []);
 
-  const allRatings = ratingsList.map((vote, i) => (
-    <div className={styles.rating}>
-      <div className={styles.userInfoContainer}>
-        <Image
-          src="/icons/heart.svg"
-          alt="User's avatar"
-          width={24}
-          height={24}
-          className={styles.info}
-        />
-        <span className={styles.info}>Username: {vote.user}</span>
-        <span className={styles.info}>Rating's date: {vote.ratingDate}</span>
+  //Le tableau « ratingsList » est utilisé pour le rendu de chaque note individuelle.
+  const allRatings = ratingsList.map((vote, i) => {
+    //La date de notation est formatée à l'aide de la fonction toLocaleDateString() afin de l'afficher dans un format dd/mm/yyyy
+    const ratingDate = new Date(vote.ratingDate).toLocaleDateString();
+    return (
+      <div className={styles.rating}>
+        <div className={styles.userInfoContainer}>
+          {/*Les données peuplées de l'utilisateur sont un objet avec les clés suivantes: id, username, email, password, token, ratings, wishlist, __v.
+          A cause de cela, React a eu un problème et n'a pas pu rendre une collection d'enfants qui sont un objet. Pour résoudre ce problème, on utilise Object.key() pour itérer à travers les clés de notre objet « user ». */}
+          {Object.keys(vote.user).map((key, index) => {
+            if (key === 'username') { // nous vérifions si la clé courante qui est itérée est 'username'
+              return (
+                <div key={index} className={styles.userDetail}>
+                  {/* <Image
+                    src="/icons/heart.svg"
+                    alt="User's avatar"
+                    width={24}
+                    height={24}
+                    className={styles.info}
+                  /> */}
+                  <span className={styles.info}>Username: {vote.user[key]}</span> {/*nous rendons la valeur de notre cle "username"*/}
+                </div>
+              );
+            }
+          })}
+          <span className={styles.info}>Rating's date: {ratingDate}</span>
+        </div>
+        <div className={styles.ratingDetails}>
+          {/*La valeur de l'évaluation est convertie en emoji à l'aide d'une table de correspondance ratingToEmoji, et elle est affichée à l'aide du composant Image.*/}
+          <span className={styles.ratingInfo}>Rating: <Image src={ratingToEmoji[vote.rating]} alt={`Rating: ${vote.rating}`} width={24} height={24} /></span>
+          <span>Commentary: {vote.comment}</span>
+        </div>
       </div>
-      <div className={styles.ratingDetails}>
-        <span>Rating: {vote.rating}</span>
-        <span>Commentary: {vote.comment}</span>
-      </div>
-    </div>
-  ));
+    )
+  });
 
   // FONCTION RATE EXTERNE POUR L'APPELER AILLEUR 
   const isRated = (game) => {
@@ -69,13 +101,7 @@ function Game() {
   const handleCancelRateModal = () => {
     dispatch(openCloseModal(false))
   }
-  const modalVisible = useSelector((state) => state.config.value.modalOpen)
-  const gameDetails = useSelector((state) => state.game.details); // redistribuer les données importées dans le reducer via Home lors du clic
-  const wishlist = useSelector((state) => state.wishlist.value);
-  const isLightmode = useSelector((state) => state.config.value.mode); // pour Paul
-  const dispatch = useDispatch();
 
-  console.log("DETAILS", gameDetails); // pour connaître la structure de la réponse (normalement identifique à la BDD)
 
   //AJOUT TEST SANDRINE POUR AJOUTER RATING
   // const handleSearchSuggestions = async () => {
