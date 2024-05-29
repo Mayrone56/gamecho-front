@@ -5,11 +5,13 @@ import { useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { addToWishlist, removeFromWishlist } from "../reducers/wishlist";
 import { addRate, deleteRate } from "../reducers/rating";
+import { openCloseModal } from "../reducers/config";
 import { Modal } from 'antd'
 import RateModal from "./RateModal";
 
 
 function Game() {
+
 
   const [rateModalVisible, setRateModalVisible] = useState(false);
 
@@ -33,14 +35,14 @@ function Game() {
 
 
   const showRateModal = () => {
-    setRateModalVisible(true);   
+    dispatch(openCloseModal(true));   
     console.log("CLICK HANDLE RATED")
   };
 
   const handleCancelRateModal = () => {
     setRateModalVisible(false)
   }
-
+  const modalVisible=useSelector((state)=>state.config.value.modalOpen)
   const gameDetails = useSelector((state) => state.game.details); // redistribuer les données importées dans le reducer via Home lors du clic
   const wishlist = useSelector((state) => state.wishlist.value);
   const isLightmode = useSelector((state) => state.config.value.mode); // pour Paul
@@ -203,7 +205,7 @@ function Game() {
           </div>
         </div>
       </div>
-      <Modal className={styles.frame} onCancel={() => handleCancelRateModal()} open={rateModalVisible} footer={null}>
+      <Modal className={styles.frame} onCancel={() => handleCancelRateModal()} open={modalVisible} footer={null}>
         <RateModal />
       </Modal>
 

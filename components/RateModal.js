@@ -2,6 +2,7 @@ import styles from "../styles/RateModal.module.css";
 import Image from "next/image";
 import { useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
+import { openCloseModal } from "../reducers/config";
 import "moment/locale/fr";
 import { addRate } from "../reducers/rating";
 
@@ -9,13 +10,14 @@ const moment = require("moment");
 moment.locale("fr");
 
 function RateModal(props) {
-
+const dispatch = useDispatch();
   const gameDetails = useSelector((state) => state.game.details);
-
-  const dispatch = useDispatch();
+const ismodalOpen=useSelector((state)=>state.config.value.modalOpen)
+  
   const urlAvatar = useSelector((state) => state.user.value.avatar);
   const user = useSelector((state) => state.user.value);
   const userRatingMode=useSelector((state)=>state.config.value.ratingMode);
+  const closeModal=dispatch
   const [newReview, setNewReview] = useState("");
   const [rateEmoji, setRateEmoji] = useState([])
 
@@ -76,6 +78,7 @@ function RateModal(props) {
       //Rated
       dispatch(addRate(ratingData));//Ajoute au tableau qui permettra d'afficher comme pour wishlist sur home, mais sur la page ratings
       console.log(ratingData, "added to rating");
+      dispatch(openCloseModal(false))
 
     } else {
       console.log("Error submitting rating");
@@ -113,7 +116,7 @@ function RateModal(props) {
         {
           ratingMethod=(
             <div>
-              <input className={styles.inputnote} type="number" min="0" max="100" placeholder="Out of 100"/>
+              <input className={styles.inputnote} type="number"  min="0" max="100" placeholder="Out of 100"/>
             </div>
           )
         }
