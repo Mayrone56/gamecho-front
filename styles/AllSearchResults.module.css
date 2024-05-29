@@ -1,4 +1,4 @@
-.container {
+.containerdark {
     height: 100vh;
     width: 100vw;
     display: flex;
@@ -7,10 +7,50 @@
     color: #FFF9E8;
 }
 
+.containerlight {
+    height: 100vh;
+    width: 100vw;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    color: #242424;
+    background-color: #F0EFFF;
+}
+
 .middleContainer {
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
     align-items: center;
     height: 100%;
+}
+
+/* CARDS */
+
+.contentCard {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.card {
+    position: relative;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    align-items: center;
+    border-radius: 40px;
+    background-color: #644ACE;
+    height: 400px;
+    width: 90vw;
+    min-height: 120px;
+    min-width: 80px;
+    max-height: 400px;
+    max-width: 390px;
+    cursor: pointer;
+    transition: box-shadow 0.3s ease;
+    margin: 24px 16px;
 }

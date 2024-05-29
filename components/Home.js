@@ -36,9 +36,9 @@ function Home() {
   useEffect(() => {
     const fetchLatestGames = async () => {
       const response = await fetch(
-        "http://localhost:3000/games/latestreleased", {          
+        "http://localhost:3000/games/latestreleased", {
         cache: "force-cache",
-        }
+      }
       );
       if (!response.ok) {
         console.log("Response latestreleased was not ok");
@@ -154,8 +154,8 @@ function Home() {
   const handleSearch = async () => {
     const response = await fetch(
       `http://localhost:3000/games/search?name=${searchValue}`, {
-        cache: "force-cache",
-      }
+      cache: "force-cache",
+    }
     );
 
     if (!response.ok) {
@@ -173,8 +173,8 @@ function Home() {
   const handleSearchSuggestions = async () => {
     const response = await fetch(
       `http://localhost:3000/games/suggestions?name=${searchSuggValue}`, {
-        cache: "force-cache",
-      }
+      cache: "force-cache",
+    }
     );
 
     if (!response.ok) {
@@ -240,7 +240,7 @@ function Home() {
           <>
             <h2 className={styles.sectionTitle}>Your search results</h2>
             <div className={styles.contentCard}>{searchResultsData}</div>
-            <Link href="/all-search-results">
+            <Link href={`/all-search-results?name=${searchValue}`}>
               <button className={styles.secondaryButton}>
                 See all search results
               </button>
