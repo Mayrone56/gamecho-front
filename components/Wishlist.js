@@ -112,6 +112,28 @@ function Wishlist() {
               value={searchGame}
               onChange={handleSearchChange}
             />
+            <div className={styles.buttonSearch}>
+
+              <Image
+              onClick={handleSearchClick}
+              src="/icons/search.svg"
+              alt="Search"
+              width={24}
+              height={24}
+              className={isLightmode ? styles.searchIconlight : styles.searchIcondark}
+              />
+            </div>
+          </div>
+        )}
+        {/* {wishlist.length >= 5 && (
+          <div className={styles.searchContainer}>
+            <input
+              type="text"
+              className={styles.input}
+              placeholder="Search in your wishlist..."
+              value={searchGame}
+              onChange={handleSearchChange}
+            />
             <Image
               onClick={handleSearchClick}
               src="/icons/search.svg"
@@ -121,9 +143,9 @@ function Wishlist() {
               className={isLightmode ? styles.searchIconlight : styles.searchIcondark}
             />
           </div>
-        )}
+        )} */}
 
-        <h2>WISHLIST</h2>
+        <h2>Wishlist</h2>
         <div className={styles.contentCard}>
           {games}
         </div>

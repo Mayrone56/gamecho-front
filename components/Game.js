@@ -64,7 +64,7 @@ function Game() {
           setRatingScale(10);
         }
       });
-  }, []);
+  }, [ratingsList]);
 
   let totalRatings = 0; // on initialise à 0 les deux paramètres nécessaires au calcul de la moyenne EN DEHORS de la boucle pour les exploiter
   let ratingsLength = 0;
@@ -118,19 +118,19 @@ function Game() {
                     className={styles.info}
                   /> */}
                     <span>
-                      Username: {vote.user[key]}
+                    <b>Username:</b> {vote.user[key]}
                     </span>{" "}
                     {/*nous rendons la valeur de notre cle "username"*/}
                   </div>
                 );
               }
             })}
-            <span>Rating's date: {ratingDate}</span>
+            <span><b>Rating's date:</b>  {ratingDate}</span>
           </div>
           <div className={styles.ratingDetails}>
             {/*La valeur de l'évaluation est convertie en emoji à l'aide d'une table de correspondance ratingToEmoji, et elle est affichée à l'aide du composant Image.*/}
-            <span className={styles.ratingInfo}>n
-              Rating:{" "}
+            <span className={styles.ratingInfo}>
+              <b>Rating: </b>{" "}
 
               {/* SI ACTIF BUG SUR L'AFFICHAGE AU CLIC SUR UNE GAME CARD DANS HOME */}
               <Image
@@ -142,10 +142,11 @@ function Game() {
                 alt={`Rating: ${vote.rating}`}
                 width={24}
                 height={24}
+                className={styles.iconMargin}
               />
 
             </span>
-            <span>Commentary: {vote.comment}</span>
+            <span><b>Commentary:</b> {vote.comment}</span>
           </div>
         </div>
       );
@@ -266,7 +267,6 @@ function Game() {
                       alt="Rating icon"
                       width={24}
                       height={24}
-                      className={styles.icon}
                     />
 
                   </div>
@@ -308,7 +308,7 @@ function Game() {
             {ratingsList && ratingsList.length > 0 && (
               <>
                 {" "}
-                <h3>GAME'S RATINGS</h3>
+                <h3>Game's ratings</h3>
                 {allRatings}
               </>
             )}

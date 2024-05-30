@@ -13,7 +13,7 @@
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    color: #242424;
+    color: #3F3878;
     background-color: #F0EFFF;
 }
 
@@ -149,37 +149,53 @@
     background-color: #F2F4FE;
     color: #3F3878;
     border: 1px #DFD8E7 solid;
-    width: 400px;
+    width: 100%;
     font-size: 1em;
     font-weight: 500;
     /* position: absolute;  */
-    margin-right: 16px;
-}
-
-.input::placeholder {
+  }
+  
+  .input::placeholder {
     color: #9592B8;
-}
-
-.input:focus {
+  }
+  
+  .input:focus {
     background-color: #DFD8E7;
-}
-
-.searchContainer {
-    position: relative;
+  }
+  
+  .searchContainer {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    margin-top: 40px;
+    padding-left: 20px;
+    padding-right: 20px;
+    width: 100%;
+    top: 120px;
+    padding: 0 40px;
+  }
+  
+  .buttonSearch {
     display: flex;
     justify-content: center;
     align-items: center;
-    margin-top: 30px;
-    width: 100%;
-}
-
-.searchIcondark {
-    cursor: pointer;
+    position: absolute; 
     background-color: #3F3878;
-}
-
-.searchIconlight {
-    filter: invert(53%) sepia(80%) saturate(1880%) hue-rotate(324deg) brightness(94%) contrast(95%);
+    border-radius: 40px;
+    height: 44px;
+    width: 44px;
+    border: 1px solid #FFF9E8;
+  }
+  .buttonSearch:hover {
+    background-color: #CF55ED;
+  }
+  
+  .searchIcondark {
     cursor: pointer;
 
-}
+  }
+  
+  .searchIconlight {
+
+    cursor: pointer;
+  }
