@@ -16,7 +16,8 @@ function Setting() {
 
     const [modalVisible, setModalVisible] = useState(false); // hook d'état pour la modale de confirmation du bouton delete account
 
-    const user = useSelector((state) => state.user.value.username) //cible la valeur du nom de l'etat user
+    const usertoken=useSelector((state)=>state.user.value.token)
+    const userName = useSelector((state) => state.user.value.username) //cible la valeur du nom de l'etat user
     const isLightmode = useSelector((state) => state.config.value.mode);//Cible le mode dans le reducer setting qui est par defaut à False
     
 
@@ -25,9 +26,22 @@ function Setting() {
         setModalVisible(true)
     }
 
+    //fonction qui va fetch la route delete/:token pour suprimer les ratings en fonctions de l'utilisateur pui qui remetes la valeur de ratings a tableau vide
+    const handleDeleteRatings = () => {
+        fetch(`http://localhost:3000/ratings/${usertoken}`, {
+            method: 'DELETE',
+            headers: { 'Content-Type': 'application/json' },
+        })
+            .then(response => response.json())
+            .then(data => {
+                //event.stopPropagation();
+                data && dispatch(resetRate());
+            })
+    };
+
     //fonction qui vas fetch la route delete user du backend(si réponse du back on dispatch la fonction logout qui remet les valeur de user a null, si non erreur. Ensuite on redirige vers la welcome)
     const handleRemove = () => {
-        fetch(`http://localhost:3000/users/${user}`, { method: 'DELETE' })
+        fetch(`http://localhost:3000/users/${userName}`, { method: 'DELETE' })
             .then(data => {
                 if (data) {
                     dispatch(logout())
@@ -139,7 +153,7 @@ function Setting() {
                             <p>Reset all your ratings</p>
                         </div>
                         <div className={styles.dropdownContainer}>
-                            <button className={isLightmode ? styles.buttonlight : styles.buttondark}>Reset</button>
+                            <button onClick={()=>handleDeleteRatings()} className={isLightmode ? styles.buttonlight : styles.buttondark}>Reset</button>
                         </div>
                     </div>
                     <div className={styles.parameter}>

@@ -32,7 +32,8 @@ function Ratings() {
     //Affiche la liste des ratings
     const ratings = useSelector((state) => state.rating.value);
     console.log("RATINGS", ratings);
-    //Necessaire piyr trouver le rating par user
+
+    //Necessaire pour trouver le rating par user
     const user = useSelector((state) => state.user.value);
     console.log("USER ", user);
 
@@ -101,7 +102,7 @@ function Ratings() {
                             iconType="trash"
                         />
                     </Link>
-                    {/* <div
+                    <div
                         key={game.gameDetails.name}
                         className={styles.card} // si changement de dimension type portrait, on affiche deux carts scrollables ?
                         style={{
@@ -110,7 +111,7 @@ function Ratings() {
                         onClick={() => handleGameCardClick(game)}
                     >
                         <p className={styles.gameNameCard}>{game.gameDetails.name}</p>
-                    </div> */}
+                    </div>
                     <div className={styles.ratingInfo}>
                         <span className={styles.info}>Rating: <Image src={ratingEmoji} alt={`Rating: ${data.rating}`} width={24} height={24} /></span>
                         <span className={styles.info}>Comment: {data.comment}</span>
