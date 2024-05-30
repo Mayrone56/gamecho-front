@@ -4,7 +4,7 @@ import Image from "next/image";
 import { useState, useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { addToWishlist, removeFromWishlist } from "../reducers/wishlist";
-import { addRate, deleteRate } from "../reducers/rating";
+import { addRate, loadRates } from "../reducers/rating";
 import { openCloseModal } from "../reducers/config";
 import { Modal } from "antd";
 import RateModal from "./RateModal";
@@ -37,6 +37,7 @@ function Game() {
       .then((response) => response.json())
       .then((data) => {
         console.log("useEffect data", data);
+        dispatch(loadRates(data))
         setRatingsList(data.data);
         console.log("fetch", data.data);
 
@@ -130,7 +131,7 @@ function Game() {
           <div className={styles.ratingDetails}>
             {/*La valeur de l'évaluation est convertie en emoji à l'aide d'une table de correspondance ratingToEmoji, et elle est affichée à l'aide du composant Image.*/}
             <span className={styles.ratingInfo}>
-              <b>Rating: </b>{" "}
+              <b>Rating:{" "}</b>
 
               {/* SI ACTIF BUG SUR L'AFFICHAGE AU CLIC SUR UNE GAME CARD DANS HOME */}
               <Image
