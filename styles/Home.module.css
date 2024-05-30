@@ -150,12 +150,20 @@
   line-height: 24px;
   font-weight: 700; /* avant => 500 VL */
   color: rgb(255, 255, 255) ;
-  padding: 16px; /* avant => 8px 16px VL */
-  margin-top: 32px;
+  padding: 8px; /* avant => 8px 16px VL */
+  padding-left: 16px;
+  padding-right: 16px;
+  margin-bottom: 30px;
   -webkit-text-stroke: 0.75px #242424; /* le Grey Dark de l'UI VL */
-  background-color: #9592b85a;
-  width: 100%;
+  /* background-color: #2424248d; */
   text-align: center;
+  /* border-radius: 16px; */
+  text-shadow:
+  0 0 16px rgba(36, 36, 36, 1), /* Top */
+  0 0 16px rgba(36, 36, 36, 1), /* Right */
+  0 0 16px rgba(36, 36, 36, 1), /* Bottom */
+  0 0 16px rgba(36, 36, 36, 1); /* Left */
+
 
 }
 
