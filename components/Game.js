@@ -64,7 +64,7 @@ function Game() {
           setRatingScale(10);
         }
       });
-  }, []);
+  }, [ratingsList]);
 
   let totalRatings = 0; // on initialise à 0 les deux paramètres nécessaires au calcul de la moyenne EN DEHORS de la boucle pour les exploiter
   let ratingsLength = 0;
@@ -129,7 +129,7 @@ function Game() {
           </div>
           <div className={styles.ratingDetails}>
             {/*La valeur de l'évaluation est convertie en emoji à l'aide d'une table de correspondance ratingToEmoji, et elle est affichée à l'aide du composant Image.*/}
-            <span className={styles.ratingInfo}>n
+            <span className={styles.ratingInfo}>
               Rating:{" "}
 
               {/* SI ACTIF BUG SUR L'AFFICHAGE AU CLIC SUR UNE GAME CARD DANS HOME */}
