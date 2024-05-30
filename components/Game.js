@@ -149,6 +149,30 @@ function Game() {
       })
     : null;
 
+
+
+
+  //WISHLIST HEART ICON CLICK
+  //la fonction prend un seul paramètre : game. Cet objet représente le jeu sur lequel l'utilisateur a cliqué pour l'ajouter ou le retirer de la wishlist.
+  const handleWishlistClick = (game) => {
+    //la fonction vérifie s'il existe dans la wishlist un jeu portant le même nom que le jeu sur lequel on clique.
+    if (wishlist.some((wishlistItem) => wishlistItem.name === game.name)) {
+      //Si le jeu est déjà dans la wishlist, cette ligne envoie l'action removeFromWishlist avec l'objet jeu comme payload. Cette action sera traitée par le reducer pour supprimer le jeu de la wishlist.
+      dispatch(removeFromWishlist(game));
+      console.log(`${game.name} removed from wishlist`);
+    } else {
+      //Si le jeu n'est pas dans la wishlist, cette ligne envoie l'action addToWishlist avec l'objet jeu comme payload. Cette action sera traitée par le reducer pour ajouter le jeu à la wishlist.
+      dispatch(addToWishlist(game));
+      console.log(`${game.name} added to wishlist`);
+    }
+  };
+
+
+  const handleHeartIconClick = (event, game) => {
+    event.stopPropagation();
+    // cela empêche l'événement de clic de "handleWishlistClick" de se propager à l'événement de clic "handleGameCardClick" de la div parente. Cela signifie que l'on peut cliquer sur le cœur et que cela ne déclenchera pas la navigation vers la page du jeu. Cela ajoutera simplement le jeu à la liste de souhaits.
+    handleWishlistClick(game);
+  };
   // la constante ne s'execute que s'il y a au moins un vote => on divise le total des valeurs obtenueslors du map par le nombre de votes / sinon, la moyenne n'existe pas (0)
 
   const averageRating = ratingsLength > 0 ? totalRatings / ratingsLength : 0;
@@ -257,8 +281,8 @@ function Game() {
       <div className={styles.middleContainer}>
         <div
           className={styles.bannerContainer}
-          style={{
-            backgroundImage: `url(${gameDetails.imageGame})`, // on doit toujours spécifier le type de chemin avec l'attribut URL
+          style={{ /* pour ne pas avoir d'erreur si l'image ne s'affiche pas assez rapidements */
+            backgroundImage: gameDetails.imageGame ? `url(${gameDetails.imageGame})` : "icons/emojiIcons/sad.svg", // on doit toujours spécifier le type de chemin avec l'attribut URL
             backgroundPosition: "center",
             backgroundRepeat: "no-repeat",
             backgroundSize: "cover",
@@ -266,9 +290,10 @@ function Game() {
           }}
         >
           <div className={styles.topBannerContainer}>
-            <button className={styles.iconButton} onClick={() => handleLike()}>
+            <button className={styles.iconButton}   onHeartClick={(event) => handleHeartIconClick(event, gameDetails)}>
               {" "}
               <Image
+             
                 src="/icons/heart.svg"
                 alt="Add to wishlist"
                 width={24}
@@ -291,7 +316,10 @@ function Game() {
             </button>
             <p className={styles.textButton}>Rate it !</p>
           </div>
-          <div className={styles.bottomBannerContainer}>
+
+
+          {/* Permet d'éviter une erreur si l'image n'est pas récupérée au moment de l'execution */}
+       {gameDetails.imageGame && ( <div className={styles.bottomBannerContainer}>
             <h2 className={styles.sectionTitle}>{gameDetails.name}</h2>
             <div className={styles.captionGameName}>
               {emojiAverage ? (
@@ -310,27 +338,29 @@ function Game() {
                   </div>
                   <p>
                     Average rating -{" "}
-                    <span className={styles.caption}>BASED ON {ratingsLength} RATING{ratingsLength > 1 && ("S")}</span>
+                    <span className={styles.caption}>
+                      BASED ON {ratingsLength} RATING{ratingsLength > 1 && "S"}
+                    </span>
                   </p>
                 </>
               ) : (
                 <>
                   {" "}
-                  <p>
-                    No rating yet{" "}
-                  </p>
+                  <p>No rating yet </p>
                 </>
               )}
             </div>
-          </div>
+          </div>)}
         </div>
         <div className={styles.bottomContainer}>
           <div className={styles.tagContainer}>
-            <div className={styles.tag01}>{gameDetails.developer}</div>
-            <div className={styles.tag02}>{gameDetails.platforms}</div>
-            <div className={styles.tag03}>{gameDetails.publisher}</div>
-            <div className={styles.tag04}>{gameDetails.releasedDate}</div>
-            <div className={styles.tag05}>{gameDetails.genre}</div>
+
+            {/* Si la clé du jeu n'est pas renseignée, on affiche pas le tag correspondant */}
+          {gameDetails.developer && (<div className={styles.tag01}>{gameDetails.developer}</div>)}
+          {gameDetails.platforms && (  <div className={styles.tag02}>{gameDetails.platforms}</div>)}
+          {gameDetails.publisher && ( <div className={styles.tag03}>{gameDetails.publisher}</div>)}
+          {gameDetails.releasedDate && (<div className={styles.tag04}>{gameDetails.releasedDate}</div>)}
+          {gameDetails.genre && (<div className={styles.tag05}>{gameDetails.genre}</div>)}
           </div>
 
           <div className={styles.descriptionContainer}>
@@ -344,8 +374,8 @@ function Game() {
             {ratingsList && ratingsList.length > 0 && (
               <>
                 {" "}
-                <h3>Game's ratings</h3>
-                {allRatings}{" "}
+                <h3>GAME'S RATINGS</h3>
+                {allRatings}
               </>
             )}
           </div>
