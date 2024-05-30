@@ -4,7 +4,7 @@ import Image from "next/image";
 import { useState, useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { addToWishlist, removeFromWishlist } from "../reducers/wishlist";
-import { addRate, deleteRate } from "../reducers/rating";
+import { addRate, loadRates } from "../reducers/rating";
 import { openCloseModal } from "../reducers/config";
 import { Modal } from "antd";
 import RateModal from "./RateModal";
@@ -37,6 +37,7 @@ function Game() {
       .then((response) => response.json())
       .then((data) => {
         console.log("useEffect data", data);
+        dispatch(loadRates(data))
         setRatingsList(data.data);
         console.log("fetch", data.data);
 
@@ -64,7 +65,7 @@ function Game() {
           setRatingScale(10);
         }
       });
-  }, []);
+  }, [ratingsList]);
 
   let totalRatings = 0; // on initialise à 0 les deux paramètres nécessaires au calcul de la moyenne EN DEHORS de la boucle pour les exploiter
   let ratingsLength = 0;
@@ -129,7 +130,7 @@ function Game() {
           </div>
           <div className={styles.ratingDetails}>
             {/*La valeur de l'évaluation est convertie en emoji à l'aide d'une table de correspondance ratingToEmoji, et elle est affichée à l'aide du composant Image.*/}
-            <span className={styles.ratingInfo}>n
+            <span className={styles.ratingInfo}>
               Rating:{" "}
 
               {/* SI ACTIF BUG SUR L'AFFICHAGE AU CLIC SUR UNE GAME CARD DANS HOME */}
