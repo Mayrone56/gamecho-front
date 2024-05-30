@@ -14,11 +14,14 @@ export const ratingSlice = createSlice({
     deleteRate: (state, action) => {
       //Il faut checker la valeur d'une clef pas l'objet en lui meme, d'ou le .name, utiliser redux devtool pour debuger
       state.value = state.value.filter(rate => rate.name !== action.payload.name);
-    }
+    },
+    loadRates: (state, action) => {
+      state.value = action.payload;
+    },
   },
 })
 
-export const { addRate, deleteRate } = ratingSlice.actions;
+export const { addRate, deleteRate, loadRates } = ratingSlice.actions;
 export default ratingSlice.reducer
 
 

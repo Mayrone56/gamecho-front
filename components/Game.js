@@ -129,7 +129,7 @@ function Game() {
           </div>
           <div className={styles.ratingDetails}>
             {/*La valeur de l'évaluation est convertie en emoji à l'aide d'une table de correspondance ratingToEmoji, et elle est affichée à l'aide du composant Image.*/}
-            <span className={styles.ratingInfo}>
+            <span className={styles.ratingInfo}>n
               Rating:{" "}
 
               {/* SI ACTIF BUG SUR L'AFFICHAGE AU CLIC SUR UNE GAME CARD DANS HOME */}
