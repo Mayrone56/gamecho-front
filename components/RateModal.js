@@ -69,7 +69,8 @@ function RateModal(props) {
       gameDetails: gameDetails, // reducer game qui contient TOUTES les données du jeu
     };
 
-    const response = await fetch("http://localhost:3000/ratings/save", {
+    const response =  dispatch(openCloseModal(false));
+    await fetch("http://localhost:3000/ratings/save", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -84,7 +85,7 @@ function RateModal(props) {
       //Rated
       dispatch(addRate(ratingData)); //Ajoute au tableau qui permettra d'afficher comme pour wishlist sur home, mais sur la page ratings
       console.log(ratingData, "added to rating");
-      dispatch(openCloseModal(false));
+     
     } else {
       console.log("Error submitting rating");
       // si erreur quelconque, message

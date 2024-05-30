@@ -219,10 +219,12 @@
   /* pour limiter la taille brute */
   max-height: 200px;
   border-radius: 50%;
-  border: 5px solid #FFF9E8 !important;
+  border: 2px solid #FFF9E8 !important;
   /* empêche l'image d'être tronquée même visualée en cercle */
   object-position: center center;
   /* centre l'image verticalement/horizitontalement pour garantir un affichage proche de l'original*/
+  object-fit: cover;
+  /* empêche l'image d'être tronquée même visualée en cercle */
 }
 
 .defaultInput {

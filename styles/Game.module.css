@@ -7,6 +7,17 @@
   color: #fff9e8;
 }
 
+.containerLight {
+  background-color: #f0efff;
+  color: #242424;
+  height: 100vh;
+  width: 100vw;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  color: #fff9e8;
+}
+
 .middleContainer {
   display: flex;
   flex-direction: column;
@@ -115,6 +126,15 @@
 }
 
 .rating {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  margin-bottom: 20px;
+}
+
+.ratingLight {
+  background-color: #f0efff;
+  color: #242424;
   display: flex;
   flex-direction: column;
   width: 100%;
