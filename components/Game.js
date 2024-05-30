@@ -117,6 +117,26 @@ function Game() {
                     height={24}
                     className={styles.info}
                   /> */}
+                      <span className={styles.info}>
+                        Username: {vote.user[key]}
+                      </span>{" "}
+                      {/*nous rendons la valeur de notre cle "username"*/}
+                    </div>
+                  );
+                }
+              })}
+              <span className={styles.info}>Rating's date: {ratingDate}</span>
+            </div>
+            <div className={styles.ratingDetails}>
+              {/*La valeur de l'évaluation est convertie en emoji à l'aide d'une table de correspondance ratingToEmoji, et elle est affichée à l'aide du composant Image.*/}
+              <span className={styles.ratingInfo}>
+                Rating:{" "}
+
+                {/* SI ACTIF BUG SUR L'AFFICHAGE AU CLIC SUR UNE GAME CARD DANS HOME */}
+                <Image
+                  // ICI on dynamise la source de l'icône utilisée pour illustrer le vote
+                  // Il est nécessaire de se servir de l'échelle, enregistrée dans l'état, et de la diviser par 5 pour qu'elle puisse être associée à un chiffre de 1 à 5 et ce peu importe le ratingMode
+                  // Le Math.floor est essentiel pour arrondir le resultat et obtenir un nombre entier et exploitable
                     <span className={styles.info}>
                       Username: {vote.user[key]}
                     </span>{" "}
@@ -136,15 +156,27 @@ function Game() {
                 // Il est nécessaire de se servir de l'échelle, enregistrée dans l'état, et de la diviser par 5 pour qu'elle puisse être associée à un chiffre de 1 à 5 et ce peu importe le ratingMode
                 // Le Math.floor est essentiel pour arrondir le resultat et obtenir un nombre entier et exploitable
 
-                src={emojiRate}
-                alt={`Rating: ${vote.rating}`}
-                width={24}
-                height={24}
-              />
-            </span>
-            <span>Commentary: {vote.comment}</span>
-          </div>
-        </div>
+                  src={emojiRate}
+                  alt={`Rating: ${vote.rating}`}
+                  width={24}
+                  height={24}
+                />
+
+              </span>
+              <span>Commentary: {vote.comment}</span>
+            </div>
+          </div >
+        );
+})
+src = { emojiRate }
+alt = {`Rating: ${vote.rating}`}
+width = { 24}
+height = { 24}
+  />
+            </span >
+  <span>Commentary: {vote.comment}</span>
+          </div >
+        </div >
       );
     })
     : null;
@@ -152,247 +184,178 @@ function Game() {
 
 
 
-  //WISHLIST HEART ICON CLICK
-  //la fonction prend un seul paramètre : game. Cet objet représente le jeu sur lequel l'utilisateur a cliqué pour l'ajouter ou le retirer de la wishlist.
-  const handleWishlistClick = (game) => {
-    //la fonction vérifie s'il existe dans la wishlist un jeu portant le même nom que le jeu sur lequel on clique.
-    if (wishlist.some((wishlistItem) => wishlistItem.name === game.name)) {
-      //Si le jeu est déjà dans la wishlist, cette ligne envoie l'action removeFromWishlist avec l'objet jeu comme payload. Cette action sera traitée par le reducer pour supprimer le jeu de la wishlist.
-      dispatch(removeFromWishlist(game));
-      console.log(`${game.name} removed from wishlist`);
-    } else {
-      //Si le jeu n'est pas dans la wishlist, cette ligne envoie l'action addToWishlist avec l'objet jeu comme payload. Cette action sera traitée par le reducer pour ajouter le jeu à la wishlist.
-      dispatch(addToWishlist(game));
-      console.log(`${game.name} added to wishlist`);
-    }
-  };
+//WISHLIST HEART ICON CLICK
+//la fonction prend un seul paramètre : game. Cet objet représente le jeu sur lequel l'utilisateur a cliqué pour l'ajouter ou le retirer de la wishlist.
+const handleWishlistClick = (game) => {
+  //la fonction vérifie s'il existe dans la wishlist un jeu portant le même nom que le jeu sur lequel on clique.
+  if (wishlist.some((wishlistItem) => wishlistItem.name === game.name)) {
+    //Si le jeu est déjà dans la wishlist, cette ligne envoie l'action removeFromWishlist avec l'objet jeu comme payload. Cette action sera traitée par le reducer pour supprimer le jeu de la wishlist.
+    dispatch(removeFromWishlist(game));
+    console.log(`${game.name} removed from wishlist`);
+  } else {
+    //Si le jeu n'est pas dans la wishlist, cette ligne envoie l'action addToWishlist avec l'objet jeu comme payload. Cette action sera traitée par le reducer pour ajouter le jeu à la wishlist.
+    dispatch(addToWishlist(game));
+    console.log(`${game.name} added to wishlist`);
+  }
+};
 
 
-  const handleHeartIconClick = (event, game) => {
-    event.stopPropagation();
-    // cela empêche l'événement de clic de "handleWishlistClick" de se propager à l'événement de clic "handleGameCardClick" de la div parente. Cela signifie que l'on peut cliquer sur le cœur et que cela ne déclenchera pas la navigation vers la page du jeu. Cela ajoutera simplement le jeu à la liste de souhaits.
-    handleWishlistClick(game);
-  };
-  // la constante ne s'execute que s'il y a au moins un vote => on divise le total des valeurs obtenueslors du map par le nombre de votes / sinon, la moyenne n'existe pas (0)
+const handleHeartIconClick = (event, game) => {
+  event.stopPropagation();
+  // cela empêche l'événement de clic de "handleWishlistClick" de se propager à l'événement de clic "handleGameCardClick" de la div parente. Cela signifie que l'on peut cliquer sur le cœur et que cela ne déclenchera pas la navigation vers la page du jeu. Cela ajoutera simplement le jeu à la liste de souhaits.
+  handleWishlistClick(game);
+};
+// la constante ne s'execute que s'il y a au moins un vote => on divise le total des valeurs obtenueslors du map par le nombre de votes / sinon, la moyenne n'existe pas (0)
 
-  const averageRating = ratingsLength > 0 ? totalRatings / ratingsLength : 0;
-  const emojiAverage = ratingToEmoji[Math.round(averageRating)];
-  console.log("average emoji", emojiAverage); // FONCTIONNE QUAND L'IMAGE EST COMMENTEE ??? Return la bonne valeur avec l'adresse...
-  console.log("totalRatings", totalRatings);
-  console.log("number rate", ratingsLength);
+const averageRating = ratingsLength > 0 ? totalRatings / ratingsLength : 0;
+const emojiAverage = ratingToEmoji[Math.round(averageRating)];
+console.log("average emoji", emojiAverage); // FONCTIONNE QUAND L'IMAGE EST COMMENTEE ??? Return la bonne valeur avec l'adresse...
+console.log("totalRatings", totalRatings);
+console.log("number rate", ratingsLength);
 
-  // FONCTION RATE EXTERNE POUR L'APPELER AILLEUR
-  const isRated = (game) => {
-    //On compare le nom de jeu que l'on vient de vote si il est présent dans notre tableau rating
-    //Si c'est vrai alors c'est rated
-    return ratings.some((ratingItem) => ratingItem.name === game.name);
-  };
+// FONCTION RATE EXTERNE POUR L'APPELER AILLEUR
+const isRated = (game) => {
+  //On compare le nom de jeu que l'on vient de vote si il est présent dans notre tableau rating
+  //Si c'est vrai alors c'est rated
+  return ratings.some((ratingItem) => ratingItem.name === game.name);
+};
 
-  //Click sur l'etoile rate
-  const handleRatedClick = (game) => {
-    //la fonction vérifie s'il existe dans la wishlist un jeu portant le même nom que le jeu sur lequel on clique.
-    if (!isRated) {
-      dispatch(addRate(game));
-      console.log(`${game.name} added to rating`);
-    }
-  };
+//Click sur l'etoile rate
+const handleRatedClick = (game) => {
+  //la fonction vérifie s'il existe dans la wishlist un jeu portant le même nom que le jeu sur lequel on clique.
+  if (!isRated) {
+    dispatch(addRate(game));
+    console.log(`${game.name} added to rating`);
+  }
+};
 
-  const showRateModal = () => {
-    dispatch(openCloseModal(true));
-    console.log("CLICK HANDLE RATED");
-  };
+const showRateModal = () => {
+  dispatch(openCloseModal(true));
+  console.log("CLICK HANDLE RATED");
+};
 
-  const handleCancelRateModal = () => {
-    dispatch(openCloseModal(false));
-  };
+const handleCancelRateModal = () => {
+  dispatch(openCloseModal(false));
+};
 
-  //AJOUT TEST SANDRINE POUR AJOUTER RATING
-  // const handleSearchSuggestions = async () => {
-  //   const response = await fetch(
-  //     `http://localhost:3000/games`
-  //   );
-
-  //   if (!response.ok) {
-  //     return;
-  //   }
-  // }
-
-  //RATED GAME TEST 2
-
-  // const handleGameCardClick = () => {
-  //   fetch('http://localhost:3000/games/saveGameDetails', {
-  //     method: 'POST',
-  //     headers: { 'Content-Type': 'application/json' },
-  //     body: JSON.stringify({
-  //           description: game.description,
-  //           name: game.name,
-  //           developer: game.developer,
-  //           publisher: game.publisher,
-  //           releasedDate: game.releasedDate,
-  //           platforms: game.platforms,
-  //           genre,
-  //           isMultiplayer,
-  //           isOnline,
-  //           isExpandedContent,
-  //           expandedContentList,
-  //           ratingsID,
-  //           imageGame,
-  //           ratingSummary, }),
-  //   }).then(response => response.json())
-  //     .then(data => {
-  //       if (data.savedGame) {
-  //         dispatch(getGameDetails(game))
-  //       }
-  //     });
-  // };
-
-  //     // router.push("game/");
-  // };
-
-  // //RATED GAME DEEBUT AVEC VALENTIN
-
-  // const handleGameCardClick = (game) => {
-  //   dispatch(getGameDetails(game));
-  //   fetch("http://localhost:3000/users/signup", {
-  //     method: "POST",
-  //     headers: { "Content-Type": "application/json" },
-  //     body: JSON.stringify({
-  //       description: game.description,
-  //       name: game.name,
-  //       developer: game.developer,
-  //       publisher: game.publisher,
-  //       releasedDate: game.releasedDate,
-  //       platforms: game.platforms,
-  //       genre,
-  //       isMultiplayer,
-  //       isOnline,
-  //       isExpandedContent,
-  //       expandedContentList,
-  //       ratingsID,
-  //       imageGame,
-  //       ratingSummary,
-  //     }),
-  //   }),
-  //     router.push("game/");
-  // };
-
-  return (
-    <div className={styles.container}>
-      <div className={styles.middleContainer}>
-        <div
-          className={styles.bannerContainer}
-          style={{ /* pour ne pas avoir d'erreur si l'image ne s'affiche pas assez rapidements */
-            backgroundImage: gameDetails.imageGame ? `url(${gameDetails.imageGame})` : "icons/emojiIcons/sad.svg", // on doit toujours spécifier le type de chemin avec l'attribut URL
-            backgroundPosition: "center",
-            backgroundRepeat: "no-repeat",
-            backgroundSize: "cover",
-            height: "40%",
-          }}
-        >
-          <div className={styles.topBannerContainer}>
-            <button className={styles.iconButton} onHeartClick={(event) => handleHeartIconClick(event, gameDetails)}>
-              {" "}
-              <Image
-                src="/icons/heart.svg"
-                alt="Add to wishlist"
-                width={24}
-                height={24}
-              // className={styles.likeIcon}
-              />
-            </button>
-            <button
-              className={styles.iconButton}
-              onClick={() => showRateModal()}
-            >
-              {" "}
-              <Image
-                src="/icons/star.svg"
-                alt="Rate the game"
-                width={24}
-                height={24}
-                className={styles.likeIcon}
-              />
-            </button>
-            <p className={styles.textButton}>Rate it !</p>
-          </div>
-
-
-          {/* Permet d'éviter une erreur si l'image n'est pas récupérée au moment de l'execution */}
-          {gameDetails.imageGame && (<div className={styles.bottomBannerContainer}>
-            <h2 className={styles.sectionTitle}>{gameDetails.name}</h2>
-            <div className={styles.captionGameName}>
-              {emojiAverage ? (
-                <>
-                  {" "}
-                  <div className={styles.iconRating}>
-                    {/* Sûrement le plus difficle : sans conditionner le rendu au calcul de la moyenne, l'app crash ! Il faut laisser le temps au code de s'executer avant de tenter d'afficher l'image. C'est presque comme un await */}
-
-                    <Image
-                      src={emojiAverage}
-                      alt="Rating icon"
-                      width={24}
-                      height={24}
-                      className={styles.icon}
-                    />
-                  </div>
-                  <p>
-                    Average rating -{" "}
-                    <span className={styles.caption}>
-                      BASED ON {ratingsLength} RATING{ratingsLength > 1 && "S"}
-                    </span>
-                  </p>
-                </>
-              ) : (
-                <>
-                  {" "}
-                  <p>No rating yet </p>
-                </>
-              )}
-            </div>
-          </div>)}
+return (
+  <div className={styles.container}>
+    <div className={styles.middleContainer}>
+      <div
+        className={styles.bannerContainer}
+        style={{ /* pour ne pas avoir d'erreur si l'image ne s'affiche pas assez rapidements */
+          backgroundImage: gameDetails.imageGame ? `url(${gameDetails.imageGame})` : "icons/emojiIcons/sad.svg", // on doit toujours spécifier le type de chemin avec l'attribut URL
+          backgroundPosition: "center",
+          backgroundRepeat: "no-repeat",
+          backgroundSize: "cover",
+          height: "40%",
+        }}
+      >
+        <div className={styles.topBannerContainer}>
+          <button className={styles.iconButton} onHeartClick={(event) => handleHeartIconClick(event, gameDetails)}>
+            {" "}
+            <Image
+              src="/icons/heart.svg"
+              alt="Add to wishlist"
+              width={24}
+              height={24}
+            // className={styles.likeIcon}
+            />
+          </button>
+          <button
+            className={styles.iconButton}
+            onClick={() => showRateModal()}
+          >
+            {" "}
+            <Image
+              src="/icons/star.svg"
+              alt="Rate the game"
+              width={24}
+              height={24}
+              className={styles.likeIcon}
+            />
+          </button>
+          <p className={styles.textButton}>Rate it !</p>
         </div>
-        <div className={styles.bottomContainer}>
-          <div className={styles.tagContainer}>
 
-            {/* Si la clé du jeu n'est pas renseignée, on affiche pas le tag correspondant */}
-            {gameDetails.developer && (<div className={styles.tag01}>{gameDetails.developer}</div>)}
-            {gameDetails.platforms && (<div className={styles.tag02}>{gameDetails.platforms}</div>)}
-            {gameDetails.publisher && (<div className={styles.tag03}>{gameDetails.publisher}</div>)}
-            {gameDetails.releasedDate && (<div className={styles.tag04}>{gameDetails.releasedDate}</div>)}
-            {gameDetails.genre && (<div className={styles.tag05}>{gameDetails.genre}</div>)}
-          </div>
 
-          <div className={styles.descriptionContainer}>
-            <h3>Summary</h3>
-            <div
-              dangerouslySetInnerHTML={{ __html: gameDetails.description }}
-            ></div>{" "}
-            {/* attribut propre à React qui permet de convertir du code HTML (ce qu'on recoit de l'API) en texte sur React / voir doc : https://react.dev/reference/react-dom/components/common#dangerously-setting-the-inner-html */}
-          </div>
-          <div className={styles.ratingsContainer}>
-            {ratingsList && ratingsList.length > 0 && (
+        {/* Permet d'éviter une erreur si l'image n'est pas récupérée au moment de l'execution */}
+        {gameDetails.imageGame && (<div className={styles.bottomBannerContainer}>
+          <h2 className={styles.sectionTitle}>{gameDetails.name}</h2>
+          <div className={styles.captionGameName}>
+            {emojiAverage ? (
               <>
                 {" "}
-                <h3>GAME'S RATINGS</h3>
-                {allRatings}
+                <div className={styles.iconRating}>
+                  {/* Sûrement le plus difficle : sans conditionner le rendu au calcul de la moyenne, l'app crash ! Il faut laisser le temps au code de s'executer avant de tenter d'afficher l'image. C'est presque comme un await */}
+
+                  <Image
+                    src={emojiAverage}
+                    alt="Rating icon"
+                    width={24}
+                    height={24}
+                    className={styles.icon}
+                  />
+
+                </div>
+                <p>
+                  Average rating -{" "}
+                  <span className={styles.caption}>
+                    BASED ON {ratingsLength} RATING{ratingsLength > 1 && "S"}
+                  </span>
+                </p>
+              </>
+            ) : (
+              <>
+                {" "}
+                <p>No rating yet </p>
               </>
             )}
           </div>
-          <div className={styles.trailerContainer}>
-            <h3>Trailer</h3>
-            <div className={styles.videoContainer}></div>
-          </div>
+        </div>)}
+      </div>
+      <div className={styles.bottomContainer}>
+        <div className={styles.tagContainer}>
+
+          {/* Si la clé du jeu n'est pas renseignée, on affiche pas le tag correspondant */}
+          {gameDetails.developer && (<div className={styles.tag01}>{gameDetails.developer}</div>)}
+          {gameDetails.platforms && (<div className={styles.tag02}>{gameDetails.platforms}</div>)}
+          {gameDetails.publisher && (<div className={styles.tag03}>{gameDetails.publisher}</div>)}
+          {gameDetails.releasedDate && (<div className={styles.tag04}>{gameDetails.releasedDate}</div>)}
+          {gameDetails.genre && (<div className={styles.tag05}>{gameDetails.genre}</div>)}
+        </div>
+
+        <div className={styles.descriptionContainer}>
+          <h3>Summary</h3>
+          <div
+            dangerouslySetInnerHTML={{ __html: gameDetails.description }}
+          ></div>{" "}
+          {/* attribut propre à React qui permet de convertir du code HTML (ce qu'on recoit de l'API) en texte sur React / voir doc : https://react.dev/reference/react-dom/components/common#dangerously-setting-the-inner-html */}
+        </div>
+        <div className={styles.ratingsContainer}>
+          {ratingsList && ratingsList.length > 0 && (
+            <>
+              {" "}
+              <h3>GAME'S RATINGS</h3>
+              {allRatings}
+            </>
+          )}
+        </div>
+        <div className={styles.trailerContainer}>
+          <h3>Trailer</h3>
+          <div className={styles.videoContainer}></div>
         </div>
       </div>
-      <Modal
-        className={styles.frame}
-        onCancel={() => handleCancelRateModal()}
-        open={modalVisible}
-        footer={null}
-      >
-        <RateModal />
-      </Modal>
     </div>
-  );
+    <Modal
+      className={styles.frame}
+      onCancel={() => handleCancelRateModal()}
+      open={modalVisible}
+      footer={null}
+    >
+      <RateModal />
+    </Modal>
+  </div>
+);
 }
 export default Game;
