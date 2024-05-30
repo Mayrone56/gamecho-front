@@ -41,11 +41,11 @@ function Ratings() {
             method: 'DELETE',
             headers: { 'Content-Type': 'application/json' },
         })
-        .then(response => response.json())
-        .then(data => {
-            //event.stopPropagation();
-            data.result && dispatch(deleteRate(rating));
-        })
+            .then(response => response.json())
+            .then(data => {
+                //event.stopPropagation();
+                data.result && dispatch(deleteRate(rating));
+            })
     };
 
     let games = <p>No game is rated</p>;
