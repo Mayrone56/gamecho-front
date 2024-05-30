@@ -5,6 +5,7 @@ import { useSelector, useDispatch } from "react-redux";
 import { openCloseModal } from "../reducers/config";
 import "moment/locale/fr";
 import { addRate } from "../reducers/rating";
+import { useRouter } from "next/router";
 
 const moment = require("moment");
 moment.locale("fr");
@@ -152,11 +153,22 @@ function RateModal(props) {
     );
   }
 
+  const router = useRouter();
+  const handleSignUpClick = () => {
+    // redirection SignUp
+    router.push("/sign-up"); // changement de la route appelée, "SignUp" ciblait le composant
+  };
+  const handleSignInClick = () => {
+    // redirection SignIn
+    router.push("/sign-in"); // changement de la route appelée, "SignIn" ciblait le composant
+  };
   return (
     <div className={styles.container}>
-      <h3 className={styles.title}> How much did you like it?</h3>
-      <div className={styles.iconContainer}>
-        {/* <Image
+      {user.token ? (
+        <>
+          <h3 className={styles.title}> How much did you like it?</h3>
+          <div className={styles.iconContainer}>
+            {/* <Image
           className={styles.emoji}
           src="/icons/emojiIcons/angry.svg"
           alt="Love emoji"
@@ -191,41 +203,68 @@ function RateModal(props) {
           width={50}
           height={50}
         /> */}
-        {ratingMethod}
-      </div>
-      <div className={styles.inputContainer}>
-        <p className={styles.resetMarginTitle}>Your review</p>
-        <br></br>
-        <textarea
-          type="text"
-          placeholder="Add a review"
-          className={styles.input}
-          onChange={(e) => handleInputChange(e)}
-          value={newReview}
-        ></textarea>
-        <p className={styles.resetMarginLength}>{newReview.length}/300</p>
-        <button className={styles.button} onClick={handleVote}>
-          SUBMIT
-        </button>
-      </div>
-      <div className={styles.bottomContainer}>
-        {myEmoji && (
-          <Image // A DYNAMISER
-            src={myEmoji}
-            alt="My rating emoji"
-            width={32}
-            height={32}
-            className={styles.avatar}
-          />
-        )}
+            {ratingMethod}
+          </div>
+          <div className={styles.inputContainer}>
+            <p className={styles.resetMarginTitle}>Your review</p>
+            <br></br>
+            <textarea
+              type="text"
+              placeholder="Add a review"
+              className={styles.input}
+              onChange={(e) => handleInputChange(e)}
+              value={newReview}
+            ></textarea>
+            <p className={styles.resetMarginLength}>{newReview.length}/300</p>
+            <button className={styles.button} onClick={handleVote}>
+              SUBMIT
+            </button>
+          </div>
+          <div className={styles.bottomContainer}>
+            {myEmoji && (
+              <Image // A DYNAMISER
+                src={myEmoji}
+                alt="My rating emoji"
+                width={28}
+                height={28}
+                className={styles.avatar}
+              />
+            )}
 
-        <p>
-          RATED BY {user.username.toUpperCase()} ON {date}{" "}
-          {/* Username affiché en majuscule si vote   */}
-        </p>
-        {/* Au click sur le bouton, nous enregistrons le   */}
-        <div></div>
-      </div>
+            <p className={styles.yourRating}>
+              RATED BY {user.username.toUpperCase()} ON {date}{" "}
+              {/* Username affiché en majuscule si vote   */}
+            </p>
+            {/* Au click sur le bouton, nous enregistrons le   */}
+            <div></div>
+          </div>
+        </>
+      ) : (
+        <>
+          <h3>You'd like to rate this game ?</h3>
+          <div>
+            <Image
+              src="/icons/emojiIcons/love.svg"
+              alt="Love emoji"
+              width={70}
+              height={70}
+            />
+          </div>{" "}
+          <div className={styles.hook}>
+            <p>Join us now !</p>
+            <button className={styles.button} onClick={handleSignUpClick}>
+              SIGN UP
+            </button>
+            <p>Already have an account ?</p>
+            <button
+              className={styles.secondaryButton}
+              onClick={handleSignInClick}
+            >
+              SIGN IN
+            </button>
+          </div>
+        </>
+      )}
     </div>
   );
 }
