@@ -51,6 +51,7 @@ function Ratings() {
     let games = <p>No game is rated</p>;
     if (ratings.length > 0) {
         games = ratings.map((game, i) => {
+            const ratingDate = new Date(game.ratingDate).toLocaleDateString();
             return (
                 <div className={styles.rateContainer}>
                     <div
@@ -66,7 +67,7 @@ function Ratings() {
                     <div className={styles.ratingInfo}>
                         <span className={styles.info}>Rating: {game.rating}</span>
                         <span className={styles.info}>Comment: {game.comment}</span>
-                        <span className={styles.info}>Rating added on: {game.ratingDate}</span>
+                        <span className={styles.info}>Rating added on: {ratingDate}</span>
                     </div>
                     <div className={styles.buttonContainer}>
                         <button
