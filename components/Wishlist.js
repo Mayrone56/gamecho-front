@@ -74,29 +74,6 @@ function Wishlist() {
             iconType="trash"
           />
         </Link>
-        // <div
-        //   key={game.name}
-        //   className={styles.card} // si changement de dimension type portrait, on affiche deux carts scrollables ?
-        //   style={{
-        //     backgroundImage: `url(${game.imageGame})`
-        //   }} // Utilisez l'image de game comme fond
-        //   onClick={() => handleGameCardClick(game)}
-        // >
-        //   <p className={styles.gameNameCard}>{game.name}</p>
-        //   <button
-        //     className={styles.iconButton}
-        //     onClick={(event) => handleDelete(event, game)}
-        //   >
-        //     {" "}
-        //     <Image
-        //       src="/icons/trash.svg"
-        //       alt="Remove from wishlist"
-        //       width={24}
-        //       height={24}
-        //       className={styles.likeIcon}
-        //     />
-        //   </button>
-        // </div>
       );
     });
   }

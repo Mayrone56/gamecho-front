@@ -1,18 +1,20 @@
 import styles from '../styles/Rating.module.css';
 import Header from '../components/Header';
 import Footer from '../components/Footer';
+import Link from "next/link";
 import { useState, useEffect } from "react";
 import { useSelector, useDispatch } from 'react-redux';
 import { addRate, deleteRate } from "../reducers/rating";
 import Image from 'next/image';
 import { useRouter } from "next/router";
 import { getGameDetails } from "../reducers/game";
-
+import GameCard from "../components/GameCard";
 
 function Ratings() {
 
-    const rooter = useRouter()
+    const router = useRouter();
     const dispatch = useDispatch();
+    const wishlist = useSelector((state) => state.wishlist.value);
     const isLightmode = useSelector((state) => state.config.value.mode);//Cible le mode dans le reducer setting
 
     //un état pour stocker les jeux de notre wishlist que nous voulons trouver
@@ -20,13 +22,15 @@ function Ratings() {
 
     //Affiche la liste des ratings
     const ratings = useSelector((state) => state.rating.value);
+    console.log("RATINGS", ratings);
     //Necessaire piyr trouver le rating par user
     const user = useSelector((state) => state.user.value);
     console.log("USER ", user);
 
-    const game = useSelector((state) => state.game.details)
-    console.log("GAME ", game)
-    console.log("GAME NAME", game.name)
+    const gameDetails = useSelector((state) => state.game.details)
+    console.log("GAME DETAILS", gameDetails)
+    console.log("GAME NAME", gameDetails.name)
+
 
     // //Delete rating qui marche mais sans back
     // const deleteRating = (event, game) => {
@@ -46,13 +50,34 @@ function Ratings() {
             })
     };
 
+    const isAddedToWishlist = (game) => {
+        return wishlist.some((wishlistItem) => wishlistItem.name === game.name);
+    };
+
+    const handleGameCardClick = (game) => {
+        dispatch(getGameDetails(game));
+        router.push("game/");
+    };
+
     let games = <p>No game is rated</p>;
     if (ratings.length > 0) {
-        games = ratings.map((game, i) => {
-            const ratingDate = new Date(game.ratingDate).toLocaleDateString();
+        games = ratings.map((g, i) => {
+            console.log("RATED GAMES", ratings)
+            const game = g.gameDetails;
+            const ratingDate = new Date(g.ratingDate).toLocaleDateString();
             return (
                 <div className={styles.rateContainer}>
-                    <div
+                    <Link href="/game" key={game.name}>
+                        <GameCard
+                            key={game.name}
+                            game={game}
+                            isAddedToWishlist={isAddedToWishlist(game)}
+                            onHeartClick={(event) => handleDelete(event, game)}
+                            onClick={() => handleGameCardClick(game)}
+                            iconType="trash"
+                        />
+                    </Link>
+                    {/* <div
                         key={game.gameDetails.name}
                         className={styles.card} // si changement de dimension type portrait, on affiche deux carts scrollables ?
                         style={{
@@ -61,7 +86,7 @@ function Ratings() {
                         onClick={() => handleGameCardClick(game)}
                     >
                         <p className={styles.gameNameCard}>{game.gameDetails.name}</p>
-                    </div>
+                    </div> */}
                     <div className={styles.ratingInfo}>
                         <span className={styles.info}>Rating: {game.rating}</span>
                         <span className={styles.info}>Comment: {game.comment}</span>
