@@ -25,8 +25,8 @@ function Ratings() {
     console.log("USER ", user);
 
     const game = useSelector((state) => state.game.details)
-    console.log("GAME ", game)
-    console.log("GAME NAME", game.name)
+    // // console.log("GAME ", game)
+    // // console.log("GAME NAME", game.name)
 
     // //Delete rating qui marche mais sans back
     // const deleteRating = (event, game) => {
