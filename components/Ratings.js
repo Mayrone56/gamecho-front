@@ -9,6 +9,7 @@ import Image from 'next/image';
 import { useRouter } from "next/router";
 import { getGameDetails } from "../reducers/game";
 import GameCard from "../components/GameCard";
+import { loadRates } from '../reducers/rating';
 
 const ratingToEmoji = {
     1: "/icons/emojiIcons/angry.svg",
@@ -36,8 +37,8 @@ function Ratings() {
     console.log("USER ", user);
 
     const gameDetails = useSelector((state) => state.game.details)
-    console.log("GAME DETAILS", gameDetails)
-    console.log("GAME NAME", gameDetails.name)
+    // console.log("GAME DETAILS", gameDetails)
+    // console.log("GAME NAME", gameDetails.name)
 
 
     // //Delete rating qui marche mais sans back
@@ -45,6 +46,19 @@ function Ratings() {
     //     event.stopPropagation();
     //     dispatch(deleteRate(game));
     // };
+
+    useEffect(() => {
+        if (!user.token) {
+            return;
+        }
+        fetch(`http://localhost:3000/ratings/${user.token}`)
+            .then(response => response.json())
+            .then(data => {
+                console.log("useEFFECT DATA", data)
+                data.result && dispatch(loadRates(data.user.ratings));
+            });
+    }, []);
+
 
     const handleDelete = (rating, event) => {
         fetch(`http://localhost:3000/ratings/${user.token}/${game.name}`, {
@@ -70,20 +84,20 @@ function Ratings() {
 
     let games = <p>No game is rated</p>;
     if (ratings.length > 0) {
-        games = ratings.map((g, i) => {
-            console.log("RATED GAMES", ratings)
-            const game = g.gameDetails;
-            const ratingDate = new Date(g.ratingDate).toLocaleDateString();
-            const ratingEmoji = ratingToEmoji[g.rating];
+        console.log("RATED GAMES", ratings)
+        games = ratings.map((data, i) => {
+            console.log("RATED GAMES", games)
+            const ratingDate = new Date(data.ratingDate).toLocaleDateString();
+            const ratingEmoji = ratingToEmoji[data.rating];
             return (
                 <div className={styles.rateContainer}>
-                    <Link href="/game" key={game.name}>
+                    <Link href="/game" key={data.game.name}>
                         <GameCard
-                            key={game.name}
-                            game={game}
-                            isAddedToWishlist={isAddedToWishlist(game)}
-                            onHeartClick={(event) => handleDelete(event, game)}
-                            onClick={() => handleGameCardClick(game)}
+                            key={data.game.name}
+                            game={data.game}
+                            isAddedToWishlist={isAddedToWishlist(data.game)}
+                            onHeartClick={(event) => handleDelete(event, data.game)}
+                            onClick={() => handleGameCardClick(data.game)}
                             iconType="trash"
                         />
                     </Link>
@@ -98,8 +112,8 @@ function Ratings() {
                         <p className={styles.gameNameCard}>{game.gameDetails.name}</p>
                     </div> */}
                     <div className={styles.ratingInfo}>
-                        <span className={styles.info}>Rating: <Image src={ratingEmoji} alt={`Rating: ${g.rating}`} width={24} height={24} /></span>
-                        <span className={styles.info}>Comment: {g.comment}</span>
+                        <span className={styles.info}>Rating: <Image src={ratingEmoji} alt={`Rating: ${data.rating}`} width={24} height={24} /></span>
+                        <span className={styles.info}>Comment: {data.comment}</span>
                         <span className={styles.info}>Rating added on: {ratingDate}</span>
                     </div>
                     <div className={styles.buttonContainer}>
