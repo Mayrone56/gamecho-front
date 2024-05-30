@@ -10,6 +10,14 @@ import { useRouter } from "next/router";
 import { getGameDetails } from "../reducers/game";
 import GameCard from "../components/GameCard";
 
+const ratingToEmoji = {
+    1: "/icons/emojiIcons/angry.svg",
+    2: "/icons/emojiIcons/sad.svg",
+    3: "/icons/emojiIcons/neutral.svg",
+    4: "/icons/emojiIcons/happy.svg",
+    5: "/icons/emojiIcons/love.svg",
+};
+
 function Ratings() {
 
     const router = useRouter();
@@ -59,12 +67,14 @@ function Ratings() {
         router.push("game/");
     };
 
+
     let games = <p>No game is rated</p>;
     if (ratings.length > 0) {
         games = ratings.map((g, i) => {
             console.log("RATED GAMES", ratings)
             const game = g.gameDetails;
             const ratingDate = new Date(g.ratingDate).toLocaleDateString();
+            const ratingEmoji = ratingToEmoji[g.rating];
             return (
                 <div className={styles.rateContainer}>
                     <Link href="/game" key={game.name}>
@@ -88,8 +98,8 @@ function Ratings() {
                         <p className={styles.gameNameCard}>{game.gameDetails.name}</p>
                     </div> */}
                     <div className={styles.ratingInfo}>
-                        <span className={styles.info}>Rating: {game.rating}</span>
-                        <span className={styles.info}>Comment: {game.comment}</span>
+                        <span className={styles.info}>Rating: <Image src={ratingEmoji} alt={`Rating: ${g.rating}`} width={24} height={24} /></span>
+                        <span className={styles.info}>Comment: {g.comment}</span>
                         <span className={styles.info}>Rating added on: {ratingDate}</span>
                     </div>
                     <div className={styles.buttonContainer}>
