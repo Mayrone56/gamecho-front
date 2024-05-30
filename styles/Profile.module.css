@@ -4,16 +4,22 @@
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+  align-items: center;
+  color: #FFF9E8;
+  margin-top: 32px;
+  gap: 32px;
 }
 
 .containerlight {
-  height: 100vh;
-  width: 100vw;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  color: #242424;
-  background-color: #F0EFFF;
+    height: 100vh;
+    width: 100vw;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    color: #242424;
+    background-color: #F0EFFF;
+    margin-top: 32px;
 }
 
 .middleContainer {
@@ -23,6 +29,9 @@
   align-items: center;
   height: 100%;
   padding: 0 24px;
+  gap: 24px;
+  width: 80vw;
+
 }
 
 .section {
@@ -52,6 +61,7 @@
   align-items: center;
   width: 100%;
   margin-bottom: 20px;
+  gap: 24px;
 }
 
 .signContainer {
@@ -68,7 +78,6 @@
   align-items: center;
 }
 
-/* BUTTONS */
 .primaryButton {
   display: flex;
   justify-content: center;
@@ -120,22 +129,21 @@
   justify-content: center;
   align-items: center;
   height: 44px;
-  width: 160px;
+  min-width: 160px;
   padding: 10px 24px 10px 24px;
-  background-color: #9592B8;
-  color: #fff9e8;
+  background-color: #3F3878;
+  color: #F0EFFF;
   border-radius: 40px;
-  border: 1px #f0efff solid;
+  border: 1px #F0EFFF solid;
   font-size: 16px;
   font-weight: 600;
   cursor: pointer;
-  margin: 15px;
-  width: 300px;
+  width: 250px;
 }
 
 .buttondark:hover {
-  background-color: #3f3878;
-  color: #fff9e8;
+  background-color: #241c63;
+  color: #F0EFFF;
 }
 
 .buttonlight {
@@ -143,22 +151,24 @@
   justify-content: center;
   align-items: center;
   height: 44px;
-  width: 160px;
+  min-width: 160px;
   padding: 10px 24px 10px 24px;
   background-color: #9592B8;
-  color: #fff9e8;
+  color: #F0EFFF;
   border-radius: 40px;
-  border: 1px #f0efff solid;
+  border: 1px #FFF9E8 solid;
   font-size: 16px;
   font-weight: 600;
   cursor: pointer;
-  margin: 15px;
-  width: 300px;
+  /* margin: 16px 0 32px 0; */
+  width: 250px;
 }
 
 .buttonlight:hover {
   background-color: #3F3878;
-  color: #fff9e8;
+}
+.centerText {
+  text-align: center;
 }
 
 /*IF USER TOKEN*/

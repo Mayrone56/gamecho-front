@@ -17,32 +17,38 @@ body {
 }
 
 h1 {
+  font-family: 'Roboto', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   font-size: 32px;
   margin: 16px 0;
 }
 
 h2 {
+  font-family: 'Roboto', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   font-size: 28px;
   margin: 16px 0;
 }
 
 h3 {
+  font-family: 'Roboto', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   font-size: 22px;
   font-weight: 500;
   margin: 16px 0;
 }
 
 p {
+  font-family: 'Roboto', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   font-size: 16px;
   line-height: 20px;
   font-weight: 200;
 }
 
 a {
+  font-family: 'Roboto', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   text-decoration: none;
 }
 
 button {
+  font-family: 'Roboto', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   background-color: inherit;
   border: none;
   color: inherit;

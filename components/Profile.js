@@ -123,20 +123,20 @@ function Profile() {
     <div className={isLightmode? styles.containerlight : styles.containerdark}>
       {!user.token && (
         <div className={styles.middleContainer}>
-          <div className={styles.titleContainer}>
-            <h2>Discover an exciting new approach to gaming !</h2>
-            <h3>Join now and unleash the full potential of your gaming experience !</h3>
-            <p>Rate your favourite titles according to your own criteria and explore recommendations tailored specifically to you.</p>
+          <div className={styles.centerText}>
+            <h2 className={styles.centerText}>Discover an exciting new approach to gaming !</h2>
+            <h3 className={styles.centerText}>Join now and unleash the full potential of your gaming experience !</h3>
+            <p className={styles.centerText}>Rate your favourite titles according to your own criteria and explore recommendations tailored specifically to you.</p>
           </div>
           <div className={styles.buttonContainer}>
             <div className={styles.signin}>
-              <h3>Already have an account?</h3>
+              <h3>Already have an account ?</h3>
               <button className={isLightmode? styles.buttondark : styles.buttonlight} onClick={handleSignInClick}>
                 Sign In
               </button>
             </div>
             <div className={styles.signup}>
-              <h3>New to GamEcho? Create an account!</h3>
+              <h3>New to GamEcho ? Create an account !</h3>
               <button className={isLightmode? styles.buttondark : styles.buttonlight} onClick={handleSignUpClick}>
                 Sign Up
               </button>
@@ -146,7 +146,7 @@ function Profile() {
       )}
       {user.token && (
         <div className={styles.middleContainer}>
-          <h1 className={styles.title}>MY PROFILE</h1>
+          <h1 className={styles.title}>My profile</h1>
           {!user.avatar && (
             <div className={styles.avatarContainer} onClick={handleAvatarClick}>
               <Image

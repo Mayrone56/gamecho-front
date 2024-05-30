@@ -33,7 +33,7 @@ function GameCard({ game, isAddedToWishlist, onHeartClick, onClick, iconType }) 
       className={styles.card} // si changement de dimension type portrait, on affiche deux carts scrollables ?
       style={{ backgroundImage: `url(${game.imageGame})` }} // Utilisez l'image de game comme fond et utiliser du CSS inline pour être prioritaire sur le placeholder
     >
-      <div className={styles.ratingInfo}>
+      <div className={styles.gameCardInfo}>
 
         <p className={styles.gameNameCard}>{game.name}</p>
       </div>

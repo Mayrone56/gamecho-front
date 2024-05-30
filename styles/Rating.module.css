@@ -11,6 +11,7 @@
 .containerlight {
   width: 100vw;
   height: 100vh;
+  
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -38,7 +39,7 @@
   display: flex;
   justify-content: center;
   flex-wrap: wrap;
-  gap: 24px;
+  gap: 40px;
 }
 
 .rateContainer {

@@ -79,7 +79,7 @@ function Setting() {
     return (
         <>
             <div className={isLightmode ? styles.containerlight : styles.containerdark}>
-                <div className={styles.content}>
+                <div className={styles.middleContainer}>
                     <h2>Settings</h2>
                     <div className={styles.parameter}>
                         <div className={styles.iconContainer}>

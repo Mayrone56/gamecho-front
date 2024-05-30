@@ -93,10 +93,9 @@
   background-color: #3f3878;
   height: 100%;
   width: 100vw;
-  border-radius: 40px 40px 0 0;
   /* position: absolute; */
   /* bottom: 0; */
-  box-shadow: 0 0 20px rgba(0, 0, 0, 0.75);
+  box-shadow: 20px 0 0 rgba(0, 0, 0, 0.75);
   padding: 16px 0 30px 0;
 }
 
@@ -124,15 +123,24 @@
 
 .userInfoContainer {
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
   justify-content: flex-start;
-  align-items: center;
+  align-items: flex-start;
+  /* background-color: #cdb00a; */
+  padding: 16px 0;
+      gap: 16px;
 }
 
-.info {
-  margin-right: 10px;
-  margin-left: 10px;
+.ratingDetails {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  /* background-color: aqua; */
+  padding: 16px 0;
+      gap: 16px;
+  
 }
+
 
 .ratingInfo {
   display: flex;
@@ -146,11 +154,6 @@
   margin-left: 10px !important;
 }
 
-.ratingDetails {
-  display: flex;
-  flex-direction: column;
-  width: 100%;
-}
 
 .videoContainer {
   background-color: black;
@@ -170,12 +173,11 @@
   justify-content: flex-start;
   align-items: center;
   flex-wrap: wrap;
-  padding-left: 8px;
+  padding: 0 24px;
   gap: 16px;
 }
 
 .tag01 {
-  margin: 0 8px;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -190,7 +192,6 @@
 }
 
 .tag02 {
-  margin: 0 8px;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -205,7 +206,6 @@
 }
 
 .tag03 {
-  margin: 0 8px;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -220,7 +220,6 @@
 }
 
 .tag04 {
-  margin: 0 8px;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -235,7 +234,6 @@
 }
 
 .tag05 {
-  margin: 0 8px;
   display: flex;
   justify-content: center;
   align-items: center;
