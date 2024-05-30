@@ -10,7 +10,6 @@
   margin: 0 !important; /* écrase le style global */
   align-self: flex-start;
   margin-left: 12px !important;
-  
 }
 
 .resetMarginLength {
@@ -36,9 +35,9 @@
 .inputnote {
   padding: 10px 12px 10px 12px;
   border-radius: 40px;
-  background-color: #F2F4FE;
-  color: #3F3878;
-  border: 1px #DFD8E7 solid;
+  background-color: #f2f4fe;
+  color: #3f3878;
+  border: 1px #dfd8e7 solid;
   width: 200px;
   font-size: 2em;
   text-align: center;
@@ -76,7 +75,6 @@
 
 .emoji {
   margin: 10px;
-  /* cursor: pointer; */
 }
 
 .bottomContainer {
@@ -113,7 +111,7 @@
   font-size: 16px;
   font-weight: 600;
   cursor: pointer;
-  margin: 16px 0 32px 0;
+  margin: 16px 0 16px 0;/* changed the bottom from 32 to 16 */
   width: 250px;
 }
 
@@ -129,7 +127,7 @@
   height: 44px;
   min-width: 160px;
   padding: 10px 24px 10px 24px;
-  background-color: #3f3878;
+  background-color: #9592B8;
   color: #f0efff;
   border-radius: 40px;
   border: 1px #f0efff solid;
@@ -147,4 +145,32 @@
 
 .bottomContainer {
   gap: 8px;
+  margin-bottom: 10px;
+}
+
+.logoTitle {
+  margin-right: 20%;
+  margin-left: 20;
+  display: flex;
+  line-height: 40px;
+  font-size: 32px;
+  text-align: center;
+}
+
+.hook {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin-top: 20px;
+}
+
+@media (max-width: 768px) {
+  .yourRating {
+    font-size: 12px !important;
+  }
+  .bottomContainer {
+    gap: 10px;
+    margin-bottom: 10px;
+  }
 }

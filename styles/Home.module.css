@@ -146,11 +146,17 @@
 
 
 .gameNameCard {
-  font-size: 1.25em;
+  font-size: 1.50em; /* avant => 1.25 VL */
   line-height: 24px;
-  font-weight: 500;
+  font-weight: 700; /* avant => 500 VL */
   color: rgb(255, 255, 255) ;
-  padding: 8px 16px;
+  padding: 16px; /* avant => 8px 16px VL */
+  margin-top: 32px;
+  -webkit-text-stroke: 0.75px #242424; /* le Grey Dark de l'UI VL */
+  background-color: #9592b85a;
+  width: 100%;
+  text-align: center;
+
 }
 
 .secondaryButton {
