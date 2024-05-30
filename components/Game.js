@@ -101,7 +101,7 @@ function Game() {
       // Math.round permet d'avoir un nombre entier et d'éviter le problème de source undefined
 
       return (
-        <div className={styles.rating}>
+        <div className={isLightmode ? styles.ratingLigtht : styles.rating}>
           <div className={styles.userInfoContainer}>
             {/*Les données peuplées de l'utilisateur sont un objet avec les clés suivantes: id, username, email, password, token, ratings, wishlist, __v.
           A cause de cela, React a eu un problème et n'a pas pu rendre une collection d'enfants qui sont un objet. Pour résoudre ce problème, on utilise Object.key() pour itérer à travers les clés de notre objet « user ». */}
@@ -210,7 +210,7 @@ function Game() {
   };
 
   return (
-    <div className={styles.container}>
+    <div className={isLightmode ? styles.containerLight : styles.container}>
       <div className={styles.middleContainer}>
         <div
           className={styles.bannerContainer}
