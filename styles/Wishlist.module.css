@@ -173,6 +173,7 @@
     width: 100%;
     top: 120px;
     padding: 0 40px;
+    max-width: 600px;
   }
   
   .buttonSearch {

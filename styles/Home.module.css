@@ -35,17 +35,14 @@
   background-repeat: no-repeat;
   background-size: cover;
   display: flex;
-  /* background-image: url('../public/Banner_welcome_without_text.jpg'); */
-  /* flex-direction: column; */
-  /* justify-content: flex-end; */
-  /* align-items: center; */
-  /* overflow: hidden; */
+
   box-shadow: 0 0 50px #cf55edab;
 }
 
 .cropedBanner {
   height: 160px;
   overflow: hidden;
+  opacity: 0.9;
 }
 
 /* DESKTOP */
@@ -241,10 +238,11 @@
   margin-top: 40px;
   padding-left: 20px;
   padding-right: 20px;
-  width: 100%;
+  width: 100vw;
   position: absolute;
   top: 120px;
   padding: 0 40px;
+  max-width: 600px;
 }
 
 .buttonSearch {

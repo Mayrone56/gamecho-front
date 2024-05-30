@@ -215,6 +215,11 @@ function Home() {
           <input
             type="text"
             className={styles.input}
+            onKeyDown={(e) => {
+              if (e.key === "Enter") {
+                handleAllGames();
+              }
+            }}
             onChange={(e) => {
               setSearchValue(e.target.value);
               setSearchSuggValue(e.target.value)

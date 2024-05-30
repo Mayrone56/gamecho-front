@@ -111,6 +111,11 @@ function Wishlist() {
               placeholder="Search in your wishlist..."
               value={searchGame}
               onChange={handleSearchChange}
+              onKeyDown={(e) => {
+                if (e.key === "Enter") {
+                  handleSearchClick();
+                }
+              }}
             />
             <div className={styles.buttonSearch}>
 
