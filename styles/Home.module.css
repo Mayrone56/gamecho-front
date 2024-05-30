@@ -152,7 +152,7 @@
 
 .gameCardInfo {
   background-color: #654bceb3;
-  background: linear-gradient(to bottom left, #a129f1b3, hsla(252, 57%, 55%, 0.7));
+  background: linear-gradient(to bottom left, hsla(276, 88%, 55%, 0.85), hwb(252 29% 19% / 0.85));
   display: flex;
   flex-direction: column;
   justify-content: center;

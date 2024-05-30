@@ -69,7 +69,7 @@ function RateModal(props) {
       gameDetails: gameDetails, // reducer game qui contient TOUTES les données du jeu
     };
 
-    const response =  dispatch(openCloseModal(false));
+    const response = dispatch(openCloseModal(false));
     await fetch("http://localhost:3000/ratings/save", {
       method: "POST",
       headers: {
@@ -80,12 +80,10 @@ function RateModal(props) {
     console.log(response);
     if (response.ok) {
       console.log("Rating submitted successfully");
-      setNewReview(""); // on vide la valeur de la review qui est dans input de la modal du rating via un setter
-
       //Rated
       dispatch(addRate(ratingData)); //Ajoute au tableau qui permettra d'afficher comme pour wishlist sur home, mais sur la page ratings
       console.log(ratingData, "added to rating");
-     
+      setNewReview(""); // on vide la valeur de la review qui est dans input de la modal du rating via un setter
     } else {
       console.log("Error submitting rating");
       // si erreur quelconque, message
@@ -219,7 +217,7 @@ function RateModal(props) {
             ></textarea>
             <p className={styles.resetMarginLength}>{newReview.length}/300</p>
             <button
-            disabled={!selectedEmoji}
+              disabled={!selectedEmoji}
               className={styles.button}
               onClick={(e) => {
                 e.preventDefault(); // le comportement du clic par défaut n'est plus prioritaire et perd ses propriétés natives (par ex un clic est plus lent si appelé dans un formulaire comme une Modal)  https://developer.mozilla.org/fr/docs/Web/API/Event/preventDefault
