@@ -18,8 +18,9 @@ function RateModal(props) {
   const user = useSelector((state) => state.user.value);
   const userRatingMode = useSelector((state) => state.config.value.ratingMode); // selectione la valeur de l'état mode dans le reducer config
   const [newReview, setNewReview] = useState("");
-  const [rate, setRate] = useState(0); // vote sans valeur indiquée
+  const [rate, setRate] = useState(-1); // valeur impossible à redistruber pour em^
   const [myEmoji, setMyEmoji] = useState("");
+  const [selectedEmoji, setSelectedEmoji] = useState(false)
 
   const emojiIcons = [
     "/icons/emojiIcons/angry.svg",
@@ -91,7 +92,7 @@ function RateModal(props) {
   };
 
   const handleSelection = (emojiPath, i) => {
-    setRate(i + 1), setMyEmoji(emojiPath);
+   if (i !== 0) {setRate(i + 1); setMyEmoji(emojiPath); setSelectedEmoji(true)}; // on conditionne la sauvegarde de la valeur à un vote et on empêche ainsi tout rate = 0
   };
   const personalEmoji = [];
   for (let i = 0; i < 5; i++) {
@@ -216,7 +217,14 @@ function RateModal(props) {
               value={newReview}
             ></textarea>
             <p className={styles.resetMarginLength}>{newReview.length}/300</p>
-            <button className={styles.button} onClick={handleVote}>
+            <button
+            disabled={!selectedEmoji}
+              className={styles.button}
+              onClick={(e) => {
+                e.preventDefault(); // le comportement du clic par défaut n'est plus prioritaire et perd ses propriétés natives (par ex un clic est plus lent si appelé dans un formulaire comme une Modal)  https://developer.mozilla.org/fr/docs/Web/API/Event/preventDefault
+                handleVote(gameDetails);
+              }}
+            >
               SUBMIT
             </button>
           </div>

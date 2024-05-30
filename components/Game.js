@@ -131,6 +131,8 @@ function Game() {
               {/*La valeur de l'évaluation est convertie en emoji à l'aide d'une table de correspondance ratingToEmoji, et elle est affichée à l'aide du composant Image.*/}
               <span className={styles.ratingInfo}>
                 Rating:{" "}
+
+                {/* SI ACTIF BUG SUR L'AFFICHAGE AU CLIC SUR UNE GAME CARD DANS HOME */}
                 <Image
                   // ICI on dynamise la source de l'icône utilisée pour illustrer le vote
                   // Il est nécessaire de se servir de l'échelle, enregistrée dans l'état, et de la diviser par 5 pour qu'elle puisse être associée à un chiffre de 1 à 5 et ce peu importe le ratingMode
@@ -141,6 +143,7 @@ function Game() {
                   width={24}
                   height={24}
                 />
+
               </span>
               <span>Commentary: {vote.comment}</span>
             </div>
@@ -206,76 +209,6 @@ function Game() {
     dispatch(openCloseModal(false));
   };
 
-  //AJOUT TEST SANDRINE POUR AJOUTER RATING
-  // const handleSearchSuggestions = async () => {
-  //   const response = await fetch(
-  //     `http://localhost:3000/games`
-  //   );
-
-  //   if (!response.ok) {
-  //     return;
-  //   }
-  // }
-
-  //RATED GAME TEST 2
-
-  // const handleGameCardClick = () => {
-  //   fetch('http://localhost:3000/games/saveGameDetails', {
-  //     method: 'POST',
-  //     headers: { 'Content-Type': 'application/json' },
-  //     body: JSON.stringify({
-  //           description: game.description,
-  //           name: game.name,
-  //           developer: game.developer,
-  //           publisher: game.publisher,
-  //           releasedDate: game.releasedDate,
-  //           platforms: game.platforms,
-  //           genre,
-  //           isMultiplayer,
-  //           isOnline,
-  //           isExpandedContent,
-  //           expandedContentList,
-  //           ratingsID,
-  //           imageGame,
-  //           ratingSummary, }),
-  //   }).then(response => response.json())
-  //     .then(data => {
-  //       if (data.savedGame) {
-  //         dispatch(getGameDetails(game))
-  //       }
-  //     });
-  // };
-
-  //     // router.push("game/");
-  // };
-
-  // //RATED GAME DEEBUT AVEC VALENTIN
-
-  // const handleGameCardClick = (game) => {
-  //   dispatch(getGameDetails(game));
-  //   fetch("http://localhost:3000/users/signup", {
-  //     method: "POST",
-  //     headers: { "Content-Type": "application/json" },
-  //     body: JSON.stringify({
-  //       description: game.description,
-  //       name: game.name,
-  //       developer: game.developer,
-  //       publisher: game.publisher,
-  //       releasedDate: game.releasedDate,
-  //       platforms: game.platforms,
-  //       genre,
-  //       isMultiplayer,
-  //       isOnline,
-  //       isExpandedContent,
-  //       expandedContentList,
-  //       ratingsID,
-  //       imageGame,
-  //       ratingSummary,
-  //     }),
-  //   }),
-  //     router.push("game/");
-  // };
-
   return (
     <div className={styles.container}>
       <div className={styles.middleContainer}>
@@ -335,6 +268,7 @@ function Game() {
                       height={24}
                       className={styles.icon}
                     />
+                    
                   </div>
                   <p>
                     Average rating -{" "}

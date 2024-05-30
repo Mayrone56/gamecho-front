@@ -110,8 +110,6 @@
   color: aliceblue;
 }
 
-
-
 .iconButton {
   display: flex;
   justify-content: center;
@@ -146,17 +144,23 @@
 
 
 .gameNameCard {
-  font-size: 1.50em; /* avant => 1.25 VL */
-  line-height: 24px;
-  font-weight: 700; /* avant => 500 VL */
-  color: rgb(255, 255, 255) ;
-  padding: 16px; /* avant => 8px 16px VL */
-  margin-top: 32px;
-  -webkit-text-stroke: 0.75px #242424; /* le Grey Dark de l'UI VL */
-  background-color: #9592b85a;
-  width: 100%;
+  font-size: 1.25em;
+  font-weight: 400;
+  margin: 0;
   text-align: center;
+}
 
+.ratingInfo {
+  background-color: #654bceb3;
+  background: linear-gradient(to bottom left, #a129f1b3, hsla(252, 57%, 55%, 0.7));
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  border-bottom-left-radius: 40px;
+  border-bottom-right-radius: 40px;
+  margin-top: 0;
+  padding: 24px 0 32px 0;
+  width: 100%;
 }
 
 .secondaryButton {
