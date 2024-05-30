@@ -34,8 +34,6 @@ function Ratings() {
     //     dispatch(deleteRate(game));
     // };
 
-    const ratingId = useSelector((state) => state.rating.value) //
-
     const handleDelete = (rating, event) => {
         fetch(`http://localhost:3000/ratings/${user.token}/${game.name}`, {
             method: 'DELETE',
