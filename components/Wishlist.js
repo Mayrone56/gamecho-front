@@ -4,6 +4,7 @@ import { useState } from "react";
 import Header from './Header';
 import Footer from './Footer';
 import Image from "next/image";
+import Link from "next/link";
 import { removeFromWishlist } from "../reducers/wishlist";
 import { useRouter } from "next/router";
 
@@ -28,6 +29,10 @@ function Wishlist() {
   const handleDelete = (event, game) => {
     event.stopPropagation();
     dispatch(removeFromWishlist(game));
+  };
+
+  const isAddedToWishlist = (game) => {
+    return wishlist.some((wishlistItem) => wishlistItem.name === game.name);
   };
 
   const handleGameCardClick = (game) => {
@@ -59,29 +64,39 @@ function Wishlist() {
   if (gamesToDisplay.length > 0) {
     games = gamesToDisplay.map((game, i) => {
       return (
-        <div
-          key={game.name}
-          className={styles.card} // si changement de dimension type portrait, on affiche deux carts scrollables ?
-          style={{
-            backgroundImage: `url(${game.imageGame})`
-          }} // Utilisez l'image de game comme fond
-          onClick={() => handleGameCardClick(game)}
-        >
-          <p className={styles.gameNameCard}>{game.name}</p>
-          <button
-            className={styles.iconButton}
-            onClick={(event) => handleDelete(event, game)}
-          >
-            {" "}
-            <Image
-              src="/icons/trash.svg"
-              alt="Remove from wishlist"
-              width={24}
-              height={24}
-              className={styles.likeIcon}
-            />
-          </button>
-        </div>
+        <Link href="/game" key={game.name}>
+          <GameCard
+            key={game.name}
+            game={game}
+            isAddedToWishlist={isAddedToWishlist(game)}
+            onHeartClick={(event) => handleDelete(event, game)}
+            onClick={() => handleGameCardClick(game)}
+            iconType="trash"
+          />
+        </Link>
+        // <div
+        //   key={game.name}
+        //   className={styles.card} // si changement de dimension type portrait, on affiche deux carts scrollables ?
+        //   style={{
+        //     backgroundImage: `url(${game.imageGame})`
+        //   }} // Utilisez l'image de game comme fond
+        //   onClick={() => handleGameCardClick(game)}
+        // >
+        //   <p className={styles.gameNameCard}>{game.name}</p>
+        //   <button
+        //     className={styles.iconButton}
+        //     onClick={(event) => handleDelete(event, game)}
+        //   >
+        //     {" "}
+        //     <Image
+        //       src="/icons/trash.svg"
+        //       alt="Remove from wishlist"
+        //       width={24}
+        //       height={24}
+        //       className={styles.likeIcon}
+        //     />
+        //   </button>
+        // </div>
       );
     });
   }

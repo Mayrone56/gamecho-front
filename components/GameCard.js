@@ -3,9 +3,27 @@ import styles from "../styles/Home.module.css"; // on applique le style défini 
 import { useState } from "react";
 
 
-function GameCard({ game, isAddedToWishlist, onHeartClick, onClick }) { // les deux dernière props exploitent l'inverse data flow ! la fonction est initiée dans Home, recupérée dans la cart qui renvoie les informations dans home selon la prop classique game !!!
+function GameCard({ game, isAddedToWishlist, onHeartClick, onClick, iconType }) { // les deux dernière props exploitent l'inverse data flow ! la fonction est initiée dans Home, recupérée dans la cart qui renvoie les informations dans home selon la prop classique game !!!
 
+  const getIconDetails = () => {
+    if (iconType === 'trash') {
+      return {
+        src: "/icons/trash.svg",
+        alt: "Remove from list",
+        ariaLabel: "Remove from list",
+        className: styles.iconButton
+      };
+    } else {
+      return {
+        src: "/icons/heart.svg",
+        alt: isAddedToWishlist ? "Remove from wishlist" : "Add to wishlist",
+        ariaLabel: isAddedToWishlist ? "Remove from wishlist" : "Add to wishlist",
+        className: isAddedToWishlist ? styles.iconButtonPink : styles.iconButton
+      };
+    }
+  };
 
+  const iconDetails = getIconDetails();
 
   return (
     <div
@@ -20,15 +38,13 @@ function GameCard({ game, isAddedToWishlist, onHeartClick, onClick }) { // les d
         <p className={styles.gameNameCard}>{game.name}</p>
       </div>
       <button
-        className={isAddedToWishlist?styles.iconButtonPink:styles.iconButton}
+        className={iconDetails.className}
         onClick={onHeartClick}
-        aria-label={
-          isAddedToWishlist ? "Remove from wishlist" : "Add to wishlist"
-        }
+        aria-label={iconDetails.ariaLabel}
       >
         <Image
-          src="/icons/heart.svg"
-          alt={isAddedToWishlist ? "Remove from wishlist" : "Add to wishlist"}
+          src={iconDetails.src}
+          alt={iconDetails.alt}
           width={24}
           height={24}
           className={styles.likeIcon}

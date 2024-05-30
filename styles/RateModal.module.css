@@ -120,6 +120,13 @@
   color: #fff9e8;
 }
 
+.button:disabled {
+  /* Impossible de cliquer sur le bouton */
+  background-color: #828282;
+  color: #E1E3EC;
+  cursor:inherit; /* par défaut, plus de curseur hérité du bouton */
+}
+
 .secondaryButton {
   display: flex;
   justify-content: center;
