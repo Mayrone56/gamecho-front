@@ -27,6 +27,10 @@
     width: 32px;
     cursor: pointer;
     border-radius: 100%;
+    object-position: center center;
+    /* centre l'image verticalement/horizitontalement pour garantir un affichage proche de l'original*/
+    object-fit: cover;
+    /* empêche l'image d'être tronquée même visualée en cercle */
 }
 
 /**MENU BURGER**/
@@ -158,5 +162,9 @@
 
 .avatar{
     border-radius: 100%;
+    object-position: center center;
+    /* centre l'image verticalement/horizitontalement pour garantir un affichage proche de l'original*/
+    object-fit: cover;
+    /* empêche l'image d'être tronquée même visualée en cercle */
 }
 
