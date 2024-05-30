@@ -38,6 +38,7 @@ function Game() {
       .then((data) => {
         console.log("useEffect data", data);
         setRatingsList(data.data);
+        console.log("fetch", data.data);
 
         // on vérifie la présence d'une clé "ratingMode", qui détermine l'échelle du vote, dans le premier tableau du document
 
@@ -65,11 +66,40 @@ function Game() {
       });
   }, []);
 
+  let totalRatings = 0; // on initialise à 0 les deux paramètres nécessaires au calcul de la moyenne EN DEHORS de la boucle pour les exploiter
+  let ratingsLength = 0;
+
   //Le tableau « ratingsList » est utilisé pour le rendu de chaque note individuelle.
+  console.log("ratings list", ratingsList);
   const allRatings = ratingsList
     ? ratingsList.map((vote, i) => {
         //La date de notation est formatée à l'aide de la fonction toLocaleDateString() afin de l'afficher dans un format dd/mm/yyyy
         const ratingDate = new Date(vote.ratingDate).toLocaleDateString();
+
+        // CONVERSION DES NOTES
+
+        // on récupère CHAQUE vote du jeu et selon l'échelle choisie par l'utilisateur, on entreprend un calcul pour le convertir à une valeur de 1 à 5 / Pourquoi ? Pour qu'il puisse être associé aux emojis numérotés
+
+        // on initialise la conversion à l'exterieur de la boucle pour l'exploiter
+        let convertedRating;
+
+        if (vote.ratingMode === "Out of 100") {
+          // ratingMode cible l'échelle choisie dans la BDD, ratingsList[i] cible un vote unique
+          convertedRating = (vote.rating / 100) * 5; // on divise le vote pour que sa valeur de dépasse pas 5 / 100/20=5
+        } else if (vote.ratingMode === "Out of 10") {
+          convertedRating = (vote.rating / 10) * 5; // plus intuitif, on a juste à diviser l'échelle en deux
+        } else {
+          // cible le vote restant, par défaut l'emoji sur 5
+          convertedRating = vote.rating;
+          console.log("vote rating", vote.rating);
+        }
+
+        totalRatings += convertedRating; // on additionne toutes les valeurs converties trouvées et formatées pour avoir une échelle sur 5
+        ratingsLength++; // fréquence choisie : chaque vote mappé est ajouté un par un
+
+        const emojiRate = ratingToEmoji[Math.round(convertedRating)]; // on récupère un URL du tableau d'emoji attribué à un numéro et on le sauvegarde pour l'appeler en src de l'Image
+        // Math.round permet d'avoir un nombre entier et d'éviter le problème de source undefined
+
         return (
           <div className={styles.rating}>
             <div className={styles.userInfoContainer}>
@@ -106,9 +136,7 @@ function Game() {
                   // Il est nécessaire de se servir de l'échelle, enregistrée dans l'état, et de la diviser par 5 pour qu'elle puisse être associée à un chiffre de 1 à 5 et ce peu importe le ratingMode
                   // Le Math.floor est essentiel pour arrondir le resultat et obtenir un nombre entier et exploitable
 
-                  src={
-                    ratingToEmoji[Math.floor(vote.rating / (ratingScale / 5))]
-                  }
+                  src={emojiRate}
                   alt={`Rating: ${vote.rating}`}
                   width={24}
                   height={24}
@@ -120,6 +148,14 @@ function Game() {
         );
       })
     : null;
+
+  // la constante ne s'execute que s'il y a au moins un vote => on divise le total des valeurs obtenueslors du map par le nombre de votes / sinon, la moyenne n'existe pas (0)
+
+  const averageRating = ratingsLength > 0 ? totalRatings / ratingsLength : 0;
+  const emojiAverage = ratingToEmoji[Math.round(averageRating)];
+  console.log("average emoji", emojiAverage); // FONCTIONNE QUAND L'IMAGE EST COMMENTEE ??? Return la bonne valeur avec l'adresse...
+  console.log("totalRatings", totalRatings);
+  console.log("number rate", ratingsLength);
 
   // FONCTION RATE EXTERNE POUR L'APPELER AILLEUR
   const isRated = (game) => {
@@ -258,19 +294,33 @@ function Game() {
           <div className={styles.bottomBannerContainer}>
             <h2 className={styles.sectionTitle}>{gameDetails.name}</h2>
             <div className={styles.captionGameName}>
-              <div className={styles.iconRating}>
-                <Image
-                  src="/icons/emojiIcons/happy.svg"
-                  alt="Rating icon"
-                  width={24}
-                  height={24}
-                  className={styles.icon}
-                />
-              </div>
-              <p>
-                Average rating -{" "}
-                <span className={styles.caption}>Based on 634 ratings</span>
-              </p>
+              {emojiAverage ? (
+                <>
+                  {" "}
+                  <div className={styles.iconRating}>
+                    {/* Sûrement le plus difficle : sans conditionner le rendu au calcul de la moyenne, l'app crash ! Il faut laisser le temps au code de s'executer avant de tenter d'afficher l'image. C'est presque comme un await */}
+
+                    <Image
+                      src={emojiAverage}
+                      alt="Rating icon"
+                      width={24}
+                      height={24}
+                      className={styles.icon}
+                    />
+                  </div>
+                  <p>
+                    Average rating -{" "}
+                    <span className={styles.caption}>BASED ON {ratingsLength} RATING{ratingsLength > 1 && ("S")}</span>
+                  </p>
+                </>
+              ) : (
+                <>
+                  {" "}
+                  <p>
+                    No rating yet{" "}
+                  </p>
+                </>
+              )}
             </div>
           </div>
         </div>
