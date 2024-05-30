@@ -4,7 +4,7 @@ import Image from "next/image";
 import { useState, useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { addToWishlist, removeFromWishlist } from "../reducers/wishlist";
-import { addRate, deleteRate } from "../reducers/rating";
+import { addRate, loadRates } from "../reducers/rating";
 import { openCloseModal } from "../reducers/config";
 import { Modal } from "antd";
 import RateModal from "./RateModal";
@@ -37,6 +37,7 @@ function Game() {
       .then((response) => response.json())
       .then((data) => {
         console.log("useEffect data", data);
+        dispatch(loadRates(data))
         setRatingsList(data.data);
         console.log("fetch", data.data);
 

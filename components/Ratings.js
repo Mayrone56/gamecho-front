@@ -120,7 +120,7 @@ function Ratings() {
                     <div className={styles.buttonContainer}>
                         <button
                             className={styles.iconButton}
-                            onClick={(event) => handleDelete(event, game)}
+                            onClick={(event) => handleDelete(event, data.game)}
                         >
                             {" "}
                             <Image
