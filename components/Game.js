@@ -104,19 +104,19 @@ function Game() {
         <div className={styles.rating}>
           <div className={styles.userInfoContainer}>
             {/*Les données peuplées de l'utilisateur sont un objet avec les clés suivantes: id, username, email, password, token, ratings, wishlist, __v.
-        A cause de cela, React a eu un problème et n'a pas pu rendre une collection d'enfants qui sont un objet. Pour résoudre ce problème, on utilise Object.key() pour itérer à travers les clés de notre objet « user ». */}
+          A cause de cela, React a eu un problème et n'a pas pu rendre une collection d'enfants qui sont un objet. Pour résoudre ce problème, on utilise Object.key() pour itérer à travers les clés de notre objet « user ». */}
             {Object.keys(vote.user).map((key, index) => {
               if (key === "username") {
                 // nous vérifions si la clé courante qui est itérée est 'username'
                 return (
                   <div key={index} className={styles.userDetail}>
                     {/* <Image
-                  src="/icons/heart.svg"
-                  alt="User's avatar"
-                  width={24}
-                  height={24}
-                  className={styles.info}
-                /> */}
+                    src="/icons/heart.svg"
+                    alt="User's avatar"
+                    width={24}
+                    height={24}
+                    className={styles.info}
+                  /> */}
                     <span className={styles.info}>
                       Username: {vote.user[key]}
                     </span>{" "}
@@ -151,6 +151,8 @@ function Game() {
       );
     })
     : null;
+
+
 
 
   //WISHLIST HEART ICON CLICK
@@ -207,8 +209,6 @@ function Game() {
     dispatch(openCloseModal(false));
   };
 
-
-
   return (
     <div className={styles.container}>
       <div className={styles.middleContainer}>
@@ -226,6 +226,7 @@ function Game() {
             <button className={styles.iconButton} onHeartClick={(event) => handleHeartIconClick(event, gameDetails)}>
               {" "}
               <Image
+
                 src="/icons/heart.svg"
                 alt="Add to wishlist"
                 width={24}
@@ -328,5 +329,5 @@ function Game() {
       </Modal>
     </div>
   );
-
-  export default Game;
+}
+export default Game;
