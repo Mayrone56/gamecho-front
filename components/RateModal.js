@@ -18,7 +18,7 @@ function RateModal(props) {
   const user = useSelector((state) => state.user.value);
   const userRatingMode = useSelector((state) => state.config.value.ratingMode); // selectione la valeur de l'état mode dans le reducer config
   const [newReview, setNewReview] = useState("");
-  const [rate, setRate] = useState(-1); // valeur impossible à redistruber pour em^
+  const [rate, setRate] = useState(0); // valeur impossible à redistruber pour em^
   const [myEmoji, setMyEmoji] = useState("");
   const [selectedEmoji, setSelectedEmoji] = useState(false)
 
@@ -93,7 +93,7 @@ function RateModal(props) {
   };
 
   const handleSelection = (emojiPath, i) => {
-   if (i !== 0) {setRate(i + 1); setMyEmoji(emojiPath); setSelectedEmoji(true)}; // on conditionne la sauvegarde de la valeur à un vote et on empêche ainsi tout rate = 0
+    setRate(i + 1); setMyEmoji(emojiPath); setSelectedEmoji(true); // on conditionne la sauvegarde de la valeur à un vote et on empêche ainsi tout rate = 0
   };
   const personalEmoji = [];
   for (let i = 0; i < 5; i++) {
