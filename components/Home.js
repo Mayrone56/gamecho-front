@@ -215,7 +215,7 @@ function Home() {
           <input
             type="text"
             className={styles.input}
-            onKeyDown={(e) => {
+            onKeyDown={(e) => { 
               if (e.key === "Enter") {
                 handleAllGames();
               }

@@ -10,7 +10,7 @@ import { useRouter } from "next/router";
 const moment = require("moment");
 moment.locale("fr");
 
-function RateModal(props) {
+function RateModal({onSubmit}) {
   const dispatch = useDispatch();
   const gameDetails = useSelector((state) => state.game.details);
 
@@ -67,6 +67,7 @@ function RateModal(props) {
       ratingDate: new Date(), // date au moment de l'appel de la route
       //Pour le moment Date est le composant javascript de base, il faudra utiliser si on a le temps moment
       gameDetails: gameDetails, // reducer game qui contient TOUTES les données du jeu
+
     };
 
     const response = dispatch(openCloseModal(false));
@@ -87,7 +88,7 @@ function RateModal(props) {
     } else {
       console.log("Error submitting rating");
       // si erreur quelconque, message
-    }
+    } console.log("Calling onSubmit  "); onSubmit()
   };
 
   const handleSelection = (emojiPath, i) => {
