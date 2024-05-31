@@ -68,7 +68,7 @@
   padding: 0 16px;
   width: 100%;
   background-color: #f0efff;
-  color: #242424;
+  color: #3F3878;
 }
 
 
@@ -125,7 +125,7 @@
 
 .bottomContainerLight {
   background-color: #f0efff;
-  color: #242424;
+  color: #3F3878;
   height: 100%;
   width: 100vw;
   /* position: absolute; */
@@ -141,10 +141,10 @@
 }
 
 .descriptionContainerLight{
-  background-color: #9592B8;
+  background-color: #9592b8;
   margin-top: 24px;
   padding: 26px;
-  color: #242424;
+  color: #fff9e8;
 }
 .ratingsContainer {
   display: flex;
@@ -164,7 +164,7 @@
 
 .ratingLight {
   background-color: #f0efff;
-  color: #242424;
+  color: #3F3878;
   display: flex;
   flex-direction: column;
   width: 100%;

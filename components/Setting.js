@@ -9,6 +9,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { useState } from 'react';
 import { switchMode, changeRatingMode } from '../reducers/config'; // import de la fonction switchmode du reducer config
 import { logout } from '../reducers/user';
+import { resetRate } from '../reducers/rating';
 
 function Setting() {
     const rooter = useRouter()
