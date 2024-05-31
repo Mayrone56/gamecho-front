@@ -41,31 +41,31 @@ function Game() {
         setRatingsList(data.data);
         console.log("fetch", data.data);
 
-        // on vérifie la présence d'une clé "ratingMode", qui détermine l'échelle du vote, dans le premier tableau du document
+        // // on vérifie la présence d'une clé "ratingMode", qui détermine l'échelle du vote, dans le premier tableau du document
 
-        let ratingMode;
-        if (data && data.data && data.data[0]) {
-          // IMPORTANT on doit vérifier étape par étape la présence du tableau
+        // let ratingMode;
+        // if (data && data.data && data.data[0]) {
+        //   // IMPORTANT on doit vérifier étape par étape la présence du tableau
 
-          // Pourquoi ne pas juste faire juste if (data.data[0]) ? Parce qu'essayer d'accéder à un tableau à partir de données qui n'existent peut-etre pas car ON ACCEDE PAS A UNE CLE D'UNDEFINED
+        //   // Pourquoi ne pas juste faire juste if (data.data[0]) ? Parce qu'essayer d'accéder à un tableau à partir de données qui n'existent peut-etre pas car ON ACCEDE PAS A UNE CLE D'UNDEFINED
 
-          // avec les conditions chainées, "data && data.data && data.data[0]", si dès le data c'est undefined, le code n'execute pas la condition et continue !
+        //   // avec les conditions chainées, "data && data.data && data.data[0]", si dès le data c'est undefined, le code n'execute pas la condition et continue !
 
-          // si on trouve le premier tableau retourné par la route
-          ratingMode = data.data[0].ratingMode; // on cible la clé "ratingMode" pour s'assurer d'avoir les bonnes valeurs et les convertir en aval et on sauvegarde la valeur de la clé dans une constante
-        }
+        //   // si on trouve le premier tableau retourné par la route
+        //   ratingMode = data.data[0].ratingMode; // on cible la clé "ratingMode" pour s'assurer d'avoir les bonnes valeurs et les convertir en aval et on sauvegarde la valeur de la clé dans une constante
+        // }
 
-        // pour que la valeur du vote soit correctement traitée, on doit définir son échelle
-        // soit s'assurer que le nom d'une clé corresponde à l'échelle associée
+        // // pour que la valeur du vote soit correctement traitée, on doit définir son échelle
+        // // soit s'assurer que le nom d'une clé corresponde à l'échelle associée
 
-        if (ratingMode === "Out of 100") {
-          setRatingScale(100);
-        } else if (ratingMode === "Out of 10") {
-          // si le ratingMode du vote est sur 10, on modifie l'échelle
-          setRatingScale(10);
-        }
+        // if (ratingMode === "Out of 100") {
+        //   setRatingScale(100);
+        // } else if (ratingMode === "Out of 10") {
+        //   // si le ratingMode du vote est sur 10, on modifie l'échelle
+        //   setRatingScale(10);
+      // }
       });
-  }, [ratingsList]);
+  }, []);
 
   let totalRatings = 0; // on initialise à 0 les deux paramètres nécessaires au calcul de la moyenne EN DEHORS de la boucle pour les exploiter
   let ratingsLength = 0;
