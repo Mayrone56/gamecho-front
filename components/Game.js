@@ -37,7 +37,7 @@ function Game() {
       .then((response) => response.json())
       .then((data) => {
         console.log("useEffect data", data);
-        dispatch(loadRates(data))
+        dispatch(loadRates(data.data))
         setRatingsList(data.data);
         console.log("fetch", data.data);
 
@@ -65,7 +65,7 @@ function Game() {
           setRatingScale(10);
         }
       });
-  }, [ratingsList]);
+  }, []);
 
   let totalRatings = 0; // on initialise à 0 les deux paramètres nécessaires au calcul de la moyenne EN DEHORS de la boucle pour les exploiter
   let ratingsLength = 0;
@@ -138,7 +138,7 @@ function Game() {
                 // ICI on dynamise la source de l'icône utilisée pour illustrer le vote
                 // Il est nécessaire de se servir de l'échelle, enregistrée dans l'état, et de la diviser par 5 pour qu'elle puisse être associée à un chiffre de 1 à 5 et ce peu importe le ratingMode
                 // Le Math.floor est essentiel pour arrondir le resultat et obtenir un nombre entier et exploitable
-
+                className={isLightmode?styles.emojiLight:''}
                 src={emojiRate}
                 alt={`Rating: ${vote.rating}`}
                 width={24}
@@ -253,7 +253,7 @@ function Game() {
 
 
           {/* Permet d'éviter une erreur si l'image n'est pas récupérée au moment de l'execution */}
-          {gameDetails.imageGame && (<div className={styles.bottomBannerContainer}>
+          {gameDetails.imageGame && (<div className={isLightmode?styles.bottomBannerContainerLight:styles.bottomBannerContainer}>
             <h2 className={styles.sectionTitle}>{gameDetails.name}</h2>
             <div className={styles.captionGameName}>
               {emojiAverage ? (
@@ -267,7 +267,7 @@ function Game() {
                       alt="Rating icon"
                       width={24}
                       height={24}
-                      className={styles.icon}
+                      className={isLightmode?styles.emojiLight:''}
                     />
 
                   </div>
@@ -287,7 +287,7 @@ function Game() {
             </div>
           </div>)}
         </div>
-        <div className={styles.bottomContainer}>
+        <div className={isLightmode?styles.bottomContainerLight:styles.bottomContainer}>
           <div className={styles.tagContainer}>
 
             {/* Si la clé du jeu n'est pas renseignée, on affiche pas le tag correspondant */}
@@ -298,7 +298,7 @@ function Game() {
             {gameDetails.genre && (<div className={styles.tag05}>{gameDetails.genre}</div>)}
           </div>
 
-          <div className={styles.descriptionContainer}>
+          <div className={isLightmode?styles.descriptionContainerLight:styles.descriptionContainer}>
             <h3>Summary</h3>
             <div
               dangerouslySetInnerHTML={{ __html: gameDetails.description }}
