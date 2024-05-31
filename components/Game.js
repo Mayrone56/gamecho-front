@@ -139,7 +139,6 @@ function Game() {
                 // ICI on dynamise la source de l'icône utilisée pour illustrer le vote
                 // Il est nécessaire de se servir de l'échelle, enregistrée dans l'état, et de la diviser par 5 pour qu'elle puisse être associée à un chiffre de 1 à 5 et ce peu importe le ratingMode
                 // Le Math.floor est essentiel pour arrondir le resultat et obtenir un nombre entier et exploitable
-                className={isLightmode?styles.emojiLight:''}
                 src={emojiRate}
                 alt={`Rating: ${vote.rating}`}
                 width={24}
