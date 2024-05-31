@@ -9,7 +9,7 @@
 
 .containerLight {
   background-color: #f0efff;
-  color: #3F3878;
+  color: #3f3878;
   height: 100vh;
   width: 100vw;
   display: flex;
@@ -60,6 +60,18 @@
   width: 100%;
 }
 
+.bottomBannerContainerLight {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  padding: 0 16px;
+  width: 100%;
+  background-color: #f0efff;
+  color: #3F3878;
+}
+
+
 /* LIKE ICON & RATE IT*/
 .iconButton {
   display: flex;
@@ -70,6 +82,18 @@
   height: 40px;
   width: 40px;
   background-color: #9592b8;
+  cursor: pointer;
+}
+
+.iconButtonPink {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 40px;
+  border: 1px solid #fff9e8;
+  height: 40px;
+  width: 40px;
+  background-color: #cf55ed;
   cursor: pointer;
 }
 
@@ -111,12 +135,29 @@
   padding: 16px 0 30px 0;
 }
 
+.bottomContainerLight {
+  background-color: #f0efff;
+  color: #3F3878;
+  height: 100%;
+  width: 100vw;
+  /* position: absolute; */
+  /* bottom: 0; */
+  box-shadow: 20px 0 0 rgba(0, 0, 0, 0.75);
+  padding: 16px 0 30px 0;
+}
+
 .descriptionContainer {
   background-color: #644ace;
   margin-top: 24px;
   padding: 26px;
 }
 
+.descriptionContainerLight{
+  background-color: #9592b8;
+  margin-top: 24px;
+  padding: 26px;
+  color: #fff9e8;
+}
 .ratingsContainer {
   display: flex;
   flex-direction: column;
@@ -135,7 +176,7 @@
 
 .ratingLight {
   background-color: #f0efff;
-  color: #242424;
+  color: #3F3878;
   display: flex;
   flex-direction: column;
   width: 100%;
@@ -161,11 +202,16 @@
   /* background-color: aqua; */
   padding: 16px 0;
   gap: 16px;
+<<<<<<< HEAD
 
   font-weight: 300;
 
 }
+=======
+>>>>>>> 1e63ffb49107137839b6ec528045d9bef8e1c4fc
 
+  font-weight: 300;
+}
 
 .ratingInfo {
   display: flex;
@@ -173,11 +219,16 @@
   justify-content: flex-start;
   align-items: center;
   width: 100%;
-  gap: 8px
+  gap: 8px;
 }
 
 .emoji {
   margin-left: 10px !important;
+}
+
+.emojiLight {
+  filter: invert(80%) sepia(220%) saturate(400%) hue-rotate(957deg) brightness(98%) contrast(96%);
+
 }
 
 

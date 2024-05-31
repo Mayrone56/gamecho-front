@@ -6,7 +6,6 @@ import { openCloseModal } from "../reducers/config";
 import "moment/locale/fr";
 import { addRate } from "../reducers/rating";
 import { useRouter } from "next/router";
-
 const moment = require("moment");
 moment.locale("fr");
 
@@ -67,6 +66,7 @@ function RateModal({onSubmit}) {
       ratingDate: new Date(), // date au moment de l'appel de la route
       //Pour le moment Date est le composant javascript de base, il faudra utiliser si on a le temps moment
       gameDetails: gameDetails, // reducer game qui contient TOUTES les données du jeu
+
     };
 
     const response = dispatch(openCloseModal(false));
@@ -87,9 +87,7 @@ function RateModal({onSubmit}) {
     } else {
       console.log("Error submitting rating");
       // si erreur quelconque, message
-    }
-    console.log("CALLING ON SUBMIT ")
-    onSubmit();
+    } console.log("Calling onSubmit  "); onSubmit()
   };
 
   const handleSelection = (emojiPath, i) => {
