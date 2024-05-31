@@ -9,7 +9,7 @@
 
 .containerLight {
   background-color: #f0efff;
-  color: #3F3878;
+  color: #3f3878;
   height: 100vh;
   width: 100vw;
   display: flex;
@@ -85,6 +85,18 @@
   cursor: pointer;
 }
 
+.iconButtonPink {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 40px;
+  border: 1px solid #fff9e8;
+  height: 40px;
+  width: 40px;
+  background-color: #cf55ed;
+  cursor: pointer;
+}
+
 .iconButton:hover {
   background-color: #3f3878;
 }
@@ -151,7 +163,7 @@
   flex-direction: column;
   align-items: flex-start;
   justify-content: center;
-  padding: 16px;
+  padding: 16px 24px;
   width: 100%;
 }
 
@@ -178,9 +190,9 @@
   justify-content: flex-start;
   align-items: flex-start;
   /* background-color: #cdb00a; */
-  padding: 16px 0;
-      gap: 16px;
-      font-weight: 300;
+  padding-bottom: 16px;
+  gap: 16px;
+  font-weight: 300;
 }
 
 .ratingDetails {
@@ -189,12 +201,9 @@
   width: 100%;
   /* background-color: aqua; */
   padding: 16px 0;
-      gap: 16px;
-      
+  gap: 16px;
   font-weight: 300;
-  
 }
-
 
 .ratingInfo {
   display: flex;
@@ -202,7 +211,7 @@
   justify-content: flex-start;
   align-items: center;
   width: 100%;
-  gap: 8px
+  gap: 8px;
 }
 
 .emoji {

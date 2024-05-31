@@ -215,7 +215,7 @@ function Home() {
           <input
             type="text"
             className={styles.input}
-            onKeyDown={(e) => {
+            onKeyDown={(e) => { 
               if (e.key === "Enter") {
                 handleAllGames();
               }
@@ -241,28 +241,6 @@ function Home() {
             />
             </div>
         </div>
-        {/* <div className={styles.searchContainer}>
-          <input
-            type="text"
-            className={styles.input}
-            onChange={(e) => {
-              setSearchValue(e.target.value);
-              setSearchSuggValue(e.target.value)
-            }}
-            value={searchValue}
-            placeholder="Search..."
-          />
-          <Image
-            onClick={() => handleAllGames()}
-            src="/icons/search.svg"
-            alt="Search"
-            width={24}
-            height={24}
-            className={
-              isLightmode ? styles.searchIconlight : styles.searchIcondark
-            }
-          />
-        </div> */}
 
         {/* SECTION SEARCH RESULTS */}
         {showSearchResults && (
