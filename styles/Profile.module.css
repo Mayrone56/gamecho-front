@@ -6,7 +6,6 @@
   justify-content: space-between;
   align-items: center;
   color: #FFF9E8;
-  margin-top: 32px;
   gap: 32px;
 }
 
@@ -17,9 +16,8 @@
     flex-direction: column;
     justify-content: space-between;
     align-items: center;
-    color: #242424;
+    color: #3F3878;
     background-color: #F0EFFF;
-    margin-top: 32px;
 }
 
 .middleContainer {
@@ -173,8 +171,6 @@
 
 /*IF USER TOKEN*/
 .title {
-  font-size: 1.75em;
-  font-weight: 300;
   text-align: center;
   cursor: pointer;
 }
@@ -344,4 +340,8 @@
 .logout:hover {
   background-color: #3F3878;
   color: #FFF9E8;
+}
+
+.dataUser {
+  font-weight: 500;
 }

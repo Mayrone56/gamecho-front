@@ -146,7 +146,7 @@ function Profile() {
       )}
       {user.token && (
         <div className={styles.middleContainer}>
-          <h1 className={styles.title}>My profile</h1>
+          <h2 className={styles.title}>My profile</h2>
           {!user.avatar && (
             <div className={styles.avatarContainer} onClick={handleAvatarClick}>
               <Image
@@ -185,7 +185,7 @@ function Profile() {
           <h3 className={styles.usernameTitle}>{currentUsername}</h3>
           <div className={styles.userInfoContainer}>
             <div className={styles.userInfo}>
-              <span>Username:</span>
+              <span className={styles.dataUser}>Username:</span>
               {isEditingUsername ? (
                 <div className={styles.editContainer}>
                   <div className={styles.inputContainer}>
@@ -225,7 +225,7 @@ function Profile() {
             </div>
             {usernameError && <div className={styles.errorContainer}><p className={styles.error}>{usernameError}</p></div>}
             <div className={styles.userInfo}>
-              <span>Email:</span>
+              <span className={styles.dataUser}>Email:</span>
               {isEditingEmail ? (
                 <div className={styles.editContainer}>
                   <input
