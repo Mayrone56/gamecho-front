@@ -66,7 +66,6 @@ function Game() {
         }
       });
   }, []);
-  // }, [ratingsList]);
 
   let totalRatings = 0; // on initialise à 0 les deux paramètres nécessaires au calcul de la moyenne EN DEHORS de la boucle pour les exploiter
   let ratingsLength = 0;
@@ -120,25 +119,26 @@ function Game() {
                     className={styles.info}
                   /> */}
                     <span>
-                    <b>Username:</b> {vote.user[key]}
+                      Username: {vote.user[key]}
                     </span>{" "}
                     {/*nous rendons la valeur de notre cle "username"*/}
                   </div>
                 );
               }
             })}
-            <span><b>Rating's date:</b>  {ratingDate}</span>
+            <span>Rating's date: {ratingDate}</span>
           </div>
           <div className={styles.ratingDetails}>
             {/*La valeur de l'évaluation est convertie en emoji à l'aide d'une table de correspondance ratingToEmoji, et elle est affichée à l'aide du composant Image.*/}
             <span className={styles.ratingInfo}>
-              <b>Rating:{" "}</b>
+              Rating:{" "}
 
               {/* SI ACTIF BUG SUR L'AFFICHAGE AU CLIC SUR UNE GAME CARD DANS HOME */}
               <Image
                 // ICI on dynamise la source de l'icône utilisée pour illustrer le vote
                 // Il est nécessaire de se servir de l'échelle, enregistrée dans l'état, et de la diviser par 5 pour qu'elle puisse être associée à un chiffre de 1 à 5 et ce peu importe le ratingMode
                 // Le Math.floor est essentiel pour arrondir le resultat et obtenir un nombre entier et exploitable
+                className={isLightmode?styles.emojiLight:''}
                 src={emojiRate}
                 alt={`Rating: ${vote.rating}`}
                 width={24}
@@ -146,7 +146,7 @@ function Game() {
               />
 
             </span>
-            <span><b>Commentary:</b> {vote.comment}</span>
+            <span>Commentary: {vote.comment}</span>
           </div>
         </div>
       );
@@ -291,11 +291,11 @@ function Game() {
           <div className={styles.tagContainer}>
 
             {/* Si la clé du jeu n'est pas renseignée, on affiche pas le tag correspondant */}
-            {gameDetails.developer && (<div className={styles.tag01} style={isLightmode?{color:"#FFF9E8"}:''}>{gameDetails.developer}</div>)}
-            {gameDetails.platforms && (<div className={styles.tag02} style={isLightmode?{color:"#FFF9E8"}:''}>{gameDetails.platforms}</div>)}
-            {gameDetails.publisher && (<div className={styles.tag03} style={isLightmode?{color:"#FFF9E8"}:''}>{gameDetails.publisher}</div>)}
-            {gameDetails.releasedDate && (<div className={styles.tag04} style={isLightmode?{color:"#FFF9E8"}:''}>{gameDetails.releasedDate}</div>)}
-            {gameDetails.genre && (<div className={styles.tag05} style={isLightmode?{color:"#FFF9E8"}:''}>{gameDetails.genre}</div>)}
+            {gameDetails.developer && (<div className={styles.tag01}>{gameDetails.developer}</div>)}
+            {gameDetails.platforms && (<div className={styles.tag02}>{gameDetails.platforms}</div>)}
+            {gameDetails.publisher && (<div className={styles.tag03}>{gameDetails.publisher}</div>)}
+            {gameDetails.releasedDate && (<div className={styles.tag04}>{gameDetails.releasedDate}</div>)}
+            {gameDetails.genre && (<div className={styles.tag05}>{gameDetails.genre}</div>)}
           </div>
 
           <div className={isLightmode?styles.descriptionContainerLight:styles.descriptionContainer}>
@@ -309,7 +309,7 @@ function Game() {
             {ratingsList && ratingsList.length > 0 && (
               <>
                 {" "}
-                <h3>Game's ratings</h3>
+                <h3>GAME'S RATINGS</h3>
                 {allRatings}
               </>
             )}
