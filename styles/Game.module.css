@@ -163,7 +163,7 @@
   flex-direction: column;
   align-items: flex-start;
   justify-content: center;
-  padding: 16px;
+  padding: 16px 24px;
   width: 100%;
 }
 
@@ -190,7 +190,7 @@
   justify-content: flex-start;
   align-items: flex-start;
   /* background-color: #cdb00a; */
-  padding: 16px 0;
+  padding-bottom: 16px;
   gap: 16px;
   font-weight: 300;
 }
@@ -202,7 +202,6 @@
   /* background-color: aqua; */
   padding: 16px 0;
   gap: 16px;
-
   font-weight: 300;
 }
 
