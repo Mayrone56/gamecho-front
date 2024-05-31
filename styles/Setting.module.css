@@ -6,7 +6,6 @@
     justify-content: space-between;
     align-items: center;
     color: #FFF9E8;
-    margin-top: 32px;
     gap: 32px;
 }
 
@@ -17,9 +16,8 @@
     flex-direction: column;
     justify-content: space-between;
     align-items: center;
-    color: #242424;
+    color: #3F3878;
     background-color: #F0EFFF;
-    margin-top: 32px;
   }
 
 

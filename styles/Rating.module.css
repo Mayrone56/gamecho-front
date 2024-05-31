@@ -1,6 +1,5 @@
 .containerdark {
   width: 100vw;
-  height: 100vh;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -10,12 +9,10 @@
 
 .containerlight {
   width: 100vw;
-  height: 100vh;
-  
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  color: #242424;
+  color: #3F3878;
   background-color: #F0EFFF;
 }
 
@@ -48,22 +45,9 @@
   justify-content: center;
   margin: 0 !important;
   padding: 0 !important;
-  border-radius: 40px;
+  align-items: center;
 }
 
-.rateContainer:hover {
-  box-shadow: 0 0 50px #cf55edab;
-
-  /* animation: gradient 10s ease infinite; */
-  transition: filter 0.2s ease;
-  filter: brightness(1.1);
-
-  /* transition: transform 0.3s ease;
-  transform: translateY(5px); */
-
-  transition: transform 0.5s ease-in-out;
-  transform: scale(1.03);
-}
 
 .card {
   position: relative;
@@ -97,25 +81,29 @@
 }
 
 .ratingInfo {
-  background-color: #2424242d;
   display: flex;
   flex-direction: column;
   justify-content: center;
-  border-bottom-left-radius: 40px;
-  border-bottom-right-radius: 40px;
-  margin-top: 0;
-  padding: 20px;
+  margin-top: 8px;
+  padding: 16px 24px;
+  gap: 8px;
+  font-size: 1em;
+  background-color: #644ace90;
+  border-radius: 40px;
+  /* border: 1px solid #fff9e85c; */
+  color: #FFF9E8;
+  margin-left: 16px;
 }
 
 .info {
   margin-bottom: 5px;
+  font-weight: 300;
 }
-
-.buttonContainer {
+.infoWithIcon {
   display: flex;
-  flex-direction: row;
-  justify-content: center;
   align-items: center;
+  font-weight: 300;
+  gap: 8px;
 }
 
 .iconButton {
@@ -139,8 +127,4 @@
   height: 24px;
   width: 24px;
   cursor: pointer;
-}
-
-.likeIcon {
-  color: aliceblue;
 }

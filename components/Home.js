@@ -200,19 +200,48 @@ function Home() {
   return (
     <div className={isLightmode ? styles.containerlight : styles.containerdark}>
       <div className={styles.middleContainer}>
-        {/* <div className={styles.cropedBanner}> */}
-
-        <div className={styles.bannerWelcomeMobile} alt="banner">
-          {/* <Image
+        <div className={styles.cropedBanner}>
+          <div className={styles.bannerWelcomeMobile} alt="banner">
+            <Image
             src="/Banner_welcome_without_text.jpg"
             alt="Banner Gamecho"
             width={1920}
             height={1000}
             className={styles.bannerImageMobile}
-            /> */}
+            />
+          </div>
         </div>
-        {/* </div> */}
         <div className={styles.searchContainer}>
+          <input
+            type="text"
+            className={styles.input}
+            onKeyDown={(e) => {
+              if (e.key === "Enter") {
+                handleAllGames();
+              }
+            }}
+            onChange={(e) => {
+              setSearchValue(e.target.value);
+              setSearchSuggValue(e.target.value)
+            }}
+            value={searchValue}
+            placeholder="Search..."
+          />
+          <div className={styles.buttonSearch}>
+
+          <Image
+            onClick={() => handleAllGames()}
+            src="/icons/search.svg"
+            alt="Search"
+            width={24}
+            height={24}
+            className={
+              isLightmode ? styles.searchIconlight : styles.searchIcondark
+            }
+            />
+            </div>
+        </div>
+        {/* <div className={styles.searchContainer}>
           <input
             type="text"
             className={styles.input}
@@ -233,7 +262,7 @@ function Home() {
               isLightmode ? styles.searchIconlight : styles.searchIcondark
             }
           />
-        </div>
+        </div> */}
 
         {/* SECTION SEARCH RESULTS */}
         {showSearchResults && (

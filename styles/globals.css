@@ -25,7 +25,8 @@ h1 {
 h2 {
   font-family: 'Roboto', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   font-size: 28px;
-  margin: 16px 0;
+  margin: 24px 0;
+  font-weight: 500;
 }
 
 h3 {
@@ -39,7 +40,13 @@ p {
   font-family: 'Roboto', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   font-size: 16px;
   line-height: 20px;
-  font-weight: 200;
+  font-weight: 300;
+}
+span {
+  font-family: 'Roboto', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  font-size: 16px;
+  line-height: 20px;
+  font-weight: 300;
 }
 
 a {

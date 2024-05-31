@@ -9,7 +9,7 @@
 
 .containerLight {
   background-color: #f0efff;
-  color: #242424;
+  color: #3F3878;
   height: 100vh;
   width: 100vw;
   display: flex;
@@ -38,6 +38,7 @@
   background-repeat: no-repeat;
   background-size: cover;
   height: 40vh;
+  justify-content: space-between;
 }
 
 .topBannerContainer {
@@ -139,6 +140,7 @@
   flex-direction: column;
   width: 100%;
   margin-bottom: 20px;
+  font-weight: 300;
 }
 
 .userInfoContainer {
@@ -149,6 +151,7 @@
   /* background-color: #cdb00a; */
   padding: 16px 0;
       gap: 16px;
+      font-weight: 300;
 }
 
 .ratingDetails {
@@ -158,6 +161,8 @@
   /* background-color: aqua; */
   padding: 16px 0;
       gap: 16px;
+      
+  font-weight: 300;
   
 }
 
@@ -168,6 +173,7 @@
   justify-content: flex-start;
   align-items: center;
   width: 100%;
+  gap: 8px
 }
 
 .emoji {
