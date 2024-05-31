@@ -18,10 +18,13 @@ export const ratingSlice = createSlice({
     loadRates: (state, action) => {
       state.value = action.payload;
     },
+    resetRate:(state,action)=>{
+      state.value=[];
+    }
   },
 })
 
-export const { addRate, deleteRate, loadRates } = ratingSlice.actions;
+export const { addRate, deleteRate, loadRates, resetRate } = ratingSlice.actions;
 export default ratingSlice.reducer
 
 
