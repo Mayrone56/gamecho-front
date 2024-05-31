@@ -326,7 +326,7 @@ fetch(`http://localhost:3000/games/ratings?${query}`)
         open={modalVisible}
         footer={null}
       >
-        <RateModal onSubmit={fetchRatings}/>
+        <RateModal onSubmit={fetch}/>
       </Modal>
     </div>
   );
