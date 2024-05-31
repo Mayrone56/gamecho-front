@@ -60,7 +60,7 @@ function Ratings() {
         console.log("useEFFECT DATA", data);
         data.result && dispatch(loadRates(data.user.ratings));
       });
-  }, []);
+  }, [ratings.length]); // rerender si nombre de vote changé
 
   const handleDelete = (event, rating) => { //inversion, les arguments doivent être dans l'ordre d'appel
     event.stopPropagation();
@@ -87,7 +87,7 @@ function Ratings() {
   };
 
   let games = <p>No game is rated</p>;
-  if (ratings && ratings.length > 0) {
+  if (ratings.length > 0) {
     console.log("RATED GAMES", ratings);
     games = ratings.map((data, i) => {
       console.log("RATED GAMES", games);

@@ -95,7 +95,7 @@ fetch(`http://localhost:3000/games/ratings?${query}`)
 
         return (
           <div className={isLightmode ? styles.ratingLigtht : styles.rating}>
-            <div className={styles.userInfoContainer}>
+            {(ratingsList && <div className={styles.userInfoContainer}>
               {/*Les données peuplées de l'utilisateur sont un objet avec les clés suivantes: id, username, email, password, token, ratings, wishlist, __v.
           A cause de cela, React a eu un problème et n'a pas pu rendre une collection d'enfants qui sont un objet. Pour résoudre ce problème, on utilise Object.key() pour itérer à travers les clés de notre objet « user ». */}
               {Object.keys(vote.user).map((key, index) => {
@@ -121,7 +121,7 @@ fetch(`http://localhost:3000/games/ratings?${query}`)
               <span>
                 <b>Rating's date:</b> {ratingDate}
               </span>
-            </div>
+            </div>)}
             <div className={styles.ratingDetails}>
               {/*La valeur de l'évaluation est convertie en emoji à l'aide d'une table de correspondance ratingToEmoji, et elle est affichée à l'aide du composant Image.*/}
               <span className={styles.ratingInfo}>
@@ -326,7 +326,7 @@ fetch(`http://localhost:3000/games/ratings?${query}`)
         open={modalVisible}
         footer={null}
       >
-        <RateModal onSubmit={fetch}/>
+        <RateModal onSubmit={fetchRatings}/>
       </Modal>
     </div>
   );
