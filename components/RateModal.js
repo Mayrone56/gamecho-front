@@ -10,7 +10,7 @@ import { useRouter } from "next/router";
 const moment = require("moment");
 moment.locale("fr");
 
-function RateModal(props) {
+function RateModal({onSubmit}) {
   const dispatch = useDispatch();
   const gameDetails = useSelector((state) => state.game.details);
 
@@ -88,6 +88,8 @@ function RateModal(props) {
       console.log("Error submitting rating");
       // si erreur quelconque, message
     }
+    console.log("CALLING ON SUBMIT ")
+    onSubmit();
   };
 
   const handleSelection = (emojiPath, i) => {

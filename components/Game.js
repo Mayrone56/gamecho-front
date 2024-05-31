@@ -65,8 +65,7 @@ function Game() {
           setRatingScale(10);
         }
       });
-  }, []);
-  // }, [ratingsList]);
+  }, [ratingsList]);
 
   let totalRatings = 0; // on initialise à 0 les deux paramètres nécessaires au calcul de la moyenne EN DEHORS de la boucle pour les exploiter
   let ratingsLength = 0;
