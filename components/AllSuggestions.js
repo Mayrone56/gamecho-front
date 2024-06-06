@@ -10,7 +10,7 @@ import { useRouter } from "next/router";
 import { useDispatch, useSelector } from "react-redux";
 import styles from '../styles/AllSuggestions.module.css'
 
-import { BACKEND_URL } from "../const";
+const BACKEND_URL= "gamecho-back.vercel.app";
 
 function AllSuggestions () {
     const dispatch = useDispatch()

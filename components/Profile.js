@@ -7,7 +7,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { useRouter } from "next/router";
 import { addAvatar, editUsername, editEmail } from "../reducers/user";
 
-import { BACKEND_URL } from "../const";
+const BACKEND_URL= "gamecho-back.vercel.app";
 
 function Profile() {
   const dispatch = useDispatch(); // Pour mettre à jour l'avatar dans tous les composants

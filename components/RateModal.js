@@ -6,7 +6,7 @@ import { openCloseModal } from "../reducers/config";
 import "moment/locale/fr";
 import { addRate } from "../reducers/rating";
 import { useRouter } from "next/router";
-import { BACKEND_URL } from "../const";
+const BACKEND_URL= "gamecho-back.vercel.app";
 
 const moment = require("moment");
 moment.locale("fr");

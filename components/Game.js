@@ -9,7 +9,7 @@ import { openCloseModal } from "../reducers/config";
 import { Modal } from "antd";
 import RateModal from "./RateModal";
 
-import { BACKEND_URL } from "../const";
+const BACKEND_URL= "gamecho-back.vercel.app";
 
 const ratingToEmoji = {
   1: "/icons/emojiIcons/angry.svg",
