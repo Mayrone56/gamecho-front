@@ -12,4 +12,4 @@ const Toggle = ({ isToggled, onToggle }) => {
     )
 };
 
-export default Toggle
+export default Toggle;
