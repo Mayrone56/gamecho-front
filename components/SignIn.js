@@ -5,7 +5,7 @@ import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useRouter } from "next/router"; // ajout d'un état de route pour rediriger l'utilisateur
 import { login } from "../reducers/user";
-const BACKEND_URL= "gamecho-back.vercel.app";
+import { BACKEND_URL } from "../const";
 
 //ChatGPT notes au sujet des avertissements quand redirection au click : This warning indicates that the end value you are using in your CSS is not well supported across all browsers, and it suggests using flex-end instead.
 

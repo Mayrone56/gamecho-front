@@ -10,7 +10,7 @@ import { useRouter } from "next/router";
 import { getGameDetails } from "../reducers/game";
 import GameCard from "../components/GameCard";
 import { loadRates } from "../reducers/rating";
-const BACKEND_URL= "gamecho-back.vercel.app";
+import { BACKEND_URL } from "../const";
 
 const ratingToEmoji = {
   1: "/icons/emojiIcons/angry.svg",
