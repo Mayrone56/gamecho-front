@@ -1,6 +1,6 @@
 import React from 'react';
 import Image from 'next/image';
-import Toggle from './toggle';
+import CustomToggle from './Toggle';
 import styles from '../styles/Setting.module.css';
 import { useRouter } from "next/router";
 import Dropdown from 'react-dropdown'; //import du composant Dropdown déja tout fait
@@ -135,7 +135,7 @@ function Setting() {
                         </div>
                         <div className={styles.dropdownContainer}>
                             <Image src="/icons/moon.svg" alt="moon" width={24} height={24} className={isLightmode ? styles.iconlight : styles.icondark} />
-                            <Toggle isToggled={isLightmode} onToggle={handleToggle} />
+                            <CustomToggle isToggled={isLightmode} onToggle={handleToggle} />
                             <Image src="/icons/sun.svg" alt="sun" width={24} height={24} className={isLightmode ? styles.iconlight : styles.icondark} />
                         </div>
                     </div>

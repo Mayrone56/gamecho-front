@@ -1,5 +1,5 @@
 //composant de du petit bouton interrupteur pour Dark / light Mode 
-//import Toggle from "react-toggle";
+import Toggle from "react-toggle";
 import style from "../styles/Toggle.module.css"
 
 const CustomToggle = ({ isToggled, onToggle }) => {
