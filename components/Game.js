@@ -9,6 +9,8 @@ import { openCloseModal } from "../reducers/config";
 import { Modal } from "antd";
 import RateModal from "./RateModal";
 
+import { BACKEND_URL } from "../const";
+
 const ratingToEmoji = {
   1: "/icons/emojiIcons/angry.svg",
   2: "/icons/emojiIcons/sad.svg",
@@ -33,7 +35,7 @@ function Game() {
   const fetchRatings = () => {
   const query = `name=${gameDetails.name}`
 
-fetch(`http://localhost:3000/games/ratings?${query}`)
+fetch(`${BACKEND_URL}/games/ratings?${query}`)
   .then((response) => response.json())
   .then((data) => {
     console.log("useEffect data", data);
@@ -110,37 +112,6 @@ fetch(`http://localhost:3000/games/ratings?${query}`)
                     height={24}
                     className={styles.info}
                   /> */}
-<<<<<<< HEAD
-                    <span>
-                      Username: {vote.user[key]}
-                    </span>{" "}
-                    {/*nous rendons la valeur de notre cle "username"*/}
-                  </div>
-                );
-              }
-            })}
-            <span>Rating's date: {ratingDate}</span>
-          </div>
-          <div className={styles.ratingDetails}>
-            {/*La valeur de l'évaluation est convertie en emoji à l'aide d'une table de correspondance ratingToEmoji, et elle est affichée à l'aide du composant Image.*/}
-            <span className={styles.ratingInfo}>
-              Rating:{" "}
-
-              {/* SI ACTIF BUG SUR L'AFFICHAGE AU CLIC SUR UNE GAME CARD DANS HOME */}
-              <Image
-                // ICI on dynamise la source de l'icône utilisée pour illustrer le vote
-                // Il est nécessaire de se servir de l'échelle, enregistrée dans l'état, et de la diviser par 5 pour qu'elle puisse être associée à un chiffre de 1 à 5 et ce peu importe le ratingMode
-                // Le Math.floor est essentiel pour arrondir le resultat et obtenir un nombre entier et exploitable
-                className={isLightmode?styles.emojiLight:''}
-                src={emojiRate}
-                alt={`Rating: ${vote.rating}`}
-                width={24}
-                height={24}
-              />
-
-            </span>
-            <span>Commentary: {vote.comment}</span>
-=======
                       <span>
                         <b>Username:</b> {vote.user[key]}
                       </span>{" "}
@@ -175,7 +146,6 @@ fetch(`http://localhost:3000/games/ratings?${query}`)
                 <b>Commentary:</b> {vote.comment}
               </span>
             </div>
->>>>>>> f1acdb578bfc9be6fcdb359d56eb585ca16f9f48
           </div>
         );
       })
@@ -312,13 +282,6 @@ fetch(`http://localhost:3000/games/ratings?${query}`)
         <div className={styles.bottomContainer}>
           <div className={styles.tagContainer}>
             {/* Si la clé du jeu n'est pas renseignée, on affiche pas le tag correspondant */}
-<<<<<<< HEAD
-            {gameDetails.developer && (<div className={styles.tag01}>{gameDetails.developer}</div>)}
-            {gameDetails.platforms && (<div className={styles.tag02}>{gameDetails.platforms}</div>)}
-            {gameDetails.publisher && (<div className={styles.tag03}>{gameDetails.publisher}</div>)}
-            {gameDetails.releasedDate && (<div className={styles.tag04}>{gameDetails.releasedDate}</div>)}
-            {gameDetails.genre && (<div className={styles.tag05}>{gameDetails.genre}</div>)}
-=======
             {gameDetails.developer && (
               <div className={styles.tag01}>{gameDetails.developer}</div>
             )}
@@ -334,7 +297,6 @@ fetch(`http://localhost:3000/games/ratings?${query}`)
             {gameDetails.genre && (
               <div className={styles.tag05}>{gameDetails.genre}</div>
             )}
->>>>>>> f1acdb578bfc9be6fcdb359d56eb585ca16f9f48
           </div>
 
           <div className={styles.descriptionContainer}>

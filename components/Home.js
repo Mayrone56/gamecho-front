@@ -10,6 +10,8 @@ import { addToWishlist, removeFromWishlist } from "../reducers/wishlist";
 import { getGameDetails } from "../reducers/game";
 import GameCard from "../components/GameCard";
 
+import { BACKEND_URL } from "../const";
+
 function Home() {
   // SANDRINE
   // Parce que quand on va recevoir le fetch ça doit maj en temps réel, ça re-render, c'est pour ça que c'est mis dans cet état
@@ -36,7 +38,7 @@ function Home() {
   useEffect(() => {
     const fetchLatestGames = async () => {
       const response = await fetch(
-        "http://localhost:3000/games/latestreleased", {
+        `${BACKEND_URL}/games/latestreleased`, {
         cache: "force-cache",
       }
       );
@@ -88,7 +90,7 @@ function Home() {
     dispatch(getGameDetails(game));
 
     // // Step 2: Save the game details to the database
-    // fetch('http://localhost:3000/games/saveGame', {
+    // fetch('${BACKEND_URL}/games/saveGame', {
     //   method: 'POST',
     //   headers: {
     //     'Content-Type': 'application/json',
@@ -153,7 +155,7 @@ function Home() {
 
   const handleSearch = async () => {
     const response = await fetch(
-      `http://localhost:3000/games/search?name=${searchValue}`, {
+      `${BACKEND_URL}/games/search?name=${searchValue}`, {
       cache: "force-cache",
     }
     );
@@ -172,7 +174,7 @@ function Home() {
   // Display only on the search icon
   const handleSearchSuggestions = async () => {
     const response = await fetch(
-      `http://localhost:3000/games/suggestions?name=${searchSuggValue}`, {
+      `${BACKEND_URL}/games/suggestions?name=${searchSuggValue}`, {
       cache: "force-cache",
     }
     );

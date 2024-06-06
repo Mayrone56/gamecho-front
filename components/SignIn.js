@@ -5,6 +5,7 @@ import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useRouter } from "next/router"; // ajout d'un état de route pour rediriger l'utilisateur
 import { login } from "../reducers/user";
+import { BACKEND_URL } from "../const";
 
 //ChatGPT notes au sujet des avertissements quand redirection au click : This warning indicates that the end value you are using in your CSS is not well supported across all browsers, and it suggests using flex-end instead.
 
@@ -41,7 +42,7 @@ function SignIn() {
     // .length > 0 - vérifie si le tableau contient des éléments. Si le tableau contient des éléments, cela signifie que des erreurs sont présentes.
     if (Object.keys(newErrors).length > 0) return;
 
-    fetch("http://localhost:3000/users/signin", {
+    fetch(`${BACKEND_URL}/users/signin`, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ username, password }),

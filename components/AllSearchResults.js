@@ -8,6 +8,8 @@ import GameCard from "../components/GameCard";
 import { getGameDetails } from "../reducers/game";
 import { addToWishlist, removeFromWishlist } from "../reducers/wishlist";
 
+import { BACKEND_URL } from "../const";
+
 function AllSearchResults() {
     const [searchResults, setSearchResults] = useState([]);
     const isLightmode = useSelector((state) => state.config.value.mode);
@@ -23,7 +25,7 @@ function AllSearchResults() {
 
         const fetchSearchResults = async () => {
             const response = await fetch(
-                `http://localhost:3000/games/search?name=${searchQuery}`, {
+                `${BACKEND_URL}/games/search?name=${searchQuery}`, {
                 cache: "force-cache",
             });
 

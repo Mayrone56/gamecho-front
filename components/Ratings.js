@@ -10,6 +10,7 @@ import { useRouter } from "next/router";
 import { getGameDetails } from "../reducers/game";
 import GameCard from "../components/GameCard";
 import { loadRates } from "../reducers/rating";
+import { BACKEND_URL } from "../const";
 
 const ratingToEmoji = {
   1: "/icons/emojiIcons/angry.svg",
@@ -54,7 +55,7 @@ function Ratings() {
     if (!user.token) {
       return;
     }
-    fetch(`http://localhost:3000/ratings/${user.token}`)
+    fetch(`${BACKEND_URL}/ratings/${user.token}`)
       .then((response) => response.json())
       .then((data) => {
         console.log("useEFFECT DATA", data);
@@ -64,7 +65,7 @@ function Ratings() {
 
   const handleDelete = (event, rating) => { //inversion, les arguments doivent être dans l'ordre d'appel
     event.stopPropagation();
-    fetch(`http://localhost:3000/ratings/${user.token}/${rating.name}`, {
+    fetch(`${BACKEND_URL}/ratings/${user.token}/${rating.name}`, {
       method: "DELETE",
       headers: { "Content-Type": "application/json" },
     })

@@ -5,6 +5,7 @@ import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useRouter } from "next/router"; // ajout d'un état de route pour rediriger l'utilisateur
 import { login } from "../reducers/user";
+import { BACKEND_URL } from "../const";
 
 function SignUp() {
   const dispatch = useDispatch();
@@ -56,7 +57,7 @@ function SignUp() {
     // .length > 0 - vérifie si le tableau contient des éléments. Si le tableau contient des éléments, cela signifie que des erreurs sont présentes.
     if (Object.keys(newErrors).length > 0) return;
 
-    fetch("http://localhost:3000/users/signup", {
+    fetch(`${BACKEND_URL}/users/signup`, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ username, email, password, confirmPassword }),

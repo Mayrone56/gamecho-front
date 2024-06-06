@@ -1,0 +1,1 @@
+export const BACKEND_URL= "gamecho-back.vercel.app";

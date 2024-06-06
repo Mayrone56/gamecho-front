@@ -1,14 +1,13 @@
 import React, { useRef } from "react"; // useRef s'applique aussi aux fichiers selectionnés localement, permet de les cibler et poster
 import styles from "../styles/Profile.module.css";
-import Header from "./Header";
-import Footer from "./Footer";
 import Image from "next/image";
 import { logout } from '../reducers/user';
 import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useRouter } from "next/router";
 import { addAvatar, editUsername, editEmail } from "../reducers/user";
-import Link from "next/link";
+
+import { BACKEND_URL } from "../const";
 
 function Profile() {
   const dispatch = useDispatch(); // Pour mettre à jour l'avatar dans tous les composants
@@ -42,7 +41,7 @@ function Profile() {
       const formData = new FormData(); // faceup part3 adapté à React
       formData.append("avatar", file); // premier paramètre = nom donné au fichier, second = cible du fichier
 
-      fetch("http://localhost:3000/profile/avatar", {
+      fetch(`${BACKEND_URL}/profile/avatar`, {
         // création de la route
         method: "POST",
         body: formData,
@@ -70,7 +69,7 @@ function Profile() {
       return;
     }
 
-    fetch("http://localhost:3000/users/update-username", {
+    fetch(`${BACKEND_URL}/users/update-username`, {
       method: "PUT",
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ currentUsername, newUsername })
@@ -102,7 +101,7 @@ function Profile() {
       return;
     }
 
-    fetch("http://localhost:3000/users/update-email", {
+    fetch(`${BACKEND_URL}/users/update-email`, {
       method: "PUT",
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ currentEmail, newEmail })

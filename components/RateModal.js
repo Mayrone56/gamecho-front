@@ -6,6 +6,8 @@ import { openCloseModal } from "../reducers/config";
 import "moment/locale/fr";
 import { addRate } from "../reducers/rating";
 import { useRouter } from "next/router";
+import { BACKEND_URL } from "../const";
+
 const moment = require("moment");
 moment.locale("fr");
 
@@ -70,7 +72,7 @@ function RateModal({onSubmit}) {
     };
 
     const response = dispatch(openCloseModal(false));
-    await fetch("http://localhost:3000/ratings/save", {
+    await fetch(`${BACKEND_URL}/ratings/save`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",

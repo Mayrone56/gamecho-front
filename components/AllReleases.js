@@ -1,12 +1,13 @@
 import styles from '../styles/AllReleases.module.css';
 import Link from "next/link";
-import Image from "next/image";
 import { useRouter } from "next/router";
 import { useEffect, useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import GameCard from "../components/GameCard";
 import { getGameDetails } from "../reducers/game";
 import { addToWishlist, removeFromWishlist } from "../reducers/wishlist";
+
+import { BACKEND_URL } from "../const";
 
 function AllReleases() {
 
@@ -23,7 +24,7 @@ function AllReleases() {
 
   useEffect(() => {
     const fetchLatestGames = async () => {
-      const response = await fetch('http://localhost:3000/games/latestreleased', {
+      const response = await fetch(`${BACKEND_URL}/games/latestreleased`, {
         cache: "force-cache",
       })
       // Convention pour vérifier la réception du fetch

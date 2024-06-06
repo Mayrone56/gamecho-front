@@ -87,7 +87,7 @@ function Wishlist() {
   // }
 
   // const handleTrash = () => {
-  //   fetch('http://localhost:3000/wishlist', {
+  //   fetch(`${BACKEND_URL}/wishlist`, {
   //     method: 'DELETE',
   //     headers: { 'Content-Type': 'application/json' },
   //     body: JSON.stringify({ game: game.name }),

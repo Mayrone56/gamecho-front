@@ -10,8 +10,7 @@ import { useRouter } from "next/router";
 import { useDispatch, useSelector } from "react-redux";
 import styles from '../styles/AllSuggestions.module.css'
 
-
-
+import { BACKEND_URL } from "../const";
 
 function AllSuggestions () {
     const dispatch = useDispatch()
@@ -23,7 +22,7 @@ function AllSuggestions () {
 
 useEffect(() => {
     const fetchSuggestions = async () => {
-        const response = await fetch(`http://localhost:3000/games/suggestions?name=${suggestionQuery}`, {
+        const response = await fetch(`${BACKEND_URL}/games/suggestions?name=${suggestionQuery}`, {
         cache: "force-cache",
        })
        if(!response.ok) {
