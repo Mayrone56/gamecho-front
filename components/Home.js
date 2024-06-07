@@ -10,7 +10,8 @@ import { addToWishlist, removeFromWishlist } from "../reducers/wishlist";
 import { getGameDetails } from "../reducers/game";
 import GameCard from "../components/GameCard";
 
-import { BACKEND_URL } from "../const";
+//import { BACKEND_URL } from "../const";
+const BACKEND_URL= "https://gamecho-back.vercel.app";
 
 function Home() {
   // SANDRINE

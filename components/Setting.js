@@ -10,7 +10,8 @@ import { useState } from 'react';
 import { switchMode, changeRatingMode } from '../reducers/config'; // import de la fonction switchmode du reducer config
 import { logout } from '../reducers/user';
 import { resetRate } from '../reducers/rating';
-import { BACKEND_URL } from "../const";
+//import { BACKEND_URL } from "../const";
+const BACKEND_URL= "https://gamecho-back.vercel.app";
 
 function Setting() {
     const rooter = useRouter()

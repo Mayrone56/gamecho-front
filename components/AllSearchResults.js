@@ -8,7 +8,8 @@ import GameCard from "../components/GameCard";
 import { getGameDetails } from "../reducers/game";
 import { addToWishlist, removeFromWishlist } from "../reducers/wishlist";
 
-import { BACKEND_URL } from "../const";
+//import { BACKEND_URL } from "../const";
+const BACKEND_URL= "https://gamecho-back.vercel.app";
 
 function AllSearchResults() {
     const [searchResults, setSearchResults] = useState([]);
