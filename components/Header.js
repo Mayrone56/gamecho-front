@@ -7,7 +7,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { useState } from 'react';
 
 //TEST LOTTIE
-import Lottie from "lottie-react";
+//import Lottie from "lottie-react";
 
 
 function Header() {
