@@ -5,8 +5,8 @@ import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useRouter } from "next/router"; // ajout d'un état de route pour rediriger l'utilisateur
 import { login } from "../reducers/user";
-//import { BACKEND_URL } from "../const";
-const BACKEND_URL= "https://gamecho-back.vercel.app";
+import { BACKEND_URL } from "../const";
+//const BACKEND_URL= "https://gamecho-back.vercel.app";
 
 function SignUp() {
   const dispatch = useDispatch();
