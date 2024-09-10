@@ -7,12 +7,11 @@ import "moment/locale/fr";
 import { addRate } from "../reducers/rating";
 import { useRouter } from "next/router";
 import { BACKEND_URL } from "../const";
-//const BACKEND_URL= "https://gamecho-back.vercel.app";
 
 const moment = require("moment");
 moment.locale("fr");
 
-function RateModal({onSubmit}) {
+function RateModal({ onSubmit }) {
   const dispatch = useDispatch();
   const gameDetails = useSelector((state) => state.game.details);
 
