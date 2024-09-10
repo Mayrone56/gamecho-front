@@ -11,7 +11,6 @@ import { getGameDetails } from "../reducers/game";
 import GameCard from "../components/GameCard";
 
 import { BACKEND_URL } from "../const";
-//const BACKEND_URL= "https://gamecho-back.vercel.app";
 
 function Home() {
   // SANDRINE
@@ -206,11 +205,11 @@ function Home() {
         <div className={styles.cropedBanner}>
           <div className={styles.bannerWelcomeMobile} alt="banner">
             <Image
-            src="/Banner_welcome_without_text.jpg"
-            alt="Banner Gamecho"
-            width={1920}
-            height={1000}
-            className={styles.bannerImageMobile}
+              src="/Banner_welcome_without_text.jpg"
+              alt="Banner Gamecho"
+              width={1920}
+              height={1000}
+              className={styles.bannerImageMobile}
             />
           </div>
         </div>
@@ -218,7 +217,7 @@ function Home() {
           <input
             type="text"
             className={styles.input}
-            onKeyDown={(e) => { 
+            onKeyDown={(e) => {
               if (e.key === "Enter") {
                 handleAllGames();
               }
@@ -232,17 +231,17 @@ function Home() {
           />
           <div className={styles.buttonSearch}>
 
-          <Image
-            onClick={() => handleAllGames()}
-            src="/icons/search.svg"
-            alt="Search"
-            width={24}
-            height={24}
-            className={
-              isLightmode ? styles.searchIconlight : styles.searchIcondark
-            }
+            <Image
+              onClick={() => handleAllGames()}
+              src="/icons/search.svg"
+              alt="Search"
+              width={24}
+              height={24}
+              className={
+                isLightmode ? styles.searchIconlight : styles.searchIcondark
+              }
             />
-            </div>
+          </div>
         </div>
 
         {/* SECTION SEARCH RESULTS */}

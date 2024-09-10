@@ -10,7 +10,6 @@ import { Modal } from "antd";
 import RateModal from "./RateModal";
 
 import { BACKEND_URL } from "../const";
-//const BACKEND_URL= "https://gamecho-back.vercel.app";
 
 const ratingToEmoji = {
   1: "/icons/emojiIcons/angry.svg",
@@ -34,28 +33,28 @@ function Game() {
   const ratings = useSelector((state) => state.rating.value); // pour recuperer la valeur de notre
 
   const fetchRatings = () => {
-  const query = `name=${gameDetails.name}`
+    const query = `name=${gameDetails.name}`
 
-fetch(`${BACKEND_URL}/games/ratings?${query}`)
-  .then((response) => response.json())
-  .then((data) => {
-    console.log("useEffect data", data);
+    fetch(`${BACKEND_URL}/games/ratings?${query}`)
+      .then((response) => response.json())
+      .then((data) => {
+        console.log("useEffect data", data);
 
-    setRatingsList(data.data);
-    dispatch(loadRates(data.data));
-    console.log("fetch", data.data);
+        setRatingsList(data.data);
+        dispatch(loadRates(data.data));
+        console.log("fetch", data.data);
 
-    let ratingMode;
-    if (data && data.data && data.data[0]) {
-      ratingMode = data.data[0].ratingMode;
-    }
+        let ratingMode;
+        if (data && data.data && data.data[0]) {
+          ratingMode = data.data[0].ratingMode;
+        }
 
-    if (ratingMode === "Out of 100") {
-      setRatingScale(100);
-    } else if (ratingMode === "Out of 10") {
-      setRatingScale(10);
-    }
-  });
+        if (ratingMode === "Out of 100") {
+          setRatingScale(100);
+        } else if (ratingMode === "Out of 10") {
+          setRatingScale(10);
+        }
+      });
   };
 
   useEffect(() => {
@@ -69,87 +68,87 @@ fetch(`${BACKEND_URL}/games/ratings?${query}`)
   console.log("ratings list", ratingsList);
   const allRatings = ratingsList
     ? ratingsList.map((vote, i) => {
-        //La date de notation est formatée à l'aide de la fonction toLocaleDateString() afin de l'afficher dans un format dd/mm/yyyy
-        const ratingDate = new Date(vote.ratingDate).toLocaleDateString();
+      //La date de notation est formatée à l'aide de la fonction toLocaleDateString() afin de l'afficher dans un format dd/mm/yyyy
+      const ratingDate = new Date(vote.ratingDate).toLocaleDateString();
 
-        // CONVERSION DES NOTES
+      // CONVERSION DES NOTES
 
-        // on récupère CHAQUE vote du jeu et selon l'échelle choisie par l'utilisateur, on entreprend un calcul pour le convertir à une valeur de 1 à 5 / Pourquoi ? Pour qu'il puisse être associé aux emojis numérotés
+      // on récupère CHAQUE vote du jeu et selon l'échelle choisie par l'utilisateur, on entreprend un calcul pour le convertir à une valeur de 1 à 5 / Pourquoi ? Pour qu'il puisse être associé aux emojis numérotés
 
-        // on initialise la conversion à l'exterieur de la boucle pour l'exploiter
-        let convertedRating;
+      // on initialise la conversion à l'exterieur de la boucle pour l'exploiter
+      let convertedRating;
 
-        if (vote.ratingMode === "Out of 100") {
-          // ratingMode cible l'échelle choisie dans la BDD, ratingsList[i] cible un vote unique
-          convertedRating = (vote.rating / 100) * 5; // on divise le vote pour que sa valeur de dépasse pas 5 / 100/20=5
-        } else if (vote.ratingMode === "Out of 10") {
-          convertedRating = (vote.rating / 10) * 5; // plus intuitif, on a juste à diviser l'échelle en deux
-        } else {
-          // cible le vote restant, par défaut l'emoji sur 5
-          convertedRating = vote.rating;
-          console.log("vote rating", vote.rating);
-        }
+      if (vote.ratingMode === "Out of 100") {
+        // ratingMode cible l'échelle choisie dans la BDD, ratingsList[i] cible un vote unique
+        convertedRating = (vote.rating / 100) * 5; // on divise le vote pour que sa valeur de dépasse pas 5 / 100/20=5
+      } else if (vote.ratingMode === "Out of 10") {
+        convertedRating = (vote.rating / 10) * 5; // plus intuitif, on a juste à diviser l'échelle en deux
+      } else {
+        // cible le vote restant, par défaut l'emoji sur 5
+        convertedRating = vote.rating;
+        console.log("vote rating", vote.rating);
+      }
 
-        totalRatings += convertedRating; // on additionne toutes les valeurs converties trouvées et formatées pour avoir une échelle sur 5
-        ratingsLength++; // fréquence choisie : chaque vote mappé est ajouté un par un
+      totalRatings += convertedRating; // on additionne toutes les valeurs converties trouvées et formatées pour avoir une échelle sur 5
+      ratingsLength++; // fréquence choisie : chaque vote mappé est ajouté un par un
 
-        const emojiRate = ratingToEmoji[Math.round(convertedRating)]; // on récupère un URL du tableau d'emoji attribué à un numéro et on le sauvegarde pour l'appeler en src de l'Image
-        // Math.round permet d'avoir un nombre entier et d'éviter le problème de source undefined
+      const emojiRate = ratingToEmoji[Math.round(convertedRating)]; // on récupère un URL du tableau d'emoji attribué à un numéro et on le sauvegarde pour l'appeler en src de l'Image
+      // Math.round permet d'avoir un nombre entier et d'éviter le problème de source undefined
 
-        return (
-          <div className={isLightmode ? styles.ratingLigtht : styles.rating}>
-            {(ratingsList && <div className={styles.userInfoContainer}>
-              {/*Les données peuplées de l'utilisateur sont un objet avec les clés suivantes: id, username, email, password, token, ratings, wishlist, __v.
+      return (
+        <div className={isLightmode ? styles.ratingLigtht : styles.rating}>
+          {(ratingsList && <div className={styles.userInfoContainer}>
+            {/*Les données peuplées de l'utilisateur sont un objet avec les clés suivantes: id, username, email, password, token, ratings, wishlist, __v.
           A cause de cela, React a eu un problème et n'a pas pu rendre une collection d'enfants qui sont un objet. Pour résoudre ce problème, on utilise Object.key() pour itérer à travers les clés de notre objet « user ». */}
-              {Object.keys(vote.user).map((key, index) => {
-                if (key === "username") {
-                  // nous vérifions si la clé courante qui est itérée est 'username'
-                  return (
-                    <div key={index} className={styles.userDetail}>
-                      {/* <Image
+            {Object.keys(vote.user).map((key, index) => {
+              if (key === "username") {
+                // nous vérifions si la clé courante qui est itérée est 'username'
+                return (
+                  <div key={index} className={styles.userDetail}>
+                    {/* <Image
                     src="/icons/heart.svg"
                     alt="User's avatar"
                     width={24}
                     height={24}
                     className={styles.info}
                   /> */}
-                      <span>
-                        <b>Username:</b> {vote.user[key]}
-                      </span>{" "}
-                      {/*nous rendons la valeur de notre cle "username"*/}
-                    </div>
-                  );
-                }
-              })}
-              <span>
-                <b>Rating's date:</b> {ratingDate}
-              </span>
-            </div>)}
-            <div className={styles.ratingDetails}>
-              {/*La valeur de l'évaluation est convertie en emoji à l'aide d'une table de correspondance ratingToEmoji, et elle est affichée à l'aide du composant Image.*/}
-              <span className={styles.ratingInfo}>
-                <b>Rating: </b>
+                    <span>
+                      <b>Username:</b> {vote.user[key]}
+                    </span>{" "}
+                    {/*nous rendons la valeur de notre cle "username"*/}
+                  </div>
+                );
+              }
+            })}
+            <span>
+              <b>Rating's date:</b> {ratingDate}
+            </span>
+          </div>)}
+          <div className={styles.ratingDetails}>
+            {/*La valeur de l'évaluation est convertie en emoji à l'aide d'une table de correspondance ratingToEmoji, et elle est affichée à l'aide du composant Image.*/}
+            <span className={styles.ratingInfo}>
+              <b>Rating: </b>
 
-                {/* SI ACTIF BUG SUR L'AFFICHAGE AU CLIC SUR UNE GAME CARD DANS HOME */}
-                <Image
-                  // ICI on dynamise la source de l'icône utilisée pour illustrer le vote
-                  // Il est nécessaire de se servir de l'échelle, enregistrée dans l'état, et de la diviser par 5 pour qu'elle puisse être associée à un chiffre de 1 à 5 et ce peu importe le ratingMode
-                  // Le Math.floor est essentiel pour arrondir le resultat et obtenir un nombre entier et exploitable
+              {/* SI ACTIF BUG SUR L'AFFICHAGE AU CLIC SUR UNE GAME CARD DANS HOME */}
+              <Image
+                // ICI on dynamise la source de l'icône utilisée pour illustrer le vote
+                // Il est nécessaire de se servir de l'échelle, enregistrée dans l'état, et de la diviser par 5 pour qu'elle puisse être associée à un chiffre de 1 à 5 et ce peu importe le ratingMode
+                // Le Math.floor est essentiel pour arrondir le resultat et obtenir un nombre entier et exploitable
 
-                  src={emojiRate}
-                  alt={`Rating: ${vote.rating}`}
-                  width={24}
-                  height={24}
-                  className={styles.iconMargin}
-                />
-              </span>
-              <span>
-                <b>Commentary:</b> {vote.comment}
-              </span>
-            </div>
+                src={emojiRate}
+                alt={`Rating: ${vote.rating}`}
+                width={24}
+                height={24}
+                className={styles.iconMargin}
+              />
+            </span>
+            <span>
+              <b>Commentary:</b> {vote.comment}
+            </span>
           </div>
-        );
-      })
+        </div>
+      );
+    })
     : null;
 
   //WISHLIST HEART ICON CLICK
@@ -225,7 +224,7 @@ fetch(`${BACKEND_URL}/games/ratings?${query}`)
                 alt="Add to wishlist"
                 width={24}
                 height={24}
-                
+
               />
             </button>
             <button
@@ -329,7 +328,7 @@ fetch(`${BACKEND_URL}/games/ratings?${query}`)
         open={modalVisible}
         footer={null}
       >
-        <RateModal onSubmit={fetchRatings}/>
+        <RateModal onSubmit={fetchRatings} />
       </Modal>
     </div>
   );

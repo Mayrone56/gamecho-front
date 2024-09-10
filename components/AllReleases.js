@@ -8,7 +8,7 @@ import { getGameDetails } from "../reducers/game";
 import { addToWishlist, removeFromWishlist } from "../reducers/wishlist";
 
 import { BACKEND_URL } from "../const";
-//const BACKEND_URL= "https://gamecho-back.vercel.app";
+//const BACKEND_URL= "https://gamecho-back-mayrones-projects.vercel.app";
 
 function AllReleases() {
 
