@@ -44,6 +44,11 @@ function Profile() {
       fetch(`${BACKEND_URL}/profile/avatar`, {
         // création de la route
         method: "POST",
+        //Ajout pour tester l'avatar, sinon il n'y avait pas de header
+        headers: {
+          // Tu peux éventuellement ajouter d'autres headers si nécessaire
+          'Content-Type': 'multipart/form-data'  // Le navigateur gère automatiquement cela avec FormData
+        },
         body: formData,
       })
         .then((response) => response.json())
