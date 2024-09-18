@@ -5,7 +5,7 @@ function wishlistPage() {
   return (
     <>
       <Head>
-        <title>Wishlist / Gamecho</title>
+        <title>Wishlist | Gamecho</title>
       </Head>
       <Wishlist />
     </>

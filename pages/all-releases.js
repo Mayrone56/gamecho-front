@@ -2,14 +2,15 @@ import Head from 'next/head';
 import AllReleases from '../components/AllReleases';
 import Header from '../components/Header';
 import Footer from '../components/Footer';
+import Layout from '../components/Layout';
 
 function allReleasesPage() {
   return (
     <>
-    <Header />
       <Head>
-        <title>All releases / Gamecho</title>
+        <title>All releases | Gamecho</title>
       </Head>
+      <Header />
       <AllReleases />
       <Footer />
     </>
@@ -17,3 +18,12 @@ function allReleasesPage() {
 }
 
 export default allReleasesPage;
+
+
+// export default function () {
+//   return (
+//     <Layout title="All releases | Gamecho">
+//       <AllReleases />
+//     </Layout>
+//   )
+// }

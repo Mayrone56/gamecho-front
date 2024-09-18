@@ -80,7 +80,7 @@ function Setting() {
 
     //Modale de confirmation de supression de compte
     const modale = modalVisible && (
-        <div className={styles.modal}>
+        <div className={isLightmode ? styles.modalLight : styles.modalDark}>
             <div>
                 <div>Your account will be delete definitively. Do you want to continue ?</div>
                 <div className={styles.buttoncontainer}>

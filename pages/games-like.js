@@ -6,12 +6,12 @@ import Footer from '../components/Footer';
 function gameLikePage() {
   return (
     <>
-    <Header/>
       <Head>
-        <title>"gameName" like / Gamecho</title>
+        <title>Game like | Gamecho</title>
       </Head>
+      <Header />
       <GameLike />
-      <Footer/>
+      <Footer />
     </>
   );
 }

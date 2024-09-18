@@ -17,7 +17,7 @@ function Header() {
 
   //Menu burger
   const [openBurgerMenu, setOpenBurgerMenu] = useState(false);
-  console.log(openBurgerMenu);
+  // console.log(openBurgerMenu);
 
   //Logout
   const dispatch = useDispatch();
@@ -32,17 +32,16 @@ function Header() {
 
   //image de l'avatar qui change en fonction de si on en a uploadé un ou pas (par default smiley)
   let avatar;
-  if(urlAvatar)
-    {
-      avatar=(
-        <Image src={urlAvatar} alt="Avatar" width={48} height={48} className={styles.icon} />
-      )
-    }
-    else{
-      avatar=(
-        <Image src="/icons/emojiIcons/happy.svg" alt="Avatar" width={48} height={48} className={styles.icon} />
-      )
-    }
+  if (urlAvatar) {
+    avatar = (
+      <Image src={urlAvatar} alt="Avatar" width={48} height={48} className={styles.icon} />
+    )
+  }
+  else {
+    avatar = (
+      <Image src="/icons/emojiIcons/happy.svg" alt="Avatar" width={48} height={48} className={styles.icon} />
+    )
+  }
 
   return (
 
@@ -60,7 +59,7 @@ function Header() {
 
         {/* <Lottie onClick={toggleBurgerMenu} animationData={menuBurger} loop={false} className={styles.icon} /> */}
 
-        <Image onClick={toggleMenuBurger} src="/icons/burger.svg" alt="Avatar" width={24} height={24} className={styles.burgerIcon} />
+        <Image onClick={toggleMenuBurger} src="/icons/burger.svg" alt="Burger menu" width={24} height={24} className={styles.burgerIcon} />
       </div>
 
       {openBurgerMenu && (
@@ -68,23 +67,23 @@ function Header() {
           <div className={styles.burgerContainer}>
             <div className={styles.topMenuBurger}>
               <Link href="/profile">
-              <button className={styles.seoncadryButton} >
+                <button className={styles.seoncadryButton} >
                   Profile
                 </button>
-      
+
               </Link>
               <Link href="/ratings">
-              <button className={styles.seoncadryButton}>
+                <button className={styles.seoncadryButton}>
                   Ratings
                 </button>
               </Link>
               <Link href="/wishlist">
-              <button className={styles.seoncadryButton} >
+                <button className={styles.seoncadryButton} >
                   Wishlist
                 </button>
               </Link>
               <Link href="/setting">
-              <button className={styles.seoncadryButton}>
+                <button className={styles.seoncadryButton}>
                   Settings
                 </button>
               </Link>

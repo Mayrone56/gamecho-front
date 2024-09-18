@@ -1,5 +1,5 @@
-// export const BACKEND_URL = "http://localhost:3000";
-export const BACKEND_URL = "https://gamecho-back-mayrones-projects.vercel.app";
+export const BACKEND_URL = "http://localhost:3000";
+// export const BACKEND_URL = "https://gamecho-back-mayrones-projects.vercel.app";
 
 
 //Solution pour ne pas avoir à commenter decommenter pour passer du local à vercel

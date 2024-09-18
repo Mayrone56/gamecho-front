@@ -13,13 +13,13 @@ import GameCard from "../components/GameCard";
 import { BACKEND_URL } from "../const";
 
 function Home() {
-  // SANDRINE
-  // Parce que quand on va recevoir le fetch ça doit maj en temps réel, ça re-render, c'est pour ça que c'est mis dans cet état
-  const [latestGamesData, setLatestGamesData] = useState([]);
-  // SANDRINE
 
   const dispatch = useDispatch();
   const router = useRouter();
+
+  // SANDRINE
+  // Parce que quand on va recevoir le fetch ça doit maj en temps réel au chargement de la page, c'est pour ça que c'est mis dans cet état
+  const [latestGamesData, setLatestGamesData] = useState([]);
 
   const [searchValue, setSearchValue] = useState(""); // VL
   const [searchSuggValue, setSearchSuggValue] = useState(""); // VL
@@ -27,11 +27,11 @@ function Home() {
   const [searchSuggResults, setSearchSuggResults] = useState([]); // VL
   const [showSearchResults, setShowSearchResults] = useState(false); // VL
   const [showSearchSuggResults, setShowSearchSuggResults] = useState(false); // VL
-  const wishlist = useSelector((state) => state.wishlist.value); // pour recuperer la valeur de notre tableau wishlist du reducer
-  //console.log("WISHLIST ", wishlist);
+  // pour recuperer la valeur de notre tableau wishlist du reducer
+  const wishlist = useSelector((state) => state.wishlist.value);
+  console.log("WISHLIST ", wishlist);
 
   const isLightmode = useSelector((state) => state.config.value.mode);
-
 
 
   // LATEST RELEASES
@@ -52,7 +52,7 @@ function Home() {
         return;
       }
       console.log("DATA LATESTGAMES ", data.latestgames);
-      setLatestGamesData(data.latestgames.slice(0, 3)); // VL pour 3 cartes seulement
+      setLatestGamesData(data.latestgames.slice(0, 3)); // 3 cartes seulement
     };
     fetchLatestGames();
   }, []);
