@@ -125,6 +125,7 @@ function Home() {
   ));
 
   const searchSuggResultsData = searchSuggResults.map((game) => (
+    //Envoie vers la page game avec le nom du jeu
     <Link href="/game" key={game.name}>
       <GameCard
         key={game.name}
