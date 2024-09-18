@@ -33,16 +33,12 @@ function Home() {
 
   const isLightmode = useSelector((state) => state.config.value.mode);
 
-
-
   // LATEST RELEASES
   useEffect(() => {
     const fetchLatestGames = async () => {
-      const response = await fetch(
-        `${BACKEND_URL}/games/latestreleased`, {
+      const response = await fetch(`${BACKEND_URL}/games/latestreleased`, {
         cache: "force-cache",
-      }
-      );
+      });
       if (!response.ok) {
         console.log("Response latestreleased was not ok");
         return;
@@ -58,8 +54,7 @@ function Home() {
     fetchLatestGames();
   }, []);
 
-
-  // FONCTION LIKE EXTERNE POUR L'APPELER AILLEUR SANDRINE 
+  // FONCTION LIKE EXTERNE POUR L'APPELER AILLEUR SANDRINE
   const isAddedToWishlist = (game) => {
     return wishlist.some((wishlistItem) => wishlistItem.name === game.name);
   };
@@ -86,7 +81,6 @@ function Home() {
   };
 
   const handleGameCardClick = (game) => {
-
     // Step 1: Dispatch the action to store the game details in Redux
     dispatch(getGameDetails(game));
 
@@ -103,7 +97,7 @@ function Home() {
     //     console.log('Save response:', data);
 
     //     // Step 3: Navigate to the game page
-    router.push('game/');
+    router.push("game/");
     // });
   };
 
@@ -156,9 +150,10 @@ function Home() {
 
   const handleSearch = async () => {
     const response = await fetch(
-      `${BACKEND_URL}/games/search?name=${searchValue}`, {
-      cache: "force-cache",
-    }
+      `${BACKEND_URL}/games/search?name=${searchValue}`,
+      {
+        cache: "force-cache",
+      }
     );
 
     if (!response.ok) {
@@ -175,9 +170,10 @@ function Home() {
   // Display only on the search icon
   const handleSearchSuggestions = async () => {
     const response = await fetch(
-      `${BACKEND_URL}/games/suggestions?name=${searchSuggValue}`, {
-      cache: "force-cache",
-    }
+      `${BACKEND_URL}/games/suggestions?name=${searchSuggValue}`,
+      {
+        cache: "force-cache",
+      }
     );
 
     if (!response.ok) {
@@ -190,13 +186,12 @@ function Home() {
     setShowSearchSuggResults(true);
   };
 
-
   //Paul
 
   const handleAllGames = () => {
     handleSearch();
     handleSearchSuggestions();
-  }
+  };
   //Fonction qui prend les deux fonctions handleSearch et handleSearchSuggestions pour fetcher les jeux+les suggestions en meme temps
 
   // MAIN RETURN OF HOME COMPONENT
@@ -206,11 +201,11 @@ function Home() {
         <div className={styles.cropedBanner}>
           <div className={styles.bannerWelcomeMobile} alt="banner">
             <Image
-            src="/Banner_welcome_without_text.jpg"
-            alt="Banner Gamecho"
-            width={1920}
-            height={1000}
-            className={styles.bannerImageMobile}
+              src="/Banner_welcome_without_text.jpg"
+              alt="Banner Gamecho"
+              width={1920}
+              height={1000}
+              className={styles.bannerImageMobile}
             />
           </div>
         </div>
@@ -218,31 +213,30 @@ function Home() {
           <input
             type="text"
             className={styles.input}
-            onKeyDown={(e) => { 
+            onKeyDown={(e) => {
               if (e.key === "Enter") {
                 handleAllGames();
               }
             }}
             onChange={(e) => {
               setSearchValue(e.target.value);
-              setSearchSuggValue(e.target.value)
+              setSearchSuggValue(e.target.value);
             }}
             value={searchValue}
             placeholder="Search..."
           />
           <div className={styles.buttonSearch}>
-
-          <Image
-            onClick={() => handleAllGames()}
-            src="/icons/search.svg"
-            alt="Search"
-            width={24}
-            height={24}
-            className={
-              isLightmode ? styles.searchIconlight : styles.searchIcondark
-            }
+            <Image
+              onClick={() => handleAllGames()}
+              src="/icons/search.svg"
+              alt="Search"
+              width={24}
+              height={24}
+              className={
+                isLightmode ? styles.searchIconlight : styles.searchIcondark
+              }
             />
-            </div>
+          </div>
         </div>
 
         {/* SECTION SEARCH RESULTS */}
