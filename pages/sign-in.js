@@ -5,7 +5,7 @@ function SignUpPage() {
     return (
         <>
             <Head>
-                <title>Sign-up / GamEcho</title>
+                <title>Signin | Gamecho</title>
             </Head>
             <SignIn />
         </>

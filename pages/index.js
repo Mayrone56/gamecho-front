@@ -4,10 +4,10 @@ import Welcome from "../components/Welcome";
 function Index() {
   return (
     <>
-    <Head>
-      <title>Welcome / Gamecho</title>
-    </Head>
-    <Welcome />
+      <Head>
+        <title>Welcome | Gamecho</title>
+      </Head>
+      <Welcome />
     </>
   )
 }

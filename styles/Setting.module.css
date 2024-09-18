@@ -18,7 +18,7 @@
     align-items: center;
     color: #3F3878;
     background-color: #F0EFFF;
-  }
+}
 
 
 .middleContainer {
@@ -131,18 +131,47 @@
     background-color: #3F3878;
 }
 
+/* Modal */
 .modal {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background-color:#3F3878;
-  display:flex;
-  justify-content: center;
-  align-items: center;
-  color: #242424;
-  font-size: 20px;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: #3F3878;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #efffef;
+    font-size: 20px;
+}
+
+.modalDark {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 20px;
+    background-color: #3F3878;
+    color: #FFF9E8;
+}
+
+.modalLight {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 20px;
+    color: #3F3878;
+    background-color: #F0EFFF;
 }
 
 .buttoncontainer {
@@ -153,21 +182,22 @@
     margin-right: 20px;
 }
 
-    /* - Mobile */
-  @media (max-width: 390px) {
+/* - Mobile */
+@media (max-width: 390px) {
     .modal {
-    display: flex;
-    justify-content:flex-start;
-    font-size: 0.8rem;
-      width: 100%; /* On vise désormais l'affichage mobile et on veut changer les proportions de la modal */
-      max-width: 100%;
-      max-height: 844px;
+        display: flex;
+        justify-content: flex-start;
+        font-size: 0.8rem;
+        width: 100%;
+        /* On vise désormais l'affichage mobile et on veut changer les proportions de la modal */
+        max-width: 100%;
+        max-height: 844px;
     }
 
-    .buttoncontainer{
+    .buttoncontainer {
         width: 50%;
         display: flex;
         justify-content: space-between;
         align-items: center;
     }
-  }
+}

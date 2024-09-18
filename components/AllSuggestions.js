@@ -11,9 +11,8 @@ import { useDispatch, useSelector } from "react-redux";
 import styles from '../styles/AllSuggestions.module.css'
 
 import { BACKEND_URL } from "../const";
-//const BACKEND_URL= "https://gamecho-back.vercel.app";
 
-function AllSuggestions () {
+function AllSuggestions() {
     const dispatch = useDispatch()
     const router = useRouter()
     const suggestionQuery = router.query.name
@@ -21,32 +20,32 @@ function AllSuggestions () {
     const wishlist = useSelector((state) => state.wishlist.value)
     const isLightmode = useSelector((state) => state.config.value.mode);
 
-useEffect(() => {
-    const fetchSuggestions = async () => {
-        const response = await fetch(`${BACKEND_URL}/games/suggestions?name=${suggestionQuery}`, {
-        cache: "force-cache",
-       })
-       if(!response.ok) {
-        return;
-      }
-      const data = await response.json();
-      console.log("ALL SUGGESTION RESULTS ", data);
+    useEffect(() => {
+        const fetchSuggestions = async () => {
+            const response = await fetch(`${BACKEND_URL}/games/suggestions?name=${suggestionQuery}`, {
+                cache: "force-cache",
+            })
+            if (!response.ok) {
+                return;
+            }
+            const data = await response.json();
+            console.log("ALL SUGGESTION RESULTS ", data);
             setSuggestionsData(data.games.slice(0, 20));
-    }
- fetchSuggestions();
+        }
+        fetchSuggestions();
     }, [suggestionQuery]);
 
     const isAddedToWishlist = (game) => {
         return wishlist.some((wishlistItem) => wishlistItem.name === game.name);
-      }
+    }
 
-      const handleWishlistClick = (game) => {
+    const handleWishlistClick = (game) => {
         if (isAddedToWishlist(game)) {
             dispatch(removeFromWishlist(game));
-                        console.log(`${game.name} removed from wishlist`);
+            console.log(`${game.name} removed from wishlist`);
         } else {
             dispatch(addToWishlist(game));
-                        console.log(`${game.name} added to wishlist`);
+            console.log(`${game.name} added to wishlist`);
         }
     };
 
@@ -57,24 +56,24 @@ useEffect(() => {
 
     const handleGameCardClick = (game) => {
         dispatch(getGameDetails(game));
-                router.push('game/');
+        router.push('game/');
     };
 
 
     const searchSuggResultsData = suggestionsData.map((game) => (
         <Link href="/game" key={game.name}>
-          <GameCard
-            key={game.name}
-            game={game}
-            isAddedToWishlist={isAddedToWishlist(game)}
-            onHeartClick={(event) => handleHeartIconClick(event, game)}
-            onClick={() => handleGameCardClick(game)}
-          />
+            <GameCard
+                key={game.name}
+                game={game}
+                isAddedToWishlist={isAddedToWishlist(game)}
+                onHeartClick={(event) => handleHeartIconClick(event, game)}
+                onClick={() => handleGameCardClick(game)}
+            />
         </Link>
-      ));
+    ));
 
 
-return (
+    return (
         <div className={isLightmode ? styles.containerlight : styles.containerdark}>
             <div className={styles.middleContainer}>
                 <h2 className={styles.sectionTitle}>All suggestions</h2>
@@ -83,7 +82,7 @@ return (
         </div>
     );
 
-}  
+}
 
 
 

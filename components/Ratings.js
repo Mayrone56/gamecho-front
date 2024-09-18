@@ -11,7 +11,6 @@ import { getGameDetails } from "../reducers/game";
 import GameCard from "../components/GameCard";
 import { loadRates } from "../reducers/rating";
 import { BACKEND_URL } from "../const";
-//const BACKEND_URL= "https://gamecho-back.vercel.app";
 
 const ratingToEmoji = {
   1: "/icons/emojiIcons/angry.svg",
@@ -73,8 +72,8 @@ function Ratings() {
       .then((response) => response.json())
       .then((data) => {
         console.log("data de la supression", data)
-        console.log("rating supprimé",rating)
-        
+        console.log("rating supprimé", rating)
+
         data.result && dispatch(deleteRate(rating.name));
       });
   };

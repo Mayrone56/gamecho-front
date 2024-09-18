@@ -7,12 +7,11 @@ import "moment/locale/fr";
 import { addRate } from "../reducers/rating";
 import { useRouter } from "next/router";
 import { BACKEND_URL } from "../const";
-//const BACKEND_URL= "https://gamecho-back.vercel.app";
 
 const moment = require("moment");
 moment.locale("fr");
 
-function RateModal({onSubmit}) {
+function RateModal({ onSubmit }) {
   const dispatch = useDispatch();
   const gameDetails = useSelector((state) => state.game.details);
 
@@ -59,6 +58,7 @@ function RateModal({onSubmit}) {
   //VALENTIN COEE
   const handleVote = async (game) => {
     console.log("GAME", game);
+
     // fetch d'une route POST pour sauvegarde le jeu ET le vote
     const ratingData = {
       username: user.username, // on exploite Redux et l'username sauvegardé
@@ -69,34 +69,44 @@ function RateModal({onSubmit}) {
       ratingDate: new Date(), // date au moment de l'appel de la route
       //Pour le moment Date est le composant javascript de base, il faudra utiliser si on a le temps moment
       gameDetails: gameDetails, // reducer game qui contient TOUTES les données du jeu
-
     };
 
-    const response = dispatch(openCloseModal(false));
-    await fetch(`${BACKEND_URL}/ratings/save`, {
+    dispatch(openCloseModal(false));
+
+    const response = await fetch(`${BACKEND_URL}/ratings/save`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
       },
       body: JSON.stringify(ratingData),
-    });
-    console.log(response);
+    })
+
+    console.log("RATED", response);
+
     if (response.ok) {
       console.log("Rating submitted successfully");
       //Rated
       dispatch(addRate(ratingData)); //Ajoute au tableau qui permettra d'afficher comme pour wishlist sur home, mais sur la page ratings
       console.log(ratingData, "added to rating");
-      setNewReview(""); // on vide la valeur de la review qui est dans input de la modal du rating via un setter
+
+      // on vide la valeur de la review qui est dans input de la modal du rating via un setter
+      setRate(0);
+      setNewReview("");
     } else {
-      console.log("Error submitting rating");
       // si erreur quelconque, message
-    } console.log("Calling onSubmit  "); onSubmit()
+      console.log("Error submitting rating");
+    }
+
+    console.log("Calling onSubmit  ");
+    onSubmit()
   };
 
   const handleSelection = (emojiPath, i) => {
     setRate(i + 1); setMyEmoji(emojiPath); setSelectedEmoji(true); // on conditionne la sauvegarde de la valeur à un vote et on empêche ainsi tout rate = 0
   };
+
   const personalEmoji = [];
+
   for (let i = 0; i < 5; i++) {
     const isSelected = i === rate - 1; // au lieu de colorer tous les emojis antérieurs à la valeur selectionnée, on ne cible que l'index (-1 pour convertir le 1er élement à l'index 0 !!!)
     let style = {
@@ -104,6 +114,7 @@ function RateModal({onSubmit}) {
       filter:
         "brightness(0) saturate(100%) invert(62%) sepia(11%) saturate(762%) hue-rotate(205deg) brightness(94%) contrast(88%)", // on applique une couleur noir pour ensuite trouver notre couleur via un concertisseur CSS (ex: https://codepen.io/sosuke/pen/Pjoqqp)
     };
+
     if (isSelected) {
       // si l'emoji est selectionné, on lui attribue un autre style
       style = {
@@ -112,6 +123,7 @@ function RateModal({onSubmit}) {
           "brightness(0) saturate(100%) invert(87%) sepia(29%) saturate(211%) hue-rotate(329deg) brightness(105%) contrast(109%)",
       };
     }
+
     personalEmoji.push(
       // le tableau renvoie dans l'ordre chaque emoji avec une clé index pour y associer une valeur (de 0 à 4, converti à 1 à 5 dans le setter)
       <Image
@@ -223,7 +235,8 @@ function RateModal({onSubmit}) {
               disabled={!selectedEmoji}
               className={styles.button}
               onClick={(e) => {
-                e.preventDefault(); // le comportement du clic par défaut n'est plus prioritaire et perd ses propriétés natives (par ex un clic est plus lent si appelé dans un formulaire comme une Modal)  https://developer.mozilla.org/fr/docs/Web/API/Event/preventDefault
+                // le comportement du clic par défaut n'est plus prioritaire et perd ses propriétés natives (par ex un clic est plus lent si appelé dans un formulaire comme une Modal)  https://developer.mozilla.org/fr/docs/Web/API/Event/preventDefault
+                e.preventDefault();
                 handleVote(gameDetails);
               }}
             >

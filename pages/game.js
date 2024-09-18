@@ -5,12 +5,12 @@ import Footer from '../components/Footer';
 function gamePage() {
   return (
     <>
-    <Header/>
       <Head>
-        <title>"gameName" / Gamecho</title>
+        <title>Game | Gamecho</title>
       </Head>
+      <Header />
       <Game />
-      <Footer/>
+      <Footer />
     </>
   );
 }

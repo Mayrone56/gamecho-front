@@ -8,7 +8,6 @@ import { useRouter } from "next/router";
 import { addAvatar, editUsername, editEmail } from "../reducers/user";
 
 import { BACKEND_URL } from "../const";
-//const BACKEND_URL= "https://gamecho-back.vercel.app";
 
 function Profile() {
   const dispatch = useDispatch(); // Pour mettre à jour l'avatar dans tous les composants
@@ -45,6 +44,11 @@ function Profile() {
       fetch(`${BACKEND_URL}/profile/avatar`, {
         // création de la route
         method: "POST",
+        //Ajout pour tester l'avatar, sinon il n'y avait pas de header
+        headers: {
+          // Tu peux éventuellement ajouter d'autres headers si nécessaire
+          'Content-Type': 'multipart/form-data'  // Le navigateur gère automatiquement cela avec FormData
+        },
         body: formData,
       })
         .then((response) => response.json())
@@ -120,7 +124,7 @@ function Profile() {
   };
 
   return (
-    <div className={isLightmode? styles.containerlight : styles.containerdark}>
+    <div className={isLightmode ? styles.containerlight : styles.containerdark}>
       {!user.token && (
         <div className={styles.middleContainer}>
           <div className={styles.centerText}>
@@ -131,13 +135,13 @@ function Profile() {
           <div className={styles.buttonContainer}>
             <div className={styles.signin}>
               <h3>Already have an account ?</h3>
-              <button className={isLightmode? styles.buttondark : styles.buttonlight} onClick={handleSignInClick}>
+              <button className={isLightmode ? styles.buttondark : styles.buttonlight} onClick={handleSignInClick}>
                 Sign In
               </button>
             </div>
             <div className={styles.signup}>
               <h3>New to GamEcho ? Create an account !</h3>
-              <button className={isLightmode? styles.buttondark : styles.buttonlight} onClick={handleSignUpClick}>
+              <button className={isLightmode ? styles.buttondark : styles.buttonlight} onClick={handleSignUpClick}>
                 Sign Up
               </button>
             </div>
@@ -154,7 +158,7 @@ function Profile() {
                 alt="Avatar"
                 width={150}
                 height={150}
-                className={isLightmode?styles.defaultAvatarLight:styles.defaultAvatar} />
+                className={isLightmode ? styles.defaultAvatarLight : styles.defaultAvatar} />
               <input
                 ref={fileInputRef}
                 type="file"
@@ -263,7 +267,7 @@ function Profile() {
             </div>
             {emailError && <div className={styles.errorContainer}><p className={styles.error}>{emailError}</p></div>}
           </div>
-          <button onClick={() => { router.push('/'); dispatch(logout()); }} className={isLightmode?styles.buttonlight:styles.buttondark}>Logout</button>
+          <button onClick={() => { router.push('/'); dispatch(logout()); }} className={isLightmode ? styles.buttonlight : styles.buttondark}>Logout</button>
         </div>
       )
       }

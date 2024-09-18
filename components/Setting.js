@@ -11,7 +11,6 @@ import { switchMode, changeRatingMode } from '../reducers/config'; // import de 
 import { logout } from '../reducers/user';
 import { resetRate } from '../reducers/rating';
 import { BACKEND_URL } from "../const";
-//const BACKEND_URL= "https://gamecho-back.vercel.app";
 
 function Setting() {
     const rooter = useRouter()
@@ -19,10 +18,10 @@ function Setting() {
 
     const [modalVisible, setModalVisible] = useState(false); // hook d'état pour la modale de confirmation du bouton delete account
 
-    const usertoken=useSelector((state)=>state.user.value.token)
+    const usertoken = useSelector((state) => state.user.value.token)
     const userName = useSelector((state) => state.user.value.username) //cible la valeur du nom de l'etat user
     const isLightmode = useSelector((state) => state.config.value.mode);//Cible le mode dans le reducer setting qui est par defaut à False
-    
+
 
     // fonction qui passe l'état de la modale a vrai
     const handleModal = () => {
@@ -66,7 +65,7 @@ function Setting() {
 
 
     const note = [
-        'Emojis', 'Out of 10', 'Out of 100', 
+        'Emojis', 'Out of 10', 'Out of 100',
     ]; // liste des options disponible pour le Dropdown contenant la façon de noter.
 
     const privacy = [
@@ -81,7 +80,7 @@ function Setting() {
 
     //Modale de confirmation de supression de compte
     const modale = modalVisible && (
-        <div className={styles.modal}>
+        <div className={isLightmode ? styles.modalLight : styles.modalDark}>
             <div>
                 <div>Your account will be delete definitively. Do you want to continue ?</div>
                 <div className={styles.buttoncontainer}>
@@ -156,7 +155,7 @@ function Setting() {
                             <p>Reset all your ratings</p>
                         </div>
                         <div className={styles.dropdownContainer}>
-                            <button onClick={()=>handleDeleteRatings()} className={isLightmode ? styles.buttonlight : styles.buttondark}>Reset</button>
+                            <button onClick={() => handleDeleteRatings()} className={isLightmode ? styles.buttonlight : styles.buttondark}>Reset</button>
                         </div>
                     </div>
                     <div className={styles.parameter}>

@@ -6,14 +6,24 @@ import Footer from '../components/Footer';
 function HomePage() {
   return (
     <>
-    <Header/>
       <Head>
-        <title>Home / Gamecho</title>
+        <title>Home | Gamecho</title>
+        <meta name="description" content="Bienvenue sur Gamecho qui vous permet de trouver facilement les denriers jeux sortis, les noter, ajouter à votre wishlist et trouver des jeux équivalents"></meta>
       </Head>
+      <Header />
       <Home />
-      <Footer/>
+      <Footer />
     </>
   );
 }
+
+// function HomePage() {
+//   return (
+//     <Layout title="Home | Gamecho">
+//       <router-outlet/>
+
+//     </Layout>
+//   );
+// }
 
 export default HomePage;

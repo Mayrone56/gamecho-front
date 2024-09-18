@@ -5,7 +5,7 @@ function ratingsPage() {
   return (
     <>
       <Head>
-        <title>Ratings / Gamecho</title>
+        <title>Ratings | Gamecho</title>
       </Head>
       <Ratings />
     </>

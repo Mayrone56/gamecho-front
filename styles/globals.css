@@ -1,7 +1,9 @@
-@font-face {
+/* @font-face {
   font-family: 'Roboto';
   src: url('/fonts/Roboto');
-}
+} */
+
+@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
 
 * {
   box-sizing: border-box;
@@ -42,6 +44,7 @@ p {
   line-height: 20px;
   font-weight: 300;
 }
+
 span {
   font-family: 'Roboto', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   font-size: 16px;
@@ -65,6 +68,7 @@ svg {
   fill: inherit;
   color: inherit;
 }
+
 image {
   fill: inherit;
   color: inherit;
@@ -72,31 +76,38 @@ image {
 
 /* MODAL */
 
-  /* (importée de antd) */
+/* (importée de antd) */
 
- .ant-modal-content { /* on vise le style natif du composant Modal, uniquement visible via l'inspecteur et on efface les paramètres gênants notre style */
-  background-color: transparent !important; /* toujours prioritaire sur n'importe quel autre style  https://stackoverflow.com/questions/68469089/how-to-change-styles-in-modal-of-antd */
+.ant-modal-content {
+  /* on vise le style natif du composant Modal, uniquement visible via l'inspecteur et on efface les paramètres gênants notre style */
+  background-color: transparent !important;
+  /* toujours prioritaire sur n'importe quel autre style  https://stackoverflow.com/questions/68469089/how-to-change-styles-in-modal-of-antd */
   border: none !important;
   box-shadow: none !important;
   padding: 0 !important;
-  font-family: 'Roboto', sans-serif !important; /* On remplace le font natif d'antd */
+  font-family: 'Roboto', sans-serif !important;
+  /* On remplace le font natif d'antd */
   color: white;
 }
 
 .anticon.anticon-close svg {
-  fill: white !important; /* vise la classe native de antd de la X */
+  fill: white !important;
+  /* vise la classe native de antd de la X */
 }
 
-  /* - Desktop */
+/* - Desktop */
 .ant-modal {
-  width: 50% !important; /* par défaut, cible l'affichage Desktop */
+  width: 50% !important;
+  /* par défaut, cible l'affichage Desktop */
   max-width: 50% !important;
   margin: none !important;
 }
-  /* - Mobile */
+
+/* - Mobile */
 @media (max-width: 768px) {
   .ant-modal {
-    width: 90% !important; /* On vise désormais l'affichage mobile et on veut changer les proportions de la modal */
+    width: 90% !important;
+    /* On vise désormais l'affichage mobile et on veut changer les proportions de la modal */
     max-width: 90% !important;
   }
 }
