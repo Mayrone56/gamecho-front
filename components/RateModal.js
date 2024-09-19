@@ -179,6 +179,7 @@ function RateModal({ onSubmit }) {
   };
   return (
     <div className={styles.container}>
+      {/* S'il y a un token */}
       {user.token ? (
         <>
           <h3 className={styles.title}> How much did you like it?</h3>
@@ -262,6 +263,7 @@ function RateModal({ onSubmit }) {
             <div></div>
           </div>
         </>
+        // S'il y a pas de token 
       ) : (
         <>
           <h3>You'd like to rate this game ?</h3>
