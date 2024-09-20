@@ -1,6 +1,6 @@
 .containerdark {
   height: 100vh;
-  width: 100vw;
+  /* width: 100vw; */
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -10,14 +10,14 @@
 }
 
 .containerlight {
-    height: 100vh;
-    width: 100vw;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    align-items: center;
-    color: #3F3878;
-    background-color: #F0EFFF;
+  height: 100vh;
+  /* width: 100vw; */
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  color: #3F3878;
+  background-color: #F0EFFF;
 }
 
 .middleContainer {
@@ -165,6 +165,7 @@
 .buttonlight:hover {
   background-color: #3F3878;
 }
+
 .centerText {
   text-align: center;
 }
@@ -190,7 +191,7 @@
   cursor: pointer;
 }
 
-.defaultAvatarLight{
+.defaultAvatarLight {
   width: 20vw;
   height: 20vw;
   /* pour limiter la taille générale selon l'écran */
@@ -279,7 +280,7 @@
   align-items: center;
 }
 
-.iconlight{
+.iconlight {
   filter: invert(80%) sepia(220%) saturate(400%) hue-rotate(957deg) brightness(98%) contrast(96%);
 }
 

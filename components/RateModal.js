@@ -21,7 +21,10 @@ function RateModal({ onSubmit }) {
   const [newReview, setNewReview] = useState("");
   const [rate, setRate] = useState(0); // valeur impossible à redistruber pour em^
   const [myEmoji, setMyEmoji] = useState("");
-  const [selectedEmoji, setSelectedEmoji] = useState(false)
+  const [selectedEmoji, setSelectedEmoji] = useState(false);
+  const router = useRouter();
+  //Permet d'obtenir la route actuelle de la page
+  // const currentRoute = router.pathname;
 
   const emojiIcons = [
     "/icons/emojiIcons/angry.svg",
@@ -55,8 +58,9 @@ function RateModal({ onSubmit }) {
     }
   };
 
-  //VALENTIN COEE
+  //VALENTIN CODE
   const handleVote = async (game) => {
+    console.log("Click submit detected");
     console.log("GAME", game);
 
     // fetch d'une route POST pour sauvegarde le jeu ET le vote
@@ -79,26 +83,21 @@ function RateModal({ onSubmit }) {
         "Content-Type": "application/json",
       },
       body: JSON.stringify(ratingData),
-    })
+    }).then(response => response.json())
 
     console.log("RATED", response);
 
-    if (response.ok) {
-      console.log("Rating submitted successfully");
-      //Rated
-      dispatch(addRate(ratingData)); //Ajoute au tableau qui permettra d'afficher comme pour wishlist sur home, mais sur la page ratings
-      console.log(ratingData, "added to rating");
-
-      // on vide la valeur de la review qui est dans input de la modal du rating via un setter
-      setRate(0);
-      setNewReview("");
-    } else {
+    if (!response.ok) {
       // si erreur quelconque, message
       console.log("Error submitting rating");
     }
 
+    // on vide la valeur de la review qui est dans input de la modal du rating via un setter
+    onSubmit();
     console.log("Calling onSubmit  ");
-    onSubmit()
+    setRate(0);
+    setNewReview("");
+
   };
 
   const handleSelection = (emojiPath, i) => {
@@ -137,7 +136,8 @@ function RateModal({ onSubmit }) {
     );
   }
 
-  let ratingMethod; //affichage conditionnelle en fonction de l'état du reducer setting soit emoji
+  // Affichage conditionnelle en fonction de l'état du reducer setting soit emoji
+  let ratingMethod;
   if (userRatingMode === "Emojis") {
     ratingMethod = personalEmoji;
   } else if (userRatingMode === "Out of 10") {
@@ -168,7 +168,7 @@ function RateModal({ onSubmit }) {
     );
   }
 
-  const router = useRouter();
+
   const handleSignUpClick = () => {
     // redirection SignUp
     router.push("/sign-up"); // changement de la route appelée, "SignUp" ciblait le composant
@@ -179,46 +179,13 @@ function RateModal({ onSubmit }) {
   };
   return (
     <div className={styles.container}>
-      {/* S'il y a un token */}
+      {/* S'il y a un token l'utilisateur pourra faire un rating, sinon il devrai signin ou signup*/}
       {user.token ? (
         <>
           <h3 className={styles.title}> How much did you like it?</h3>
           <div className={styles.iconContainer}>
-            {/* <Image
-          className={styles.emoji}
-          src="/icons/emojiIcons/angry.svg"
-          alt="Love emoji"
-          width={50}
-          height={50}
-        />
-        <Image
-          className={styles.emoji}
-          src="/icons/emojiIcons/sad.svg"
-          alt="Love emoji"
-          width={50}
-          height={50}
-        />
-        <Image
-          className={styles.emoji}
-          src="/icons/emojiIcons/neutral.svg"
-          alt="Love emoji"
-          width={50}
-          height={50}
-        />
-        <Image
-          className={styles.emoji}
-          src="/icons/emojiIcons/happy.svg"
-          alt="Love emoji"
-          width={50}
-          height={50}
-        />
-        <Image
-          className={styles.emoji}
-          src="/icons/emojiIcons/love.svg"
-          alt="Love emoji"
-          width={50}
-          height={50}
-        /> */}
+
+            {/* Permet d'afficher la methode de raiting choisi */}
             {ratingMethod}
           </div>
           <div className={styles.inputContainer}>

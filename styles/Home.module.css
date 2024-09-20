@@ -1,6 +1,6 @@
 .containerdark {
 
-  width: 100vw;
+  /* width: 100vw; */
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -10,7 +10,7 @@
 
 .containerlight {
 
-  width: 100vw;
+  /* width: 100vw; */
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -54,7 +54,7 @@
   }
 
   .searchContainer {
-    position: absolute ;
+    position: absolute;
     top: 340px !important;
   }
 }
@@ -238,7 +238,7 @@
   margin-top: 40px;
   padding-left: 20px;
   padding-right: 20px;
-  width: 100vw;
+  width: 95vw;
   position: absolute;
   top: 120px;
   padding: 0 40px;
@@ -249,13 +249,14 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  position: absolute; 
+  position: absolute;
   background-color: #3F3878;
   border-radius: 40px;
   height: 44px;
   width: 44px;
   border: 1px solid #FFF9E8;
 }
+
 .buttonSearch:hover {
   background-color: #CF55ED;
 }

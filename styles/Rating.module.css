@@ -1,5 +1,5 @@
 .containerdark {
-  width: 100vw;
+  /* width: 100vw; */
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -8,7 +8,7 @@
 }
 
 .containerlight {
-  width: 100vw;
+  /* width: 100vw; */
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -99,6 +99,7 @@
   margin-bottom: 5px;
   font-weight: 300;
 }
+
 .infoWithIcon {
   display: flex;
   align-items: center;

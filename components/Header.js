@@ -24,11 +24,23 @@ function Header() {
 
   // Redirect to / if not logged in
   const router = useRouter();
+  //Permet d'obtenir la route actuelle de la page
+  const currentRoute = router.pathname;
 
   //Permet d'afficher le contenu du menu burger
   const toggleMenuBurger = () => {
     setOpenBurgerMenu(!openBurgerMenu);
   };
+
+  //Fonction pour gérer le clic sur les lien dans le menu burger
+  const handleMenuCLick = (route) => {
+    if (route === currentRoute) {
+      setOpenBurgerMenu(false);
+    } else {
+      router.push(route);
+      setOpenBurgerMenu(false);
+    }
+  }
 
   //image de l'avatar qui change en fonction de si on en a uploadé un ou pas (par default smiley)
   let avatar;
@@ -53,9 +65,10 @@ function Header() {
           </Link>
         </div>
 
-        <Link href="/home">
+        {/* <Link href="/home" >
           <h1 className={styles.logoTitle}>GAMECHO</h1>
-        </Link>
+        </Link> */}
+        <h1 className={styles.logoTitle} onClick={() => handleMenuCLick("/home")}>GAMECHO</h1>
 
         {/* <Lottie onClick={toggleBurgerMenu} animationData={menuBurger} loop={false} className={styles.icon} /> */}
 
@@ -66,27 +79,19 @@ function Header() {
         <div className={styles.navigation}>
           <div className={styles.burgerContainer}>
             <div className={styles.topMenuBurger}>
-              <Link href="/profile">
-                <button className={styles.seoncadryButton} >
-                  Profile
-                </button>
+              <button className={styles.seoncadryButton} onClick={() => handleMenuCLick("/profile")}>
+                Profile
+              </button>
 
-              </Link>
-              <Link href="/ratings">
-                <button className={styles.seoncadryButton}>
-                  Ratings
-                </button>
-              </Link>
-              <Link href="/wishlist">
-                <button className={styles.seoncadryButton} >
-                  Wishlist
-                </button>
-              </Link>
-              <Link href="/setting">
-                <button className={styles.seoncadryButton}>
-                  Settings
-                </button>
-              </Link>
+              <button className={styles.seoncadryButton} onClick={() => handleMenuCLick("/ratings")}>
+                Ratings
+              </button>
+              <button className={styles.seoncadryButton} onClick={() => handleMenuCLick("/wishlist")} >
+                Wishlist
+              </button>
+              <button className={styles.seoncadryButton} onClick={() => handleMenuCLick("/setting")}>
+                Settings
+              </button>
 
             </div>
             {/* Logout */}

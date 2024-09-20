@@ -30,19 +30,22 @@ function Game() {
 
   console.log("DETAILS", gameDetails); // pour connaître la structure de la réponse (normalement identifique à la BDD)
   const [ratingsList, setRatingsList] = useState([]);
-  const ratings = useSelector((state) => state.rating.value); // pour recuperer la valeur de notre
+  const ratings = useSelector((state) => state.rating.value); // pour recuperer la valeur de notre store
+  console.log("RATINGS LOCAL STORAGE", ratings)
 
   const fetchRatings = () => {
-    const query = `name=${gameDetails.name}`
+    // encodeURIComponent pour escape les caractères spéciaux, evite de casser l'url 
+    // si gameDetails.name contient un ? ou & ou =...
+    const query = `name=${encodeURIComponent(gameDetails.name)}`
 
     fetch(`${BACKEND_URL}/games/ratings?${query}`)
       .then((response) => response.json())
       .then((data) => {
-        console.log("useEffect data", data);
+        console.log("FETCH DATA", data);
+        console.log("FETCH DATA.DATA", data.data);
 
         setRatingsList(data.data);
         dispatch(loadRates(data.data));
-        console.log("fetch", data.data);
 
         let ratingMode;
         if (data && data.data && data.data[0]) {
@@ -322,6 +325,7 @@ function Game() {
           </div> */}
         </div>
       </div>
+
       <Modal
         className={styles.frame}
         onCancel={() => handleCancelRateModal()}

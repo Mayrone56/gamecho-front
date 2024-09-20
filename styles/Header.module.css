@@ -21,6 +21,16 @@
     cursor: pointer;
 }
 
+.logoTitle:hover {
+    /* animation: gradient 10s ease infinite; */
+    transition: filter 0.2s ease;
+    filter: brightness(1.1);
+    /* transition: transform 0.3s ease;
+    transform: translateY(5px); */
+    transition: transform 0.5s ease-in-out;
+    transform: scale(1.03);
+}
+
 
 .icon {
     height: 32px;
@@ -87,7 +97,7 @@
 
 .navigation {
     width: 100%;
-    height:auto;
+    height: auto;
     background-color: blue;
     display: flex;
     flex-direction: column;
@@ -106,7 +116,16 @@
     cursor: pointer;
     /* Permet de changer la couleur d'un icon svg */
     /* filter: invert(47%) sepia(89%) saturate(7473%) hue-rotate(1deg) brightness(102%) contrast(105%); */
+}
 
+.burgerIcon:hover {
+    /* animation: gradient 10s ease infinite; */
+    transition: filter 0.2s ease;
+    filter: brightness(1.1);
+    /* transition: transform 0.3s ease;
+    transform: translateY(5px); */
+    transition: transform 0.5s ease-in-out;
+    transform: scale(1.03);
 }
 
 .logout {
@@ -128,13 +147,13 @@
 .profilcontainer {
     display: flex;
     flex-direction: row;
-    justify-content:space-between;
+    justify-content: space-between;
     align-items: center;
-    width: 25%;    
+    width: 25%;
 }
 
-/* BUTTONS */ 
-  .seoncadryButton {
+/* BUTTONS */
+.seoncadryButton {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -150,21 +169,20 @@
     cursor: pointer;
     margin: 16px 0 16px 0;
     width: 350px;
-  }
-  
-  .seoncadryButton:hover {
+}
+
+.seoncadryButton:hover {
     background-color: hsl(247, 56%, 25%);
     color: #F0EFFF;
-  }
+}
 
 
 
 
-.avatar{
+.avatar {
     border-radius: 100%;
     object-position: center center;
     /* centre l'image verticalement/horizitontalement pour garantir un affichage proche de l'original*/
     object-fit: cover;
     /* empêche l'image d'être tronquée même visualée en cercle */
 }
-
