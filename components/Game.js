@@ -71,6 +71,8 @@ function Game() {
   console.log("ratings list", ratingsList);
   const allRatings = ratingsList
     ? ratingsList.map((vote, i) => {
+      console.log("VOTE", vote)
+      console.log("allRatings", allRatings)
       //La date de notation est formatée à l'aide de la fonction toLocaleDateString() afin de l'afficher dans un format dd/mm/yyyy
       const ratingDate = new Date(vote.ratingDate).toLocaleDateString();
 

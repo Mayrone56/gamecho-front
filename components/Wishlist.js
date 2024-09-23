@@ -120,12 +120,12 @@ function Wishlist() {
             <div className={styles.buttonSearch}>
 
               <Image
-              onClick={handleSearchClick}
-              src="/icons/search.svg"
-              alt="Search"
-              width={24}
-              height={24}
-              className={isLightmode ? styles.searchIconlight : styles.searchIcondark}
+                onClick={handleSearchClick}
+                src="/icons/search.svg"
+                alt="Search"
+                width={24}
+                height={24}
+                className={isLightmode ? styles.searchIconlight : styles.searchIcondark}
               />
             </div>
           </div>

@@ -4,7 +4,7 @@ import Footer from "../components/Footer";
 import Link from "next/link";
 import { useState, useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { addRate, deleteRate } from "../reducers/rating";
+import { deleteRate } from "../reducers/rating";
 import Image from "next/image";
 import { useRouter } from "next/router";
 import { getGameDetails } from "../reducers/game";
@@ -52,6 +52,7 @@ function Ratings() {
   // };
 
   useEffect(() => {
+    //Si l'utilisateur n'a pas de token, donc pas connecté, le code s'arrete
     if (!user.token) {
       return;
     }
@@ -59,6 +60,7 @@ function Ratings() {
       .then((response) => response.json())
       .then((data) => {
         console.log("useEFFECT DATA", data);
+        //Charge les rating de l'utilisateur
         data.result && dispatch(loadRates(data.user.ratings));
       });
   }, [ratings.length]); // rerender si nombre de vote changé
@@ -106,16 +108,7 @@ function Ratings() {
               iconType="trash"
             />
           </Link>
-          {/* <div
-                        key={game.gameDetails.name}
-                        className={styles.card} // si changement de dimension type portrait, on affiche deux carts scrollables ?
-                        style={{
-                            backgroundImage: `url(${game.gameDetails.imageGame})`
-                        }} // Utilisez l'image de game comme fond
-                        onClick={() => handleGameCardClick(game)}
-                    >
-                        <p className={styles.gameNameCard}>{game.gameDetails.name}</p>
-                    </div> */}
+
           <div className={styles.ratingInfo}>
             <span className={styles.infoWithIcon}>
               <b>Rating:</b>{" "}

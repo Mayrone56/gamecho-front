@@ -1,6 +1,6 @@
 .containerdark {
     height: 100vh;
-    width: 100vw;
+    /* width: 100vw; */
     display: flex;
     flex-direction: column;
     justify-content: space-between;
@@ -9,7 +9,7 @@
 
 .containerlight {
     height: 100vh;
-    width: 100vw;
+    /* width: 100vw; */
     display: flex;
     flex-direction: column;
     justify-content: space-between;
@@ -23,8 +23,9 @@
     justify-content: flex-start;
     align-items: center;
     height: 100%;
-    overflow-x: hidden;
+    /* overflow-x: hidden; */
     padding: 0 24px;
+    margin-bottom: 40px;
 }
 
 /* CARDS */
@@ -153,17 +154,17 @@
     font-size: 1em;
     font-weight: 500;
     /* position: absolute;  */
-  }
-  
-  .input::placeholder {
+}
+
+.input::placeholder {
     color: #9592B8;
-  }
-  
-  .input:focus {
+}
+
+.input:focus {
     background-color: #DFD8E7;
-  }
-  
-  .searchContainer {
+}
+
+.searchContainer {
     display: flex;
     justify-content: flex-end;
     align-items: center;
@@ -174,29 +175,30 @@
     top: 120px;
     padding: 0 40px;
     max-width: 600px;
-  }
-  
-  .buttonSearch {
+}
+
+.buttonSearch {
     display: flex;
     justify-content: center;
     align-items: center;
-    position: absolute; 
+    position: absolute;
     background-color: #3F3878;
     border-radius: 40px;
     height: 44px;
     width: 44px;
     border: 1px solid #FFF9E8;
-  }
-  .buttonSearch:hover {
+}
+
+.buttonSearch:hover {
     background-color: #CF55ED;
-  }
-  
-  .searchIcondark {
+}
+
+.searchIcondark {
     cursor: pointer;
 
-  }
-  
-  .searchIconlight {
+}
+
+.searchIconlight {
 
     cursor: pointer;
-  }
+}

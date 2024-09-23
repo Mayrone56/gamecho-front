@@ -1,6 +1,5 @@
 import styles from '../styles/AllSearchResults.module.css';
 import Link from "next/link";
-import Image from "next/image";
 import { useRouter } from "next/router";
 import { useEffect, useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';

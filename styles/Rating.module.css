@@ -1,5 +1,6 @@
 .containerdark {
   /* width: 100vw; */
+  height: 100vh;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -9,6 +10,7 @@
 
 .containerlight {
   /* width: 100vw; */
+  height: 100vh;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -21,7 +23,7 @@
   flex-direction: column;
   justify-content: flex-start;
   align-items: center;
-  height: 100%;
+  /* height: 100%; */
   padding: 0 24px;
   margin-bottom: 50px;
 }
@@ -93,6 +95,7 @@
   /* border: 1px solid #fff9e85c; */
   color: #FFF9E8;
   margin-left: 16px;
+  max-width: 90vw;
 }
 
 .info {

@@ -45,20 +45,7 @@ function RateModal({ onSubmit }) {
     }
   };
 
-  const handleWishlistClick = (game) => {
-    //la fonction vérifie s'il existe dans la wishlist un jeu portant le même nom que le jeu sur lequel on clique.
-    if (wishlist.some((wishlistItem) => wishlistItem.name === game.name)) {
-      //Si le jeu est déjà dans la wishlist, cette ligne envoie l'action removeFromWishlist avec l'objet jeu comme payload. Cette action sera traitée par le reducer pour supprimer le jeu de la wishlist.
-      dispatch(removeFromWishlist(game));
-      console.log(`${game.name} removed from wishlist`);
-    } else {
-      //Si le jeu n'est pas dans la wishlist, cette ligne envoie l'action addToWishlist avec l'objet jeu comme payload. Cette action sera traitée par le reducer pour ajouter le jeu à la wishlist.
-      dispatch(setArrayRating(game));
-      console.log(`${game.name} added to wishlist`);
-    }
-  };
-
-  //VALENTIN CODE
+  //Le disptach de addRate se fait sur game, la ou s'affiche les ratings
   const handleVote = async (game) => {
     console.log("Click submit detected");
     console.log("GAME", game);

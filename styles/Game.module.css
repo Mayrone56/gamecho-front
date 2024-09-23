@@ -58,6 +58,9 @@
   align-items: flex-start;
   padding: 0 16px;
   width: 100%;
+
+  background: linear-gradient(to right, hsla(276, 88%, 55%, 0.25), hwb(252 29% 19% / 0));
+  margin-top: 0;
 }
 
 .bottomBannerContainerLight {
@@ -152,12 +155,13 @@
   padding: 26px;
 }
 
-.descriptionContainerLight{
+.descriptionContainerLight {
   background-color: #9592b8;
   margin-top: 24px;
   padding: 26px;
   color: #fff9e8;
 }
+
 .ratingsContainer {
   display: flex;
   flex-direction: column;
@@ -171,7 +175,11 @@
   display: flex;
   flex-direction: column;
   width: 100%;
-  margin-bottom: 20px;
+  margin: 0 16px 16px 0px;
+  /* border: 1px solid #fff9e8; */
+  border-radius: 20px;
+  padding: 16px;
+  background-color: #644ace90;
 }
 
 .ratingLight {
