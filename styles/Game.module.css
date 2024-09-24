@@ -1,6 +1,6 @@
 .container {
   height: 100vh;
-  width: 100vw;
+  /* width: 100vw; */
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -24,8 +24,9 @@
   justify-content: space-between;
   align-items: center;
   height: 100%;
-  overflow-x: hidden;
-  overflow-y: scroll;
+  /* overflow-x: hidden;
+  overflow-y: scroll; */
+  overflow: hidden;
 }
 
 /* BANNER */
