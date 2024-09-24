@@ -26,18 +26,23 @@ function Game() {
   const isLightmode = useSelector((state) => state.config.value.mode); // pour Paul
   const dispatch = useDispatch();
 
-  const [ratingScale, setRatingScale] = useState(5); // échelle du vote, avec les émojis, par défaut sauvegardé dans un état qu'on mettra à jour selon le ratingMode
+  // Echelle du vote, avec les émojis, par défaut sauvegardé dans un état qu'on mettra à jour selon le ratingMode
+  const [ratingScale, setRatingScale] = useState(5);
 
-  console.log("DETAILS", gameDetails); // pour connaître la structure de la réponse (normalement identifique à la BDD)
+  // Pour connaître la structure de la réponse (normalement identique à la BDD)
+  console.log("DETAILS", gameDetails);
   const [ratingsList, setRatingsList] = useState([]);
-  const ratings = useSelector((state) => state.rating.value); // pour recuperer la valeur de notre store
-  console.log("RATINGS LOCAL STORAGE", ratings)
+  // Pour recuperer la valeur de notre store
+  const ratings = useSelector((state) => state.rating.value);
+  console.log("RATINGS STORE REDUX", ratings)
 
   const fetchRatings = () => {
     // encodeURIComponent pour escape les caractères spéciaux, evite de casser l'url 
     // si gameDetails.name contient un ? ou & ou =...
     const query = `name=${encodeURIComponent(gameDetails.name)}`
 
+    //Le query correspond au nom du jeu qui est envoyé en backend
+    //On utilise le query parameters pour filtrer une recherche, elle ne sont pas obligatoire contrairement aux params qui sont plus adapté pour chercher un id par exemple
     fetch(`${BACKEND_URL}/games/ratings?${query}`)
       .then((response) => response.json())
       .then((data) => {

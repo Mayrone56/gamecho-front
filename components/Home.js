@@ -1,4 +1,3 @@
-//test commit
 import styles from "../styles/Home.module.css";
 import Link from "next/link";
 import Image from "next/image";
@@ -17,7 +16,7 @@ function Home() {
   const router = useRouter();
 
   // SANDRINE
-  // Parce que quand on va recevoir le fetch ça doit maj en temps réel au chargement de la page, c'est pour ça que c'est mis dans cet état
+  // Parce que lorsqu'on va recevoir le fetch ça doit maj en temps réel au chargement de la page, c'est pour ça que c'est mis dans cet état
   const [latestGamesData, setLatestGamesData] = useState([]);
 
   const [searchValue, setSearchValue] = useState(""); // VL
@@ -33,6 +32,7 @@ function Home() {
   const isLightmode = useSelector((state) => state.config.value.mode);
 
   // LATEST RELEASES
+  //Au chargement du composant Home
   useEffect(() => {
     const fetchLatestGames = async () => {
       const response = await fetch(`${BACKEND_URL}/games/latestreleased`, {
@@ -74,13 +74,16 @@ function Home() {
   };
 
   const handleHeartIconClick = (event, game) => {
-    event.stopPropagation();
     // cela empêche l'événement de clic de "handleWishlistClick" de se propager à l'événement de clic "handleGameCardClick" de la div parente. Cela signifie que l'on peut cliquer sur le cœur et que cela ne déclenchera pas la navigation vers la page du jeu. Cela ajoutera simplement le jeu à la liste de souhaits.
+    event.stopPropagation();
     handleWishlistClick(game);
   };
 
+  //Permet de recuperer les info d'un jeu et le met dans le store redux afin d'etre exploité dans le composant game
   const handleGameCardClick = (game) => {
     // Step 1: Dispatch the action to store the game details in Redux
+    // La creation de ce reducer se fait de façon dynamique avec => state.details = action.payload 
+    // On recupere ensuite sur le composant Game la valeur du store avec => const gameDetails = useSelector((state) => state.game.details);
     dispatch(getGameDetails(game));
 
     // // Step 2: Save the game details to the database
@@ -138,7 +141,7 @@ function Home() {
   ));
 
   // MAIN SEARCH RESULTS
-  // DISPLAY ONLY ON THE CLICK ON SEARCH
+  // Apparait au clcic sur le bouton search qui met à jour les états searchValue et searchSuggValue 
   useEffect(() => {
     if (searchValue === "") {
       setShowSearchResults(false);
@@ -148,6 +151,8 @@ function Home() {
     }
   }, [searchValue, searchSuggValue]);
 
+  // Au clic sur le bouton search
+  // searchValue récupéré de l'input value et stocké dans ce hook au clic
   const handleSearch = async () => {
     const response = await fetch(
       `${BACKEND_URL}/games/search?name=${searchValue}`,
