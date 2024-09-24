@@ -15,11 +15,11 @@ function Welcome() {
   };
 
   const handleSignInClick = () => {
-    // redirection SignIn - pour l'instant identique à SignUp
+    // redirection SignIn
     router.push("/sign-in");
   };
   const isLightmode = useSelector((state) => state.config.value.mode);//Cible le mode dans le reducer setting
-  
+
 
   return (
     <div className={isLightmode ? styles.containerlight : styles.containerdark}>

@@ -1,5 +1,6 @@
 .containerdark {
   width: 100vw;
+  height: 100vh;
   /* height: 100vh; */
   display: flex;
   flex-direction: column;
@@ -226,7 +227,7 @@
 
   .containerdark {
     width: 100vw;
-    height: auto;
+    height: 100vh;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
@@ -235,7 +236,7 @@
 
   .containerlight {
     width: 100vw;
-    height: auto;
+    height: 100vh;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
