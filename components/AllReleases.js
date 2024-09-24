@@ -90,11 +90,6 @@ function AllReleases() {
           <>
             <h2 className={styles.sectionTitle}>Latest releases</h2>
             <div className={styles.contentCard}>{latestReleases}</div>
-            <Link href="/all-releases">
-              <button className={styles.secondaryButton}>
-                See all search releases
-              </button>
-            </Link>
           </>
         )}
 
